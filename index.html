@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO CÉSAR</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <script src="../js/JavaScript.js"></script>
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+    <header>
+        <nav aria-label="Navegación principal">
+            <div class="logo">
+                <img src="../images/cesar_Logo.png" alt="Logo Barra" class="logo-bar">
+                <p><b>CÉSAR</b> CASTELLANO</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio" data-i18n="nav-home">Inicio</a></li>
+                <li><a href="#cv" data-i18n="nav-cv">Skills & CV</a></li>
+                <li><a href="#proyectos" data-i18n="nav-projects">Proyectos</a></li>
+                <li><a href="#contacto" data-i18n="nav-contact">Contacto</a></li>
+            </ul>
+            <div class="controls">
+                <div class="controls">
+                    <select id="palette-select" class="palette-select-btn" aria-label="Cambiar estilo visual">
+                        <option value="original">🍁 Original</option>
+                        <option value="cyber">🌌 Cyber</option>
+                        <option value="forest" data-i18n="forest-theme">🌿 Bosque</option>
+                        <option value="royal" data-i18n="gold-theme">👑 Oro Real</option>
+                    </select>
+
+                    <div class="nav-toggle">
+                        <label class="switch">
+                            <input type="checkbox" id="theme-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <select id="lang-select" class="lang-select-btn">
+                        <option value="es">ES</option>
+                        <option value="en">EN</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero fade-in-section"">
+            <div class="main-intro">
+                <div class="intro-name-div">
+                    <h1 data-i18n="hero-title"><b>César</b><br>Castellano García</h1>
+                    <p data-i18n="hero-subtitle">Programador Full Stacks / Diseñador y Desarrollador de Videojuegos</p>
+                    <div class="socials-icons">
+                        <a href="https://www.linkedin.com/in/césar-castellano-65665a2a8/" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/link.png" alt="Linkedin"></a>
+                        <a href="https://github.com/YoungMute" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/github.png" alt="GitHub"></a>
+                        <a href="https://youngmute.itch.io/" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/itchio.png" alt="itchio" class="itchio-icon correct-size"></a>
+                    </div>
+                </div>
+                <div class="intro-img-div">
+                    <img src="../images/intro/foto-normal.jpg" alt="imagen-intro" class="img-intro">
+                </div>
+                
+            </div>
+            <div class="description-intro">
+                <h2 data-i18n="about-me-title">SOBRE MÍ</h2>
+                <div class="about-me-div">
+                    <div class="text-me-div">
+                        <p class="text-intro" data-i18n="hero-desc">Experto especializado en varias arquitecturas, siendo una persona <b>autodidacta</b> para cualquier tipo de tarea y <b>flexible</b> para adaptarme a todas las metodologías de trabajo. Acostumbrado a aprender de forma rápida y eficaz nuevas tecnologías, permitiendo <b>crear un progreso real</b> dentro de cualquier proyecto.<br>
+                        Cuando hay un problema, automáticamente busco la solución. Destaco por ser <b>comunicativo</b>, creando un
+                        <b>ambiente fluido y cómodo</b> de trabajo. Mi carrera y mis proyectos respaldan mis aptitudes.</p> 
+                    </div>
+                    
+                    <div class="personality-card">
+                        <div class="personality-grid">
+                            <div class="info-item">
+                                <span class="info-label" data-i18n="propertie-title-1">Edad:</span>
+                                <div class="info-value">
+                                    <span id="age"></span> <span data-i18n="propertie-1">años</span>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="info-label" data-i18n="propertie-title-2">Ubicación:</span>
+                                <span class="info-value">Las Palmas</span>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="info-label" data-i18n="propertie-title-3">Idiomas:</span>
+                                <span class="info-value">
+                                    <span data-i18n="propertie-3a">Español nativo</span><br><span data-i18n="propertie-3b">Inglés B1</span>
+                                </span>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="info-label" data-i18n="propertie-title-4">Otros</span>
+                                <span class="info-value" data-i18n="propertie-4a">Carnet de conducir B</span>
+                            </div>
+                        </div>
+
+                        <div class="cv-actions">
+                            <a href="../files/CV-FullStack_Cesar.pdf" download="CV_FullStack_CesarCaste" class="btn-cv">CV - FullStack</a>
+                            <a href="../files/CV-FullStack_Cesar.pdf" download="CV_GameDev_CesarCaste" class="btn-cv">CV - GameDev</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        
+        <section id="cv" class="fade-in-section">
+            <h2 data-i18n="cv-title">PERFIL PROFESIONAL</h2>
+            <div class="block">
+                <h3 data-i18n="trayectory-text">Trayectoria</h3>
+                <h3 data-i18n="experience-text">Experiencia</h3>
+            </div>
+
+            <div class="cv-container">
+                <div class="skills-block">
+                    <div class="block-skill">
+                    <h3 class="skills-title" data-i18n="skills-subtitle">Habilidades</h3>
+                        <div class="skills-icons-div">
+                            <img src="../images/skills/unity-69.svg" class="skills-icon" alt="Logo Unity">
+                            <img src="../images/skills/c--4.svg" class="skills-icon">
+                            <img src="../images/skills/blender-2.svg" class="skills-icon">
+                            <img src="../images/skills/adobe-photoshop-2.svg" class="skills-icon" alt="Logo Photoshop">
+                            <img src="../images/skills/html-5-logo-svg-1.svg" class="skills-icon" alt="Logo HTML">
+                            <img src="../images/skills/css-3.svg" class="skills-icon" alt="Logo CSS">
+                            <img src="../images/skills/javascript-r.svg" class="skills-icon" alt="Logo JavaScript">
+                            <img src="../images/skills/visual-studio-code-1.svg" class="skills-icon" alt="Logo Visual Studio">
+                            <img src="../images/skills/git-icon.svg" class="skills-icon">
+                            <img src="../images/skills/github-icon-1.svg" class="skills-icon">
+                            <img src="../images/skills/gitlab.svg" class="skills-icon">
+                            <img src="../images/skills/sourcetree-1.svg" class="skills-icon">
+                            <img src="../images/skills/trello.svg" class="skills-icon">
+                            <img src="../images/skills/microsoft-windows-22.svg" class="skills-icon">
+                            <img src="../images/skills/ubuntu-4.svg" class="skills-icon">
+                            <img src="../images/skills/premiere-pro-cc.svg" class="skills-icon">
+                        </div>
+                    </div>
+                    <div class="block-skill">
+                        <h3 class="skills-title">Soft Skills</h3>
+                            <ul id="skills-list">
+                                <li data-i18n="skill-teamwork">👥 Trabajo en equipo</li>
+                                <li data-i18n="skill-self"> 📝 Autodidacta y resolutivo</li>
+                                <li data-i18n="skill-responsible">💪 Responsable y comprometido</li>
+                                <li data-i18n="skill-constancy">🏋 Constancia</li>
+                                <li data-i18n="skill-organized">🎯 Organizado y atento</li>
+                                <li data-i18n="skill-pressure">🧠 Trabajo bajo presión</li>
+                            </ul>
+                    </div>
+                    <div class="block">
+                        <h3 data-i18n="education-text">Formación</h3>
+                    </div>
+                    <div class="block-skill"> 
+                        <p class="education-date" data-i18n="edu1-date">Octubre 2023 - Diciembre 2025</p>
+                        <p class="education-institution"><b data-i18n="edu1-title">Máster en Diseño y Desarrollo de Videojuegos</b></p>
+                        <p class="education-name">E.V.A.D.</p>
+                        <ul class="training-list">
+                            <li data-i18n="edu1-bullet1">Formación especializada en todas las áreas del desarrollo de los videojuegos.</li>
+                            <li data-i18n="edu1-bullet2">Método autodidacta con ensayo y error.</li>
+                            <li data-i18n="edu1-bullet3">Presencia activa en eventos como Game-Jams con varios equipos multidisciplinares.</li>
+                        </ul> 
+                    </div>
+                    <div class="block-skill"> 
+                        <p class="education-date" data-i18n="edu2-date">Octubre 2021 - Febrero 2023</p>
+                        <p class="education-institution"><b data-i18n="edu2-title">Grado Superior en Animación 3D, Juegos y Entornos Interactivos</b></p>
+                        <p class="education-name">CESUR Las Palmas</p>
+                        <ul class="training-list">
+                            <li data-i18n="edu2-bullet1">Aprendizaje para generar y adaptar cualquier proyecto multimedia al mercado.</li>
+                            <li data-i18n="edu2-bullet2">Generación de escenarios interactivos, así como la optimización de los mismos.</li>
+                            <li data-i18n="edu2-bullet3">Desarrollo de aplicaciones interactivas y entornos webs dinámicos.</li>
+                        </ul> 
+                    </div>
+                    <div class="block-skill"> 
+                        <p class="education-date" data-i18n="edu3-date">Septiembre 2019 - Febrero 2021</p>
+                        <p class="education-institution"><b data-i18n="edu3-title">Grado Superior en Administración de Sistemas Informáticos y Redes (A.S.I.R.)</b></p>
+                        <p class="education-name">C.I.F.P. Villa de Agüimes</p>
+                        <ul class="training-list">
+                            <li data-i18n="edu3-bullet1">Planificación y construcción de infraestructuras tecnológicas, redes y servidores.</li>
+                            <li data-i18n="edu3-bullet2">Creación y desarrollo de usuarios y de sistemas operativos como Windows o Linux.</li>
+                            <li data-i18n="edu3-bullet3">Gestión de Base de Datos relacionales, con técnicas para proteger la información.</li>
+                        </ul> 
+                    </div>
+                </div>
+
+                <div class="skills-block">
+                <div class="experience-block">
+                    <article class="experience-div">
+                        <h4 data-i18n="exp1-title">Diseñador y programador de Unity | Co-fundador de <i><a href="https://linktr.ee/DrilleStudio" class="extra-link" target="_blank">Drille Studio</a></i></h4>
+                        <span class="date experience-date" data-i18n="exp1-date">Febrero 2025 - Presente</span>
+                        <ul class="experiencie-list">
+                            <li data-i18n="exp1-bullet1">Coordiné y lideré un equipo multidisciplinar, diseñando e implementando metodologías ágiles a través de <i>Trello</i> para garantizar un flujo de trabajo eficiente, flexible y adaptado a las necesidades del proyecto.</li>
+                            <li data-i18n="exp1-bullet2">Diseñé e implementé <b>mecánicas y sistemas complejos</b> aplicando patrones de diseño y prácticas de <b>programación limpia (Clean Code)</b> de gran eficiencia.</li>
+                            <li data-i18n="exp1-bullet3">Investigué y adopté nuevas <b>tecnologías emergentes</b>, asegurando la competitividad del stack técnico según las <b>demandas actuales</b> del mercado.</li>
+                            <li data-i18n="exp1-bullet4">Gestioné el flujo de trabajo y la integración del código mediante el <b>control de versiones con <i>Git</i></b>, garantizando la estabilidad de las ramas del proyecto.</li>
+                            <li data-i18n="exp1-bullet5">Realicé tareas de <b>depuración y refactorización de código</b>, logrando mejorar el rendimiento de los proyectos en hasta un 75%.</li>
+                        </ul>
+                    </article>
+                    <article class="experience-div">
+                        <h4 data-i18n="exp2-title">Programador en <i>Warlands Realms</i></h4>
+                        <span class="date experience-date" data-i18n="exp2-date">Febrero 2025 - Mayo 2025</span>
+                        <ul class="experiencie-list">
+                            <li data-i18n="exp2-bullet1">Investigué y solucioné <b>bugs heredados de meses de antigüedad</b>, optimizando la velocidad del sistema y acelerando el flujo de desarrollo general del proyecto.</li>
+                            <li data-i18n="exp2-bullet2">Adquirí experiencia sólida coordinando <b>arquitecturas complejas</b> junto a un equipo de <b>desarrolladores senior</b>, adaptándome a los estándares de proyectos de alto impacto.</li>
+                            <li data-i18n="exp2-bullet3">Lideré sesiones de <b>testing crítico</b> para identificar <b>cuellos de botella y vulnerabilidades</b>, liberando carga de trabajo al equipo técnico para que se enfocara en el core del negocio.</li>
+                            <li data-i18n="exp2-bullet4">Evalué, analicé e implanté <b>nuevas tecnologías y herramientas</b> en el ecosistema del proyecto, garantizando decisiones técnicas escalables y eficientes a largo plazo.</li>
+                            <li data-i18n="exp2-bullet5">Participé activamente en <b>reuniones diarias (Daily Stands)</b> para la priorización de <b>tareas críticas</b>, asegurando un avance continuo y alineado con los objetivos de entrega.</li>
+                        </ul>
+                    </article>
+                    <article class="experience-div">
+                        <h4 data-i18n="exp3-title">Desarrollador web y generalista 3D | <i>Psicosoft</i></h4>
+                        <span class="date experience-date" data-i18n="exp3-date">Febrero 2023 - Mayo 2023</span>
+                        <ul class="experiencie-list">
+                            <li data-i18n="exp3-bullet1">Apliqué <b>soluciones técnicas</b> avanzadas para el despliegue de <b>entornos web dinámicos, interactivos y escalables.</b></li>
+                            <li data-i18n="exp3-bullet2">Traduje <b>modelos gráficos complejos</b> y guías de <b>estilo corporativo</b> en interfaces web reales utilizando <i>HTML5</i> y <i>CSS3</i> moderno, garantizando una alta fidelidad de diseño para los clientes.</li>
+                            <li data-i18n="exp3-bullet3">Implementé estrategias de <b>optimización de carga</b> y rendimiento de código, transformando portales web en plataformas fluidas, funcionales y centradas en la <b>experiencia de usuario (UX).</b></li>
+                            <li data-i18n="exp3-bullet4">Participé en reuniones diarias orientadas al <b>seguimiento de objetivos</b>, diagnóstico temprano de bloqueos e ideación de nuevas funcionalidades para los proyectos activos.</li>
+                        </ul>
+                    </article>
+                    <article class="experience-div">
+                        <h4 data-i18n="exp4-title">Desarrollador de Software y Soluciones online | <i>ACAAO</i></h4>
+                        <span class="date experience-date" data-i18n="exp4-date">Marzo 2021 - June 2021</span>
+                        <ul class="experiencie-list">
+                            <li data-i18n="exp4-bullet1">Diseñé y estructuré <b>soluciones de software</b> con un programa interno personalizado y a medida, alineando la <b>arquitectura técnica</b> directamente con los objetivos de negocio y los requisitos específicos de cada cliente.</li>
+                            <li data-i18n="exp4-bullet2">Incrementé el <b>posicionamiento orgánico</b> y el rendimiento de plataformas web aplicando técnicas avanzadas de <b>optimización de carga, estructura de código, análisis de datos y palabras clave.</b></li>
+                            <li data-i18n="exp4-bullet3">Diagnosticé y resolví <b>incidencias críticas</b>, tanto técnicas como funcionales, asegurando la alta disponibilidad del sistema y garantizando un servicio de soporte excelente.</li>
+                        </ul>
+                    </article>
+                </div>
+                </div>
+                
+
+            </div>
+        </section>
+
+        <section id="proyectos" class="fade-in-section">
+            <h2 data-i18n="projects-title">MIS PROYECTOS</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <img src="../images/projects/project1-image.png" alt="Captura de pantalla del Proyecto 1">
+                    <h3>Mega Time</h3>
+    
+                    <p class="intro-proyect-text">
+                    <span data-i18n="p1-desc-intro">Shooter de plataformas 2.5D desarrollado en Unity donde ejercí como líder técnico en mi equipo <i><a href="https://linktr.ee/DrilleStudio" class="extra-link"  target="_blank">Drille Studio.</i></a></span><span class="dots">...</span><span class="proyect-text-extra" data-i18n="p1-desc-extra"> Diseñé la metodología de trabajo orientada a objetivos e integré los flujos de los distintos departamentos, asegurando una entrega exitosa y optimizando la productividad general.<br>Asimismo, diseñé y desarrollé la arquitectura técnica global, incluyendo sistemas dinámicos de apuntado, mecánicas de obstáculos e inteligencia artificial avanzada para enemigos y jefes finales. El proyecto concluyó con una fase intensiva de depuración que elevó drásticamente el rendimiento del 
+                    </p>
+                
+                    <div class="read-more-btnDiv">
+                    <button class="btn-read-more" data-i18n="more" data-text-more="more" data-text-less="less">Leer más...</button>
+                    </div>
+                    
+                    <div class="center-button"><a href="https://www.youtube.com/watch?v=GvyTGQh33sA" target="_blank" class="btn" data-i18n="trailer-text">Tráiler</a></div>
+                </article>
+                <article class="project-card">
+                    <img src="../images/projects/art-rescue.png" alt="Captura de pantalla del Proyecto 1">
+                    <h3>Art Rescue</h3>
+    
+                    <p class="intro-proyect-text">
+                    <span data-i18n="p2-desc-intro">Videojuego de puzzles 3D programado en C# y desarrollado por un equipo multidisciplinar de 8 profesionales</span><span class="dots">...</span><span class="proyect-text-extra" data-i18n="p2-desc-extra">. El proyecto demostró un alto nivel competitivo, logrando posicionarse con éxito entre los 8 videojuegos más destacados de la <a href="https://itch.io/jam/cultura-abierta-6-edicin" class="extra-link" target="_blank">VI Game Jam Cultura Abierta.</a><br>Mi rol se centró en la ingeniería de software, desarrollando el sistema de físicas del personaje, la interacción lógica con el entorno y una sala de exposición dinámica con recompensas desbloqueables. Todo el código base fue refactorizado para garantizar una experiencia fluida y optimizada.</span>
+                    </p>
+                    
+                    <div class="read-more-btnDiv">
+                    <button class="btn-read-more" data-i18n="more" data-text-more="more" data-text-less="less">Leer más...</button>
+                    </div>
+                    
+                    <div class="center-button"><a href="https://quinowl.itch.io/art-rescue" target="_blank" class="btn" data-i18n="official-page">Página oficial</a></div>
+                </article>
+                <article class="project-card">
+                    <img src="../images/projects/Ghostly-Star.png" alt="Captura de pantalla del Proyecto 1">
+                    <h3>Ghostly-Star</h3>
+    
+                    <p class="intro-proyect-text">
+                    <span data-i18n="p3-desc-intro">Twin Stick Shooter 3D de supervivencia por oleadas desarrollado íntegramente de forma autodidacta.</span><span class="dots">...</span><span class="proyect-text-extra" data-i18n="p3-desc-extra"> Este proyecto técnico individual me permitió gestionar de manera autónoma todo el ciclo de vida del software, desde la conceptualización de las mecánicas core hasta la dirección de arte y el despliegue del juego.<br>Durante el desarrollo, implementé sistemas avanzados de persistencia de datos orientados a logros y un árbol de habilidades con tienda integrada. El resultado es una experiencia audiovisual interactiva con mecánicas pulidas que consolidó mis competencias en la arquitectura de sistemas en Unity.</span>
+                    </p>
+                    
+                    <div class="read-more-btnDiv">
+                    <button class="btn-read-more" data-i18n="more" data-text-more="more" data-text-less="less">Leer más...</button>
+                    </div>
+                    
+                    <div class="center-button"><a href="https://youngmute.itch.io/ghostly-star" target="_blank" class="btn" data-i18n="official-page">Página oficial</a></div>
+                </article>
+            </div>
+        </section>       
+        <section id="contacto" class="fade-in-section">
+            <h2 class="contact-title" data-i18n="contact-title">CONTACTO</h2>
+            <div class="contact-div">
+                <div class="contact-div-info">
+                    <ul>
+                        <li><b data-i18n="mail-text">💻 Correo: </b><a href="mailto:cesarcaste2001@gmail.com" target="_blank">cesarcaste2001@gmail.com</a></li>
+                        <li><b data-i18n="phone-text">📞 Teléfono: </b>+34 717 14 26 23</li>
+                        <li><b data-i18n="location-text">📌 Ubicación: </b>Las Palmas de Gran Canaria</li>
+                    </ul>
+                    <p><b data-i18n="socials-text">📱 Mis redes:</b></p>
+                    <div class="socials-icons-contact-div"> 
+                        <a href="https://www.linkedin.com/in/césar-castellano-65665a2a8/" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/link.png" alt="Linkedin"></a>
+                        <a href="https://github.com/YoungMute" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/github.png" alt="GitHub"></a>
+                        <a href="https://youngmute.itch.io/" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/itchio.png" alt="itchio" class="itchio-icon2"></a>
+                    </div>
+                </div>
+                <div class="other-info">
+                    <h3 data-i18n="status-hiring"></h3>
+                    <ul>
+                        <li data-i18n="status-hours">Jornada completa / parcial</li>
+                        <li data-i18n="status-location">Remoto / Presencial (Las Palmas de Gran Canaria)</li>
+                        <li data-i18n="status-travel">Disponibilidad para desplazamientos puntuales</li>
+                    </ul>
+                    <div class="btn-contact-div">
+                        <a href="../files/CV-FullStack_Cesar.pdf" download="CV_FullStack_CesarCaste"><button class="btn-cv">CV - FullStack</button></a>
+                        <a href="../files/CV-FullStack_Cesar.pdf" download="CV_GameDev_CesarCaste"><button class="btn-cv">CV - GameDev</button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 César Castellano García | Las Palmas</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
