@@ -140,7 +140,7 @@
     border-radius: 0.5rem;
     cursor: pointer;
     transition: all var(--transition);
-    height: 32px;      /* Altura fija idéntica para ambos */
+    height: 36px;      /* Altura fija idéntica para ambos */
     box-sizing: border-box;
 }
 
@@ -204,7 +204,7 @@ h1 {
 }
 
 #theme-toggle {
-    width: 30%;
+    width: 50%;
     cursor: pointer;   /* Indica visualmente que es un elemento cliqueable */
     transition: transform 0.2s ease;
 }
@@ -415,8 +415,8 @@ nav {
 .switch {
   position: relative;
   display: inline-block;
-  width: 68px;
-  height: 37px;
+  width: 70px;
+  height: 37.4px;
 }
 
 /* Hide default HTML checkbox */
