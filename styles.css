@@ -1,0 +1,1228 @@
+/* ==========================================================================\
+   1. SISTEMA MULTI-PALETA DINÁMICO (Modos Claro y Oscuro Integrados)
+   ========================================================================== */
+
+/* --- PALETA 1: ORIGINAL (Tus colores actuales - Por Defecto) --- */
+:root, [data-palette="original"] {
+    --bg-color: #FDFBF7;
+    --text-color: #040403;
+    --accent-color: #9E4716;
+    --cv-hover-color: #7b3811;
+    --cv-active-color: #622d0e;
+    --about-me-boxShadown: rgba(0, 0, 0, 0.16);
+    --card-bg: linear-gradient(to bottom, #F4F1EA, #EBE7DC);
+    --card-text: #040403;
+    --card-personality-bg: #FFE1C4;
+    --card-personality-bg-hover: #FAD3B2;
+    --nav-bg: #EAA05E;
+    --border-color: rgba(43, 24, 16, 0.15);
+    --animation-job-color: #9E4716;
+    --transition: 0.2s ease;
+}
+[data-theme="dark"], [data-theme="dark"][data-palette="original"] {
+    --bg-color: #1A0D0A;
+    --text-color: #F5EFEB;
+    --accent-color: #E06A3B;
+    --cv-hover-color: #7e4524;
+    --cv-active-color: #64371c;
+    --about-me-boxShadown: rgba(255, 255, 255, 0.16);
+    --card-bg: #261612;
+    --card-text: #F5EFEB;
+    --card-personality-bg: #22120B;
+    --card-personality-bg-hover: #2E190F;
+    --nav-bg: #401F15;
+    --border-color: rgba(245, 239, 235, 0.15);
+    --animation-job-color: #E06A3B;
+}
+
+/* --- PALETA 2: CIBERESPACIO (Tech / Enfoque Programación) --- */
+[data-palette="cyber"] {
+    --bg-color: #F4F6F9;
+    --text-color: #0F172A;
+    --accent-color: #006ba0;
+    --cv-hover-color: #006395;
+    --cv-active-color: #004e76;
+    --card-bg: linear-gradient(to bottom, #FFFFFF, #E2E8F0);
+    --card-text: #0F172A;
+    --card-personality-bg: #E0F2FE;
+    --card-personality-bg-hover: #BAE6FD;
+    --nav-bg: #5eabea;
+    --border-color: rgba(15, 23, 42, 0.1);
+    --animation-job-color: #0284C7;
+}
+
+[data-theme="dark"][data-palette="cyber"] {
+    --bg-color: #0B0F19;
+    --text-color: #E2E8F0;
+    --accent-color: #38BDF8;
+    --cv-hover-color: #2b93c0;
+    --cv-active-color: #2683ab;
+    --card-bg: #1E293B;
+    --card-text: #E2E8F0;
+    --card-personality-bg: #0F172A;
+    --card-personality-bg-hover: #1E293B;
+    --nav-bg: #0F172A;
+    --border-color: rgba(226, 232, 240, 0.1);
+    --animation-job-color: #38BDF8;
+}
+
+/* --- PALETA 3: BOSQUE MÍSTICO (Premium / Tonos Menta) --- */
+[data-palette="forest"] {
+    --bg-color: #F4F7F5;
+    --text-color: #1A2E22;
+    --accent-color: #04742d;
+    --cv-hover-color: #126731;
+    --cv-active-color: #0d4b24;
+    --card-bg: linear-gradient(to bottom, #EAF0EC, #DCE5E0);
+    --card-text: #1A2E22;
+    --card-personality-bg: #DCFCE7;
+    --card-personality-bg-hover: #BBF7D0;
+    --nav-bg: #5eea9d;
+    --border-color: rgba(26, 46, 34, 0.1);
+    --animation-job-color: #15803D;
+}
+
+[data-theme="dark"][data-palette="forest"] {
+    --bg-color: #0A140F;
+    --text-color: #EDF5F1;
+    --accent-color: #22C55E;
+    --cv-hover-color: #1a9a49;
+    --cv-active-color: #147337;
+    --card-bg: #14241C;
+    --card-text: #EDF5F1;
+    --card-personality-bg: #0D1F16;
+    --card-personality-bg-hover: #163524;
+    --nav-bg: #0B1912;
+    --border-color: rgba(237, 245, 241, 0.1);
+    --animation-job-color: #22C55E;
+}
+
+/* --- PALETA 4: REAL (Azul Profundo y Oro) --- */
+[data-palette="royal"] {
+    --bg-color: #FAFAFA;
+    --text-color: #1E1B4B;
+    --accent-color: #a14601;
+    --cv-hover-color: #8f4309;
+    --cv-active-color: #6f3407;
+    --card-bg: linear-gradient(to bottom, #F5F3FF, #EDE9FE);
+    --card-text: #1E1B4B;
+    --card-personality-bg: #FEF3C7;
+    --card-personality-bg-hover: #FDE68A;
+    --nav-bg: #eac55e;
+    --border-color: rgba(30, 27, 75, 0.1);
+    --animation-job-color: #B45309;
+}
+
+[data-theme="dark"][data-palette="royal"] {
+    --bg-color: #0C0A21;
+    --text-color: #F3F4F6;
+    --accent-color: #F59E0B;
+    --cv-hover-color: #cb840a;
+    --cv-active-color: #996408;
+    --card-bg: #17153B;
+    --card-text: #F3F4F6;
+    --card-personality-bg: #2D2A54;
+    --card-personality-bg-hover: #3B3775;
+    --nav-bg: #0A081A;
+    --border-color: rgba(243, 244, 246, 0.1);
+    --animation-job-color: #F59E0B;
+}
+
+
+/* Estilo unificado y compacto para ambos selectores */
+.palette-select-btn {
+    background: transparent;
+    color: var(--text-color);
+    border: 1.5px solid var(--text-color);
+    padding: 0.3rem 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all var(--transition);
+    height: 32px;      /* Altura fija idéntica para ambos */
+    box-sizing: border-box;
+}
+
+.lang-select-btn{
+    font-size: 1.05rem;
+}
+
+/* Efecto hover limpio para ambos selectores */
+.lang-select-btn:hover,
+.palette-select-btn:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+
+/* ==========================================================================
+   2. Reset y Estilos Globales
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+/* ==========================================================================
+   3. Navegación Responsive
+   ========================================================================== */
+header {
+    position: sticky;
+    top: 0;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 5%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: background var(--transition);
+}
+
+/* Centralización del contenido */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Margen de seguridad en móviles para que el texto no pegue al borde */
+    width: 100%;
+}
+
+h1 {
+    font-size: 2.8rem;
+}
+
+#theme-toggle {
+    width: 30%;
+    cursor: pointer;   /* Indica visualmente que es un elemento cliqueable */
+    transition: transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.1); /* Sutil feedback visual al pasar el ratón */
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Espacio equilibrado entre los 3 elementos */
+    gap: 0.8rem;       
+    min-width: 260px;  /* Forzamos un ancho mínimo para que quepan holgadamente */
+}
+
+#lang-select {
+    width: auto;
+    height: 100%;
+    transform: scale(1.4);
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-left: 6%;
+}
+
+.main-intro {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}
+
+.intro-name-div, .intro-img-div {
+    padding: 0 3rem;
+    display: block;
+    width: 50%;
+}
+
+.socials-icons {
+    margin: 2rem 0;
+}
+
+.socials-icons img {
+    margin: 0 1.1rem;
+    width: 20%;
+    height: 20%;
+    object-fit: cover;
+    transition: all 0.2s ease-in-out, all 0.2s ease;
+}
+
+.socials-icons img:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease, all 0.2s ease-in-out;
+}
+
+.itchio-icon {
+    border-radius: 12px;
+}
+
+.itchio-icon2 {
+    border-radius: 7px;
+}
+
+.socials-icons a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.intro-name-div p {
+    margin-top: 1.6rem;
+    font-size: 1.6rem;
+}
+
+.img-intro {
+    width: 59%;
+    border-radius: 18px;
+    outline: 2px solid var(--accent-color);
+    transition: all 0.2s ease-in-out, all 0.2s ease;
+    opacity: 90%;
+}
+
+.img-intro:hover {
+    width: 60%;
+    opacity: 100%;
+    transition: all 0.2s ease, all 0.2s ease-in-out;
+}
+
+.text-intro {
+    font-size: 1.5rem;
+    text-align: justify;
+}
+
+.about-me-intro {
+    font-size: 1.5rem;
+    text-align: justify;
+}
+
+.border-bottom {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.description-intro {
+    margin: 6rem auto auto auto;
+    width: 100%;
+}
+
+.description-intro h2 {
+    margin: 4px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+h2 {
+    margin: 0 4px 4px 4px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.block {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.block h3 {
+    margin-top: 3%;
+    font-size: 1.7rem;
+}
+
+.progress-bar {
+    height: 4px;
+    background: var(--accent-color);
+    width: 0%;
+}
+
+/* Barra de Progreso */
+.progress-container {
+    position: fixed;
+    top: 0;
+    z-index: 2000;
+    width: 100%;
+    height: 4px;
+    background: rgb(0, 0, 0);
+}
+
+.logo {
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+    align-items: center;
+}
+
+.logo p {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.logo-bar{
+    width: 20%;
+    margin-right: 8%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 3.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;      /* ¡CLAVE! Quitamos la línea estática de image_daafb9.png */
+    color: var(--text-color);   /* Sigue el color del texto del modo activo */
+    position: relative;         /* Necesario para posicionar la línea animada */
+    display: inline-block;
+    padding: 5px 0;             /* Espaciado opcional para que respire el texto */
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* Configuración de la línea invisible al inicio (Izquierda a Derecha) */
+    background-image: linear-gradient(var(--accent-color), var(--accent-color));
+    background-position: 0% 100%;       
+    background-repeat: no-repeat;
+    background-size: 0% 2px; /* Empieza con tamaño 0 */            
+    transition: color 0.3s ease-in-out, background-size 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nav-links a:hover {
+    color: var(--accent-color); /* Cambia suavemente al color destacado del tema */
+    background-size: 100% 2px;   /* La línea se expande al 100% de ancho */
+}
+
+/* Toggle de W3School */
+.nav-toggle{
+    margin-left: 3%;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 68px;
+  height: 37px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-color);
+  border: 2px solid var(--text-color);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 3.5px;
+  background-color: var(--text-color);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--bg-color);
+  border: 2px solid var(--text-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #000000;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(29px);
+  -ms-transform: translateX(29px);
+  transform: translateX(29px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   4. Layout de Secciones
+   ========================================================================== */
+section {
+    padding: 60px 0; /* Espaciado uniforme y controlado entre secciones */
+    width: 100%;
+}
+
+/* --- ANIMACIONES DE APARICIÓN (SCROLL) --- */
+
+/* Estado inicial: oculto y desplazado 30px hacia abajo */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform; /* Optimiza el rendimiento del renderizado */
+}
+
+/* Estado activo: visible y en su posición original */
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Respetar las preferencias del usuario si tiene las animaciones desactivadas en su sistema */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in-section {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* Hero section más compacta */
+.hero {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.about-me-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.text-me-div {
+    margin: 2% 6% 0% 1%;
+    width: 70%;
+}
+
+.one-personality {
+    width: 100%;
+    height: 90%;
+}
+
+.personality-div {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    margin: 1% 1% 0% 1%;
+    padding: 1% 1%;
+    width: 100%;
+    background-color: var(--card-personality-bg);
+    border: 2px solid var(--accent-color);
+    border-radius: 18px;
+    transition: all 0.5s ease-in-out, all 0.5s ease;
+    color: var(--text-color);
+}
+
+.personality-div:hover {
+    background-color: var(--card-personality-bg-hover);
+    transition: all 0.5s ease, all 0.5s ease-in-out;
+}
+
+.personality-div-2 hr {
+    background-color: black;
+}
+
+.personality-div-2 {
+    border-bottom: 2px solid var(--accent-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    height: 36%;
+}
+
+.personality-div-2 p, .personality-div-2 span{
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.personality-div-2 li {
+    list-style-type: none;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.cv-links-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Contenedor principal del cuadro */
+.personality-card {
+    background-color: var(--card-bg); /* Se adapta a tu modo claro/oscuro */
+    border-radius: 16px;
+    padding: 2.5rem;
+    /* max-width: 1200px; */
+    width: 50%;
+    margin: 2rem auto;
+    box-shadow: 0 4px 20px var(--about-me-boxShadown);
+    transition: background-color var(--transition);
+}
+
+/* Creación de la rejilla de 2 columnas */
+.personality-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem; /* Espaciado entre bloques */
+}
+
+/* Cada bloque individual (Edad, Ubicación, etc.) */
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2); /* Línea divisoria sutil */
+}
+
+/* Estilo para los títulos (Edad, Ubicación...) */
+.info-label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color); /* Color destacado */
+    letter-spacing: 0.5px;
+}
+
+/* Estilo para los datos de contenido */
+.info-value {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* Bloque de botones inferior */
+.cv-actions {
+    display: flex;
+    justify-content: space-around;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+/* Estilización limpia de los botones de CV */
+.btn-cv {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform var(--transition), filter var(--transition);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-cv:hover {
+    background: var(--cv-hover-color);
+    transition: all 0.2s ease, all 0.2s ease-in-out;
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.btn-cv:active {
+    background: var(--cv-active-color);
+}
+
+/* Maximizar espacio en Proyectos */
+.projects-grid {
+    display: flex;
+    justify-content: space-around;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1rem; 
+}
+
+.project-card {
+    min-width: 31%;
+    background: var(--card-bg);
+    color: var(--card-text); /* Adopción dinámica de color de texto */
+    padding: 1.5rem;
+    margin: 8px;
+    border-radius: 12px;
+    border: 2px solid #98989874;
+    transition: all 0.2s ease-in-out, all 0.2s ease, background var(--transition), color var(--transition);
+}
+
+.project-card:hover {
+    border: 2px solid var(--accent-color);
+    transition: all 0.2s ease, all 0.2s ease-in-out;
+}
+
+.intro-proyect-text a {
+    position: relative;         
+    text-decoration: none;
+    color: var(--card-text); /* Sigue el texto de la tarjeta de forma dinámica */
+    font-weight: bold;
+    display: inline-block; 
+    
+    /* Usamos var(--accent-color) para que cambie de color automáticamente en modo oscuro */
+    background-image: linear-gradient(var(--accent-color), var(--accent-color));
+    background-position: 0% 100%;       
+    background-repeat: no-repeat;
+    background-size: 0% 2px;             
+    transition: color 0.3s ease-in-out, background-size 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.intro-proyect-text a:hover {
+    color: var(--accent-color); /* Cambia al color de acento del tema activo */
+    background-size: 100% 2px;           
+}
+
+.intro-proyect-text {
+    margin-bottom: 1.5rem;
+    width: 100%;                  
+    word-wrap: break-word;        
+    word-break: break-word;       
+    white-space: normal;          
+    margin-bottom: 10px;          
+}
+
+.proyect-text {
+    margin-bottom: 1.5rem;
+}
+
+/* --- Control del texto extra (Manteniendo tu animación) --- */
+.proyect-text-extra {
+    display: none;                
+    opacity: 0;
+    filter: blur(5px);
+    word-break: break-word;       
+    white-space: normal;
+    transition: opacity 0.4s ease-out, filter 0.4s ease-out;
+}
+
+/* Estado Expandido */
+.proyect-text-extra.expanded {
+    display: inline;              
+    opacity: 1;
+    filter: blur(0);
+}
+
+/* --- Los Puntos Suspensivos --- */
+.dots {
+    display: inline;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.dots.hidden {
+    opacity: 0;
+    font-size: 0; 
+    letter-spacing: -1px;
+}
+
+/* --- Tu Botón "Leer más..." --- */
+.read-more-btnDiv {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.btn-read-more {
+    position: relative;
+    text-decoration: none;
+    border-bottom: none;
+    background: none;
+    border: none;
+    color: var(--card-text); /* Se adapta de forma fluida a la tarjeta */
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 0;
+    font-size: 1.06rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.btn-read-more::after {
+    content: '';
+    position: absolute;
+    bottom: 0;                  
+    left: 0;                    
+    width: 0;                   
+    height: 2px;                
+    background-color: var(--accent-color);  
+    transition: width 0.2s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.btn-read-more:hover {
+    color: var(--accent-color);
+}
+
+.btn-read-more:hover::after {
+    width: 100%;                
+}
+
+.center-button {
+    text-align: center;
+    font-size: 1.2rem;
+    transition: all 0.2s ease-in-out, all 0.2s ease;
+}
+
+.center-button:hover {
+    transition: all 0.2s ease, all 0.2s ease-in-out;
+    transform: scale(1.1);
+}
+
+.project-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+/* Estilo para los bloques de CV para que ocupen mejor el ancho */
+.cv-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.skills-block ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 2px 2px;
+}
+
+.skills-block li {
+    background: var(--accent-color);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.skills-block h4 {
+    font-size: 1.2rem;
+}
+
+/* Corrección para el enlace Drille Studio en Trayectoria */
+.experience-div h4 a.extra-link {
+    position: relative;
+    text-decoration: none;
+    color: inherit; /* Hereda el color del h4 automáticamente */
+    font-weight: bold;
+    display: inline-block;
+    
+    /* Configuración de la línea animada */
+    background-image: linear-gradient(var(--accent-color), var(--accent-color));
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: color 0.3s ease-in-out, background-size 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.experience-div h4 a.extra-link:hover {
+    color: var(--accent-color);
+    background-size: 100% 2px;
+}
+
+/* ==========================================================================
+   5. Formulario de Contacto
+   ========================================================================== */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    gap: 1rem;
+}
+
+input, textarea {
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+.btn {
+    margin-top: 30px;
+    padding: 1rem 2rem;
+    background: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: fit-content;
+    transition: all 0.2s ease-in-out, all 0.2s ease;
+}
+
+.btn:hover {
+    background: var(--cv-hover-color);
+}
+
+.btn:active {
+    background: var(--cv-active-color);
+}
+
+/* Educación/Formación/Estudios */
+.educ {
+    margin: 8px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.educ-1, .educ-2 {
+    margin: 8px 0;
+    width: 40%;
+}
+
+.education-institution {
+    font-size: 1.20rem;
+    text-align: left;
+}
+
+.education-name {
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+.education-date {
+    font-size: 1.1rem;
+    text-align: justify;
+    font-style: italic;
+}
+
+.education-name, .education-date {
+    color: var(--card-text); /* Modificado para garantizar contraste en ambos temas */
+}
+
+/* Habilidades y Experiencia */
+.experience-block h3 {
+    color: #ff7878;
+    font-size: 1.3rem;
+    margin: 0 4px;
+}
+
+.skills-icons-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.skills-icon {
+    width: 14%;
+    margin: 4% 4%;
+}
+
+.block-skill {
+    background: var(--card-bg);
+    color: var(--card-text);
+    transition: all 0.2s ease-in-out, all 0.2s ease, background var(--transition);
+    transform: scale(1);
+    padding: 20px 16px 10px 18px;
+    margin: 22px 4px 10px 8px;
+    border-radius: 20px;
+}
+
+.block-skill:hover {
+    outline: 2px solid var(--accent-color);
+    transition: all 0.2s ease, all 0.2s ease-in-out;
+    transform: scale(1.01);
+}
+
+.block-skill p{
+    margin-left: 3%;
+}
+
+.skills-title {
+    font-size: 1.45rem;
+}
+
+#skills-list li {
+    font-size: 1.18rem;
+    margin: 1% 1%;
+}
+
+.experience-div {
+    transition: all 0.2s ease-in-out, all 0.2s ease, background var(--transition);
+    transform: scale(1);
+    border-radius: 20px;
+    margin: 22px 4px 10px 8px;
+    padding: 20px 12px 16px 20px;
+    background: var(--card-bg);
+    color: var(--card-text);
+}
+
+.experience-div:hover {
+    outline: 2px solid var(--accent-color);
+    transition: all 0.2s ease, all 0.2s ease-in-out;
+    transform: scale(1.01);
+}
+
+.experience-div h4{
+    margin: 0 3% 0 3%;
+}
+
+.experience-date {
+    font-style: italic;
+    margin-left: 3%;
+}
+
+.experiencie-list li, .training-list li {
+    list-style-type: none;
+    background: none;
+    font-size: 1.05rem;
+    color: inherit; /* Hereda de forma segura el var(--card-text) */
+    margin: 0 0 0 0;
+}
+
+.experiencie-list li::before, .training-list li::before {
+    content: "• ";
+}
+
+.exp-description {
+    font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   6. Contacto
+   ========================================================================== */
+.contact-div {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#contacto h2 {
+    margin-bottom: 2.5%;
+}
+
+.contact-div-info {
+    width: 48%;
+    padding: 0 2rem;
+    border-radius: 1.5rem;
+}
+
+.contact-div-info ul {
+     list-style-type: none;
+     margin-top: 1.2rem;
+}
+
+.contact-div-info li {
+     list-style-type: none;
+     margin-top: 1.2rem;
+     font-size: 1.3rem;
+}
+
+/* Limitamos la animación SOLO a los enlaces de texto (correo, etc) */
+.contact-div-info a:not(:has(img)) {
+    list-style-type: none;
+    color: var(--text-color);
+    text-decoration: none;
+    display: inline-block; 
+    background-image: linear-gradient(var(--accent-color), var(--accent-color)); 
+    background-position: 0% 100%;       
+    background-repeat: no-repeat;
+    background-size: 0% 2px;             
+    transition: color 0.3s ease-in-out, background-size 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.contact-div-info a:not(:has(img)):hover {
+    color: var(--accent-color);             
+    background-size: 100% 2px;           
+}
+
+.contact-div-info p {
+    font-size: 1.3rem;
+    margin-top: 1.2rem;
+}
+
+.btn-contact-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 30%;
+}
+
+/* --- Limpieza y comportamiento original para los iconos de redes sociales --- */
+.socials-icons-contact-div {
+    display: flex;                  /* Mantiene los iconos en línea horizontal */
+    justify-content: flex-start;    /* Alineados a la izquierda */
+    align-items: center;
+    gap: 14px;                      /* ¡CLAVE! Controla la separación exacta entre iconos */
+    margin-top: 15px;               /* Un pequeño margen superior respecto al texto */
+    width: 100%;
+}
+
+.socials-icons-contact-div a {
+    background-image: none !important; /* Elimina cualquier intento de línea animada de texto */
+    display: inline-block;
+    width: auto;                    /* Quitamos el porcentaje para que no se separen por la pantalla */
+}
+
+.socials-icons-contact-div img {
+    width: 60px;                    /* Conserva el tamaño perfecto que conseguiste al 50% */
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.2s ease-in-out;
+}
+
+.socials-icons-contact-div img:hover {
+    transform: scale(1.05);         /* Efecto de agrandado limpio */
+}
+
+.other-info {
+    outline: 2px solid #98989874;
+    width: 48%;
+    padding: 0 2rem;
+    background: var(--card-bg);
+    color: var(--card-text);
+    border-radius: 1.5rem;
+    transition: all 0.2s ease-in-out, all 0.2s ease;
+}
+
+.other-info:hover{
+    outline: 2px solid var(--accent-color);
+    transition: all 0.2s ease, all 0.2s ease-in-out;
+    transform: scale(1.01);
+}
+
+/* 1. Preparamos el contenedor del título dejando espacio a la izquierda */
+.other-info h3 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 8%; /* Hueco fijo para que la luz no pise el texto */
+    margin-top: 2%;
+    font-size: 1.8rem;
+}
+
+/* 2. El punto estático (Centro absoluto) */
+.other-info h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%); /* Centrado vertical perfecto */
+    /* Tamaño del círculo */
+    width: 18px;
+    height: 18px;
+    /* -------- */
+    background-color: var(--animation-job-color);
+    border-radius: 50%;
+    z-index: 2; /* Nos aseguramos de que esté por encima de la onda */
+}
+
+/* 3. La onda expansiva por detrás (Comparte el mismo centro exacto) */
+.other-info h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    /* Compartimos el mismo origen y tamaño inicial que el punto base */
+    transform: translateY(-50%) scale(1);
+    /* Tamaño del círculo */
+    width: 18px;
+    height: 18px;
+    /* -------- */
+    background-color: var(--animation-job-color);
+    border-radius: 50%;
+    /* Ejecuta la animación concéntrica */
+    animation: pulse-concentric 1.5s ease-out infinite;
+    z-index: 1;
+}
+
+/* 4. Nueva animación concéntrica matemática */
+@keyframes pulse-concentric {
+    0% {
+        /* Mantiene el eje vertical y empieza con tamaño normal */
+        transform: translateY(-50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        /* Se expande de manera uniforme desde el centro sin desplazarse hacia los lados */
+        transform: translateY(-50%) scale(2);
+        opacity: 0; /* Desaparición fluida */
+    }
+}
+
+.other-info h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem; /* Espacio entre el punto verde y el texto */
+    margin-top: 2%;
+    font-size: 1.8rem;
+}
+
+.other-info li {
+    font-size: 1.2rem;
+    margin: 2.5%;
+}
+
+.logo-form {
+    width: 40%;
+    display: flex;
+    margin: auto;
+}
+
+/* ==========================================================================
+   7. Footer
+   ========================================================================== */
+footer {
+    background-color: var(--nav-bg); /* Sincronizado dinámicamente con el header */
+    padding: 1.5rem 0;
+    transition: background-color var(--transition);
+}
+
+footer p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+/* ==========================================================================
+   8. Media Queries para móviles
+   ========================================================================== */
+@media (max-width: 600px) {
+    .personality-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .cv-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .btn-cv {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .personality-card {
+        padding: 1.5rem;
+    }
+}

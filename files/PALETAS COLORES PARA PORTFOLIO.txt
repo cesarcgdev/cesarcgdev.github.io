@@ -1,0 +1,135 @@
+0. Antigua paleta de colores
+/* :root {
+    --bg-color: #FFF8DC;
+    --text-color: #5e0000;
+    --accent-color: #8B4513;
+    --card-bg: linear-gradient(to bottom, #c2bda6, #989485);
+    --card-text: #2d0000;     
+    --nav-bg: #F4A460;
+    --border-color: rgba(128, 128, 128, 0.4);
+    --transition: 0.3s ease;
+}
+
+[data-theme="dark"] {
+    --bg-color: #5e0000
+    --text-color: #FFF8DC
+    --accent-color: #F4A460
+    --card-bg: #452413
+    --card-text: #FFF8DC
+    --nav-bg: #140000; 
+    --border-color: rgba(255, 248, 220, 0.2);
+} */
+
+
+
+1. El estándar de la industria: "Cyber-Tech" (Gris Espacial + Cian)
+Es la paleta por excelencia de plataformas como Epic Games, Steam o portfolios de ingenieros de software de alto nivel. Transmite tecnología, precisión y minimalismo.
+
+Modo Claro: Fondo #F8FAFC (Gris nube), Texto #0F172A (Azabache), Acento #0EA5E9 (Azul cian eléctrico).
+
+Modo Oscuro: Fondo #0B0F19 (Negro espacio profundo), Tarjetas #1E293B (Gris pizarra), Acento #38BDF8 (Cian brillante).
+
+
+:root {
+    /* Modo Claro */
+    --bg-color: #F8FAFC;         /* Gris nube muy limpio */
+    --text-color: #0F172A;       /* Azul azabache oscuro */
+    --accent-color: #0EA5E9;     /* Azul cian eléctrico */
+    --card-bg: linear-gradient(to bottom, #EDF2F7, #E2E8F0); /* Gris suave */
+    --card-text: #0F172A;        
+    
+    /* 🧱 Header y Footer Sólidos */
+    --nav-bg: #1E293B;           /* Azul pizarra oscuro (los textos aquí irán en claro de forma automática si fuerzas el contraste en los enlaces) */
+    
+    --border-color: rgba(15, 23, 42, 0.15);
+    --transition: 0.3s ease;
+}
+
+[data-theme="dark"] {
+    /* Modo Oscuro */
+    --bg-color: #0B0F19;         /* Negro espacio profundo */
+    --text-color: #F8FAFC;       /* Gris nube claro */
+    --accent-color: #38BDF8;     /* Cian brillante */
+    --card-bg: #1E293B;          /* Gris pizarra */
+    --card-text: #F8FAFC;        
+    
+    /* 🧱 Header y Footer Sólidos */
+    --nav-bg: #030712;           /* Negro absoluto para enmarcar la web */
+    
+    --border-color: rgba(248, 250, 252, 0.1);
+}
+
+
+2. El híbrido creativo: "Midnight Emerald" (Verde Esmeralda + Oro)
+Ideal para perfiles híbridos que hacen desarrollo y diseño de videojuegos. El verde oscuro evoca código de consola, pero combinado con tonos crema y oro se vuelve increíblemente premium y sofisticado.
+
+Modo Claro: Fondo #FAF9F6 (Blanco marfil), Texto #091E16 (Verde pino ultra oscuro), Acento #D4AF37 (Oro viejo / Mostaza sutil).
+
+Modo Oscuro: Fondo #050E0B (Negro esmeralda), Tarjetas #0F2920 (Verde bosque oscuro), Acento #4ADE80 (Verde neón para código/acentos).
+
+
+:root {
+    /* Modo Claro */
+    --bg-color: #FAF9F6;         /* Blanco marfil suave */
+    --text-color: #091E16;       /* Verde pino ultra oscuro */
+    --accent-color: #C59B27;     /* Oro viejo / Mostaza corporativo con contraste */
+    --card-bg: linear-gradient(to bottom, #EFF2F0, #E1E7E4); /* Tarjetas salvia */
+    --card-text: #091E16;        
+    
+    /* 🧱 Header y Footer Sólidos */
+    --nav-bg: #133A2B;           /* Verde bosque profundo y elegante */
+    
+    --border-color: rgba(9, 30, 22, 0.15);
+    --transition: 0.3s ease;
+}
+
+[data-theme="dark"] {
+    /* Modo Oscuro */
+    --bg-color: #050E0B;         /* Negro esmeralda */
+    --text-color: #FAF9F6;       /* Blanco marfil */
+    --accent-color: #4ADE80;     /* Verde neón/matriz interactivo */
+    --card-bg: #0F2920;          /* Verde bosque oscuro */
+    --card-text: #FAF9F6;        
+    
+    /* 🧱 Header y Footer Sólidos */
+    --nav-bg: #010403;           /* Negro abisal con matiz verde mínimo */
+    
+    --border-color: rgba(250, 249, 246, 0.1);
+}
+
+
+3. La paleta de Autor: "Vaporwave Industrial" (Antracita + Violeta)
+Una de las paletas más populares en portfolios modernos de diseño interactivo 3D. El morado/violeta genera un contraste eléctrico brutal que llama la atención de cualquier reclutador de inmediato.
+
+Modo Claro: Fondo #FDFEFF (Blanco puro), Texto #1E1B4B (Azul medianoche), Acento #7C3AED (Violeta vibrante).
+
+Modo Oscuro: Fondo #0F0A1C (Obsidiana morada), Tarjetas #1D1630 (Mina de carbón con matiz violeta), Acento #A78BFA (Lavanda eléctrico).
+
+:root {
+    /* Modo Claro */
+    --bg-color: #0F0A1C;         /* Obsidiana morada */
+    --text-color: #FDFEFF;       /* Blanco puro */
+    --accent-color: #A78BFA;     /* Lavanda brillante */
+    --card-bg: #1D1630;          /* Carbón con matiz violeta */
+    --card-text: #FDFEFF;        
+    
+    /* 🧱 Header y Footer Sólidos */
+    --nav-bg: #05030A;           /* Negro noche cerrado */
+    
+    --border-color: rgba(253, 254, 255, 0.1);
+}
+
+[data-theme="dark"] {
+    /* Modo Oscuro */
+    --bg-color: #FDFEFF;         /* Blanco puro brillante */
+    --text-color: #1E1B4B;       /* Azul medianoche profundo */
+    --accent-color: #7C3AED;     /* Violeta eléctrico */
+    --card-bg: linear-gradient(to bottom, #F3F1FA, #E9E5F6); /* Lavanda pastel suave */
+    --card-text: #1E1B4B;        
+    
+    /* 🧱 Header y Footer Sólidos */
+    --nav-bg: #2E2A75;           /* Índigo regio de alto impacto visual */
+    
+    --border-color: rgba(30, 27, 75, 0.15);
+    --transition: 0.3s ease;
+}
