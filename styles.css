@@ -128,6 +128,13 @@
     --animation-job-color: #F59E0B;
 }
 
+/* Ajuste para que la cabecera fija no tape el inicio de las secciones */
+#inicio,
+#cv,
+#proyectos,
+#contacto {
+    scroll-margin-top: 80px; /* Ajusta este valor (en px) según el alto exacto de tu menú de navegación */
+}
 
 /* Estilo unificado y compacto para ambos selectores */
 .palette-select-btn {
@@ -167,6 +174,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 1%; /* Aplica el margen de desplazamiento a toda la ventana */
 }
 
 body {
