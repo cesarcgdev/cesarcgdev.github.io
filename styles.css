@@ -1,8 +1,4 @@
-/* ==========================================================================\
-   1. SISTEMA MULTI-PALETA DINÁMICO (Modos Claro y Oscuro Integrados)
-   ========================================================================== */
-
-/* --- PALETA 1: ORIGINAL (Tus colores actuales - Por Defecto) --- */
+/* --- PALETA 1: ORIGINAL (Defecto) --- */
 :root, [data-palette="original"] {
     --bg-color: #FDFBF7;
     --text-color: #040403;
@@ -35,7 +31,7 @@
     --animation-job-color: #E06A3B;
 }
 
-/* --- PALETA 2: CIBERESPACIO (Tech / Enfoque Programación) --- */
+/* --- PALETA 2: CYBER --- */
 [data-palette="cyber"] {
     --bg-color: #F4F6F9;
     --text-color: #0F172A;
@@ -66,7 +62,7 @@
     --animation-job-color: #38BDF8;
 }
 
-/* --- PALETA 3: BOSQUE MÍSTICO (Premium / Tonos Menta) --- */
+/* --- PALETA 3: BOSQUE --- */
 [data-palette="forest"] {
     --bg-color: #F4F7F5;
     --text-color: #1A2E22;
@@ -97,7 +93,7 @@
     --animation-job-color: #22C55E;
 }
 
-/* --- PALETA 4: REAL (Azul Profundo y Oro) --- */
+/* --- PALETA 4: REAL --- */
 [data-palette="royal"] {
     --bg-color: #FAFAFA;
     --text-color: #1E1B4B;
@@ -133,10 +129,10 @@
 #cv,
 #proyectos,
 #contacto {
-    scroll-margin-top: 80px; /* Ajusta este valor (en px) según el alto exacto de tu menú de navegación */
+    scroll-margin-top: 80px;
 }
 
-/* Estilo unificado y compacto para ambos selectores */
+/* Estilo unificado y compacto */
 .palette-select-btn {
     background: transparent;
     color: var(--text-color);
@@ -147,7 +143,7 @@
     border-radius: 0.5rem;
     cursor: pointer;
     transition: all var(--transition);
-    height: 36px;      /* Altura fija idéntica para ambos */
+    height: 36px;
     box-sizing: border-box;
 }
 
@@ -163,9 +159,7 @@
 }
 
 
-/* ==========================================================================
-   2. Reset y Estilos Globales
-   ========================================================================== */
+/* --- 2. Reset y Estilos Globales --- */
 * {
     margin: 0;
     padding: 0;
@@ -174,7 +168,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 1%; /* Aplica el margen de desplazamiento a toda la ventana */
+    scroll-padding-top: 1%;
 }
 
 body {
@@ -185,9 +179,7 @@ body {
     transition: background-color var(--transition), color var(--transition);
 }
 
-/* ==========================================================================
-   3. Navegación Responsive
-   ========================================================================== */
+/* --- 3. Navegación Responsive --- */
 header {
     position: sticky;
     top: 0;
@@ -203,7 +195,8 @@ header {
 main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px; /* Margen de seguridad en móviles para que el texto no pegue al borde */
+    /* Margen de seguridad en móviles para que el texto no se pegue al borde */
+    padding: 0 20px; 
     width: 100%;
 }
 
@@ -213,12 +206,13 @@ h1 {
 
 #theme-toggle {
     width: 50%;
-    cursor: pointer;   /* Indica visualmente que es un elemento cliqueable */
+    /* Indica visualmente que es un elemento interactuable */
+    cursor: pointer;   
     transition: transform 0.2s ease;
 }
 
 #theme-toggle:hover {
-    transform: scale(1.1); /* Sutil feedback visual al pasar el ratón */
+    transform: scale(1.1);
 }
 
 .controls {
@@ -227,7 +221,7 @@ h1 {
     justify-content: flex-end;
     /* Espacio equilibrado entre los 3 elementos */
     gap: 0.8rem;       
-    min-width: 260px;  /* Forzamos un ancho mínimo para que quepan holgadamente */
+    min-width: 260px; 
 }
 
 #lang-select {
@@ -343,8 +337,6 @@ h2 {
 .block h3 {
     text-align: center;
     font-size: 1.6rem;
-    /* margin-bottom: 0.3rem;
-    margin-top: 3%; */
     margin: 3% 0 0.3rem 0;
 }
 
@@ -352,16 +344,6 @@ h2 {
     height: 4px;
     background: var(--accent-color);
     width: 0%;
-}
-
-/* Barra de Progreso */
-.progress-container {
-    position: fixed;
-    top: 0;
-    z-index: 2000;
-    width: 100%;
-    height: 4px;
-    background: rgb(0, 0, 0);
 }
 
 .logo {
@@ -394,24 +376,25 @@ nav {
 }
 
 .nav-links a {
-    text-decoration: none;      /* ¡CLAVE! Quitamos la línea estática de image_daafb9.png */
-    color: var(--text-color);   /* Sigue el color del texto del modo activo */
-    position: relative;         /* Necesario para posicionar la línea animada */
+    text-decoration: none;
+    color: var(--text-color);
+    position: relative;
     display: inline-block;
-    padding: 5px 0;             /* Espaciado opcional para que respire el texto */
+    padding: 5px 0;
     font-size: 1.5rem;
     font-weight: bold;
-    /* Configuración de la línea invisible al inicio (Izquierda a Derecha) */
+    /* Configuración de la línea invisible al inicio (izq a drcha) */
     background-image: linear-gradient(var(--accent-color), var(--accent-color));
     background-position: 0% 100%;       
     background-repeat: no-repeat;
-    background-size: 0% 2px; /* Empieza con tamaño 0 */            
+    background-size: 0% 2px;            
     transition: color 0.3s ease-in-out, background-size 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+/* Cambia suavemente al color destacado del tema y expandiendo la línea con su 100% de ancho*/
 .nav-links a:hover {
-    color: var(--accent-color); /* Cambia suavemente al color destacado del tema */
-    background-size: 100% 2px;   /* La línea se expande al 100% de ancho */
+    color: var(--accent-color); 
+    background-size: 100% 2px;
 }
 
 /* Toggle de W3School */
@@ -421,86 +404,86 @@ nav {
 
 /* The switch - the box around the slider */
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 70px;
-  height: 37.4px;
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 37.4px;
 }
 
 /* Hide default HTML checkbox */
 .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 /* The slider */
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--bg-color);
-  border: 2px solid var(--text-color);
-  -webkit-transition: .4s;
-  transition: .4s;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-color);
+    border: 2px solid var(--text-color);
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 3.5px;
-  background-color: var(--text-color);
-  -webkit-transition: .4s;
-  transition: .4s;
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 3.5px;
+    background-color: var(--text-color);
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: var(--bg-color);
-  border: 2px solid var(--text-color);
+    background-color: var(--bg-color);
+    border: 2px solid var(--text-color);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #000000;
+    box-shadow: 0 0 1px #000000;
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(29px);
-  -ms-transform: translateX(29px);
-  transform: translateX(29px);
+    -webkit-transform: translateX(29px);
+    -ms-transform: translateX(29px);
+    transform: translateX(29px);
 }
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: 34px;
+    border-radius: 34px;
 }
 
 .slider.round:before {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
-/* ==========================================================================
-   4. Layout de Secciones
-   ========================================================================== */
+/* --- 4. Layout de Secciones -- */
 section {
-    padding: 60px 0; /* Espaciado uniforme y controlado entre secciones */
+    /* Espaciado uniforme y controlado entre secciones */
+    padding: 60px 0; 
     width: 100%;
 }
 
-/* --- ANIMACIONES DE APARICIÓN (SCROLL) --- */
+/*  ANIMACIONES DE APARICIÓN (SCROLL)  */
 
-/* Estado inicial: oculto y desplazado 30px hacia abajo */
+/* Estado inicial: oculto y desplazado hacia abajo */
 .fade-in-section {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: opacity, transform; /* Optimiza el rendimiento del renderizado */
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Optimiza el rendimiento del renderizado */
+    will-change: opacity, transform; 
 }
 
 /* Estado activo: visible y en su posición original */
@@ -518,7 +501,6 @@ section {
     }
 }
 
-/* Hero section más compacta */
 .hero {
     padding: 100px 20px;
     text-align: center;
@@ -591,10 +573,9 @@ section {
 
 /* Contenedor principal del cuadro */
 .personality-card {
-    background-color: var(--card-bg); /* Se adapta a tu modo claro/oscuro */
+    background-color: var(--card-bg);
     border-radius: 16px;
     padding: 2.5rem;
-    /* max-width: 1200px; */
     width: 50%;
     margin: 2rem auto;
     box-shadow: 0 4px 20px var(--about-me-boxShadown);
@@ -605,23 +586,24 @@ section {
 .personality-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem; /* Espaciado entre bloques */
+    /* Espaciado entre bloques */
+    gap: 2rem; 
 }
 
-/* Cada bloque individual (Edad, Ubicación, etc.) */
+/* Cada bloque individual (Edad, Ubicación, etc) */
 .info-item {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.2); /* Línea divisoria sutil */
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
 }
 
-/* Estilo para los títulos (Edad, Ubicación...) */
+/* Estilo para los títulos (Edad, Ubicación, etc) */
 .info-label {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--accent-color); /* Color destacado */
+    color: var(--accent-color);
     letter-spacing: 0.5px;
 }
 
@@ -640,7 +622,6 @@ section {
     margin-top: 2.5rem;
 }
 
-/* Estilización limpia de los botones de CV */
 .btn-cv {
     display: inline-block;
     background-color: var(--accent-color);
@@ -666,7 +647,6 @@ section {
     background: var(--cv-active-color);
 }
 
-/* Maximizar espacio en Proyectos */
 .projects-grid {
     display: flex;
     justify-content: space-around;
@@ -677,7 +657,7 @@ section {
 .project-card {
     min-width: 31%;
     background: var(--card-bg);
-    color: var(--card-text); /* Adopción dinámica de color de texto */
+    color: var(--card-text);
     padding: 1.5rem;
     margin: 8px;
     border-radius: 12px;
@@ -693,11 +673,9 @@ section {
 .intro-proyect-text a {
     position: relative;         
     text-decoration: none;
-    color: var(--card-text); /* Sigue el texto de la tarjeta de forma dinámica */
+    color: var(--card-text);
     font-weight: bold;
     display: inline-block; 
-    
-    /* Usamos var(--accent-color) para que cambie de color automáticamente en modo oscuro */
     background-image: linear-gradient(var(--accent-color), var(--accent-color));
     background-position: 0% 100%;       
     background-repeat: no-repeat;
@@ -706,7 +684,7 @@ section {
 }
 
 .intro-proyect-text a:hover {
-    color: var(--accent-color); /* Cambia al color de acento del tema activo */
+    color: var(--accent-color);
     background-size: 100% 2px;           
 }
 
@@ -723,7 +701,6 @@ section {
     margin-bottom: 1.5rem;
 }
 
-/* --- Control del texto extra (Manteniendo tu animación) --- */
 .proyect-text-extra {
     display: none;                
     opacity: 0;
@@ -733,14 +710,13 @@ section {
     transition: opacity 0.4s ease-out, filter 0.4s ease-out;
 }
 
-/* Estado Expandido */
 .proyect-text-extra.expanded {
     display: inline;              
     opacity: 1;
     filter: blur(0);
 }
 
-/* --- Los Puntos Suspensivos --- */
+/*  Los Puntos Suspensivos de 'Leer más'  */
 .dots {
     display: inline;
     opacity: 1;
@@ -753,7 +729,7 @@ section {
     letter-spacing: -1px;
 }
 
-/* --- Tu Botón "Leer más..." --- */
+/*  Botón 'Leer más...'  */
 .read-more-btnDiv {
     margin-top: 0px;
     margin-bottom: 20px;
@@ -766,7 +742,7 @@ section {
     border-bottom: none;
     background: none;
     border: none;
-    color: var(--card-text); /* Se adapta de forma fluida a la tarjeta */
+    color: var(--card-text);
     cursor: pointer;
     font-weight: bold;
     padding: 5px 0;
@@ -810,7 +786,7 @@ section {
     margin-bottom: 1rem;
 }
 
-/* Estilo para los bloques de CV para que ocupen mejor el ancho */
+/* Estilo de los bloques CV para que ocupen mejor el ancho */
 .cv-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -833,18 +809,24 @@ section {
     font-size: 0.9rem;
 }
 
+/* Estilos para los iconos de las soft skills */
+.soft-skill-icons{
+    width: 6%;
+    margin-right: 2%;
+}
+
 .skills-block h4 {
     font-size: 1.2rem;
 }
 
-/* Corrección para el enlace Drille Studio en Trayectoria */
 .experience-div h4 a.extra-link {
     position: relative;
     text-decoration: none;
-    color: inherit; /* Hereda el color del h4 automáticamente */
+    /* Hereda el color del h4 */
+    color: inherit; 
     font-weight: bold;
     display: inline-block;
-    
+
     /* Configuración de la línea animada */
     background-image: linear-gradient(var(--accent-color), var(--accent-color));
     background-position: 0% 100%;
@@ -858,9 +840,7 @@ section {
     background-size: 100% 2px;
 }
 
-/* ==========================================================================
-   5. Formulario de Contacto
-   ========================================================================== */
+/* --- 5. Formulario de Contacto --- */
 form {
     display: flex;
     flex-direction: column;
@@ -926,7 +906,7 @@ input, textarea {
 }
 
 .education-name, .education-date {
-    color: var(--card-text); /* Modificado para garantizar contraste en ambos temas */
+    color: var(--card-text);
 }
 
 /* Habilidades y Experiencia */
@@ -1006,7 +986,7 @@ input, textarea {
     list-style-type: none;
     background: none;
     font-size: 1.05rem;
-    color: inherit; /* Hereda de forma segura el var(--card-text) */
+    color: inherit;
     margin: 0 0 0 0;
 }
 
@@ -1018,9 +998,7 @@ input, textarea {
     font-size: 1.1rem;
 }
 
-/* ==========================================================================
-   6. Contacto
-   ========================================================================== */
+/* --- 6. Contacto --- */
 .contact-div {
     display: flex;
     justify-content: space-around;
@@ -1038,17 +1016,16 @@ input, textarea {
 }
 
 .contact-div-info ul {
-     list-style-type: none;
-     margin-top: 1.2rem;
+    list-style-type: none;
+    margin-top: 1.2rem;
 }
 
 .contact-div-info li {
-     list-style-type: none;
-     margin-top: 1.2rem;
-     font-size: 1.3rem;
+    list-style-type: none;
+    margin-top: 1.2rem;
+    font-size: 1.3rem;
 }
 
-/* Limitamos la animación SOLO a los enlaces de texto (correo, etc) */
 .contact-div-info a:not(:has(img)) {
     list-style-type: none;
     color: var(--text-color);
@@ -1080,29 +1057,29 @@ input, textarea {
 
 /* --- Limpieza y comportamiento original para los iconos de redes sociales --- */
 .socials-icons-contact-div {
-    display: flex;                  /* Mantiene los iconos en línea horizontal */
-    justify-content: flex-start;    /* Alineados a la izquierda */
+    display: flex;                 
+    justify-content: flex-start;  
     align-items: center;
-    gap: 14px;                      /* ¡CLAVE! Controla la separación exacta entre iconos */
-    margin-top: 15px;               /* Un pequeño margen superior respecto al texto */
+    gap: 14px;              
+    margin-top: 15px;        
     width: 100%;
 }
 
 .socials-icons-contact-div a {
-    background-image: none !important; /* Elimina cualquier intento de línea animada de texto */
+    background-image: none !important;
     display: inline-block;
-    width: auto;                    /* Quitamos el porcentaje para que no se separen por la pantalla */
+    width: auto;  
 }
 
 .socials-icons-contact-div img {
-    width: 60px;                    /* Conserva el tamaño perfecto que conseguiste al 50% */
+    width: 60px;       
     height: auto;
     object-fit: cover;
     transition: transform 0.2s ease-in-out;
 }
 
 .socials-icons-contact-div img:hover {
-    transform: scale(1.05);         /* Efecto de agrandado limpio */
+    transform: scale(1.05);      
 }
 
 .other-info {
@@ -1121,17 +1098,17 @@ input, textarea {
     transform: scale(1.01);
 }
 
-/* 1. Preparamos el contenedor del título dejando espacio a la izquierda */
+/* 1. Contenedor del título dejando espacio a la izquierda */
 .other-info h3 {
     position: relative;
     display: flex;
     align-items: center;
-    padding-left: 8%; /* Hueco fijo para que la luz no pise el texto */
+    padding-left: 8%;
     margin-top: 2%;
     font-size: 1.8rem;
 }
 
-/* 2. El punto estático (Centro absoluto) */
+/* 2. El punto estático */
 .other-info h3::before {
     content: "";
     position: absolute;
@@ -1147,13 +1124,12 @@ input, textarea {
     z-index: 2; /* Nos aseguramos de que esté por encima de la onda */
 }
 
-/* 3. La onda expansiva por detrás (Comparte el mismo centro exacto) */
+/* 3. La onda expansiva por detrás */
 .other-info h3::after {
     content: "";
     position: absolute;
     left: 0;
     top: 50%;
-    /* Compartimos el mismo origen y tamaño inicial que el punto base */
     transform: translateY(-50%) scale(1);
     /* Tamaño del círculo */
     width: 18px;
@@ -1161,29 +1137,29 @@ input, textarea {
     /* -------- */
     background-color: var(--animation-job-color);
     border-radius: 50%;
-    /* Ejecuta la animación concéntrica */
+    /* Ejecuta la animación */
     animation: pulse-concentric 1.5s ease-out infinite;
     z-index: 1;
 }
 
-/* 4. Nueva animación concéntrica matemática */
+/* 4. Animación punto contacto */
 @keyframes pulse-concentric {
     0% {
-        /* Mantiene el eje vertical y empieza con tamaño normal */
+        /* Mantiene el eje vertical y empieza con el tamaño origen */
         transform: translateY(-50%) scale(1);
         opacity: 1;
     }
     100% {
-        /* Se expande de manera uniforme desde el centro sin desplazarse hacia los lados */
+        /* Se expande de manera uniforme desde el centro */
         transform: translateY(-50%) scale(2);
-        opacity: 0; /* Desaparición fluida */
+        opacity: 0;
     }
 }
 
 .other-info h3 {
     display: flex;
     align-items: center;
-    gap: 0.7rem; /* Espacio entre el punto verde y el texto */
+    gap: 0.7rem;
     margin-top: 2%;
     font-size: 1.8rem;
 }
@@ -1199,11 +1175,9 @@ input, textarea {
     margin: auto;
 }
 
-/* ==========================================================================
-   7. Footer
-   ========================================================================== */
+/* --- 7. Footer --- */
 footer {
-    background-color: var(--nav-bg); /* Sincronizado dinámicamente con el header */
+    background-color: var(--nav-bg);
     padding: 1.5rem 0;
     transition: background-color var(--transition);
 }
@@ -1214,21 +1188,19 @@ footer p {
     color: var(--text-color);
 }
 
-/* ==========================================================================
-   8. Media Queries — Tablet (≤ 900px)
-   ========================================================================== */
+/* --- 8. Media Devices / Tablet (≤ 900px) --- */
 @media (max-width: 900px) {
     /* Ocultar enlaces del nav en tablets pequeñas */
     .nav-links {
         display: none;
     }
 
-    /* CV: columna única */
+    /* CV */
     .cv-container {
         grid-template-columns: 1fr;
     }
 
-    /* Proyectos: columna única */
+    /* Proyectos */
     .projects-grid {
         flex-direction: column;
         align-items: center;
@@ -1240,7 +1212,7 @@ footer p {
         max-width: 520px;
     }
 
-    /* Contacto: columna única */
+    /* Contacto */
     .contact-div {
         flex-direction: column;
         align-items: center;
@@ -1254,7 +1226,7 @@ footer p {
         padding: 1.5rem;
     }
 
-    /* About me: columna única */
+    /* About me */
     .about-me-div {
         flex-direction: column;
         align-items: center;
@@ -1271,12 +1243,10 @@ footer p {
     }
 }
 
-/* ==========================================================================
-   8b. Media Queries — Móvil (≤ 600px)
-   ========================================================================== */
+/* --- 8b. Media Queries / Móvil (≤ 600px) --- */
 @media (max-width: 600px) {
 
-    /* ── NAVBAR ── */
+    /* NAVBAR */
     header {
         padding: 0.7rem 4%;
     }
@@ -1286,7 +1256,7 @@ footer p {
         gap: 0;
     }
 
-    /* Logo: ocupa toda la fila superior */
+    /* Logo */
     .logo {
         width: auto;
         flex: 1;
@@ -1307,7 +1277,7 @@ footer p {
         flex-shrink: 0;
     }
 
-    /* Links de navegación: segunda fila completa en móvil */
+    /* Links de navegación */
     .nav-links {
         display: flex;
         width: 100%;
@@ -1331,7 +1301,7 @@ footer p {
         display: inline-block;
     }
 
-    /* Controles: ajustamos escala del select de idioma */
+    /* Controles */
     .controls {
         min-width: unset;
         gap: 0.5rem;
@@ -1381,7 +1351,7 @@ footer p {
         font-size: 1.6rem;
     }
 
-    /* Foto + nombre: apilar verticalmente */
+    /* Foto + nombre */
     .main-intro {
         flex-direction: column;
         align-items: center;
@@ -1395,7 +1365,7 @@ footer p {
         text-align: center;
     }
 
-    /* Imagen de perfil centrada y de buen tamaño */
+    /* Imagen de perfil */
     .img-intro {
         width: 65%;
         max-width: 240px;
@@ -1412,7 +1382,7 @@ footer p {
         margin-top: 0.9rem;
     }
 
-    /* Iconos de redes sociales centrados */
+    /* Iconos de redes sociales */
     .socials-icons {
         display: flex;
         justify-content: center;
@@ -1427,7 +1397,7 @@ footer p {
         object-fit: contain;
     }
 
-    /* ── SOBRE MÍ ── */
+    /* SOBRE MÍ */
     .description-intro {
         margin-top: 3rem;
     }
@@ -1476,7 +1446,7 @@ footer p {
         padding: 0.7rem 1rem;
     }
 
-    /* ── SECCIÓN CV ── */
+    /* CV */
     #cv h2 {
         text-align: center;
     }
@@ -1533,7 +1503,7 @@ footer p {
         font-size: 0.95rem;
     }
 
-    /* Formación: dos columnas → una */
+    /* Formación */
     .educ {
         flex-direction: column;
     }
@@ -1544,7 +1514,7 @@ footer p {
         margin: 6px 0;
     }
 
-    /* ── PROYECTOS ── */
+    /* PROYECTOS */
     #proyectos h2 {
         font-size: 1.6rem;
     }
@@ -1561,7 +1531,7 @@ footer p {
         margin: 6px 0;
     }
 
-    /* ── CONTACTO ── */
+    /* CONTACTO */
     .contact-div {
         flex-direction: column;
         align-items: center;
@@ -1604,13 +1574,13 @@ footer p {
         width: 44px;
     }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer p {
         font-size: 1rem;
         padding: 0 1rem;
     }
 
-    /* ── SECCIONES: padding general ── */
+    /* SECCIONES */
     section {
         padding: 40px 0;
     }

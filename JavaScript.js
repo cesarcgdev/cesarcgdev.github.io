@@ -67,25 +67,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 const isExpanding = !extraText.classList.contains("expanded");
                 
                 if (isExpanding) {
-                    // 1. Ocultamos los puntos visualmente
+                    // Ocultamos los puntos visualmente
                     if (dots) dots.style.display = "none";
                     
-                    // 2. Activamos el texto en el flujo inline
+                    // Activamos el texto en el flujo inline
                     extraText.style.display = "inline";
                     
-                    // 3. Mini-retraso para activar el Fade In difuminado suave
+                    // Mini-retraso para activar el Fade In difuminado suave
                     setTimeout(() => {
                         extraText.classList.add("expanded");
                     }, 20);
                     
-                    // TRUCO I18N: Cambiamos la clave del atributo al estado "less" (Leer menos)
+                    // Cambiamos la clave del atributo al estado "less" (Leer menos)
                     const lessKey = this.getAttribute("data-text-less") || "less";
                     this.setAttribute("data-i18n", lessKey);
                 } else {
-                    // Al cerrar: Quitamos animación visual
+                    // Quitamos animación visual
                     extraText.classList.remove("expanded");
                     
-                    // TRUCO I18N: Cambiamos la clave del atributo de vuelta al estado "more" (Leer más)
+                    // Cambiamos la clave del atributo de vuelta al estado "more"
                     const moreKey = this.getAttribute("data-text-more") || "more";
                     this.setAttribute("data-i18n", moreKey);
 
@@ -107,7 +107,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Administra la edad actual que tengo
 document.addEventListener("DOMContentLoaded", () => {
-    const birthDate = new Date(2001, 3, 27); // 27 de abril de 2001
+    // 3 porque los meses van de 0 a 11
+    const birthDate = new Date(2001, 3, 27);
     const today = new Date();
     
     let age = today.getFullYear() - birthDate.getFullYear();
@@ -130,16 +131,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeToggle = document.getElementById("theme-toggle");
     if (!themeToggle) return;
     
-    // 1. Comprobar si el usuario ya tenía una preferencia guardada, por defecto "light"
+    // Comprobar si el usuario ya tenía una preferencia guardada
     const savedTheme = localStorage.getItem("theme") || "light";
     document.documentElement.setAttribute("data-theme", savedTheme);
-
-    // 2. SINCRONIZACIÓN CLAVE: 
-    // Si el tema es dark, el checkbox debe estar marcado (true -> bolita a la derecha)
-    // Si el tema es light, debe estar desmarcado (false -> bolita a la izquierda)
+ 
+    // Si el tema es dark, el checkbox debe estar marcado
+    // Si el tema es light, debe estar desmarcado
     themeToggle.checked = (savedTheme === "dark");
 
-    // 3. Escuchar el clic en el botón de claro/oscuro
+    // Escuchar el clic en el botón de claro/oscuro
     themeToggle.addEventListener("click", () => {
         const currentTheme = document.documentElement.getAttribute("data-theme");
         let newTheme = "light";
@@ -160,33 +160,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const paletteSelect = document.getElementById("palette-select");
     if (!paletteSelect) return;
 
-    // 1. Cargar la paleta guardada del localStorage, por defecto la tuya ("original")
+    // Cargar la paleta guardada del localStorage
     const savedPalette = localStorage.getItem("palette") || "original";
     document.documentElement.setAttribute("data-palette", savedPalette);
     paletteSelect.value = savedPalette;
 
-    // 2. Escuchar los cambios en el menú desplegable
+    // Escuchar los cambios en el menú desplegable
     paletteSelect.addEventListener("change", (e) => {
         const selectedPalette = e.target.value;
         
-        // Aplicamos el atributo data-palette al nodo raíz del HTML
+        // Aplicamos el atributo data-palette a la raíz del HTML
         document.documentElement.setAttribute("data-palette", selectedPalette);
         
-        // Guardamos la configuración en la memoria física del navegador
+        // Guardamos la configuración en la memoria del navegador
         localStorage.setItem("palette", selectedPalette);
     });
 });
 
-// --- Lógica para la animación de aparición al hacer Scroll ---
+// Lógica para la animación de aparición al hacer Scroll
 function initScrollAnimations() {
     const sections = document.querySelectorAll('.fade-in-section');
 
     const options = {
-        root: null, // El viewport del navegador
-        // '0px 0px -80px 0px' crea una línea virtual 80px por encima del fondo de la pantalla.
-        // En cuanto el borde superior de CUALQUIER sección toca esa línea, se dispara.
+        root: null,
         rootMargin: '0px 0px -80px 0px', 
-        threshold: 0 // Activación inmediata al cruzar el margen
+        threshold: 0
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
@@ -203,10 +201,7 @@ function initScrollAnimations() {
     });
 }
 
-// Asegúrate de llamar a la función dentro de tu inicializador nativo
 document.addEventListener('DOMContentLoaded', () => {
-    // ... tus otras funciones (getAge, temas, idiomas, etc.) ...
-    
     // Inicializar animaciones de scroll
     initScrollAnimations();
 });
