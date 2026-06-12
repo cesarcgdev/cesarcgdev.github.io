@@ -172,7 +172,10 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-style: normal;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko70yygg_vbd-E.woff2) format('woff2');
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -247,6 +250,94 @@ h1 {
     display: block;
     width: 50%;
 }
+
+
+/* --- Nuevo selector CLARO/OSCURO --- */
+/* Estilización del Switch de Modo Claro/Oscuro con Iconos */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 34px;
+    box-sizing: border-box;
+}
+
+.font-switch-icon {
+    font-size: 0.85rem;
+    color: color-mix(in srgb, var(--text-color) 40%, transparent);
+    transition: color var(--transition);
+}
+
+[data-theme="dark"] .fa-moon {
+    color: var(--accent-color);
+}
+
+[data-theme="light"] .fa-sun {
+    color: var(--accent-color);
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 30px;
+    position: relative;
+    width: 48px;
+}
+
+.theme-switch input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.theme-switch input:focus-visible + .theme-slider {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-color) 20%, transparent);
+}
+
+.theme-slider {
+    background-color: color-mix(in srgb, var(--text-color) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text-color) 15%, transparent);
+    border-radius: 34px;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .3s;
+}
+
+.theme-slider:before {
+    background-color: var(--text-color);
+    border-radius: 50%;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
+    position: absolute;
+    transition: .3s;
+}
+
+input:checked + .theme-slider {
+    background-color: color-mix(in srgb, var(--accent-color) 20%, var(--bg-color));
+    border-color: var(--accent-color);
+}
+
+input:checked + .theme-slider:before {
+    background-color: var(--accent-color);
+    transform: translateX(18px);
+}
+
+/* -------------------- */
+
 
 .socials-icons {
     margin: 2rem 0;
@@ -353,9 +444,8 @@ h2 {
     align-items: center;
 }
 
-.logo p {
-    font-size: 1.2rem;
-    text-align: center;
+.logo p{
+    font-size: 1.1rem;
 }
 
 .logo-bar{
@@ -382,7 +472,7 @@ nav {
     display: inline-block;
     padding: 5px 0;
     font-size: 1.5rem;
-    font-weight: bold;
+    /* font-weight: bold; */
     /* Configuración de la línea invisible al inicio (izq a drcha) */
     background-image: linear-gradient(var(--accent-color), var(--accent-color));
     background-position: 0% 100%;       
@@ -793,26 +883,518 @@ section {
     gap: 2rem;
 }
 
-.skills-block ul {
-    list-style: none;
+
+/* Nuevo CSS perfil profesional */ 
+/* Contenedor de fondo apartado experiencia */
+.experience-tabs-container {
     display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    padding: 2px 2px;
+    gap: 3rem;
+    background: color-mix(in srgb, var(--card-bg) 60%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid var(--border-color);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    margin-bottom: 3.5rem;
+    align-items: stretch;
+    transition: background-color var(--transition), border-color var(--transition);
 }
 
-.skills-block li {
-    background: var(--accent-color);
-    color: white;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.9rem;
+/* Alineación de botones para cada bloque de experiencia */
+.tabs-list {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-width: 210px;
+    border-left: 2px solid color-mix(in srgb, var(--text-color) 10%, transparent);
 }
+
+/* Diseño de cada botón de experiencia */
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    padding: 1rem 1.5rem;
+    font-size: 1.15rem;
+    font-weight: 300;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 0 10px 10px 0;
+    font-family: inherit;
+}
+
+.tab-btn:hover {
+    color: var(--accent-color);
+    background: color-mix(in srgb, var(--accent-color) 4%, transparent);
+}
+
+.tab-btn.active {
+    color: var(--accent-color);
+    font-weight: 600;
+    background: color-mix(in srgb, var(--accent-color) 8%, transparent);
+}
+
+/* Línea vertical indicando la experiencia seleccionada */
+.active-indicator {
+    position: absolute;
+    left: 0;
+    width: 2px;
+    background: var(--accent-color);
+    transition: top 0.3s cubic-bezier(0.25, 1, 0.5, 1), height 0.3s cubic-bezier(0.25, 1, 0.5, 1), left 0.3s, bottom 0.3s, width 0.3s;
+}
+
+.tabs-panels {
+    flex: 1;
+    padding-left: 1rem;
+}
+
+.tab-panel.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tab-panel h4 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.4rem;
+    line-height: 1.35;
+}
+
+.tab-panel h4 a.extra-link {
+    text-decoration: none;
+    color: var(--accent-color);
+    font-weight: 700;
+    transition: color var(--transition);
+}
+
+.tab-panel h4 a.extra-link:hover {
+    color: var(--cv-hover-color);
+}
+
+.job-date {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: color-mix(in srgb, var(--text-color) 80%, transparent);
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+.job-bullets {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.job-bullets li {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    position: relative;
+    padding-left: 1.4rem;
+}
+
+.job-bullets li::before {
+    content: "•";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    font-size: 1.25rem;
+    top: -1px;
+}
+
+/* Contenedor del Cuadro de Habilidades a Ancho Completo */
+.skills-dashboard-container {
+    width: 100%;
+    margin-bottom: 3.5rem;
+}
+
+/* Nueva Rejilla de Formación y Soft Skills */
+.cv-education-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 3.5rem;
+    align-items: start;
+    width: 100%;
+}
+
+/* Título habilidades */
+.cv-block-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+/* Cuadro de fondo */
+.cv-block-content {
+    background: color-mix(in srgb, var(--card-bg) 60%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    transition: background-color var(--transition), border-color var(--transition);
+}
+
+/* Habilidades: Rejilla e Iconos */
+.skills-icons-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    transition: opacity var(--transition);
+}
+
+.skill-icon-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity var(--transition), filter var(--transition);
+    width: calc(16.66% - 1rem);
+    max-width: 50px;
+    height: 50px;
+    outline: none;
+}
+
+.skills-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(25%);
+    transition: filter var(--transition);
+}
+
+/* Hover & Pinned states for buttons and icons */
+.skill-icon-btn:hover,
+.skill-icon-btn.pinned {
+    transform: scale(1.22) translateY(-4px);
+}
+
+.skill-icon-btn:hover .skills-icon,
+.skill-icon-btn.pinned .skills-icon {
+    filter: grayscale(0%);
+}
+
+/* Focus style replacement for accessibility */
+.skill-icon-btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+}
+
+/* dynamic brand drop-shadows on hover/pinned */
+.skill-icon-btn.unity:hover, .skill-icon-btn.unity.pinned { filter: drop-shadow(0 0 10px rgba(95, 109, 122, 0.65)); }
+.skill-icon-btn.csharp:hover, .skill-icon-btn.csharp.pinned { filter: drop-shadow(0 0 12px rgba(154, 73, 147, 0.75)); }
+.skill-icon-btn.blender:hover, .skill-icon-btn.blender.pinned { filter: drop-shadow(0 0 12px rgba(232, 125, 13, 0.75)); }
+.skill-icon-btn.photoshop:hover, .skill-icon-btn.photoshop.pinned { filter: drop-shadow(0 0 12px rgba(0, 200, 255, 0.75)); }
+.skill-icon-btn.html:hover, .skill-icon-btn.html.pinned { filter: drop-shadow(0 0 12px rgba(228, 77, 38, 0.75)); }
+.skill-icon-btn.css:hover, .skill-icon-btn.css.pinned { filter: drop-shadow(0 0 12px rgba(38, 77, 228, 0.75)); }
+.skill-icon-btn.js:hover, .skill-icon-btn.js.pinned { filter: drop-shadow(0 0 12px rgba(247, 223, 30, 0.85)); }
+.skill-icon-btn.vscode:hover, .skill-icon-btn.vscode.pinned { filter: drop-shadow(0 0 12px rgba(0, 122, 204, 0.75)); }
+.skill-icon-btn.git:hover, .skill-icon-btn.git.pinned { filter: drop-shadow(0 0 12px rgba(240, 80, 50, 0.75)); }
+.skill-icon-btn.github:hover, .skill-icon-btn.github.pinned { filter: drop-shadow(0 0 12px var(--accent-color)); }
+.skill-icon-btn.gitlab:hover, .skill-icon-btn.gitlab.pinned { filter: drop-shadow(0 0 12px rgba(252, 109, 38, 0.75)); }
+.skill-icon-btn.sourcetree:hover, .skill-icon-btn.sourcetree.pinned { filter: drop-shadow(0 0 12px rgba(0, 82, 204, 0.75)); }
+.skill-icon-btn.trello:hover, .skill-icon-btn.trello.pinned { filter: drop-shadow(0 0 12px rgba(0, 121, 191, 0.75)); }
+.skill-icon-btn.windows:hover, .skill-icon-btn.windows.pinned { filter: drop-shadow(0 0 12px rgba(0, 120, 215, 0.75)); }
+.skill-icon-btn.ubuntu:hover, .skill-icon-btn.ubuntu.pinned { filter: drop-shadow(0 0 12px rgba(233, 84, 32, 0.75)); }
+.skill-icon-btn.premiere:hover, .skill-icon-btn.premiere.pinned { filter: drop-shadow(0 0 12px rgba(153, 153, 255, 0.75)); }
+
+/* Cinematically dim other skills when one is focused/active */
+.skills-icons-div.has-active-skill .skill-icon-btn:not(:hover):not(.pinned) {
+    opacity: 0.35;
+    filter: grayscale(85%) blur(0.5px);
+}
+
+/* Panel de Detalles de Habilidad */
+.skill-details-panel {
+    margin-top: 2rem;
+    padding: 1.8rem 2.2rem;
+    background: color-mix(in srgb, var(--card-bg) 25%, transparent);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    min-height: 135px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color var(--transition);
+}
+
+.skill-details-panel.active-skill-selected {
+    border-color: color-mix(in srgb, var(--skill-color) 45%, transparent);
+    box-shadow: 0 8px 30px color-mix(in srgb, var(--skill-color) 10%, transparent);
+    background: color-mix(in srgb, var(--card-bg) 45%, transparent);
+}
+
+/* Aviso de pasar el ratón en el bloque de habilidades */
+.skill-details-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: color-mix(in srgb, var(--text-color) 45%, transparent);
+    gap: 0.6rem;
+    text-align: center;
+    font-size: 0.95rem;
+    font-style: italic;
+    animation: pulse-placeholder 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-placeholder {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.95; transform: scale(1.02); }
+}
+
+.placeholder-icon {
+    font-size: 1.4rem;
+    color: var(--accent-color);
+}
+
+/* Descripción de habilidad */
+.skill-details-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding-left: 1.2rem;
+    border-left: 3px solid color-mix(in srgb, var(--skill-color, var(--accent-color)) 75%, transparent);
+    animation: fadeInDetails 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-details-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+}
+
+@media (min-width: 901px) {
+    .skill-details-content {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 3.5rem;
+        align-items: center;
+        padding-left: 2rem;
+        border-left: 4px solid color-mix(in srgb, var(--skill-color, var(--accent-color)) 75%, transparent);
+    }
+    
+    .skill-details-left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+    
+    .skill-details-right {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@keyframes fadeInDetails {
+    from { 
+        opacity: 0; 
+        transform: translateY(8px) scale(0.99); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+    }
+}
+
+.skill-details-name {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.skill-details-level {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    background: color-mix(in srgb, var(--accent-color) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent-color) 25%, transparent);
+    padding: 0.35rem 0.9rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    margin-top: 0.3rem;
+}
+
+.skill-details-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: color-mix(in srgb, var(--text-color) 75%, transparent);
+}
+
+/* Soft Skills List */
+#skills-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+#skills-list li {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+#skills-list li i {
+    color: var(--accent-color);
+    font-size: 1.15rem;
+    width: 24px;
+    text-align: center;
+}
+
+/* Línea de Tiempo de Formación */
+.education-timeline {
+    position: relative;
+    padding-left: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.education-timeline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: color-mix(in srgb, var(--text-color) 10%, transparent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.education-timeline.revealed::before {
+    transform: scaleY(1);
+}
+
+.timeline-item {
+    position: relative;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: calc(-1.8rem - 7px);
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bg-color);
+    border: 2px solid var(--accent-color);
+    z-index: 2;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.65s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform, opacity;
+}
+
+.timeline-item.revealed .timeline-dot {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.timeline-item:hover .timeline-dot {
+    background: var(--accent-color);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-color) 25%, transparent);
+}
+
+.timeline-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    opacity: 0;
+    transform: translateX(25px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.timeline-item.revealed .timeline-content {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.education-date {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: color-mix(in srgb, var(--text-color) 60%, transparent);
+}
+
+.education-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+.education-institution {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.education-bullets {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.education-bullets li {
+    font-size: 0.98rem;
+    line-height: 1.5;
+    color: color-mix(in srgb, var(--text-color) 85%, transparent);
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.education-bullets li::before {
+    content: "•";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    font-size: 1.15rem;
+    top: -1px;
+}
+
+
+/* ------------------- */
+
+
 
 /* Estilos para los iconos de las soft skills */
 .soft-skill-icons{
-    width: 6%;
-    margin-right: 2%;
+    /* width: 6%;
+    margin-right: 2%; */
 }
 
 .skills-block h4 {
@@ -911,21 +1493,9 @@ input, textarea {
 
 /* Habilidades y Experiencia */
 .experience-block h3 {
-    color: #ff7878;
+    color: var(--text-color);
     font-size: 1.3rem;
     margin: 0 4px;
-}
-
-.skills-icons-div {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.skills-icon {
-    width: 14%;
-    margin: 4% 4%;
 }
 
 .block-skill {
@@ -1188,62 +1758,165 @@ footer p {
     color: var(--text-color);
 }
 
-/* --- 8. Media Devices / Tablet (≤ 900px) --- */
-@media (max-width: 900px) {
+
+/* ==========================================================================
+   8. Media Queries — Tablet/Laptop (≤ 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
     /* Ocultar enlaces del nav en tablets pequeñas */
     .nav-links {
         display: none;
     }
 
-    /* CV */
-    .cv-container {
+    /* CV: columna única y pestañas responsivas */
+    .cv-education-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .experience-tabs-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .tabs-list {
+        flex-direction: row;
+        border-left: none;
+        border-bottom: 2px solid color-mix(in srgb, var(--text-color) 10%, transparent);
+        overflow-x: auto;
+        min-width: unset;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .tabs-list::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-btn {
+        text-align: center;
+        border-radius: 10px 10px 0 0;
+        padding: 0.8rem 1.2rem;
+        white-space: nowrap;
+    }
+
+    .tabs-panels {
+        padding-left: 0;
+    }
+
+    /* Proyectos: Consola Adaptativa */
+    .projects-console-layout {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+    }
+
+    .projects-nav-menu {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+        scrollbar-width: none;
+    }
+    
+    .projects-nav-menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .project-nav-btn {
+        flex: 1 0 auto;
+        justify-content: center;
+        padding: 0.8rem 1.2rem;
+    }
+
+    .project-nav-btn::before {
+        left: 50%;
+        top: auto;
+        bottom: 0;
+        transform: translateX(-50%) scaleX(0);
+        width: 45%;
+        height: 3px;
+        border-radius: 3px 3px 0 0;
+    }
+    
+    .project-nav-btn.active::before {
+        transform: translateX(-50%) scaleX(1);
+    }
+    
+    .project-nav-btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .project-detail-panel {
+        max-width: 100%;
+        padding: 1.8rem;
+    }
+
+    .project-detail-panel.active {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+    }
+
+    /* Contacto: maquetación responsiva */
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+    }
+
+    .contact-sidebar {
+        width: 100%;
+    }
+
+    .btn-contact-div {
+        flex-direction: row;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-cv-download {
+        flex: 1 1 200px;
+    }
+
+    /* Cal.com Simulator Widget en tablets */
+    .cal-widget {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .cal-widget.has-timeslots {
         grid-template-columns: 1fr;
     }
 
-    /* Proyectos */
-    .projects-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .project-card {
-        min-width: unset;
-        width: 90%;
-        max-width: 520px;
-    }
-
-    /* Contacto */
-    .contact-div {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-    }
-
-    .contact-div-info,
-    .other-info {
-        width: 90%;
-        max-width: 560px;
+    .cal-widget-details {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
         padding: 1.5rem;
     }
 
-    /* About me */
-    .about-me-div {
-        flex-direction: column;
-        align-items: center;
+    .cal-widget-calendar {
+        padding: 1.5rem;
     }
 
-    .text-me-div {
-        width: 90%;
-        margin: 0 auto 1.5rem auto;
+    .cal-widget-timeslots {
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        padding: 1.5rem;
     }
 
-    .personality-card {
-        width: 90%;
+    /* About me: columna única */
+    .profile-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .profile-sidebar {
+        position: static;
+        width: 100%;
+        max-width: 500px;
         margin: 0 auto;
     }
 }
 
-/* --- 8b. Media Queries / Móvil (≤ 600px) --- */
+/* --- Media Queries / Móvil (≤ 600px) --- */
 @media (max-width: 600px) {
 
     /* NAVBAR */
@@ -1296,7 +1969,6 @@ footer p {
 
     .nav-links a {
         font-size: 0.85rem;
-        font-weight: bold;
         padding: 4px 2px;
         display: inline-block;
     }
@@ -1447,6 +2119,72 @@ footer p {
     }
 
     /* CV */
+
+    /* ── SECCIÓN CV NUEVA EN MÓVIL ── */
+    #cv h2 {
+        text-align: center;
+    }
+
+    .experience-tabs-container {
+        padding: 1.5rem;
+        gap: 1.5rem;
+        border-radius: 18px;
+    }
+
+    .tab-btn {
+        padding: 0.7rem 1rem;
+        font-size: 1.2rem;
+    }
+
+    .tab-panel h4 {
+        font-size: 1.15rem;
+    }
+
+    .job-bullets li {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .cv-block-content {
+        padding: 1.8rem;
+        border-radius: 18px;
+    }
+
+    .skill-icon-btn {
+        width: calc(25% - 0.8rem);
+        height: 40px;
+        max-width: 40px;
+    }
+
+    .skills-icon {
+        width: 90%;
+        height: 90%;
+    }
+
+    #skills-list li {
+        font-size: 0.95rem;
+    }
+
+    .education-timeline {
+        padding-left: 1.2rem;
+    }
+
+    .timeline-dot {
+        left: calc(-1.2rem - 5px);
+        width: 8px;
+        height: 8px;
+    }
+
+    .education-title {
+        font-size: 1.05rem;
+    }
+
+    .education-bullets li {
+        font-size: 0.9rem;
+    }
+
+    /* ----- */
+
     #cv h2 {
         text-align: center;
     }
@@ -1465,11 +2203,6 @@ footer p {
     .block-skill {
         margin: 10px 0;
         padding: 14px 12px;
-    }
-
-    .skills-icon {
-        width: 18%;
-        margin: 3%;
     }
 
     .skills-title {

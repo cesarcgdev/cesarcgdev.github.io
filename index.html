@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>César CG - Portfolio Web</title>
     <link rel="icon" href="../images/cesar_Logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -24,20 +27,22 @@
             <div class="controls">
                 <div class="controls">
                     <select id="palette-select" class="palette-select-btn" aria-label="Cambiar estilo visual">
-                        <option value="original">🍁 Original</option>
-                        <option value="cyber">🌌 Cyber</option>
+                        <option value="original">Original</option>
+                        <option value="cyber">Cyber</option>
                         <option value="forest" data-i18n="forest-theme">🌿 Bosque</option>
                         <option value="royal" data-i18n="gold-theme">👑 Oro Real</option>
                     </select>
 
-                    <div class="nav-toggle">
-                        <label class="switch">
-                            <input type="checkbox" id="theme-toggle">
-                            <span class="slider round"></span>
+                    <div class="theme-switch-wrapper">
+                        <i class="fa-regular fa-sun font-switch-icon"></i>
+                        <label class="theme-switch">
+                            <input type="checkbox" id="theme-toggle" aria-label="Cambiar tema de color / Toggle color theme">
+                            <span class="theme-slider"></span>
                         </label>
+                        <i class="fa-regular fa-moon font-switch-icon"></i>
                     </div>
 
-                    <select id="lang-select" class="lang-select-btn">
+                    <select id="lang-select" class="lang-select-btn" onchange="window.changeLanguageGlobal(this.value)" aria-label="Cambiar idioma">
                         <option value="es">ES</option>
                         <option value="en">EN</option>
                     </select>
@@ -112,88 +117,30 @@
         
         <section id="cv" class="fade-in-section">
             <h2 data-i18n="cv-title">PERFIL PROFESIONAL</h2>
-            <div class="cv-container">
-                <div class="skills-block">
-                    <div class="block">
-                        <h3 data-i18n="skills-subtitle">Habilidades</h3>
-                    </div>
-                    <div class="block-skill">
-                        <div class="skills-icons-div">
-                            <img src="../images/skills/unity-69.svg" class="skills-icon" alt="Logo Unity">
-                            <img src="../images/skills/c--4.svg" class="skills-icon">
-                            <img src="../images/skills/blender-2.svg" class="skills-icon">
-                            <img src="../images/skills/adobe-photoshop-2.svg" class="skills-icon" alt="Logo Photoshop">
-                            <img src="../images/skills/html-5-logo-svg-1.svg" class="skills-icon" alt="Logo HTML">
-                            <img src="../images/skills/css-3.svg" class="skills-icon" alt="Logo CSS">
-                            <img src="../images/skills/javascript-r.svg" class="skills-icon" alt="Logo JavaScript">
-                            <img src="../images/skills/visual-studio-code-1.svg" class="skills-icon" alt="Logo Visual Studio">
-                            <img src="../images/skills/git-icon.svg" class="skills-icon">
-                            <img src="../images/skills/github-icon-1.svg" class="skills-icon">
-                            <img src="../images/skills/gitlab.svg" class="skills-icon">
-                            <img src="../images/skills/sourcetree-1.svg" class="skills-icon">
-                            <img src="../images/skills/trello.svg" class="skills-icon">
-                            <img src="../images/skills/microsoft-windows-22.svg" class="skills-icon">
-                            <img src="../images/skills/ubuntu-4.svg" class="skills-icon">
-                            <img src="../images/skills/premiere-pro-cc.svg" class="skills-icon">
-                        </div>
-                    </div>
-                    <div class="block">
-                        <h3>Soft Skills</h3>
-                    </div>
-                    <div class="block-skill">
-                            <ul id="skills-list">
-                                <li data-i18n="skill-teamwork"> Trabajo en equipo</li>
-                                <li data-i18n="skill-self"> 📝 Autodidacta y resolutivo</li>
-                                <li data-i18n="skill-responsible">💪 Responsable y comprometido</li>
-                                <li data-i18n="skill-constancy">🏋 Constancia</li>
-                                <li data-i18n="skill-organized">🎯 Organizado y atento</li>
-                                <li data-i18n="skill-pressure">🧠 Trabajo bajo presión</li>
-                            </ul>
-                    </div>
-                    <div class="block">
-                        <h3 data-i18n="education-text">Formación</h3>
-                    </div>
-                    <div class="block-skill"> 
-                        <p class="education-date" data-i18n="edu1-date">Octubre 2023 - Diciembre 2025</p>
-                        <p class="education-institution"><b data-i18n="edu1-title">Máster en Diseño y Desarrollo de Videojuegos</b></p>
-                        <p class="education-name">E.V.A.D.</p>
-                        <ul class="training-list">
-                            <li data-i18n="edu1-bullet1">Formación especializada en todas las áreas del desarrollo de los videojuegos.</li>
-                            <li data-i18n="edu1-bullet2">Método autodidacta con ensayo y error.</li>
-                            <li data-i18n="edu1-bullet3">Presencia activa en eventos como Game-Jams con varios equipos multidisciplinares.</li>
-                        </ul> 
-                    </div>
-                    <div class="block-skill"> 
-                        <p class="education-date" data-i18n="edu2-date">Octubre 2021 - Febrero 2023</p>
-                        <p class="education-institution"><b data-i18n="edu2-title">Grado Superior en Animación 3D, Juegos y Entornos Interactivos</b></p>
-                        <p class="education-name">CESUR Las Palmas</p>
-                        <ul class="training-list">
-                            <li data-i18n="edu2-bullet1">Aprendizaje para generar y adaptar cualquier proyecto multimedia al mercado.</li>
-                            <li data-i18n="edu2-bullet2">Generación de escenarios interactivos, así como la optimización de los mismos.</li>
-                            <li data-i18n="edu2-bullet3">Desarrollo de aplicaciones interactivas y entornos webs dinámicos.</li>
-                        </ul> 
-                    </div>
-                    <div class="block-skill"> 
-                        <p class="education-date" data-i18n="edu3-date">Septiembre 2019 - Febrero 2021</p>
-                        <p class="education-institution"><b data-i18n="edu3-title">Grado Superior en Administración de Sistemas Informáticos y Redes (A.S.I.R.)</b></p>
-                        <p class="education-name">C.I.F.P. Villa de Agüimes</p>
-                        <ul class="training-list">
-                            <li data-i18n="edu3-bullet1">Planificación y construcción de infraestructuras tecnológicas, redes y servidores.</li>
-                            <li data-i18n="edu3-bullet2">Creación y desarrollo de usuarios y de sistemas operativos como Windows o Linux.</li>
-                            <li data-i18n="edu3-bullet3">Gestión de Base de Datos relacionales, con técnicas para proteger la información.</li>
-                        </ul> 
-                    </div>
+            
+            <!-- Bloque de Experiencia en Pestañas (Pestaña Interactiva) -->
+            <div class="experience-tabs-container">
+                <div class="tabs-list" role="tablist" aria-label="Experiencia profesional">
+                    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="exp-panel-1" id="tab-1">
+                        <span>Drille Studio</span>
+                    </button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="exp-panel-2" id="tab-2">
+                        <span>Warlands Realms</span>
+                    </button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="exp-panel-3" id="tab-3">
+                        <span>Psicosoft</span>
+                    </button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="exp-panel-4" id="tab-4">
+                        <span>ACAAO</span>
+                    </button>
+                    <span class="active-indicator"></span>
                 </div>
 
-                <div class="skills-block">
-                    <div class="block">
-                        <h3 data-i18n="experience-text">Experiencia</h3>
-                    </div>
-                <div class="experience-block">   
-                    <article class="experience-div">
+                <div class="tabs-panels">
+                    <article class="tab-panel active" id="exp-panel-1" role="tabpanel" aria-labelledby="tab-1">
                         <h4 data-i18n="exp1-title">Diseñador y programador de Unity | Co-fundador de <i><a href="https://linktr.ee/DrilleStudio" class="extra-link" target="_blank">Drille Studio</a></i></h4>
-                        <span class="date experience-date" data-i18n="exp1-date">Febrero 2025 - Presente</span>
-                        <ul class="experiencie-list">
+                        <span class="job-date" data-i18n="exp1-date">Febrero 2025 - Presente</span>
+                        <ul class="job-bullets">
                             <li data-i18n="exp1-bullet1">Coordiné y lideré un equipo multidisciplinar, diseñando e implementando metodologías ágiles a través de <i>Trello</i> para garantizar un flujo de trabajo eficiente, flexible y adaptado a las necesidades del proyecto.</li>
                             <li data-i18n="exp1-bullet2">Diseñé e implementé <b>mecánicas y sistemas complejos</b> aplicando patrones de diseño y prácticas de <b>programación limpia (Clean Code)</b> de gran eficiencia.</li>
                             <li data-i18n="exp1-bullet3">Investigué y adopté nuevas <b>tecnologías emergentes</b>, asegurando la competitividad del stack técnico según las <b>demandas actuales</b> del mercado.</li>
@@ -201,10 +148,11 @@
                             <li data-i18n="exp1-bullet5">Realicé tareas de <b>depuración y refactorización de código</b>, logrando mejorar el rendimiento de los proyectos en hasta un 75%.</li>
                         </ul>
                     </article>
-                    <article class="experience-div">
+
+                    <article class="tab-panel" id="exp-panel-2" role="tabpanel" aria-labelledby="tab-2" hidden>
                         <h4 data-i18n="exp2-title">Programador en <i>Warlands Realms</i></h4>
-                        <span class="date experience-date" data-i18n="exp2-date">Febrero 2025 - Mayo 2025</span>
-                        <ul class="experiencie-list">
+                        <span class="job-date" data-i18n="exp2-date">Febrero 2025 - Mayo 2025</span>
+                        <ul class="job-bullets">
                             <li data-i18n="exp2-bullet1">Investigué y solucioné <b>bugs heredados de meses de antigüedad</b>, optimizando la velocidad del sistema y acelerando el flujo de desarrollo general del proyecto.</li>
                             <li data-i18n="exp2-bullet2">Adquirí experiencia sólida coordinando <b>arquitecturas complejas</b> junto a un equipo de <b>desarrolladores senior</b>, adaptándome a los estándares de proyectos de alto impacto.</li>
                             <li data-i18n="exp2-bullet3">Lideré sesiones de <b>testing crítico</b> para identificar <b>cuellos de botella y vulnerabilidades</b>, liberando carga de trabajo al equipo técnico para que se enfocara en el core del negocio.</li>
@@ -212,36 +160,182 @@
                             <li data-i18n="exp2-bullet5">Participé activamente en <b>reuniones diarias (Daily Stands)</b> para la priorización de <b>tareas críticas</b>, asegurando un avance continuo y alineado con los objetivos de entrega.</li>
                         </ul>
                     </article>
-                    <article class="experience-div">
+
+                    <article class="tab-panel" id="exp-panel-3" role="tabpanel" aria-labelledby="tab-3" hidden>
                         <h4 data-i18n="exp3-title">Desarrollador web y generalista 3D | <i>Psicosoft</i></h4>
-                        <span class="date experience-date" data-i18n="exp3-date">Febrero 2023 - Mayo 2023</span>
-                        <ul class="experiencie-list">
+                        <span class="job-date" data-i18n="exp3-date">Febrero 2023 - Mayo 2023</span>
+                        <ul class="job-bullets">
                             <li data-i18n="exp3-bullet1">Apliqué <b>soluciones técnicas</b> avanzadas para el despliegue de <b>entornos web dinámicos, interactivos y escalables.</b></li>
                             <li data-i18n="exp3-bullet2">Traduje <b>modelos gráficos complejos</b> y guías de <b>estilo corporativo</b> en interfaces web reales utilizando <i>HTML5</i> y <i>CSS3</i> moderno, garantizando una alta fidelidad de diseño para los clientes.</li>
                             <li data-i18n="exp3-bullet3">Implementé estrategias de <b>optimización de carga</b> y rendimiento de código, transformando portales web en plataformas fluidas, funcionales y centradas en la <b>experiencia de usuario (UX).</b></li>
                             <li data-i18n="exp3-bullet4">Participé en reuniones diarias orientadas al <b>seguimiento de objetivos</b>, diagnóstico temprano de bloqueos e ideación de nuevas funcionalidades para los proyectos activos.</li>
                         </ul>
                     </article>
-                    <article class="experience-div">
+
+                    <article class="tab-panel" id="exp-panel-4" role="tabpanel" aria-labelledby="tab-4" hidden>
                         <h4 data-i18n="exp4-title">Desarrollador de Software y Soluciones online | <i>ACAAO</i></h4>
-                        <span class="date experience-date" data-i18n="exp4-date">Marzo 2021 - June 2021</span>
-                        <ul class="experiencie-list">
+                        <span class="job-date" data-i18n="exp4-date">Marzo 2021 - June 2021</span>
+                        <ul class="job-bullets">
                             <li data-i18n="exp4-bullet1">Diseñé y estructuré <b>soluciones de software</b> con un programa interno personalizado y a medida, alineando la <b>arquitectura técnica</b> directamente con los objetivos de negocio y los requisitos específicos de cada cliente.</li>
                             <li data-i18n="exp4-bullet2">Incrementé el <b>posicionamiento orgánico</b> y el rendimiento de plataformas web aplicando técnicas avanzadas de <b>optimización de carga, estructura de código, análisis de datos y palabras clave.</b></li>
                             <li data-i18n="exp4-bullet3">Diagnosticé y resolví <b>incidencias críticas</b>, tanto técnicas como funcionales, asegurando la alta disponibilidad del sistema y garantizando un servicio de soporte excelente.</li>
                         </ul>
                     </article>
                 </div>
-                </div>
-                
+            </div>
 
+            <!-- Habilidades Técnicas (Panel de Control de Ancho Completo) -->
+            <div class="skills-dashboard-container">
+                <div class="cv-block-header">
+                    <h3 data-i18n="skills-subtitle">Habilidades</h3>
+                </div>
+                <div class="cv-block-content skills-logos-card">
+                    <div class="skills-icons-div">
+                        <button type="button" class="skill-icon-btn unity" data-skill="unity" aria-label="Ver habilidad Unity">
+                            <img src="images/skills/unity-69.svg" class="skills-icon" alt="Logo Unity" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn csharp" data-skill="csharp" aria-label="Ver habilidad C#">
+                            <img src="images/skills/c--4.svg" class="skills-icon" alt="Logo C#" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn blender" data-skill="blender" aria-label="Ver habilidad Blender">
+                            <img src="images/skills/blender-2.svg" class="skills-icon" alt="Logo Blender" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn photoshop" data-skill="photoshop" aria-label="Ver habilidad Photoshop">
+                            <img src="images/skills/adobe-photoshop-2.svg" class="skills-icon" alt="Logo Photoshop" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn html" data-skill="html" aria-label="Ver habilidad HTML5">
+                            <img src="images/skills/html-5-logo-svg-1.svg" class="skills-icon" alt="Logo HTML" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn css" data-skill="css" aria-label="Ver habilidad CSS3">
+                            <img src="images/skills/css-3.svg" class="skills-icon" alt="Logo CSS" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn js" data-skill="js" aria-label="Ver habilidad JavaScript">
+                            <img src="images/skills/javascript-r.svg" class="skills-icon" alt="Logo JavaScript" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn vscode" data-skill="vscode" aria-label="Ver habilidad VS Code">
+                            <img src="images/skills/visual-studio-code-1.svg" class="skills-icon" alt="Logo Visual Studio" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn git" data-skill="git" aria-label="Ver habilidad Git">
+                            <img src="images/skills/git-icon.svg" class="skills-icon" alt="Logo Git" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn github" data-skill="github" aria-label="Ver habilidad GitHub">
+                            <img src="images/skills/github-icon-1.svg" class="skills-icon" alt="Logo GitHub" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn gitlab" data-skill="gitlab" aria-label="Ver habilidad GitLab">
+                            <img src="images/skills/gitlab.svg" class="skills-icon" alt="Logo GitLab" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn sourcetree" data-skill="sourcetree" aria-label="Ver habilidad SourceTree">
+                            <img src="images/skills/sourcetree-1.svg" class="skills-icon" alt="Logo SourceTree" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn trello" data-skill="trello" aria-label="Ver habilidad Trello">
+                            <img src="images/skills/trello.svg" class="skills-icon" alt="Logo Trello" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn windows" data-skill="windows" aria-label="Ver habilidad Windows">
+                            <img src="images/skills/microsoft-windows-22.svg" class="skills-icon" alt="Logo Windows" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn ubuntu" data-skill="ubuntu" aria-label="Ver habilidad Ubuntu / Linux">
+                            <img src="images/skills/ubuntu-4.svg" class="skills-icon" alt="Logo Ubuntu" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn premiere" data-skill="premiere" aria-label="Ver habilidad Premiere Pro">
+                            <img src="images/skills/premiere-pro-cc.svg" class="skills-icon" alt="Logo Premiere" width="50" height="50" aria-hidden="true">
+                        </button>
+                    </div>
+
+                    <!-- Panel de Detalle Dinámico de Habilidad -->
+                    <div class="skill-details-panel" id="skill-details-panel">
+                        <div class="skill-details-placeholder" id="skill-details-placeholder">
+                            <i class="fa-regular fa-hand-pointer placeholder-icon"></i>
+                            <p data-i18n="skill-details-placeholder">Pasa el ratón o pulsa sobre una habilidad para ver detalles</p>
+                        </div>
+                        <div class="skill-details-content" id="skill-details-content" style="display: none;">
+                            <div class="skill-details-left">
+                                <h4 class="skill-details-name" id="skill-details-name">Skill Name</h4>
+                                <span class="skill-details-level" id="skill-details-level"></span>
+                            </div>
+                            <div class="skill-details-right">
+                                <p class="skill-details-desc" id="skill-details-desc">Skill description goes here...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloque Inferior: Formación y Soft Skills en Rejilla -->
+            <div class="cv-education-grid">
+                <!-- Columna Izquierda: Formación Académica (Línea de Tiempo) -->
+                <div class="cv-education-column">
+                    <div class="cv-block-header">
+                        <h3 data-i18n="education-text">Formación</h3>
+                    </div>
+                    <div class="education-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="education-date" data-i18n="edu1-date">Octubre 2023 - Diciembre 2025</span>
+                                <h4 class="education-title" data-i18n="edu1-title">Máster en Diseño y Desarrollo de Videojuegos</h4>
+                                <span class="education-institution">E.V.A.D.</span>
+                                <ul class="education-bullets">
+                                    <li data-i18n="edu1-bullet1">Formación especializada en todas las áreas del desarrollo de los videojuegos.</li>
+                                    <li data-i18n="edu1-bullet2">Método autodidacta con ensayo y error.</li>
+                                    <li data-i18n="edu1-bullet3">Presencia activa en eventos como Game-Jams con varios equipos multidisciplinares.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="education-date" data-i18n="edu2-date">Octubre 2021 - Febrero 2023</span>
+                                <h4 class="education-title" data-i18n="edu2-title">Grado Superior en Animación 3D, Juegos y Entornos Interactivos</h4>
+                                <span class="education-institution">CESUR Las Palmas</span>
+                                <ul class="education-bullets">
+                                    <li data-i18n="edu2-bullet1">Aprendizaje para generar y adaptar cualquier multimedia al mercado.</li>
+                                    <li data-i18n="edu2-bullet2">Generación de escenarios interactivos, así como la optimización de los mismos.</li>
+                                    <li data-i18n="edu2-bullet3">Desarrollo de aplicaciones interactivas y entornos webs dinámicos.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="education-date" data-i18n="edu3-date">Septiembre 2019 - Febrero 2021</span>
+                                <h4 class="education-title" data-i18n="edu3-title">Grado Superior en Administración de Sistemas Informáticos y Redes (A.S.I.R.)</h4>
+                                <span class="education-institution">C.I.F.P. Villa de Agüimes</span>
+                                <ul class="education-bullets">
+                                    <li data-i18n="edu3-bullet1">Planificación y construcción de infraestructuras tecnológicas, redes y servidores.</li>
+                                    <li data-i18n="edu3-bullet2">Creación y desarrollo de usuarios y de sistemas operativos como Windows o Linux.</li>
+                                    <li data-i18n="edu3-bullet3">Gestión de Base de Datos relacionales, con técnicas para proteger la información.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Soft Skills -->
+                <div class="cv-education-column">
+                    <div class="cv-block-header">
+                        <h3>Soft Skills</h3>
+                    </div>
+                    <div class="cv-block-content soft-skills-card">
+                        <ul id="skills-list">
+                            <li data-i18n="skill-teamwork"><i class="fa-regular fa-handshake fa-fw"></i> Trabajo en equipo</li>
+                            <li data-i18n="skill-self"><i class="fa-regular fa-lightbulb fa-fw"></i> Autodidacta y resolutivo</li>
+                            <li data-i18n="skill-responsible"><i class="fa-regular fa-circle-check fa-fw"></i> Responsable y comprometido</li>
+                            <li data-i18n="skill-constancy"><i class="fa-regular fa-clock fa-fw"></i> Constancia</li>
+                            <li data-i18n="skill-organized"><i class="fa-regular fa-calendar-check fa-fw"></i> Organizado y atento</li>
+                            <li data-i18n="skill-pressure"><i class="fa-regular fa-compass fa-fw"></i> Trabajo bajo presión</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
-
+                    
+                    
         <section id="proyectos" class="fade-in-section">
             <h2 data-i18n="projects-title">MIS PROYECTOS</h2>
-            <div class="projects-grid">
-                <article class="project-card">
+                    <div class="projects-grid">
+                        <article class="project-card">
                     <img src="../images/projects/project1-image.png" alt="Captura de pantalla del Proyecto 1">
                     <h3>Mega Time</h3>
     
@@ -304,7 +398,7 @@
                 <div class="other-info">
                     <h3 data-i18n="status-hiring"></h3>
                     <ul>
-                        <li data-i18n="status-hours">Jornada completa / parcial</li>
+                        <li data-i18n="status-hours">Jornada <b>completa / parcial</b></li>
                         <li data-i18n="status-location">Remoto / Presencial (Las Palmas de Gran Canaria)</li>
                         <li data-i18n="status-travel">Disponibilidad para desplazamientos puntuales</li>
                     </ul>
@@ -320,6 +414,11 @@
     <footer>
         <p>&copy; 2026 César Castellano García | Las Palmas</p>
     </footer>
+
+    <!-- Botón flotante para subir -->
+    <!-- <button type="button" id="scroll-to-top" class="scroll-to-top" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button> -->
 
     <script src="script.js"></script>
 </body>
