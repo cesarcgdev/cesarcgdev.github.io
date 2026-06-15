@@ -1937,11 +1937,12 @@ footer p {
     }
 
     .logo p {
-        font-size: 0.7rem;
+        font-size: 0.6rem;
         margin-right: 6%;
         white-space: wrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        text-align: center;
     }
 
     .logo-bar {

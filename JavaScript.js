@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "edu3-bullet3": "Gestión de Base de Datos relacionales, con técnicas para proteger la información.",
             "exp1-title": "Diseñador y programador de Unity | Co-fundador de <i><a href='https://linktr.ee/DrilleStudio' class='extra-link' target='_blank'>Drille Studio</a></i>",
             "exp1-date": "Febrero 2025 - Presente",
-            "exp1-bullet1": "Coordiné y lideré un equipo multidisciplinar, diseñando e implementando metodologías ágiles a través de <i>Trello</i> para garantizar un flujo de trabajo eficiente, flexible y adaptado a las necesidades del proyecto.",
+            "exp1-bullet1": "Coordino y gestiono un equipo multidisciplinar, diseñando e implementando metodologías ágiles a través de <i>Trello</i> para garantizar un flujo de trabajo eficiente, flexible y adaptado a las necesidades del proyecto.",
             "exp1-bullet2": "Diseñé e implementé <b>mecánicas y sistemas complejos</b> aplicando patrones de diseño y prácticas de <b>programación limpia (Clean Code)</b> de gran eficiencia.",
             "exp1-bullet3": "Investigué y adopté nuevas <b>tecnologías emergentes</b>, asegurando la competitividad del stack técnico según las <b>demandas actuales</b> del mercado.",
             "exp1-bullet4": "Gestioné el flujo de trabajo y la integración del código mediante el <b>control de versiones con <i>Git</i></b>, garantizando la estabilidad de las ramas del proyecto.",
