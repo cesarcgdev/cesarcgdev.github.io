@@ -132,21 +132,6 @@
     scroll-margin-top: 80px;
 }
 
-/* Estilo unificado y compacto */
-.palette-select-btn {
-    background: transparent;
-    color: var(--text-color);
-    border: 1.5px solid var(--text-color);
-    padding: 0.3rem 0.5rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all var(--transition);
-    height: 36px;
-    box-sizing: border-box;
-}
-
 .lang-select-btn{
     font-size: 1.05rem;
 }
@@ -154,8 +139,8 @@
 /* Efecto hover limpio para ambos selectores */
 .lang-select-btn:hover,
 .palette-select-btn:hover {
-    background-color: var(--text-color);
-    color: var(--bg-color);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
 }
 
 
@@ -189,7 +174,7 @@ header {
     background: var(--nav-bg);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    padding: 1rem 5%;
+    padding: 0.3rem 3%;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     transition: background var(--transition);
 }
@@ -221,10 +206,10 @@ h1 {
 .controls {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     /* Espacio equilibrado entre los 3 elementos */
-    gap: 0.8rem;       
-    min-width: 260px; 
+    gap: 1.6rem;       
+    /* min-width: 260px;  */
 }
 
 #lang-select {
@@ -336,8 +321,450 @@ input:checked + .theme-slider:before {
     transform: translateX(18px);
 }
 
-/* -------------------- */
+/* --- SELECTOR DE IDIOMAS --- */
+.custom-select-container {
+    position: relative;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    user-select: none;
+    z-index: 100;
+}
 
+/* Botón principal */
+.custom-select-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: color-mix(in srgb, var(--text-color) 10%, transparent);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--transition), border-color var(--transition);
+}
+
+.custom-select-trigger:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+}
+
+/* Icono de la flecha */
+.custom-select-trigger .arrow-icon {
+    font-size: 0.75rem;
+    transition: transform var(--transition);
+}
+
+/* Rotación de la flecha cuando está abierto */
+.custom-select-container.open .arrow-icon {
+    transform: rotate(180deg);
+}
+
+/* Menú desplegable de opciones (Aspecto de la captura) */
+.custom-options-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 140px; /* Cambiado de width fijo a min-width para mayor flexibilidad */
+    width: max-content; /* Se adapta al texto de las opciones como "Español (ES)" o "Oro Real" */
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 0.4rem 0;
+    margin: 0;
+    list-style: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+
+/* Mostrar menú al añadir la clase .open con JS */
+.custom-select-container.open .custom-options-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Elementos de opciones individuales */
+.custom-option {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem;
+    color: #e0e0e0;
+    font-size: 0.88rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition);
+}
+
+/* Efecto Hover sobre las opciones */
+.custom-option:hover {
+    background-color: var(--accent-color); /* Usa el color de acento de tu paleta */
+    color: #ffffff;
+}
+
+/* Opción seleccionada actualmente */
+.custom-option.selected {
+    color: var(--accent-color);
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.custom-option.selected:hover {
+    color: #ffffff;
+    background-color: var(--accent-color);
+}
+
+
+
+/* Sección de Perfil Rejilla Elegant (Sobre Mí & Hero) */
+/* Distribución de las secciones */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 3.5rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+/* Carta de presentación breve */
+.profile-sidebar {
+    background: color-mix(in srgb, var(--card-bg) 60%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 2.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 100px;
+    transition: background-color var(--transition), border-color var(--transition);
+}
+
+.profile-avatar-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin-bottom: 1.8rem;
+}
+
+/* Foto de perfil */
+.profile-avatar {
+    width: 80%;
+    height: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color var(--transition);
+}
+
+.profile-avatar-wrapper:hover .profile-avatar {
+    transform: scale(1.04);
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--accent-color) 30%, transparent);
+}
+
+.status-badge {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 4px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    white-space: nowrap;
+    color: var(--text-color);
+    transition: background-color var(--transition), border-color var(--transition);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #10B981; /* Esmeralda */
+    position: relative;
+    display: inline-block;
+}
+
+.status-dot::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: status-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(2.4);
+        opacity: 0;
+    }
+}
+
+/* Estilos de nombre y descripción */
+.profile-name {
+    font-size: 1.8rem;
+    font-weight: 200;
+    line-height: 1.25;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+}
+
+.profile-name b {
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.profile-subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: color-mix(in srgb, var(--text-color) 65%, transparent);
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    max-width: 260px;
+}
+
+/* Links a redes */
+.profile-socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.profile-socials a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    background: transparent;
+    text-decoration: none;
+}
+
+.profile-socials a:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px color-mix(in srgb, var(--accent-color) 25%, transparent);
+}
+
+/* Texto y carta "Sobre mí" */
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.profile-bio-card {
+    background: color-mix(in srgb, var(--card-bg) 60%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: background-color var(--transition), border-color var(--transition);
+}
+
+.section-title-left {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent-color);
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.profile-bio-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    text-align: justify;
+    color: var(--text-color);
+}
+
+/* Lista de Metadatos en Barra Lateral */
+.profile-meta-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 2rem 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+}
+
+.profile-meta-list li {
+    display: grid;
+    grid-template-columns: 24px 90px 1fr;
+    gap: 0.5rem;
+    align-items: start;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+.profile-meta-list li i {
+    color: var(--accent-color);
+    font-size: 1.05rem;
+    width: 20px;
+    text-align: center;
+    margin-top: 2px;
+}
+
+/* Remarco de los metadatos */
+.meta-label {
+    font-weight: 600;
+    color: color-mix(in srgb, var(--text-color) 70%, transparent);
+}
+
+.meta-value {
+    font-weight: 300;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Descarga de CVs */
+.btn-cv-download {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    background: var(--accent-color);
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 6px 20px color-mix(in srgb, var(--accent-color) 25%, transparent);
+}
+
+.btn-cv-download:hover {
+    background: var(--cv-hover-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px color-mix(in srgb, var(--accent-color) 35%, transparent);
+}
+
+.btn-cv-download:active {
+    background: var(--cv-active-color);
+    transform: translateY(-1px);
+}
+
+/* Tarjeta de Disponibilidad Hero y Botón Scroll to Top */
+
+.hiring-status-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: color-mix(in srgb, var(--card-bg) 60%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 1.2rem 2rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+    gap: 1.5rem;
+}
+
+.hiring-status-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 12px 35px color-mix(in srgb, var(--accent-color) 8%, transparent);
+    transform: translateY(-2px);
+}
+
+.hiring-status-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.hiring-status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--animation-job-color);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.hiring-status-dot::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: status-pulse 1.8s ease-in-out infinite;
+}
+
+.hiring-status-text {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.btn-hiring-schedule {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 12px;
+    background: var(--accent-color);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 15px color-mix(in srgb, var(--accent-color) 20%, transparent);
+    white-space: nowrap;
+}
+
+
+
+/* ---------------------------- */
 
 .socials-icons {
     margin: 2rem 0;
@@ -1422,6 +1849,296 @@ section {
     background-size: 100% 2px;
 }
 
+
+
+/* NUEVO: PROYECTOS */
+.projects-console-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr; /* Fixed sidebar, fluid details console */
+    gap: 2.5rem;
+    width: 100%;
+    align-items: start;
+}
+
+/* Columna de Navegación */
+.projects-nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+/* Botones de Navegación */
+.project-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--card-bg) 70%, transparent), color-mix(in srgb, var(--card-bg) 30%, transparent));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid color-mix(in srgb, var(--border-color) 40%, transparent);
+    padding: 1.1rem 1.4rem;
+    border-radius: 20px; /* More rounded MD3 corner */
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    color: var(--text-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+}
+
+.project-nav-btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 4px;
+    height: 45%;
+    background: var(--accent-color);
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 0 8px var(--accent-color);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-nav-btn:hover {
+    background: color-mix(in srgb, var(--card-bg) 80%, transparent);
+    border-color: color-mix(in srgb, var(--accent-color) 30%, transparent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+}
+
+.project-nav-btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.project-nav-btn.active {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color) 10%, var(--card-bg)), color-mix(in srgb, var(--accent-color) 4%, var(--card-bg)));
+    border-color: color-mix(in srgb, var(--accent-color) 60%, transparent);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--accent-color) 12%, transparent);
+}
+
+.project-nav-btn.active::before {
+    transform: translateY(-50%) scaleY(1);
+}
+
+/* Miniaturas en los Botones */
+.nav-btn-thumb {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+    transition: transform 0.35s ease;
+}
+
+.project-nav-btn.active .nav-btn-thumb,
+.project-nav-btn:hover .nav-btn-thumb {
+    transform: scale(1.04);
+}
+
+.nav-btn-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.nav-btn-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.nav-btn-subtitle {
+    font-size: 0.8rem;
+    color: color-mix(in srgb, var(--text-color) 60%, transparent);
+    font-weight: 500;
+}
+
+/* Contenedor de Detalles del Proyecto */
+.projects-details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+/* Panel de Detalles del Proyecto (Ficha Individual) */
+.project-detail-panel {
+    display: none; /* toggled via active class */
+    background: linear-gradient(135deg, color-mix(in srgb, var(--card-bg) 70%, transparent), color-mix(in srgb, var(--card-bg) 40%, transparent));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid color-mix(in srgb, var(--border-color) 80%, transparent);
+    border-radius: 28px; /* Large rounded corners according to MD3 */
+    padding: 2.5rem;
+    align-items: start;
+    min-height: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.project-detail-panel.active {
+    display: grid;
+    grid-template-columns: 320px 1fr; /* Solid visuals column width, fluid details content */
+    gap: 2.5rem;
+    animation: fadeInUpScaleShowcase 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUpScaleShowcase {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.985);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Columnas de la Consola */
+.project-visuals-col {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.project-info-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+/* Imagen con Zoom Hover */
+.project-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    margin-bottom: 1.5rem;
+    border: 1px solid color-mix(in srgb, var(--border-color) 60%, transparent);
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.project-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.project-detail-panel:hover .project-image-wrapper img {
+    transform: scale(1.04);
+}
+
+/* Tags de Tecnologías */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.project-tag {
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: var(--text-color);
+    background: color-mix(in srgb, var(--text-color) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
+    padding: 0.3rem 0.85rem;
+    border-radius: 50px; /* Full capsule roundness */
+    text-transform: none; /* Keep natural capitalization */
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-tag:hover {
+    background: color-mix(in srgb, var(--accent-color) 8%, transparent);
+    border-color: color-mix(in srgb, var(--accent-color) 25%, transparent);
+    color: var(--accent-color);
+}
+
+/* Tipografía de Proyectos */
+.project-info-col h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.6rem;
+    color: var(--text-color);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.intro-proyect-text a {
+    position: relative;         
+    text-decoration: none;
+    color: var(--accent-color);
+    font-weight: bold;
+    display: inline-block; 
+}
+
+.project-description {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text-color);
+    opacity: 0.85;
+    margin: 0;
+}
+
+.project-description a {
+    position: relative;
+    text-decoration: none;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Botón de Acciones */
+.project-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.project-detail-panel .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    background: linear-gradient(135deg, var(--accent-color), var(--cv-hover-color));
+    color: #ffffff;
+    padding: 0.8rem 2rem;
+    border-radius: 16px; /* Match MD3 button style */
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    width: auto;
+    min-width: 220px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 20px color-mix(in srgb, var(--accent-color) 20%, transparent);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    border: none;
+}
+
+.project-detail-panel .btn:hover {
+    background: linear-gradient(135deg, var(--cv-hover-color), var(--cv-active-color));
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--accent-color) 40%, transparent);
+    color: #ffffff;
+}
+
+.project-detail-panel .btn:active {
+    background: var(--cv-active-color);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px color-mix(in srgb, var(--accent-color) 20%, transparent);
+}
+
+
+
 /* --- 5. Formulario de Contacto --- */
 form {
     display: flex;
@@ -1592,7 +2309,7 @@ input, textarea {
 
 .contact-div-info li {
     list-style-type: none;
-    margin-top: 1.2rem;
+    margin-top: 2rem;
     font-size: 1.3rem;
 }
 
@@ -1655,7 +2372,7 @@ input, textarea {
 .other-info {
     outline: 2px solid #98989874;
     width: 48%;
-    padding: 0 2rem;
+    padding: 0 2rem 2rem 2rem;
     background: var(--card-bg);
     color: var(--card-text);
     border-radius: 1.5rem;
@@ -1748,14 +2465,84 @@ input, textarea {
 /* --- 7. Footer --- */
 footer {
     background-color: var(--nav-bg);
-    padding: 1.5rem 0;
-    transition: background-color var(--transition);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 3rem 0;
+    border-top: 1px solid var(--border-color);
+    transition: background-color var(--transition), border-color var(--transition);
 }
 
-footer p {
-    text-align: center;
-    font-size: 1.2rem;
+/* Centralización de contenido */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-logo-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.footer-logo-text {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
     color: var(--text-color);
+    margin: 0;
+}
+
+.footer-logo-text b {
+    font-weight: 700;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--bg-color);
+    border: 1px solid color-mix(in srgb, var(--text-color) 8%, transparent);
+    color: var(--text-color);
+    font-size: 1.2rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+}
+
+.footer-socials a:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px color-mix(in srgb, var(--accent-color) 30%, transparent);
+}
+
+.footer-copyright {
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    color: color-mix(in srgb, var(--text-color) 50%, transparent);
+    margin: 0;
 }
 
 
@@ -1956,7 +2743,7 @@ footer p {
         display: flex;
         width: 100%;
         order: 3;
-        justify-content: space-around;
+        justify-content: space-between;
         gap: 0;
         padding: 0.4rem 0 0.2rem;
         border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -1973,42 +2760,26 @@ footer p {
         padding: 4px 2px;
         display: inline-block;
     }
-
-    /* Controles */
-    .controls {
-        min-width: unset;
-        gap: 0.5rem;
-        flex-shrink: 0;
+    
+    /* Reducir el tamaño de los selectores o botones individuales */
+    .custom-select-trigger, 
+    #theme-toggle-btn, 
+    #palette-select-btn,
+    .lang-btn {
+        gap: 0.1 !important;
+        /* Modifica el espacio interior */
+        padding: 0.4rem 0.3rem !important; 
+        font-size: 0.6rem !important;
+        height: auto;
+        /* Modifica anchos mínimos grandes */
+        min-width: unset !important;    
     }
 
-    #lang-select {
-        transform: scale(1);
-        margin-left: 0;
-        font-size: 0.9rem;
-        height: 32px;
-        padding: 0 4px;
-    }
-
-    .palette-select-btn {
-        width: 50%;
-        font-size: 0.8rem;
-        padding: 0.1rem 0.2rem;
-        height: 26px;
-    }
-
-    .switch {
-        width: 52px;
-        height: 28px;
-    }
-
-    .slider:before {
-        height: 20px;
-        width: 20px;
-        bottom: 2.5px;
-    }
-
-    input:checked + .slider:before {
-        transform: translateX(22px);
+    /* Los iconos FontAwesome se hacen más pequeños */
+    .custom-select-trigger i, 
+    #theme-toggle-btn i,
+    .lang-btn i {
+        font-size: 0.8rem !important;
     }
 
     /* ── SECCIÓN HERO / INICIO ── */
@@ -2113,13 +2884,34 @@ footer p {
         gap: 0.8rem;
     }
 
-    .btn-cv {
-        text-align: center;
-        width: 100%;
-        padding: 0.7rem 1rem;
+    /* Botones de CV */
+    .profile-actions {
+        flex-direction: column;
+        gap: 0.8rem;
     }
 
-    /* CV */
+    .btn-cv-download {
+        width: 100%;
+        text-align: center;
+        flex: none;
+        padding: 0.65rem 1.2rem;
+        font-size: 0.88rem;
+    }    
+
+    /* Cuadro "Buscando Empleo */
+    .hiring-status-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.2rem 1.5rem;
+        gap: 1rem;
+    }
+
+    .hiring-status-card:hover {
+        border-color: var(--accent-color);
+        box-shadow: 0 12px 35px color-mix(in srgb, var(--accent-color) 8%, transparent);
+        transform: translateY(-2px);
+    }
 
     /* ── SECCIÓN CV NUEVA EN MÓVIL ── */
     #cv h2 {
@@ -2253,16 +3045,45 @@ footer p {
         font-size: 1.6rem;
     }
 
-    .projects-grid {
-        flex-direction: column;
-        align-items: center;
+    .projects-console-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
-    .project-card {
-        min-width: unset;
+    .projects-nav-menu {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 0.5rem;
+    }
+
+    .project-nav-btn {
+        padding: 0.6rem 1rem;
+    }
+    
+    .nav-btn-thumb {
+        width: 35px;
+        height: 35px;
+        border-radius: 8px;
+    }
+    
+    .nav-btn-title {
+        font-size: 0.95rem;
+    }
+    
+    .nav-btn-subtitle {
+        display: none;
+    }
+
+    .project-detail-panel {
         width: 100%;
         max-width: 100%;
         margin: 6px 0;
+        padding: 1.5rem;
+    }
+
+    .project-info-col h3 {
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
     }
 
     /* CONTACTO */
@@ -2275,7 +3096,7 @@ footer p {
     .contact-div-info,
     .other-info {
         width: 100%;
-        padding: 1.2rem;
+        padding: 0.8rem 1.2rem 1.8rem 1.2rem;
         max-width: 100%;
     }
 
@@ -2290,10 +3111,10 @@ footer p {
 
     .other-info li {
         font-size: 1rem;
+        margin-left: 8%;
     }
 
     .btn-contact-div {
-        flex-direction: column;
         gap: 0.8rem;
         height: auto;
         margin-top: 1rem;

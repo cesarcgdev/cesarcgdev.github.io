@@ -9,13 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const localTranslations = {
         es: {
             "nav-home": "Inicio",
-            "nav-projects": "Portfolio",
-            "nav-cv": "Skills & CV",
+            "nav-projects": "Proyectos",
+            "nav-cv": "Mi perfil",
             "nav-contact": "Contacto",
             "forest-theme": "Bosque",
             "gold-theme": "Oro Real",
             "hero-title": "César<br>Castellano García",
-            "hero-subtitle": "Programador <b>Full Stack</b> / Diseñador y Desarrollador de Videojuegos",
+            "hero-subtitle": "Programador Full Stack / Diseñador y Desarrollador de Videojuegos",
             "about-me-title": "SOBRE MÍ",
             "hero-desc": "Experto especializado en varias arquitecturas, siendo una persona <b>autodidacta</b> para cualquier tipo de tarea y <b>flexible</b> para adaptarme a todas las metodologías de trabajo. Acostumbrado a aprender de forma rápida y eficaz nuevas tecnologías, permitiendo <b>crear un progreso real</b> dentro de cualquier proyecto.<br>Cuando hay un problema, automáticamente busco la solución. Destaco por ser <b>comunicativo</b>, creando un <b>ambiente fluido y cómodo</b> de trabajo. Mi carrera y mis proyectos respaldan mis aptitudes.",
             "propertie-title-1": "Edad",
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "edu3-bullet3": "Gestión de Base de Datos relacionales, con técnicas para proteger la información.",
             "exp1-title": "Diseñador y programador de Unity | Co-fundador de <i><a href='https://linktr.ee/DrilleStudio' class='extra-link' target='_blank'>Drille Studio</a></i>",
             "exp1-date": "Febrero 2025 - Presente",
-            "exp1-bullet1": "Coordino y gestiono un equipo multidisciplinar, diseñando e implementando metodologías ágiles a través de <i>Trello</i> para garantizar un flujo de trabajo eficiente, flexible y adaptado a las necesidades del proyecto.",
+            "exp1-bullet1": "Coordiné y lideré un <b>equipo multidisciplinar</b>, diseñando e implementando metodologías ágiles a través de <i>Trello</i> para garantizar un flujo de trabajo eficiente, flexible y adaptado a las necesidades del proyecto.",
             "exp1-bullet2": "Diseñé e implementé <b>mecánicas y sistemas complejos</b> aplicando patrones de diseño y prácticas de <b>programación limpia (Clean Code)</b> de gran eficiencia.",
             "exp1-bullet3": "Investigué y adopté nuevas <b>tecnologías emergentes</b>, asegurando la competitividad del stack técnico según las <b>demandas actuales</b> del mercado.",
             "exp1-bullet4": "Gestioné el flujo de trabajo y la integración del código mediante el <b>control de versiones con <i>Git</i></b>, garantizando la estabilidad de las ramas del proyecto.",
@@ -168,8 +168,8 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         en: {
             "nav-home": "Home",
-            "nav-projects": "Portfolio",
-            "nav-cv": "Skills & CV",
+            "nav-projects": "Projects",
+            "nav-cv": "Mi perfil",
             "nav-contact": "Contact",
             "forest-theme": "Forest",
             "gold-theme": "Real Gold",
@@ -262,7 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "label-phone": "Phone",
             "label-location": "Location",
             "socials-label": "My professional networks:",
-            "mail-text": "<i class=\"fa-regular fa-envelope fa-fw\"></i> <b>Mail:</b> ",
+            "mail-text": "<i class=\"fa-regular fa-envelope fa-fw\"></i> Mail: ",
             "phone-text": "<i class=\"fa-regular fa-comment-dots fa-fw\"></i> Phone number: ",
             "location-text": "<i class=\"fa-regular fa-compass fa-fw\"></i> Location: ",
             "socials-text": "<i class=\"fa-regular fa-share-from-square fa-fw\"></i> My professional networks: ",
@@ -366,10 +366,6 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("language", lang);
         document.documentElement.setAttribute("lang", lang);
 
-        // Sincronizar el <select> nativo del idioma
-        const langSelectEl = document.getElementById("lang-select");
-        if (langSelectEl) langSelectEl.value = lang;
-
         // Sincronizar el texto seleccionado en el custom select
         document.querySelectorAll(".custom-select-container").forEach(container => {
             const selectedOption = container.querySelector(`.custom-option[data-value="${lang}"]`);
@@ -383,7 +379,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Recalcular la traducción de la habilidad activa si existiera
         if (typeof window.updateActiveSkillTranslation === "function") {
             window.updateActiveSkillTranslation();
         }
@@ -391,6 +386,34 @@ document.addEventListener("DOMContentLoaded", () => {
         // Recalcular la traducción del simulador de Cal.com si existiera
         if (typeof window.updateCalComTranslation === "function") {
             window.updateCalComTranslation();
+        }
+
+        // LÍNEAS NUEVAS: Traducir en caliente el texto seleccionado del selector de paletas
+        const paletteContainer = document.getElementById("palette-select-container");
+        if (paletteContainer) {
+            const textSpan = paletteContainer.querySelector(".trigger-text");
+            if (textSpan) {
+                let currentPalette = textSpan.getAttribute("data-current-palette");
+                if (currentPalette) {
+                    // Limpiamos el texto por si acaso ya incluye la palabra "-theme" para evitar duplicados como "gold-theme-theme"
+                    currentPalette = currentPalette.replace("-theme", "");
+
+                    // Creamos la clave estandarizada que busca en tu diccionario
+                    const translationKey = `${currentPalette}-theme`; 
+
+                    if (translations[translationKey]) {
+                        textSpan.innerHTML = translations[translationKey];
+                    } else if (currentPalette === "original") {
+                        // Forzar el texto correcto para el tema original según el idioma actual
+                        textSpan.innerHTML = (lang === "es") ? "Original" : "Original";
+                    } else {
+                        // Plan de rescate: si no encuentra la clave armada, intenta buscar la palabra limpia directamente
+                        if (translations[currentPalette]) {
+                            textSpan.innerHTML = translations[currentPalette];
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -406,81 +429,22 @@ document.addEventListener("DOMContentLoaded", () => {
     // Inicializar con el idioma guardado o por defecto 'es'
     const savedLang = localStorage.getItem("language") || "es";
     changeLanguage(savedLang);
-
-    // AL FINAL DE ESTE EVENTO, AÑADE LA LLAMADA:
-    initTimelineAnimation();
 });
-
-
-
-// Bloque que gestiona el funcionamiento de las cartas en la sección 'proyectos'
-document.addEventListener("DOMContentLoaded", () => {
-    const readMoreButtons = document.querySelectorAll(".btn-read-more");
-
-    readMoreButtons.forEach(button => {
-        button.addEventListener("click", function() {
-            const card = this.closest(".project-card");
-            const extraText = card.querySelector(".proyect-text-extra");
-            const dots = card.querySelector(".dots");
-
-            if (extraText) {
-                const isExpanding = !extraText.classList.contains("expanded");
-                
-                if (isExpanding) {
-                    // Ocultamos los puntos visualmente
-                    if (dots) dots.style.display = "none";
-                    
-                    // Activamos el texto en el flujo inline
-                    extraText.style.display = "inline";
-                    
-                    // Mini-retraso para activar el Fade In difuminado suave
-                    setTimeout(() => {
-                        extraText.classList.add("expanded");
-                    }, 20);
-                    
-                    // Cambiamos la clave del atributo al estado "less" (Leer menos)
-                    const lessKey = this.getAttribute("data-text-less") || "less";
-                    this.setAttribute("data-i18n", lessKey);
-                } else {
-                    // Quitamos animación visual
-                    extraText.classList.remove("expanded");
-                    
-                    // Cambiamos la clave del atributo de vuelta al estado "more"
-                    const moreKey = this.getAttribute("data-text-more") || "more";
-                    this.setAttribute("data-i18n", moreKey);
-
-                    // Esperamos los 400ms de la transición para colapsar el espacio
-                    setTimeout(() => {
-                        extraText.style.display = "none";
-                        if (dots) dots.style.display = "inline";
-                    }, 40);
-                }
-
-                // Si la función de traducción global está lista, forzamos la actualización del botón
-                if (typeof updateTranslationsGlobal === "function") {
-                    updateTranslationsGlobal();
-                }
-            }
-        });
-    });
-});
-
 
 
 // Administra la edad actual que tengo
 document.addEventListener("DOMContentLoaded", () => {
-    // 3 porque los meses van de 0 a 11
-    const birthDate = new Date(2001, 3, 27);
+    const birthDate = new Date(2001, 3, 27); // 27 de abril de 2001
     const today = new Date();
-    
+
     let age = today.getFullYear() - birthDate.getFullYear();
     const monthDifference = today.getMonth() - birthDate.getMonth();
     const dayDifference = today.getDate() - birthDate.getDate();
-    
+
     if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
         age--;
     }
-    
+
     // Inyectamos el número automáticamente en el HTML
     const ageSpan = document.getElementById("age");
     if (ageSpan) {
@@ -488,29 +452,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
-
 // Implementa el modo claro u oscuro según preferencia
 document.addEventListener("DOMContentLoaded", () => {
     const themeToggle = document.getElementById("theme-toggle");
     if (!themeToggle) return;
-    
-    // Comprobar si el usuario ya tenía una preferencia guardada
+
+    // 1. Comprobar si el usuario ya tenía una preferencia guardada, por defecto "light"
     const savedTheme = localStorage.getItem("theme") || "light";
     document.documentElement.setAttribute("data-theme", savedTheme);
- 
-    // Si el tema es dark, el checkbox debe estar marcado
-    // Si el tema es light, debe estar desmarcado
+
+    // 2. Sincronización del estado del switch
     themeToggle.checked = (savedTheme === "dark");
 
-    // Escuchar el clic en el botón de claro/oscuro
-    themeToggle.addEventListener("click", () => {
-        const currentTheme = document.documentElement.getAttribute("data-theme");
-        let newTheme = "light";
-
-        if (currentTheme === "light") {
-            newTheme = "dark";
-        }
+    // 3. Escuchar el cambio en el botón de claro/oscuro
+    themeToggle.addEventListener("change", (e) => {
+        const isSelected = e.target.checked;
+        const newTheme = isSelected ? "dark" : "light";
 
         // Aplicamos el nuevo tema al HTML
         document.documentElement.setAttribute("data-theme", newTheme);
@@ -519,47 +476,119 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
-
-// Administra el sistema de cambio de Paleta de Colores Dinámico
+// Controlador de Selectores Personalizados y Cambio de Paleta
 document.addEventListener("DOMContentLoaded", () => {
-    const paletteSelect = document.getElementById("palette-select");
-    if (!paletteSelect) return;
+    const customSelects = document.querySelectorAll(".custom-select-container");
 
-    // Cargar la paleta guardada del localStorage
+    // Cargar e inicializar estados guardados
     const savedPalette = localStorage.getItem("palette") || "original";
     document.documentElement.setAttribute("data-palette", savedPalette);
-    paletteSelect.value = savedPalette;
 
-    // Escuchar los cambios en el menú desplegable
-    paletteSelect.addEventListener("change", (e) => {
-        const selectedPalette = e.target.value;
-        
-        // Aplicamos el atributo data-palette a la raíz del HTML
-        document.documentElement.setAttribute("data-palette", selectedPalette);
-        
-        // Guardamos la configuración en la memoria del navegador
-        localStorage.setItem("palette", selectedPalette);
+    const savedLang = localStorage.getItem("language") || "es";
+
+    customSelects.forEach(container => {
+        const trigger = container.querySelector(".custom-select-trigger");
+        const menu = container.querySelector(".custom-options-menu");
+        const options = container.querySelectorAll(".custom-option");
+        const textSpan = trigger.querySelector(".trigger-text");
+
+        // 1. Inicializar la opción activa según guardada
+        if (container.id === "palette-select-container") {
+            const activeOption = container.querySelector(`.custom-option[data-value="${savedPalette}"]`);
+            if (activeOption) {
+                options.forEach(opt => opt.classList.remove("selected"));
+                activeOption.classList.add("selected");
+                textSpan.innerHTML = activeOption.innerHTML;
+                // LÍNEA NUEVA: Guardamos el valor inicial de la paleta en el contenedor de texto
+                textSpan.setAttribute("data-current-palette", savedPalette);
+            }
+        } else if (container.id === "lang-select-container") {
+            const activeOption = container.querySelector(`.custom-option[data-value="${savedLang}"]`);
+            if (activeOption) {
+                options.forEach(opt => opt.classList.remove("selected"));
+                activeOption.classList.add("selected");
+                textSpan.innerHTML = activeOption.innerHTML;
+            }
+        }
+
+        // 2. Abrir/Cerrar menú al hacer clic en el trigger
+        trigger.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = container.classList.contains("open");
+
+            // Cerrar todos los demás custom selects
+            document.querySelectorAll(".custom-select-container").forEach(c => {
+                if (c !== container) c.classList.remove("open");
+            });
+
+            if (isOpen) {
+                container.classList.remove("open");
+                trigger.setAttribute("aria-expanded", "false");
+            } else {
+                container.classList.add("open");
+                trigger.setAttribute("aria-expanded", "true");
+            }
+        });
+
+        // 3. Manejar selección de opciones
+        options.forEach(option => {
+            option.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const value = option.getAttribute("data-value");
+
+                // Actualizar selección
+                options.forEach(opt => opt.classList.remove("selected"));
+                option.classList.add("selected");
+
+                // Actualizar texto en el disparador (trigger)
+                textSpan.innerHTML = option.innerHTML;
+
+                // Cerrar menú
+                container.classList.remove("open");
+                trigger.setAttribute("aria-expanded", "false");
+
+                // Aplicar lógica según el selector
+                if (container.id === "palette-select-container") {
+                    document.documentElement.setAttribute("data-palette", value);
+                    localStorage.setItem("palette", value);
+                    // Actualizamos el atributo con el nuevo tema seleccionado
+                    textSpan.setAttribute("data-current-palette", value);
+                } else if (container.id === "lang-select-container") {
+                    if (typeof window.changeLanguageGlobal === "function") {
+                        window.changeLanguageGlobal(value);
+                    }
+                }
+            });
+        });
+    });
+
+    // Cerrar todos los selectores al hacer clic en cualquier lugar fuera de ellos
+    document.addEventListener("click", () => {
+        document.querySelectorAll(".custom-select-container").forEach(container => {
+            container.classList.remove("open");
+            const trigger = container.querySelector(".custom-select-trigger");
+            if (trigger) trigger.setAttribute("aria-expanded", "false");
+        });
     });
 });
 
-
-
-// Lógica para la animación de aparición al hacer Scroll
+// --- Lógica para la animación de aparición al hacer Scroll ---
 function initScrollAnimations() {
     const sections = document.querySelectorAll('.fade-in-section');
 
     const options = {
-        root: null,
-        rootMargin: '0px 0px -80px 0px', 
-        threshold: 0
+        root: null, // El viewport del navegador
+        // '0px 0px -80px 0px' crea una línea virtual 80px por encima del fondo de la pantalla.
+        // En cuanto el borde superior de CUALQUIER sección toca esa línea, se dispara.
+        rootMargin: '0px 0px -80px 0px',
+        threshold: 0 // Activación inmediata al cruzar el margen
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target); 
+                observer.unobserve(entry.target);
             }
         });
     }, options);
@@ -569,13 +598,13 @@ function initScrollAnimations() {
     });
 }
 
-
-
+// Asegúrate de llamar a la función dentro de tu inicializador nativo
 document.addEventListener('DOMContentLoaded', () => {
+    // … tus otras funciones (getAge, temas, idiomas, etc.) …
+
     // Inicializar animaciones de scroll
     initScrollAnimations();
 });
-
 
 // Controlador de pestañas de experiencia (CV Tabs)
 document.addEventListener("DOMContentLoaded", () => {
@@ -587,7 +616,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateIndicator(activeBtn) {
         if (!indicator) return;
-        
+
         if (window.innerWidth <= 900) {
             indicator.style.top = "auto";
             indicator.style.bottom = "0";
@@ -638,8 +667,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (currentActive) updateIndicator(currentActive);
     });
 });
-
-
 
 // Controlador interactivo de habilidades (Skills Details Dashboard)
 document.addEventListener("DOMContentLoaded", () => {
@@ -697,9 +724,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function showSkillDetails(skillId) {
         if (!skillId || !skillLevels.hasOwnProperty(skillId)) return;
-        
+
         activeSkill = skillId;
-        
+
         // Obtener textos traducidos
         const trans = window.currentTranslations || {};
         const skillName = trans[`skill-name-${skillId}`] || skillId.toUpperCase();
@@ -730,7 +757,7 @@ document.addEventListener("DOMContentLoaded", () => {
             content.offsetHeight; /* trigger reflow */
             content.style.animation = null;
         }
-        
+
         // Añadir clase indicando que hay una habilidad activa
         if (iconsDiv) iconsDiv.classList.add("has-active-skill");
     }
@@ -743,7 +770,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (content) content.style.display = "none";
             if (placeholder) placeholder.style.display = "flex";
             if (iconsDiv) iconsDiv.classList.remove("has-active-skill");
-            
+
             // Limpiar color de la habilidad
             if (panel) {
                 panel.style.removeProperty("--skill-color");
@@ -775,7 +802,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Click / Pin
         btn.addEventListener("click", (e) => {
             e.stopPropagation();
-            
+
             if (pinnedSkill === skillId) {
                 // Des-fijar si ya estaba fijado
                 pinnedSkill = null;
@@ -784,7 +811,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 // Limpiar pinned anterior
                 skillBtns.forEach(b => b.classList.remove("pinned"));
-                
+
                 // Fijar el nuevo
                 pinnedSkill = skillId;
                 btn.classList.add("pinned");
@@ -802,8 +829,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
-
 
 // Animación de aparición escalonada (Staggered Reveal) para el Timeline de Formación
 function initTimelineAnimation() {
@@ -836,3 +861,45 @@ function initTimelineAnimation() {
 
     observer.observe(timeline);
 }
+
+// Controlador de la Consola de Proyectos Interactiva
+function initProjectsConsole() {
+    const navButtons = document.querySelectorAll(".project-nav-btn");
+    const detailPanels = document.querySelectorAll(".project-detail-panel");
+
+    if (navButtons.length === 0) return;
+
+    navButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const targetId = btn.getAttribute("data-project-target");
+            const targetPanel = document.getElementById(targetId);
+
+            if (!targetPanel) return;
+
+            // 1. Actualizar estado del botón de navegación
+            navButtons.forEach(b => {
+                b.classList.remove("active");
+                b.setAttribute("aria-selected", "false");
+            });
+            btn.classList.add("active");
+            btn.setAttribute("aria-selected", "true");
+
+            // 2. Alternar paneles de detalles
+            detailPanels.forEach(panel => {
+                panel.classList.remove("active");
+                panel.style.display = "none";
+            });
+
+            targetPanel.classList.add("active");
+            targetPanel.style.display = ""; // Deja que el CSS determine el display (grid)
+            // Forzar reflow
+            targetPanel.offsetHeight;
+        });
+    });
+}
+
+// Inicializar animaciones al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    initTimelineAnimation();
+    initProjectsConsole();
+});

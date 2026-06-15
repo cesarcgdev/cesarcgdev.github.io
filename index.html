@@ -7,7 +7,6 @@
     <link rel="icon" href="../images/cesar_Logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,18 +19,32 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#inicio" data-i18n="nav-home">Inicio</a></li>
-                <li><a href="#cv" data-i18n="nav-cv">Perfil profesional</a></li>
+                <li><a href="#cv" data-i18n="nav-cv">Mi perfil</a></li>
                 <li><a href="#proyectos" data-i18n="nav-projects">Proyectos</a></li>
                 <li><a href="#contacto" data-i18n="nav-contact">Contacto</a></li>
             </ul>
             <div class="controls">
                 <div class="controls">
-                    <select id="palette-select" class="palette-select-btn" aria-label="Cambiar estilo visual">
-                        <option value="original">Original</option>
-                        <option value="cyber">Cyber</option>
-                        <option value="forest" data-i18n="forest-theme">🌿 Bosque</option>
-                        <option value="royal" data-i18n="gold-theme">👑 Oro Real</option>
-                    </select>
+                    <div class="custom-select-container" id="palette-select-container">
+                        <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Cambiar estilo visual">
+                            <span class="trigger-text">Original</span>
+                            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                        </button>
+                        <ul class="custom-options-menu" role="listbox">
+                            <li class="custom-option selected" data-value="original" role="option">
+                                <span>Original</span>
+                            </li>
+                            <li class="custom-option" data-value="cyber" role="option">
+                                <span>Cyber</span>
+                            </li>
+                            <li class="custom-option" data-value="forest" data-i18n="forest-theme" role="option">
+                                <span>Bosque</span>
+                            </li>
+                            <li class="custom-option" data-value="royal" data-i18n="gold-theme" role="option">
+                                <span>Oro Real</span>
+                            </li>
+                        </ul>
+                    </div>
 
                     <div class="theme-switch-wrapper">
                         <i class="fa-regular fa-sun font-switch-icon"></i>
@@ -42,10 +55,20 @@
                         <i class="fa-regular fa-moon font-switch-icon"></i>
                     </div>
 
-                    <select id="lang-select" class="lang-select-btn" onchange="window.changeLanguageGlobal(this.value)" aria-label="Cambiar idioma">
-                        <option value="es">ES</option>
-                        <option value="en">EN</option>
-                    </select>
+                    <div class="custom-select-container" id="lang-select-container">
+                        <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                            <span class="trigger-text">ES</span>
+                            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                        </button>
+                        <ul class="custom-options-menu" role="listbox">
+                            <li class="custom-option selected" data-value="es" role="option">
+                                <span>ES</span>
+                            </li>
+                            <li class="custom-option" data-value="en" role="option">
+                                <span>EN</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -53,65 +76,89 @@
 
     <main>
         <section id="inicio" class="hero fade-in-section">
-            <div class="main-intro">
-                <div class="intro-name-div">
-                    <h1 data-i18n="hero-title"><b>César</b><br>Castellano García</h1>
-                    <p data-i18n="hero-subtitle">Programador Full Stacks / Diseñador y Desarrollador de Videojuegos</p>
-                    <div class="socials-icons">
-                        <a href="https://www.linkedin.com/in/césar-castellano-65665a2a8/" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/link.png" alt="Linkedin"></a>
-                        <a href="https://github.com/cesarcgdev" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/github.png" alt="GitHub"></a>
-                        <a href="https://youngmute.itch.io/" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/itchio.png" alt="itchio" class="itchio-icon correct-size"></a>
+            <div class="profile-grid">
+                <!-- Columna Izquierda: Tarjeta Lateral Visual -->
+                <div class="profile-sidebar">
+                    <div class="profile-avatar-wrapper">
+                        <img src="images/intro/foto-normal.jpg" alt="César Castellano García" class="profile-avatar" width="180" height="180">
+
+                    </div>
+                    <h1 class="profile-name" data-i18n="hero-title"><b>César</b><br>Castellano García</h1>
+                    <p class="profile-subtitle" data-i18n="hero-subtitle">Programador Full Stack / Diseñador y Desarrollador de Videojuegos</p>
+                    
+                    <ul class="profile-meta-list">
+                        <li>
+                            <i class="fa-regular fa-calendar-days"></i>
+                            <span class="meta-label"><span data-i18n="propertie-title-1">Edad</span>:</span>
+                            <span class="meta-value">
+                                <span id="age"></span> <span data-i18n="propertie-1">años</span>
+                            </span>
+                        </li>
+                        <li>
+                            <i class="fa-regular fa-map"></i>
+                            <span class="meta-label"><span data-i18n="propertie-title-2">Ubicación</span>:</span>
+                            <span class="meta-value">Las Palmas</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-language"></i>
+                            <span class="meta-label"><span data-i18n="propertie-title-3">Idiomas</span>:</span>
+                            <span class="meta-value">
+                                <span data-i18n="propertie-3a">Español nativo</span>, <span data-i18n="propertie-3b">Inglés B1</span>
+                            </span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span class="meta-label"><span data-i18n="propertie-title-4">Otros</span>:</span>
+                            <span class="meta-value" data-i18n="propertie-4a">Carnet de conducir B</span>
+                        </li>
+                    </ul>
+
+                    <div class="profile-socials">
+                        <a href="https://www.linkedin.com/in/césar-castellano-65665a2a8/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/cesarcgdev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://youngmute.itch.io/" target="_blank" rel="noopener noreferrer" aria-label="Itch.io">
+                            <i class="fa-brands fa-itch-io"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="intro-img-div">
-                    <img src="../images/intro/foto-normal.jpg" alt="imagen-intro" class="img-intro">
-                </div>
-                
-            </div>
-            <div class="description-intro">
-                <h2 data-i18n="about-me-title">SOBRE MÍ</h2>
-                <div class="about-me-div">
-                    <div class="text-me-div">
-                        <p class="text-intro" data-i18n="hero-desc">Experto especializado en varias arquitecturas, siendo una persona <b>autodidacta</b> para cualquier tipo de tarea y <b>flexible</b> para adaptarme a todas las metodologías de trabajo. Acostumbrado a aprender de forma rápida y eficaz nuevas tecnologías, permitiendo <b>crear un progreso real</b> dentro de cualquier proyecto.<br>
-                        Cuando hay un problema, automáticamente busco la solución. Destaco por ser <b>comunicativo</b>, creando un
-                        <b>ambiente fluido y cómodo</b> de trabajo. Mi carrera y mis proyectos respaldan mis aptitudes.</p> 
+
+                <!-- Columna Derecha: Contenido de la Biografía y Acciones -->
+                <div class="profile-content">
+                    <div class="profile-bio-card">
+                        <h2 class="section-title-left" data-i18n="about-me-title">SOBRE MÍ</h2>
+                        <p class="profile-bio-text" data-i18n="hero-desc">
+                            Experto especializado en varias arquitecturas, siendo una persona <b>autodidacta</b> para cualquier tipo de tarea y <b>flexible</b> para adaptarme a todas las metodologías de trabajo. Acostumbrado a aprender de forma rápida y eficaz nuevas tecnologías, permitiendo <b>crear un progreso real</b> dentro de cualquier proyecto.<br>
+                            Cuando hay un problema, automáticamente busco la solución. Destaco por ser <b>comunicativo</b>, creando un
+                            <b>ambiente fluido y cómodo</b> de trabajo. Mi carrera y mis proyectos respaldan mis aptitudes.
+                        </p>
                     </div>
                     
-                    <div class="personality-card">
-                        <div class="personality-grid">
-                            <div class="info-item">
-                                <span class="info-label" data-i18n="propertie-title-1">Edad:</span>
-                                <div class="info-value">
-                                    <span id="age"></span> <span data-i18n="propertie-1">años</span>
-                                </div>
-                            </div>
-
-                            <div class="info-item">
-                                <span class="info-label" data-i18n="propertie-title-2">Ubicación:</span>
-                                <span class="info-value">Las Palmas</span>
-                            </div>
-
-                            <div class="info-item">
-                                <span class="info-label" data-i18n="propertie-title-3">Idiomas:</span>
-                                <span class="info-value">
-                                    <span data-i18n="propertie-3a">Español nativo</span><br><span data-i18n="propertie-3b">Inglés B1</span>
-                                </span>
-                            </div>
-
-                            <div class="info-item">
-                                <span class="info-label" data-i18n="propertie-title-4">Otros</span>
-                                <span class="info-value" data-i18n="propertie-4a">Carnet de conducir B</span>
-                            </div>
+                    <div class="profile-actions">
+                        <a href="files/César-FullStacks-CV.pdf" download="CV_FullStack_CesarCaste" class="btn-cv-download" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-regular fa-file-pdf"></i> CV - FullStack
+                        </a>
+                        <a href="files/César-GameDev-CV.pdf" download="CV_GameDev_CesarCaste" class="btn-cv-download" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-regular fa-file-pdf"></i> CV - GameDev
+                        </a>
+                    </div>
+                    
+                    <!-- Tarjeta horizontal: Actualmente buscando empleo -->
+                    <div class="hiring-status-card">
+                        <div class="hiring-status-info">
+                            <span class="hiring-status-dot"></span>
+                            <span class="hiring-status-text" data-i18n="hiring-status-text">Actualmente buscando empleo</span>
                         </div>
-
-                        <div class="cv-actions">
-                            <a href="files/César-FullStacks-CV.pdf" download="CV_FullStack_CesarCaste" class="btn-cv" target="_blank" rel="noopener noreferrer">CV - FullStack</a>
-                            <a href="files/César-GameDev-CV.pdf" download="CV_GameDev_CesarCaste" class="btn-cv" target="_blank" rel="noopener noreferrer">CV - GameDev</a>
-                        </div>
+                        <a href="#contacto" class="btn-hiring-schedule">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span data-i18n="hiring-btn-text">Contacta conmigo</span>
+                        </a>
                     </div>
                 </div>
             </div>
-            
         </section>
 
         
@@ -331,72 +378,139 @@
             </div>
         </section>
                     
-                    
+        <!-- PROYECTOS -->         
         <section id="proyectos" class="fade-in-section">
             <h2 data-i18n="projects-title">MIS PROYECTOS</h2>
-                    <div class="projects-grid">
-                        <article class="project-card">
-                    <img src="../images/projects/project1-image.png" alt="Captura de pantalla del Proyecto 1">
-                    <h3>Mega Time</h3>
-    
-                    <p class="intro-proyect-text">
-                    <span data-i18n="p1-desc-intro">Shooter de plataformas 2.5D desarrollado en Unity donde ejercí como líder técnico en mi equipo <i><a href="https://linktr.ee/DrilleStudio" class="extra-link"  target="_blank">Drille Studio.</i></a></span><span class="dots">...</span><span class="proyect-text-extra" data-i18n="p1-desc-extra"> Diseñé la metodología de trabajo orientada a objetivos e integré los flujos de los distintos departamentos, asegurando una entrega exitosa y optimizando la productividad general.<br>Asimismo, diseñé y desarrollé la arquitectura técnica global, incluyendo sistemas dinámicos de apuntado, mecánicas de obstáculos e inteligencia artificial avanzada para enemigos y jefes finales. El proyecto concluyó con una fase intensiva de depuración que elevó drásticamente el rendimiento del 
-                    </p>
-                
-                    <div class="read-more-btnDiv">
-                    <button class="btn-read-more" data-i18n="more" data-text-more="more" data-text-less="less">Leer más...</button>
-                    </div>
-                    
-                    <div class="center-button"><a href="https://www.youtube.com/watch?v=GvyTGQh33sA" target="_blank" class="btn" data-i18n="trailer-text">Tráiler</a></div>
-                </article>
-                <article class="project-card">
-                    <img src="../images/projects/art-rescue.png" alt="Captura de pantalla del Proyecto 1">
-                    <h3>Art Rescue</h3>
-    
-                    <p class="intro-proyect-text">
-                    <span data-i18n="p2-desc-intro">Videojuego de puzzles 3D programado en C# y desarrollado por un equipo multidisciplinar de 8 profesionales</span><span class="dots">...</span><span class="proyect-text-extra" data-i18n="p2-desc-extra">. El proyecto demostró un alto nivel competitivo, logrando posicionarse con éxito entre los 8 videojuegos más destacados de la <a href="https://itch.io/jam/cultura-abierta-6-edicin" class="extra-link" target="_blank">VI Game Jam Cultura Abierta.</a><br>Mi rol se centró en la ingeniería de software, desarrollando el sistema de físicas del personaje, la interacción lógica con el entorno y una sala de exposición dinámica con recompensas desbloqueables. Todo el código base fue refactorizado para garantizar una experiencia fluida y optimizada.</span>
-                    </p>
-                    
-                    <div class="read-more-btnDiv">
-                    <button class="btn-read-more" data-i18n="more" data-text-more="more" data-text-less="less">Leer más...</button>
-                    </div>
-                    
-                    <div class="center-button"><a href="https://quinowl.itch.io/art-rescue" target="_blank" class="btn" data-i18n="official-page">Página oficial</a></div>
-                </article>
-                <article class="project-card">
-                    <img src="../images/projects/Ghostly-Star.png" alt="Captura de pantalla del Proyecto 1">
-                    <h3>Ghostly-Star</h3>
-    
-                    <p class="intro-proyect-text">
-                    <span data-i18n="p3-desc-intro">Twin Stick Shooter 3D de supervivencia por oleadas desarrollado íntegramente de forma autodidacta.</span><span class="dots">...</span><span class="proyect-text-extra" data-i18n="p3-desc-extra"> Este proyecto técnico individual me permitió gestionar de manera autónoma todo el ciclo de vida del software, desde la conceptualización de las mecánicas core hasta la dirección de arte y el despliegue del juego.<br>Durante el desarrollo, implementé sistemas avanzados de persistencia de datos orientados a logros y un árbol de habilidades con tienda integrada. El resultado es una experiencia audiovisual interactiva con mecánicas pulidas que consolidó mis competencias en la arquitectura de sistemas en Unity.</span>
-                    </p>
-                    
-                    <div class="read-more-btnDiv">
-                    <button class="btn-read-more" data-i18n="more" data-text-more="more" data-text-less="less">Leer más...</button>
-                    </div>
-                    
-                    <div class="center-button"><a href="https://youngmute.itch.io/ghostly-star" target="_blank" class="btn" data-i18n="official-page">Página oficial</a></div>
-                </article>
+            <div class="projects-console-layout">
+                <!-- Menú de navegación de proyectos (Columna Izquierda) -->
+                <div class="projects-nav-menu" role="tablist" aria-label="Seleccionar proyecto">
+                    <button type="button" class="project-nav-btn active" data-project-target="project-panel-1" role="tab" aria-selected="true" aria-controls="project-panel-1">
+                        <img src="images/projects/project1-image.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
+                        <div class="nav-btn-info">
+                            <span class="nav-btn-title">Mega Time</span>
+                            <span class="nav-btn-subtitle" data-i18n="p1-badge">Líder Técnico</span>
+                        </div>
+                    </button>
+                    <button type="button" class="project-nav-btn" data-project-target="project-panel-2" role="tab" aria-selected="false" aria-controls="project-panel-2">
+                        <img src="images/projects/art-rescue.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
+                        <div class="nav-btn-info">
+                            <span class="nav-btn-title">Art Rescue</span>
+                            <span class="nav-btn-subtitle" data-i18n="p2-badge">Top 8 Finalista</span>
+                        </div>
+                    </button>
+                    <button type="button" class="project-nav-btn" data-project-target="project-panel-3" role="tab" aria-selected="false" aria-controls="project-panel-3">
+                        <img src="images/projects/Ghostly-Star.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
+                        <div class="nav-btn-info">
+                            <span class="nav-btn-title">Ghostly-Star</span>
+                            <span class="nav-btn-subtitle" data-i18n="p3-badge">Desarrollo Individual</span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Contenedor de detalles del proyecto activo (Columna Derecha) -->
+                <div class="projects-details-container">
+                    <!-- Detalle Proyecto 1 -->
+                    <article class="project-detail-panel active" id="project-panel-1" role="tabpanel" aria-labelledby="project-panel-1">
+                        <div class="project-visuals-col">
+                            <div class="project-image-wrapper">
+                                <img src="images/projects/project1-image.png" alt="Captura de pantalla de Mega Time" width="960" height="540">
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://www.youtube.com/watch?v=GvyTGQh33sA" target="_blank" class="btn">
+                                    <i class="fa-brands fa-youtube fa-fw"></i>
+                                    <span data-i18n="trailer-text">Tráiler</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info-col">
+                            <h3>Mega Time</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">Unity</span>
+                                <span class="project-tag">C#</span>
+                                <span class="project-tag" data-i18n="p1-tag3">Metodología Ágil</span>
+                            </div>
+                            <p class="project-description">
+                                <span data-i18n="p1-desc-intro">Shooter de plataformas 2.5D desarrollado en Unity donde ejercí como líder técnico en mi equipo <i><a href="https://linktr.ee/DrilleStudio" class="extra-link" target="_blank">Drille Studio</a>.</i></span> <span data-i18n="p1-desc-extra">Diseñé la metodología de trabajo orientada a objetivos e integré los flujos de los distintos departamentos, asegurando una entrega exitosa y optimizando la productividad general.<br>Asimismo, diseñé y desarrollé la arquitectura técnica global, incluyendo sistemas dinámicos de apuntado, mecánicas de obstáculos e inteligencia artificial avanzada para enemigos y jefes finales. El proyecto concluyó con una fase intensiva de depuración que elevó drásticamente el rendimiento del producto.</span>
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Detalle Proyecto 2 -->
+                    <article class="project-detail-panel" id="project-panel-2" role="tabpanel" aria-labelledby="project-panel-2" style="display: none;">
+                        <div class="project-visuals-col">
+                            <div class="project-image-wrapper">
+                                <img src="images/projects/art-rescue.png" alt="Captura de pantalla de Art Rescue" width="1920" height="1080">
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://quinowl.itch.io/art-rescue" target="_blank" class="btn">
+                                    <i class="fa-brands fa-itch-io fa-fw"></i>
+                                    <span data-i18n="official-page">Página oficial</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info-col">
+                            <h3>Art Rescue</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">Unity</span>
+                                <span class="project-tag">C#</span>
+                                <span class="project-tag" data-i18n="p2-tag2">Físicas 3D</span>
+                                <span class="project-tag" data-i18n="p2-tag3">Optimización</span>
+                            </div>
+                            <p class="project-description">
+                                <span data-i18n="p2-desc-intro">Videojuego de puzzles 3D programado en C# y desarrollado por un equipo multidisciplinar de 8 profesionales</span> <span data-i18n="p2-desc-extra">. El proyecto demostró un alto nivel competitivo, logrando posicionarse con éxito entre los 8 videojuegos más destacados de la <a href="https://itch.io/jam/cultura-abierta-6-edicin" class="extra-link" target="_blank">VI Game Jam Cultura Abierta.</a><br>Mi rol se centró en la ingeniería de software, desarrollando el sistema de físicas del personaje, la interacción lógica con el entorno y una sala de exposición dinámica con recompensas desbloqueables. Todo el código base fue refactorizado para garantizar una experiencia fluida y optimizada.</span>
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Detalle Proyecto 3 -->
+                    <article class="project-detail-panel" id="project-panel-3" role="tabpanel" aria-labelledby="project-panel-3" style="display: none;">
+                        <div class="project-visuals-col">
+                            <div class="project-image-wrapper">
+                                <img src="images/projects/Ghostly-Star.png" alt="Captura de pantalla de Ghostly-Star" width="960" height="540">
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://youngmute.itch.io/ghostly-star" target="_blank" class="btn">
+                                    <i class="fa-brands fa-itch-io fa-fw"></i>
+                                    <span data-i18n="official-page">Página oficial</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info-col">
+                            <h3>Ghostly-Star</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">Unity</span>
+                                <span class="project-tag">C#</span>
+                                <span class="project-tag" data-i18n="p3-tag2">Persistencia</span>
+                                <span class="project-tag" data-i18n="p3-tag3">Arquitectura</span>
+                            </div>
+                            <p class="project-description">
+                                <span data-i18n="p3-desc-intro">Twin Stick Shooter 3D de supervivencia por oleadas desarrollado íntegramente de forma autodidacta.</span> <span data-i18n="p3-desc-extra">Este proyecto técnico individual me permitió gestionar de manera autónoma todo el ciclo de vida del software, desde la conceptualización de las mecánicas core hasta la dirección de arte y el despliegue del juego.<br>Durante el desarrollo, implementé sistemas avanzados de persistencia de datos orientados a logros y un árbol de habilidades con tienda integrada. El resultado es una experiencia audiovisual interactiva con mecánicas pulidas que consolidó mis competencias en la arquitectura de sistemas en Unity.</span>
+                            </p>
+                        </div>
+                    </article>
+                </div>
             </div>
-        </section>       
+        </section> 
+        
+        
         <section id="contacto" class="fade-in-section">
             <h2 class="contact-title" data-i18n="contact-title">CONTACTO</h2>
             <div class="contact-div">
                 <div class="contact-div-info">
                     <ul>
-                        <li><b data-i18n="mail-text">💻 Correo: </b><a href="mailto:cesarcaste2001@gmail.com" target="_blank">cesarcaste2001@gmail.com</a></li>
-                        <li><b data-i18n="phone-text">📞 Teléfono: </b>+34 717 14 26 23</li>
-                        <li><b data-i18n="location-text">📌 Ubicación: </b>Las Palmas de Gran Canaria</li>
+                        <li><b data-i18n="mail-text"><i class="fa-regular fa-envelope fa-fw"></i> Correo: </b><a href="mailto:cesarcaste2001@gmail.com" target="_blank">cesarcaste2001@gmail.com</a></li>
+                        <li><b data-i18n="phone-text"><i class="fa-solid fa-phone"></i> Teléfono: </b>+34 717 14 26 23</li>
+                        <li><b data-i18n="location-text"><i class="fa-solid fa-map-location"></i> Ubicación: </b>Las Palmas de Gran Canaria</li>
                     </ul>
-                    <p><b data-i18n="socials-text">📱 Mis redes:</b></p>
+                    <!-- <p><b data-i18n="socials-text">Mis redes:</b></p>
                     <div class="socials-icons-contact-div"> 
                         <a href="https://www.linkedin.com/in/césar-castellano-65665a2a8/" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/link.png" alt="Linkedin"></a>
                         <a href="https://github.com/cesarcgdev" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/github.png" alt="GitHub"></a>
                         <a href="https://youngmute.itch.io/" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/itchio.png" alt="itchio" class="itchio-icon2"></a>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="other-info">
-                    <h3 data-i18n="status-hiring"></h3>
+                    <h3 data-i18n="status-hiring">Buscando empleo</h3>
                     <ul>
                         <li data-i18n="status-hours">Jornada <b>completa / parcial</b></li>
                         <li data-i18n="status-location">Remoto / Presencial (Las Palmas de Gran Canaria)</li>
@@ -412,7 +526,25 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 César Castellano García | Las Palmas</p>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="images/cesar_Logo.png" alt="Logo Footer" class="footer-logo-img" width="32" height="32">
+                <p class="footer-logo-text"><b>CÉSAR</b> CASTELLANO</p>
+            </div>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/césar-castellano-65665a2a8/" target="_blank"
+                    rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/cesarcgdev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://youngmute.itch.io/" target="_blank" rel="noopener noreferrer" aria-label="Itch.io">
+                    <i class="fa-brands fa-itch-io"></i>
+                </a>
+            </div>
+            <p class="footer-copyright" data-i18n="footer-text">&copy; 2026 César Castellano García | Las Palmas</p>
+        </div>
     </footer>
 
     <!-- Botón flotante para subir -->
