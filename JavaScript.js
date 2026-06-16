@@ -392,26 +392,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const paletteContainer = document.getElementById("palette-select-container");
         if (paletteContainer) {
             const textSpan = paletteContainer.querySelector(".trigger-text");
-            if (textSpan) {
-                let currentPalette = textSpan.getAttribute("data-current-palette");
-                if (currentPalette) {
-                    // Limpiamos el texto por si acaso ya incluye la palabra "-theme" para evitar duplicados como "gold-theme-theme"
-                    currentPalette = currentPalette.replace("-theme", "");
-
-                    // Creamos la clave estandarizada que busca en tu diccionario
-                    const translationKey = `${currentPalette}-theme`; 
-
-                    if (translations[translationKey]) {
-                        textSpan.innerHTML = translations[translationKey];
-                    } else if (currentPalette === "original") {
-                        // Forzar el texto correcto para el tema original según el idioma actual
-                        textSpan.innerHTML = (lang === "es") ? "Original" : "Original";
-                    } else {
-                        // Plan de rescate: si no encuentra la clave armada, intenta buscar la palabra limpia directamente
-                        if (translations[currentPalette]) {
-                            textSpan.innerHTML = translations[currentPalette];
-                        }
-                    }
+            const selectedOption = paletteContainer.querySelector(".custom-option.selected");
+            if (textSpan && selectedOption) {
+                const i18nKey = selectedOption.getAttribute("data-i18n");
+                if (i18nKey && translations[i18nKey]) {
+                    // La opción tiene clave de traducción (ej: "gold-theme", "forest-theme")
+                    textSpan.innerHTML = translations[i18nKey];
+                } else {
+                    // La opción no tiene traducción (ej: "Original", "Cyber") → usar el texto tal cual
+                    textSpan.innerHTML = selectedOption.querySelector("span")?.innerHTML || textSpan.innerHTML;
                 }
             }
         }
@@ -500,7 +489,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 activeOption.classList.add("selected");
                 textSpan.innerHTML = activeOption.innerHTML;
                 // LÍNEA NUEVA: Guardamos el valor inicial de la paleta en el contenedor de texto
-                textSpan.setAttribute("data-current-palette", savedPalette);
+                textSpan.setAttribute("data-current-palette", savedPalette.replace("-theme", ""));
             }
         } else if (container.id === "lang-select-container") {
             const activeOption = container.querySelector(`.custom-option[data-value="${savedLang}"]`);
@@ -551,8 +540,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (container.id === "palette-select-container") {
                     document.documentElement.setAttribute("data-palette", value);
                     localStorage.setItem("palette", value);
-                    // Actualizamos el atributo con el nuevo tema seleccionado
-                    textSpan.setAttribute("data-current-palette", value);
+                    // Guardamos el valor limpio (sin "-theme") para que la traducción siempre funcione
+                    const cleanValue = value.replace("-theme", "");
+                    textSpan.setAttribute("data-current-palette", cleanValue);
+                    // Forzar la traducción inmediata al idioma activo
+                    const activeLang = localStorage.getItem("language") || "es";
+                    if (window.currentTranslations) {
+                        const key = `${cleanValue}-theme`;
+                        if (window.currentTranslations[key]) {
+                            textSpan.innerHTML = window.currentTranslations[key];
+                        }
+                    }
                 } else if (container.id === "lang-select-container") {
                     if (typeof window.changeLanguageGlobal === "function") {
                         window.changeLanguageGlobal(value);
