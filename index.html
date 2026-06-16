@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>César CG - Portfolio Web</title>
     <link rel="icon" href="../images/cesar_Logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <script src="JavaScript.js"></script>
-    <div class="progress-container">
-        <div class="progress-bar" id="myBar"></div>
-    </div>
     <header>
         <nav aria-label="Navegación principal">
             <div class="logo">
@@ -20,183 +19,176 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#inicio" data-i18n="nav-home">Inicio</a></li>
-                <li><a href="#cv" data-i18n="nav-cv">Skills & CV</a></li>
+                <li><a href="#cv" data-i18n="nav-cv">Mi perfil</a></li>
                 <li><a href="#proyectos" data-i18n="nav-projects">Proyectos</a></li>
                 <li><a href="#contacto" data-i18n="nav-contact">Contacto</a></li>
             </ul>
             <div class="controls">
                 <div class="controls">
-                    <select id="palette-select" class="palette-select-btn" aria-label="Cambiar estilo visual">
-                        <option value="original">🍁 Original</option>
-                        <option value="cyber">🌌 Cyber</option>
-                        <option value="forest" data-i18n="forest-theme">🌿 Bosque</option>
-                        <option value="royal" data-i18n="gold-theme">👑 Oro Real</option>
-                    </select>
-
-                    <div class="nav-toggle">
-                        <label class="switch">
-                            <input type="checkbox" id="theme-toggle">
-                            <span class="slider round"></span>
-                        </label>
+                    <div class="custom-select-container" id="palette-select-container">
+                        <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Cambiar estilo visual">
+                            <span class="trigger-text">Original</span>
+                            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                        </button>
+                        <ul class="custom-options-menu" role="listbox">
+                            <li class="custom-option selected" data-value="original" role="option">
+                                <span>Original</span>
+                            </li>
+                            <li class="custom-option" data-value="cyber" role="option">
+                                <span>Cyber</span>
+                            </li>
+                            <li class="custom-option" data-value="forest" data-i18n="forest-theme" role="option">
+                                <span>Bosque</span>
+                            </li>
+                            <li class="custom-option" data-value="royal" data-i18n="gold-theme" role="option">
+                                <span>Oro Real</span>
+                            </li>
+                        </ul>
                     </div>
 
-                    <select id="lang-select" class="lang-select-btn">
-                        <option value="es">ES</option>
-                        <option value="en">EN</option>
-                    </select>
+                    <div class="theme-switch-wrapper">
+                        <i class="fa-regular fa-sun font-switch-icon"></i>
+                        <label class="theme-switch">
+                            <input type="checkbox" id="theme-toggle" aria-label="Cambiar tema de color / Toggle color theme">
+                            <span class="theme-slider"></span>
+                        </label>
+                        <i class="fa-regular fa-moon font-switch-icon"></i>
+                    </div>
+
+                    <div class="custom-select-container" id="lang-select-container">
+                        <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                            <span class="trigger-text">ES</span>
+                            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                        </button>
+                        <ul class="custom-options-menu" role="listbox">
+                            <li class="custom-option selected" data-value="es" role="option">
+                                <span>ES</span>
+                            </li>
+                            <li class="custom-option" data-value="en" role="option">
+                                <span>EN</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
 
     <main>
+        <!-- INTRODUCCIÓN -->
         <section id="inicio" class="hero fade-in-section">
-            <div class="main-intro">
-                <div class="intro-name-div">
-                    <h1 data-i18n="hero-title"><b>César</b><br>Castellano García</h1>
-                    <p data-i18n="hero-subtitle">Programador Full Stacks / Diseñador y Desarrollador de Videojuegos</p>
-                    <div class="socials-icons">
-                        <a href="https://www.linkedin.com/in/césar-castellano-65665a2a8/" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/link.png" alt="Linkedin"></a>
-                        <a href="https://github.com/cesarcgdev" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/github.png" alt="GitHub"></a>
-                        <a href="https://youngmute.itch.io/" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/itchio.png" alt="itchio" class="itchio-icon correct-size"></a>
+            <div class="profile-grid">
+                <!-- Columna Izquierda: Tarjeta Lateral Visual -->
+                <div class="profile-sidebar">
+                    <div class="profile-avatar-wrapper">
+                        <img src="images/intro/foto-normal.jpg" alt="César Castellano García" class="profile-avatar" width="180" height="180">
+
+                    </div>
+                    <h1 class="profile-name" data-i18n="hero-title"><b>César</b><br>Castellano García</h1>
+                    <p class="profile-subtitle" data-i18n="hero-subtitle">Programador Full Stack / Diseñador y Desarrollador de Videojuegos</p>
+                    
+                    <ul class="profile-meta-list">
+                        <li>
+                            <i class="fa-regular fa-calendar-days"></i>
+                            <span class="meta-label"><span data-i18n="propertie-title-1">Edad</span>:</span>
+                            <span class="meta-value">
+                                <span id="age"></span> <span data-i18n="propertie-1">años</span>
+                            </span>
+                        </li>
+                        <li>
+                            <i class="fa-regular fa-map"></i>
+                            <span class="meta-label"><span data-i18n="propertie-title-2">Ubicación</span>:</span>
+                            <span class="meta-value">Las Palmas</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-language"></i>
+                            <span class="meta-label"><span data-i18n="propertie-title-3">Idiomas</span>:</span>
+                            <span class="meta-value">
+                                <span data-i18n="propertie-3a">Español nativo</span>, <span data-i18n="propertie-3b">Inglés B1</span>
+                            </span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span class="meta-label"><span data-i18n="propertie-title-4">Otros</span>:</span>
+                            <span class="meta-value" data-i18n="propertie-4a">Carnet de conducir B</span>
+                        </li>
+                    </ul>
+
+                    <div class="profile-socials">
+                        <a href="https://www.linkedin.com/in/césar-castellano-65665a2a8/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/cesarcgdev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://youngmute.itch.io/" target="_blank" rel="noopener noreferrer" aria-label="Itch.io">
+                            <i class="fa-brands fa-itch-io"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="intro-img-div">
-                    <img src="../images/intro/foto-normal.jpg" alt="imagen-intro" class="img-intro">
-                </div>
-                
-            </div>
-            <div class="description-intro">
-                <h2 data-i18n="about-me-title">SOBRE MÍ</h2>
-                <div class="about-me-div">
-                    <div class="text-me-div">
-                        <p class="text-intro" data-i18n="hero-desc">Experto especializado en varias arquitecturas, siendo una persona <b>autodidacta</b> para cualquier tipo de tarea y <b>flexible</b> para adaptarme a todas las metodologías de trabajo. Acostumbrado a aprender de forma rápida y eficaz nuevas tecnologías, permitiendo <b>crear un progreso real</b> dentro de cualquier proyecto.<br>
-                        Cuando hay un problema, automáticamente busco la solución. Destaco por ser <b>comunicativo</b>, creando un
-                        <b>ambiente fluido y cómodo</b> de trabajo. Mi carrera y mis proyectos respaldan mis aptitudes.</p> 
+
+                <!-- Columna Derecha: Contenido de la Biografía y Acciones -->
+                <div class="profile-content">
+                    <div class="profile-bio-card">
+                        <h2 class="section-title-left" data-i18n="about-me-title">SOBRE MÍ</h2>
+                        <p class="profile-bio-text" data-i18n="hero-desc">
+                            Experto especializado en varias arquitecturas, siendo una persona <b>autodidacta</b> para cualquier tipo de tarea y <b>flexible</b> para adaptarme a todas las metodologías de trabajo. Acostumbrado a aprender de forma rápida y eficaz nuevas tecnologías, permitiendo <b>crear un progreso real</b> dentro de cualquier proyecto.<br>
+                            Cuando hay un problema, automáticamente busco la solución. Destaco por ser <b>comunicativo</b>, creando un
+                            <b>ambiente fluido y cómodo</b> de trabajo. Mi carrera y mis proyectos respaldan mis aptitudes.
+                        </p>
                     </div>
                     
-                    <div class="personality-card">
-                        <div class="personality-grid">
-                            <div class="info-item">
-                                <span class="info-label" data-i18n="propertie-title-1">Edad:</span>
-                                <div class="info-value">
-                                    <span id="age"></span> <span data-i18n="propertie-1">años</span>
-                                </div>
-                            </div>
-
-                            <div class="info-item">
-                                <span class="info-label" data-i18n="propertie-title-2">Ubicación:</span>
-                                <span class="info-value">Las Palmas</span>
-                            </div>
-
-                            <div class="info-item">
-                                <span class="info-label" data-i18n="propertie-title-3">Idiomas:</span>
-                                <span class="info-value">
-                                    <span data-i18n="propertie-3a">Español nativo</span><br><span data-i18n="propertie-3b">Inglés B1</span>
-                                </span>
-                            </div>
-
-                            <div class="info-item">
-                                <span class="info-label" data-i18n="propertie-title-4">Otros</span>
-                                <span class="info-value" data-i18n="propertie-4a">Carnet de conducir B</span>
-                            </div>
+                    <div class="profile-actions">
+                        <a href="files/César-FullStacks-CV.pdf" download="CV_FullStack_CesarCaste" class="btn-cv-download" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-regular fa-file-pdf"></i> CV - FullStack
+                        </a>
+                        <a href="files/César-GameDev-CV.pdf" download="CV_GameDev_CesarCaste" class="btn-cv-download" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-regular fa-file-pdf"></i> CV - GameDev
+                        </a>
+                    </div>
+                    
+                    <!-- Tarjeta horizontal: Actualmente buscando empleo -->
+                    <div class="hiring-status-card">
+                        <div class="hiring-status-info">
+                            <span class="hiring-status-dot"></span>
+                            <span class="hiring-status-text" data-i18n="hiring-status-text">Actualmente buscando empleo</span>
                         </div>
-
-                        <div class="cv-actions">
-                            <a href="files/César-FullStacks-CV.pdf" download="CV_FullStack_CesarCaste" class="btn-cv" target="_blank" rel="noopener noreferrer">CV - FullStack</a>
-                            <a href="files/César-GameDev-CV.pdf" download="CV_GameDev_CesarCaste" class="btn-cv" target="_blank" rel="noopener noreferrer">CV - GameDev</a>
-                        </div>
+                        <a href="#contacto" class="btn-hiring-schedule">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span data-i18n="hiring-btn-text">Contacta conmigo</span>
+                        </a>
                     </div>
                 </div>
             </div>
-            
         </section>
 
-        
+        <!-- MI PERFIL -->
         <section id="cv" class="fade-in-section">
             <h2 data-i18n="cv-title">PERFIL PROFESIONAL</h2>
-            <div class="cv-container">
-                <div class="skills-block">
-                    <div class="block">
-                        <h3 data-i18n="skills-subtitle">Habilidades</h3>
-                    </div>
-                    <div class="block-skill">
-                        <div class="skills-icons-div">
-                            <img src="../images/skills/unity-69.svg" class="skills-icon" alt="Logo Unity">
-                            <img src="../images/skills/c--4.svg" class="skills-icon">
-                            <img src="../images/skills/blender-2.svg" class="skills-icon">
-                            <img src="../images/skills/adobe-photoshop-2.svg" class="skills-icon" alt="Logo Photoshop">
-                            <img src="../images/skills/html-5-logo-svg-1.svg" class="skills-icon" alt="Logo HTML">
-                            <img src="../images/skills/css-3.svg" class="skills-icon" alt="Logo CSS">
-                            <img src="../images/skills/javascript-r.svg" class="skills-icon" alt="Logo JavaScript">
-                            <img src="../images/skills/visual-studio-code-1.svg" class="skills-icon" alt="Logo Visual Studio">
-                            <img src="../images/skills/git-icon.svg" class="skills-icon">
-                            <img src="../images/skills/github-icon-1.svg" class="skills-icon">
-                            <img src="../images/skills/gitlab.svg" class="skills-icon">
-                            <img src="../images/skills/sourcetree-1.svg" class="skills-icon">
-                            <img src="../images/skills/trello.svg" class="skills-icon">
-                            <img src="../images/skills/microsoft-windows-22.svg" class="skills-icon">
-                            <img src="../images/skills/ubuntu-4.svg" class="skills-icon">
-                            <img src="../images/skills/premiere-pro-cc.svg" class="skills-icon">
-                        </div>
-                    </div>
-                    <div class="block">
-                        <h3>Soft Skills</h3>
-                    </div>
-                    <div class="block-skill">
-                            <ul id="skills-list">
-                                <li data-i18n="skill-teamwork">👥 Trabajo en equipo</li>
-                                <li data-i18n="skill-self"> 📝 Autodidacta y resolutivo</li>
-                                <li data-i18n="skill-responsible">💪 Responsable y comprometido</li>
-                                <li data-i18n="skill-constancy">🏋 Constancia</li>
-                                <li data-i18n="skill-organized">🎯 Organizado y atento</li>
-                                <li data-i18n="skill-pressure">🧠 Trabajo bajo presión</li>
-                            </ul>
-                    </div>
-                    <div class="block">
-                        <h3 data-i18n="education-text">Formación</h3>
-                    </div>
-                    <div class="block-skill"> 
-                        <p class="education-date" data-i18n="edu1-date">Octubre 2023 - Diciembre 2025</p>
-                        <p class="education-institution"><b data-i18n="edu1-title">Máster en Diseño y Desarrollo de Videojuegos</b></p>
-                        <p class="education-name">E.V.A.D.</p>
-                        <ul class="training-list">
-                            <li data-i18n="edu1-bullet1">Formación especializada en todas las áreas del desarrollo de los videojuegos.</li>
-                            <li data-i18n="edu1-bullet2">Método autodidacta con ensayo y error.</li>
-                            <li data-i18n="edu1-bullet3">Presencia activa en eventos como Game-Jams con varios equipos multidisciplinares.</li>
-                        </ul> 
-                    </div>
-                    <div class="block-skill"> 
-                        <p class="education-date" data-i18n="edu2-date">Octubre 2021 - Febrero 2023</p>
-                        <p class="education-institution"><b data-i18n="edu2-title">Grado Superior en Animación 3D, Juegos y Entornos Interactivos</b></p>
-                        <p class="education-name">CESUR Las Palmas</p>
-                        <ul class="training-list">
-                            <li data-i18n="edu2-bullet1">Aprendizaje para generar y adaptar cualquier proyecto multimedia al mercado.</li>
-                            <li data-i18n="edu2-bullet2">Generación de escenarios interactivos, así como la optimización de los mismos.</li>
-                            <li data-i18n="edu2-bullet3">Desarrollo de aplicaciones interactivas y entornos webs dinámicos.</li>
-                        </ul> 
-                    </div>
-                    <div class="block-skill"> 
-                        <p class="education-date" data-i18n="edu3-date">Septiembre 2019 - Febrero 2021</p>
-                        <p class="education-institution"><b data-i18n="edu3-title">Grado Superior en Administración de Sistemas Informáticos y Redes (A.S.I.R.)</b></p>
-                        <p class="education-name">C.I.F.P. Villa de Agüimes</p>
-                        <ul class="training-list">
-                            <li data-i18n="edu3-bullet1">Planificación y construcción de infraestructuras tecnológicas, redes y servidores.</li>
-                            <li data-i18n="edu3-bullet2">Creación y desarrollo de usuarios y de sistemas operativos como Windows o Linux.</li>
-                            <li data-i18n="edu3-bullet3">Gestión de Base de Datos relacionales, con técnicas para proteger la información.</li>
-                        </ul> 
-                    </div>
+            
+            <!-- Bloque de Experiencia en Pestañas (Pestaña Interactiva) -->
+            <div class="experience-tabs-container">
+                <div class="tabs-list" role="tablist" aria-label="Experiencia profesional">
+                    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="exp-panel-1" id="tab-1">
+                        <span>Drille Studio</span>
+                    </button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="exp-panel-2" id="tab-2">
+                        <span>Warlands Realms</span>
+                    </button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="exp-panel-3" id="tab-3">
+                        <span>Psicosoft</span>
+                    </button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="exp-panel-4" id="tab-4">
+                        <span>ACAAO</span>
+                    </button>
+                    <span class="active-indicator"></span>
                 </div>
 
-                <div class="skills-block">
-                    <div class="block">
-                        <h3 data-i18n="experience-text">Experiencia</h3>
-                    </div>
-                <div class="experience-block">   
-                    <article class="experience-div">
+                <div class="tabs-panels">
+                    <article class="tab-panel active" id="exp-panel-1" role="tabpanel" aria-labelledby="tab-1">
                         <h4 data-i18n="exp1-title">Diseñador y programador de Unity | Co-fundador de <i><a href="https://linktr.ee/DrilleStudio" class="extra-link" target="_blank">Drille Studio</a></i></h4>
-                        <span class="date experience-date" data-i18n="exp1-date">Febrero 2025 - Presente</span>
-                        <ul class="experiencie-list">
+                        <span class="job-date" data-i18n="exp1-date">Febrero 2025 - Presente</span>
+                        <ul class="job-bullets">
                             <li data-i18n="exp1-bullet1">Coordiné y lideré un equipo multidisciplinar, diseñando e implementando metodologías ágiles a través de <i>Trello</i> para garantizar un flujo de trabajo eficiente, flexible y adaptado a las necesidades del proyecto.</li>
                             <li data-i18n="exp1-bullet2">Diseñé e implementé <b>mecánicas y sistemas complejos</b> aplicando patrones de diseño y prácticas de <b>programación limpia (Clean Code)</b> de gran eficiencia.</li>
                             <li data-i18n="exp1-bullet3">Investigué y adopté nuevas <b>tecnologías emergentes</b>, asegurando la competitividad del stack técnico según las <b>demandas actuales</b> del mercado.</li>
@@ -204,10 +196,11 @@
                             <li data-i18n="exp1-bullet5">Realicé tareas de <b>depuración y refactorización de código</b>, logrando mejorar el rendimiento de los proyectos en hasta un 75%.</li>
                         </ul>
                     </article>
-                    <article class="experience-div">
+
+                    <article class="tab-panel" id="exp-panel-2" role="tabpanel" aria-labelledby="tab-2" hidden>
                         <h4 data-i18n="exp2-title">Programador en <i>Warlands Realms</i></h4>
-                        <span class="date experience-date" data-i18n="exp2-date">Febrero 2025 - Mayo 2025</span>
-                        <ul class="experiencie-list">
+                        <span class="job-date" data-i18n="exp2-date">Febrero 2025 - Mayo 2025</span>
+                        <ul class="job-bullets">
                             <li data-i18n="exp2-bullet1">Investigué y solucioné <b>bugs heredados de meses de antigüedad</b>, optimizando la velocidad del sistema y acelerando el flujo de desarrollo general del proyecto.</li>
                             <li data-i18n="exp2-bullet2">Adquirí experiencia sólida coordinando <b>arquitecturas complejas</b> junto a un equipo de <b>desarrolladores senior</b>, adaptándome a los estándares de proyectos de alto impacto.</li>
                             <li data-i18n="exp2-bullet3">Lideré sesiones de <b>testing crítico</b> para identificar <b>cuellos de botella y vulnerabilidades</b>, liberando carga de trabajo al equipo técnico para que se enfocara en el core del negocio.</li>
@@ -215,99 +208,306 @@
                             <li data-i18n="exp2-bullet5">Participé activamente en <b>reuniones diarias (Daily Stands)</b> para la priorización de <b>tareas críticas</b>, asegurando un avance continuo y alineado con los objetivos de entrega.</li>
                         </ul>
                     </article>
-                    <article class="experience-div">
+
+                    <article class="tab-panel" id="exp-panel-3" role="tabpanel" aria-labelledby="tab-3" hidden>
                         <h4 data-i18n="exp3-title">Desarrollador web y generalista 3D | <i>Psicosoft</i></h4>
-                        <span class="date experience-date" data-i18n="exp3-date">Febrero 2023 - Mayo 2023</span>
-                        <ul class="experiencie-list">
+                        <span class="job-date" data-i18n="exp3-date">Febrero 2023 - Mayo 2023</span>
+                        <ul class="job-bullets">
                             <li data-i18n="exp3-bullet1">Apliqué <b>soluciones técnicas</b> avanzadas para el despliegue de <b>entornos web dinámicos, interactivos y escalables.</b></li>
                             <li data-i18n="exp3-bullet2">Traduje <b>modelos gráficos complejos</b> y guías de <b>estilo corporativo</b> en interfaces web reales utilizando <i>HTML5</i> y <i>CSS3</i> moderno, garantizando una alta fidelidad de diseño para los clientes.</li>
                             <li data-i18n="exp3-bullet3">Implementé estrategias de <b>optimización de carga</b> y rendimiento de código, transformando portales web en plataformas fluidas, funcionales y centradas en la <b>experiencia de usuario (UX).</b></li>
                             <li data-i18n="exp3-bullet4">Participé en reuniones diarias orientadas al <b>seguimiento de objetivos</b>, diagnóstico temprano de bloqueos e ideación de nuevas funcionalidades para los proyectos activos.</li>
                         </ul>
                     </article>
-                    <article class="experience-div">
+
+                    <article class="tab-panel" id="exp-panel-4" role="tabpanel" aria-labelledby="tab-4" hidden>
                         <h4 data-i18n="exp4-title">Desarrollador de Software y Soluciones online | <i>ACAAO</i></h4>
-                        <span class="date experience-date" data-i18n="exp4-date">Marzo 2021 - June 2021</span>
-                        <ul class="experiencie-list">
+                        <span class="job-date" data-i18n="exp4-date">Marzo 2021 - June 2021</span>
+                        <ul class="job-bullets">
                             <li data-i18n="exp4-bullet1">Diseñé y estructuré <b>soluciones de software</b> con un programa interno personalizado y a medida, alineando la <b>arquitectura técnica</b> directamente con los objetivos de negocio y los requisitos específicos de cada cliente.</li>
                             <li data-i18n="exp4-bullet2">Incrementé el <b>posicionamiento orgánico</b> y el rendimiento de plataformas web aplicando técnicas avanzadas de <b>optimización de carga, estructura de código, análisis de datos y palabras clave.</b></li>
                             <li data-i18n="exp4-bullet3">Diagnosticé y resolví <b>incidencias críticas</b>, tanto técnicas como funcionales, asegurando la alta disponibilidad del sistema y garantizando un servicio de soporte excelente.</li>
                         </ul>
                     </article>
                 </div>
-                </div>
-                
+            </div>
 
+            <!-- Habilidades Técnicas -->
+            <div class="skills-dashboard-container">
+                <div class="cv-block-header">
+                    <h3 data-i18n="skills-subtitle">Habilidades</h3>
+                </div>
+                <div class="cv-block-content skills-logos-card">
+                    <div class="skills-icons-div">
+                        <button type="button" class="skill-icon-btn unity" data-skill="unity" aria-label="Ver habilidad Unity">
+                            <img src="images/skills/unity-69.svg" class="skills-icon" alt="Logo Unity" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn csharp" data-skill="csharp" aria-label="Ver habilidad C#">
+                            <img src="images/skills/c--4.svg" class="skills-icon" alt="Logo C#" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn blender" data-skill="blender" aria-label="Ver habilidad Blender">
+                            <img src="images/skills/blender-2.svg" class="skills-icon" alt="Logo Blender" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn photoshop" data-skill="photoshop" aria-label="Ver habilidad Photoshop">
+                            <img src="images/skills/adobe-photoshop-2.svg" class="skills-icon" alt="Logo Photoshop" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn html" data-skill="html" aria-label="Ver habilidad HTML5">
+                            <img src="images/skills/html-5-logo-svg-1.svg" class="skills-icon" alt="Logo HTML" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn css" data-skill="css" aria-label="Ver habilidad CSS3">
+                            <img src="images/skills/css-3.svg" class="skills-icon" alt="Logo CSS" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn js" data-skill="js" aria-label="Ver habilidad JavaScript">
+                            <img src="images/skills/javascript-r.svg" class="skills-icon" alt="Logo JavaScript" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn vscode" data-skill="vscode" aria-label="Ver habilidad VS Code">
+                            <img src="images/skills/visual-studio-code-1.svg" class="skills-icon" alt="Logo Visual Studio" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn git" data-skill="git" aria-label="Ver habilidad Git">
+                            <img src="images/skills/git-icon.svg" class="skills-icon" alt="Logo Git" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn github" data-skill="github" aria-label="Ver habilidad GitHub">
+                            <img src="images/skills/github-icon-1.svg" class="skills-icon" alt="Logo GitHub" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn gitlab" data-skill="gitlab" aria-label="Ver habilidad GitLab">
+                            <img src="images/skills/gitlab.svg" class="skills-icon" alt="Logo GitLab" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn sourcetree" data-skill="sourcetree" aria-label="Ver habilidad SourceTree">
+                            <img src="images/skills/sourcetree-1.svg" class="skills-icon" alt="Logo SourceTree" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn trello" data-skill="trello" aria-label="Ver habilidad Trello">
+                            <img src="images/skills/trello.svg" class="skills-icon" alt="Logo Trello" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn windows" data-skill="windows" aria-label="Ver habilidad Windows">
+                            <img src="images/skills/microsoft-windows-22.svg" class="skills-icon" alt="Logo Windows" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn ubuntu" data-skill="ubuntu" aria-label="Ver habilidad Ubuntu / Linux">
+                            <img src="images/skills/ubuntu-4.svg" class="skills-icon" alt="Logo Ubuntu" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn premiere" data-skill="premiere" aria-label="Ver habilidad Premiere Pro">
+                            <img src="images/skills/premiere-pro-cc.svg" class="skills-icon" alt="Logo Premiere" width="50" height="50" aria-hidden="true">
+                        </button>
+                    </div>
+
+                    <!-- Panel de Detalle Dinámico de Habilidad -->
+                    <div class="skill-details-panel" id="skill-details-panel">
+                        <div class="skill-details-placeholder" id="skill-details-placeholder">
+                            <i class="fa-regular fa-hand-pointer placeholder-icon"></i>
+                            <p data-i18n="skill-details-placeholder">Pasa el ratón o pulsa sobre una habilidad para ver detalles</p>
+                        </div>
+                        <div class="skill-details-content" id="skill-details-content" style="display: none;">
+                            <div class="skill-details-left">
+                                <h4 class="skill-details-name" id="skill-details-name">Skill Name</h4>
+                                <span class="skill-details-level" id="skill-details-level"></span>
+                            </div>
+                            <div class="skill-details-right">
+                                <p class="skill-details-desc" id="skill-details-desc">Skill description goes here...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloque Inferior: Formación y Soft Skills en Rejilla -->
+            <div class="cv-education-grid">
+                <!-- Columna Izquierda: Formación Académica -->
+                <div class="cv-education-column">
+                    <div class="cv-block-header">
+                        <h3 data-i18n="education-text">Formación</h3>
+                    </div>
+                    <div class="education-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="education-date" data-i18n="edu1-date">Octubre 2023 - Diciembre 2025</span>
+                                <h4 class="education-title" data-i18n="edu1-title">Máster en Diseño y Desarrollo de Videojuegos</h4>
+                                <span class="education-institution">E.V.A.D.</span>
+                                <ul class="education-bullets">
+                                    <li data-i18n="edu1-bullet1">Formación especializada en todas las áreas del desarrollo de los videojuegos.</li>
+                                    <li data-i18n="edu1-bullet2">Método autodidacta con ensayo y error.</li>
+                                    <li data-i18n="edu1-bullet3">Presencia activa en eventos como Game-Jams con varios equipos multidisciplinares.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="education-date" data-i18n="edu2-date">Octubre 2021 - Febrero 2023</span>
+                                <h4 class="education-title" data-i18n="edu2-title">Grado Superior en Animación 3D, Juegos y Entornos Interactivos</h4>
+                                <span class="education-institution">CESUR Las Palmas</span>
+                                <ul class="education-bullets">
+                                    <li data-i18n="edu2-bullet1">Aprendizaje para generar y adaptar cualquier multimedia al mercado.</li>
+                                    <li data-i18n="edu2-bullet2">Generación de escenarios interactivos, así como la optimización de los mismos.</li>
+                                    <li data-i18n="edu2-bullet3">Desarrollo de aplicaciones interactivas y entornos webs dinámicos.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="education-date" data-i18n="edu3-date">Septiembre 2019 - Febrero 2021</span>
+                                <h4 class="education-title" data-i18n="edu3-title">Grado Superior en Administración de Sistemas Informáticos y Redes (A.S.I.R.)</h4>
+                                <span class="education-institution">C.I.F.P. Villa de Agüimes</span>
+                                <ul class="education-bullets">
+                                    <li data-i18n="edu3-bullet1">Planificación y construcción de infraestructuras tecnológicas, redes y servidores.</li>
+                                    <li data-i18n="edu3-bullet2">Creación y desarrollo de usuarios y de sistemas operativos como Windows o Linux.</li>
+                                    <li data-i18n="edu3-bullet3">Gestión de Base de Datos relacionales, con técnicas para proteger la información.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Soft Skills -->
+                <div class="cv-education-column">
+                    <div class="cv-block-header">
+                        <h3>Soft Skills</h3>
+                    </div>
+                    <div class="cv-block-content soft-skills-card">
+                        <ul id="skills-list">
+                            <li data-i18n="skill-teamwork"><i class="fa-regular fa-handshake fa-fw"></i> Trabajo en equipo</li>
+                            <li data-i18n="skill-self"><i class="fa-regular fa-lightbulb fa-fw"></i> Autodidacta y resolutivo</li>
+                            <li data-i18n="skill-responsible"><i class="fa-regular fa-circle-check fa-fw"></i> Responsable y comprometido</li>
+                            <li data-i18n="skill-constancy"><i class="fa-regular fa-clock fa-fw"></i> Constancia</li>
+                            <li data-i18n="skill-organized"><i class="fa-regular fa-calendar-check fa-fw"></i> Organizado y atento</li>
+                            <li data-i18n="skill-pressure"><i class="fa-regular fa-compass fa-fw"></i> Trabajo bajo presión</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
-
+                    
+        <!-- PROYECTOS -->         
         <section id="proyectos" class="fade-in-section">
             <h2 data-i18n="projects-title">MIS PROYECTOS</h2>
-            <div class="projects-grid">
-                <article class="project-card">
-                    <img src="../images/projects/project1-image.png" alt="Captura de pantalla del Proyecto 1">
-                    <h3>Mega Time</h3>
-    
-                    <p class="intro-proyect-text">
-                    <span data-i18n="p1-desc-intro">Shooter de plataformas 2.5D desarrollado en Unity donde ejercí como líder técnico en mi equipo <i><a href="https://linktr.ee/DrilleStudio" class="extra-link"  target="_blank">Drille Studio.</i></a></span><span class="dots">...</span><span class="proyect-text-extra" data-i18n="p1-desc-extra"> Diseñé la metodología de trabajo orientada a objetivos e integré los flujos de los distintos departamentos, asegurando una entrega exitosa y optimizando la productividad general.<br>Asimismo, diseñé y desarrollé la arquitectura técnica global, incluyendo sistemas dinámicos de apuntado, mecánicas de obstáculos e inteligencia artificial avanzada para enemigos y jefes finales. El proyecto concluyó con una fase intensiva de depuración que elevó drásticamente el rendimiento del 
-                    </p>
-                
-                    <div class="read-more-btnDiv">
-                    <button class="btn-read-more" data-i18n="more" data-text-more="more" data-text-less="less">Leer más...</button>
-                    </div>
+            <div class="projects-console-layout">
+                <!-- Menú de navegación de proyectos -->
+                <div class="projects-nav-menu" role="tablist" aria-label="Seleccionar proyecto">
+                    <button type="button" class="project-nav-btn active" data-project-target="project-panel-1" role="tab" aria-selected="true" aria-controls="project-panel-1">
+                        <img src="images/projects/project1-image.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
+                        <div class="nav-btn-info">
+                            <span class="nav-btn-title">Mega Time</span>
+                            <span class="nav-btn-subtitle" data-i18n="p1-badge">Líder Técnico</span>
+                        </div>
+                    </button>
+                    <button type="button" class="project-nav-btn" data-project-target="project-panel-2" role="tab" aria-selected="false" aria-controls="project-panel-2">
+                        <img src="images/projects/art-rescue.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
+                        <div class="nav-btn-info">
+                            <span class="nav-btn-title">Art Rescue</span>
+                            <span class="nav-btn-subtitle" data-i18n="p2-badge">Top 8 Finalista</span>
+                        </div>
+                    </button>
+                    <button type="button" class="project-nav-btn" data-project-target="project-panel-3" role="tab" aria-selected="false" aria-controls="project-panel-3">
+                        <img src="images/projects/Ghostly-Star.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
+                        <div class="nav-btn-info">
+                            <span class="nav-btn-title">Ghostly-Star</span>
+                            <span class="nav-btn-subtitle" data-i18n="p3-badge">Desarrollo Individual</span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Mega Time -->
+                <div class="projects-details-container">
                     
-                    <div class="center-button"><a href="https://www.youtube.com/watch?v=GvyTGQh33sA" target="_blank" class="btn" data-i18n="trailer-text">Tráiler</a></div>
-                </article>
-                <article class="project-card">
-                    <img src="../images/projects/art-rescue.png" alt="Captura de pantalla del Proyecto 1">
-                    <h3>Art Rescue</h3>
-    
-                    <p class="intro-proyect-text">
-                    <span data-i18n="p2-desc-intro">Videojuego de puzzles 3D programado en C# y desarrollado por un equipo multidisciplinar de 8 profesionales</span><span class="dots">...</span><span class="proyect-text-extra" data-i18n="p2-desc-extra">. El proyecto demostró un alto nivel competitivo, logrando posicionarse con éxito entre los 8 videojuegos más destacados de la <a href="https://itch.io/jam/cultura-abierta-6-edicin" class="extra-link" target="_blank">VI Game Jam Cultura Abierta.</a><br>Mi rol se centró en la ingeniería de software, desarrollando el sistema de físicas del personaje, la interacción lógica con el entorno y una sala de exposición dinámica con recompensas desbloqueables. Todo el código base fue refactorizado para garantizar una experiencia fluida y optimizada.</span>
-                    </p>
-                    
-                    <div class="read-more-btnDiv">
-                    <button class="btn-read-more" data-i18n="more" data-text-more="more" data-text-less="less">Leer más...</button>
-                    </div>
-                    
-                    <div class="center-button"><a href="https://quinowl.itch.io/art-rescue" target="_blank" class="btn" data-i18n="official-page">Página oficial</a></div>
-                </article>
-                <article class="project-card">
-                    <img src="../images/projects/Ghostly-Star.png" alt="Captura de pantalla del Proyecto 1">
-                    <h3>Ghostly-Star</h3>
-    
-                    <p class="intro-proyect-text">
-                    <span data-i18n="p3-desc-intro">Twin Stick Shooter 3D de supervivencia por oleadas desarrollado íntegramente de forma autodidacta.</span><span class="dots">...</span><span class="proyect-text-extra" data-i18n="p3-desc-extra"> Este proyecto técnico individual me permitió gestionar de manera autónoma todo el ciclo de vida del software, desde la conceptualización de las mecánicas core hasta la dirección de arte y el despliegue del juego.<br>Durante el desarrollo, implementé sistemas avanzados de persistencia de datos orientados a logros y un árbol de habilidades con tienda integrada. El resultado es una experiencia audiovisual interactiva con mecánicas pulidas que consolidó mis competencias en la arquitectura de sistemas en Unity.</span>
-                    </p>
-                    
-                    <div class="read-more-btnDiv">
-                    <button class="btn-read-more" data-i18n="more" data-text-more="more" data-text-less="less">Leer más...</button>
-                    </div>
-                    
-                    <div class="center-button"><a href="https://youngmute.itch.io/ghostly-star" target="_blank" class="btn" data-i18n="official-page">Página oficial</a></div>
-                </article>
+                    <article class="project-detail-panel active" id="project-panel-1" role="tabpanel" aria-labelledby="project-panel-1">
+                        <div class="project-visuals-col">
+                            <div class="project-image-wrapper">
+                                <img src="images/projects/project1-image.png" alt="Captura de pantalla de Mega Time" width="960" height="540">
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://www.youtube.com/watch?v=GvyTGQh33sA" target="_blank" class="btn">
+                                    <i class="fa-brands fa-youtube fa-fw"></i>
+                                    <span data-i18n="trailer-text">Tráiler</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info-col">
+                            <h3>Mega Time</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">Unity</span>
+                                <span class="project-tag">C#</span>
+                                <span class="project-tag" data-i18n="p1-tag3">Metodología Ágil</span>
+                            </div>
+                            <p class="project-description">
+                                <span data-i18n="p1-desc-intro">Shooter de plataformas 2.5D desarrollado en Unity donde ejercí como líder técnico en mi equipo <i><a href="https://linktr.ee/DrilleStudio" class="extra-link" target="_blank">Drille Studio</a>.</i></span> <span data-i18n="p1-desc-extra">Diseñé la metodología de trabajo orientada a objetivos e integré los flujos de los distintos departamentos, asegurando una entrega exitosa y optimizando la productividad general.<br>Asimismo, diseñé y desarrollé la arquitectura técnica global, incluyendo sistemas dinámicos de apuntado, mecánicas de obstáculos e inteligencia artificial avanzada para enemigos y jefes finales. El proyecto concluyó con una fase intensiva de depuración que elevó drásticamente el rendimiento del producto.</span>
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Art-Rescue -->
+                    <article class="project-detail-panel" id="project-panel-2" role="tabpanel" aria-labelledby="project-panel-2" style="display: none;">
+                        <div class="project-visuals-col">
+                            <div class="project-image-wrapper">
+                                <img src="images/projects/art-rescue.png" alt="Captura de pantalla de Art Rescue" width="1920" height="1080">
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://quinowl.itch.io/art-rescue" target="_blank" class="btn">
+                                    <i class="fa-brands fa-itch-io fa-fw"></i>
+                                    <span data-i18n="official-page">Página oficial</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info-col">
+                            <h3>Art Rescue</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">Unity</span>
+                                <span class="project-tag">C#</span>
+                                <span class="project-tag" data-i18n="p2-tag2">Físicas 3D</span>
+                                <span class="project-tag" data-i18n="p2-tag3">Optimización</span>
+                            </div>
+                            <p class="project-description">
+                                <span data-i18n="p2-desc-intro">Videojuego de puzzles 3D programado en C# y desarrollado por un equipo multidisciplinar de 8 profesionales</span> <span data-i18n="p2-desc-extra">. El proyecto demostró un alto nivel competitivo, logrando posicionarse con éxito entre los 8 videojuegos más destacados de la <a href="https://itch.io/jam/cultura-abierta-6-edicin" class="extra-link" target="_blank">VI Game Jam Cultura Abierta.</a><br>Mi rol se centró en la ingeniería de software, desarrollando el sistema de físicas del personaje, la interacción lógica con el entorno y una sala de exposición dinámica con recompensas desbloqueables. Todo el código base fue refactorizado para garantizar una experiencia fluida y optimizada.</span>
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Ghostly-Star -->
+                    <article class="project-detail-panel" id="project-panel-3" role="tabpanel" aria-labelledby="project-panel-3" style="display: none;">
+                        <div class="project-visuals-col">
+                            <div class="project-image-wrapper">
+                                <img src="images/projects/Ghostly-Star.png" alt="Captura de pantalla de Ghostly-Star" width="960" height="540">
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://youngmute.itch.io/ghostly-star" target="_blank" class="btn">
+                                    <i class="fa-brands fa-itch-io fa-fw"></i>
+                                    <span data-i18n="official-page">Página oficial</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info-col">
+                            <h3>Ghostly-Star</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">Unity</span>
+                                <span class="project-tag">C#</span>
+                                <span class="project-tag" data-i18n="p3-tag2">Persistencia</span>
+                                <span class="project-tag" data-i18n="p3-tag3">Arquitectura</span>
+                            </div>
+                            <p class="project-description">
+                                <span data-i18n="p3-desc-intro">Twin Stick Shooter 3D de supervivencia por oleadas desarrollado íntegramente de forma autodidacta.</span> <span data-i18n="p3-desc-extra">Este proyecto técnico individual me permitió gestionar de manera autónoma todo el ciclo de vida del software, desde la conceptualización de las mecánicas core hasta la dirección de arte y el despliegue del juego.<br>Durante el desarrollo, implementé sistemas avanzados de persistencia de datos orientados a logros y un árbol de habilidades con tienda integrada. El resultado es una experiencia audiovisual interactiva con mecánicas pulidas que consolidó mis competencias en la arquitectura de sistemas en Unity.</span>
+                            </p>
+                        </div>
+                    </article>
+                </div>
             </div>
-        </section>       
+        </section> 
+        
+        <!-- CONTACTO -->
         <section id="contacto" class="fade-in-section">
             <h2 class="contact-title" data-i18n="contact-title">CONTACTO</h2>
             <div class="contact-div">
                 <div class="contact-div-info">
                     <ul>
-                        <li><b data-i18n="mail-text">💻 Correo: </b><a href="mailto:cesarcaste2001@gmail.com" target="_blank">cesarcaste2001@gmail.com</a></li>
-                        <li><b data-i18n="phone-text">📞 Teléfono: </b>+34 717 14 26 23</li>
-                        <li><b data-i18n="location-text">📌 Ubicación: </b>Las Palmas de Gran Canaria</li>
+                        <li><b data-i18n="mail-text"><i class="fa-regular fa-envelope fa-fw"></i> Correo: </b><a href="mailto:cesarcaste2001@gmail.com" target="_blank">cesarcaste2001@gmail.com</a></li>
+                        <li><b data-i18n="phone-text"><i class="fa-solid fa-phone"></i> Teléfono: </b>+34 717 14 26 23</li>
+                        <li><b data-i18n="location-text"><i class="fa-solid fa-map-location"></i> Ubicación: </b>Las Palmas de Gran Canaria</li>
                     </ul>
-                    <p><b data-i18n="socials-text">📱 Mis redes:</b></p>
-                    <div class="socials-icons-contact-div"> 
-                        <a href="https://www.linkedin.com/in/césar-castellano-65665a2a8/" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/link.png" alt="Linkedin"></a>
-                        <a href="https://github.com/cesarcgdev" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/github.png" alt="GitHub"></a>
-                        <a href="https://youngmute.itch.io/" target="_blank" rel="noopener noreferrer"><img src="../images/socials-icons/itchio.png" alt="itchio" class="itchio-icon2"></a>
-                    </div>
                 </div>
                 <div class="other-info">
-                    <h3 data-i18n="status-hiring"></h3>
+                    <h3 data-i18n="status-hiring">Buscando empleo</h3>
                     <ul>
-                        <li data-i18n="status-hours">Jornada completa / parcial</li>
+                        <li data-i18n="status-hours">Jornada <b>completa / parcial</b></li>
                         <li data-i18n="status-location">Remoto / Presencial (Las Palmas de Gran Canaria)</li>
                         <li data-i18n="status-travel">Disponibilidad para desplazamientos puntuales</li>
                     </ul>
@@ -320,10 +520,28 @@
         </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 César Castellano García | Las Palmas</p>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="images/cesar_Logo.png" alt="Logo Footer" class="footer-logo-img" width="32" height="32">
+                <p class="footer-logo-text"><b>CÉSAR</b> CASTELLANO</p>
+            </div>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/césar-castellano-65665a2a8/" target="_blank"
+                    rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/cesarcgdev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://youngmute.itch.io/" target="_blank" rel="noopener noreferrer" aria-label="Itch.io">
+                    <i class="fa-brands fa-itch-io"></i>
+                </a>
+            </div>
+            <p class="footer-copyright" data-i18n="footer-text">&copy; 2026 César Castellano García | Las Palmas</p>
+        </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
