@@ -93,7 +93,7 @@
     --animation-job-color: #22C55E;
 }
 
-/* --- PALETA 4: REAL --- */
+/* --- PALETA 4: ORO REAL --- */
 [data-palette="royal"] {
     --bg-color: #FAFAFA;
     --text-color: #1E1B4B;
@@ -143,7 +143,6 @@
     border-color: var(--accent-color);
 }
 
-
 /* --- 2. Reset y Estilos Globales --- */
 * {
     margin: 0;
@@ -183,7 +182,7 @@ header {
 main {
     max-width: 1200px;
     margin: 0 auto;
-    /* Margen de seguridad en móviles para que el texto no se pegue al borde */
+    /* Margen en móviles para que el texto no se pegue al borde */
     padding: 0 20px; 
     width: 100%;
 }
@@ -209,7 +208,6 @@ h1 {
     justify-content: space-between;
     /* Espacio equilibrado entre los 3 elementos */
     gap: 1.6rem;       
-    /* min-width: 260px;  */
 }
 
 #lang-select {
@@ -236,8 +234,6 @@ h1 {
     width: 50%;
 }
 
-
-/* --- Nuevo selector CLARO/OSCURO --- */
 /* Estilización del Switch de Modo Claro/Oscuro con Iconos */
 .theme-switch-wrapper {
     display: flex;
@@ -361,13 +357,13 @@ input:checked + .theme-slider:before {
     transform: rotate(180deg);
 }
 
-/* Menú desplegable de opciones (Aspecto de la captura) */
+/* Menú desplegable de opciones */
 .custom-options-menu {
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
-    min-width: 140px; /* Cambiado de width fijo a min-width para mayor flexibilidad */
-    width: max-content; /* Se adapta al texto de las opciones como "Español (ES)" o "Oro Real" */
+    min-width: 140px;
+    width: max-content;
     background-color: #1a1a1a;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 10px;
@@ -404,7 +400,7 @@ input:checked + .theme-slider:before {
 
 /* Efecto Hover sobre las opciones */
 .custom-option:hover {
-    background-color: var(--accent-color); /* Usa el color de acento de tu paleta */
+    background-color: var(--accent-color);
     color: #ffffff;
 }
 
@@ -419,8 +415,6 @@ input:checked + .theme-slider:before {
     color: #ffffff;
     background-color: var(--accent-color);
 }
-
-
 
 /* Sección de Perfil Rejilla Elegant (Sobre Mí & Hero) */
 /* Distribución de las secciones */
@@ -502,7 +496,7 @@ input:checked + .theme-slider:before {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #10B981; /* Esmeralda */
+    background-color: #10B981;
     position: relative;
     display: inline-block;
 }
@@ -703,8 +697,7 @@ input:checked + .theme-slider:before {
     box-shadow: 0 6px 15px color-mix(in srgb, var(--accent-color) 20%, transparent);
 }
 
-/* Tarjeta de Disponibilidad Hero y Botón Scroll to Top */
-
+/* Tarjeta de Disponibilidad Hero */
 .hiring-status-card {
     display: flex;
     align-items: center;
@@ -775,10 +768,6 @@ input:checked + .theme-slider:before {
     box-shadow: 0 4px 15px color-mix(in srgb, var(--accent-color) 20%, transparent);
     white-space: nowrap;
 }
-
-
-
-/* ---------------------------- */
 
 .socials-icons {
     margin: 2rem 0;
@@ -913,7 +902,6 @@ nav {
     display: inline-block;
     padding: 5px 0;
     font-size: 1.5rem;
-    /* font-weight: bold; */
     /* Configuración de la línea invisible al inicio (izq a drcha) */
     background-image: linear-gradient(var(--accent-color), var(--accent-color));
     background-position: 0% 100%;       
@@ -1004,8 +992,6 @@ section {
     padding: 60px 0; 
     width: 100%;
 }
-
-/*  ANIMACIONES DE APARICIÓN (SCROLL)  */
 
 /* Estado inicial: oculto y desplazado hacia abajo */
 .fade-in-section {
@@ -1336,9 +1322,7 @@ a{
     gap: 2rem;
 }
 
-
-/* Nuevo CSS perfil profesional */ 
-/* Contenedor de fondo apartado experiencia */
+/* Perfil Profesional */ 
 .experience-tabs-container {
     display: flex;
     gap: 3rem;
@@ -1468,7 +1452,7 @@ a{
     margin-bottom: 3.5rem;
 }
 
-/* Nueva Rejilla de Formación y Soft Skills */
+/* Rejilla de Formación y Soft Skills */
 .cv-education-grid {
     display: grid;
     grid-template-columns: 1.6fr 1fr;
@@ -1539,7 +1523,7 @@ a{
     transition: filter var(--transition);
 }
 
-/* Hover & Pinned states for buttons and icons */
+/* Estado de hover y pinned en cada imagen */
 .skill-icon-btn:hover,
 .skill-icon-btn.pinned {
     transform: scale(1.22) translateY(-4px);
@@ -1550,13 +1534,12 @@ a{
     filter: grayscale(0%);
 }
 
-/* Focus style replacement for accessibility */
 .skill-icon-btn:focus-visible {
     outline: 2px solid var(--accent-color);
     outline-offset: 4px;
 }
 
-/* dynamic brand drop-shadows on hover/pinned */
+/* Comportamiento dinámico de los iconos*/
 .skill-icon-btn.unity:hover, .skill-icon-btn.unity.pinned { filter: drop-shadow(0 0 10px rgba(95, 109, 122, 0.65)); }
 .skill-icon-btn.csharp:hover, .skill-icon-btn.csharp.pinned { filter: drop-shadow(0 0 12px rgba(154, 73, 147, 0.75)); }
 .skill-icon-btn.blender:hover, .skill-icon-btn.blender.pinned { filter: drop-shadow(0 0 12px rgba(232, 125, 13, 0.75)); }
@@ -1574,7 +1557,7 @@ a{
 .skill-icon-btn.ubuntu:hover, .skill-icon-btn.ubuntu.pinned { filter: drop-shadow(0 0 12px rgba(233, 84, 32, 0.75)); }
 .skill-icon-btn.premiere:hover, .skill-icon-btn.premiere.pinned { filter: drop-shadow(0 0 12px rgba(153, 153, 255, 0.75)); }
 
-/* Cinematically dim other skills when one is focused/active */
+/* Icono activo y seleccionado */
 .skills-icons-div.has-active-skill .skill-icon-btn:not(:hover):not(.pinned) {
     opacity: 0.35;
     filter: grayscale(85%) blur(0.5px);
@@ -1704,7 +1687,7 @@ a{
     color: color-mix(in srgb, var(--text-color) 75%, transparent);
 }
 
-/* Soft Skills List */
+/* Lista de Soft Skills */
 #skills-list {
     list-style: none;
     padding: 0;
@@ -1845,17 +1828,7 @@ a{
     top: -1px;
 }
 
-
-/* ------------------- */
-
-
-
-/* Estilos para los iconos de las soft skills */
-.soft-skill-icons{
-    /* width: 6%;
-    margin-right: 2%; */
-}
-
+/* Estilos Softs Skills */
 .skills-block h4 {
     font-size: 1.2rem;
 }
@@ -1867,7 +1840,6 @@ a{
     color: inherit; 
     font-weight: bold;
     display: inline-block;
-
     /* Configuración de la línea animada */
     background-image: linear-gradient(var(--accent-color), var(--accent-color));
     background-position: 0% 100%;
@@ -1881,12 +1853,10 @@ a{
     background-size: 100% 2px;
 }
 
-
-
-/* NUEVO: PROYECTOS */
+/* PROYECTOS */
 .projects-console-layout {
     display: grid;
-    grid-template-columns: 320px 1fr; /* Fixed sidebar, fluid details console */
+    grid-template-columns: 320px 1fr;
     gap: 2.5rem;
     width: 100%;
     align-items: start;
@@ -1909,7 +1879,7 @@ a{
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid color-mix(in srgb, var(--border-color) 40%, transparent);
     padding: 1.1rem 1.4rem;
-    border-radius: 20px; /* More rounded MD3 corner */
+    border-radius: 20px;
     cursor: pointer;
     text-align: left;
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1997,12 +1967,12 @@ a{
 
 /* Panel de Detalles del Proyecto (Ficha Individual) */
 .project-detail-panel {
-    display: none; /* toggled via active class */
+    display: none; 
     background: linear-gradient(135deg, color-mix(in srgb, var(--card-bg) 70%, transparent), color-mix(in srgb, var(--card-bg) 40%, transparent));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid color-mix(in srgb, var(--border-color) 80%, transparent);
-    border-radius: 28px; /* Large rounded corners according to MD3 */
+    border-radius: 28px; 
     padding: 2.5rem;
     align-items: start;
     min-height: 100%;
@@ -2012,7 +1982,7 @@ a{
 
 .project-detail-panel.active {
     display: grid;
-    grid-template-columns: 320px 1fr; /* Solid visuals column width, fluid details content */
+    grid-template-columns: 320px 1fr;
     gap: 2.5rem;
     animation: fadeInUpScaleShowcase 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -2082,8 +2052,8 @@ a{
     background: color-mix(in srgb, var(--text-color) 6%, transparent);
     border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
     padding: 0.3rem 0.85rem;
-    border-radius: 50px; /* Full capsule roundness */
-    text-transform: none; /* Keep natural capitalization */
+    border-radius: 50px; 
+    text-transform: none; 
     letter-spacing: 0.02em;
     white-space: nowrap;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2143,7 +2113,7 @@ a{
     background: linear-gradient(135deg, var(--accent-color), var(--cv-hover-color));
     color: #ffffff;
     padding: 0.8rem 2rem;
-    border-radius: 16px; /* Match MD3 button style */
+    border-radius: 16px;
     text-decoration: none;
     font-weight: 700;
     font-size: 0.95rem;
@@ -2169,9 +2139,7 @@ a{
     box-shadow: 0 6px 15px color-mix(in srgb, var(--accent-color) 20%, transparent);
 }
 
-
-
-/* --- 5. Formulario de Contacto --- */
+/* --- Formulario de Contacto --- */
 form {
     display: flex;
     flex-direction: column;
@@ -2317,7 +2285,7 @@ input, textarea {
     font-size: 1.1rem;
 }
 
-/* --- 6. Contacto --- */
+/* --- Contacto --- */
 .contact-div {
     display: flex;
     justify-content: space-around;
@@ -2412,7 +2380,7 @@ input, textarea {
     transition: all 0.2s ease, all 0.2s ease-in-out;
 }
 
-/* 1. Contenedor del título dejando espacio a la izquierda */
+/* Contenedor del título dejando espacio a la izquierda */
 .other-info h3 {
     position: relative;
     display: flex;
@@ -2422,23 +2390,25 @@ input, textarea {
     font-size: 1.8rem;
 }
 
-/* 2. El punto estático */
+/* El punto estático */
 .other-info h3::before {
     content: "";
     position: absolute;
     left: 0;
     top: 50%;
-    transform: translateY(-50%); /* Centrado vertical perfecto */
+    /* Centrado vertical */
+    transform: translateY(-50%); 
     /* Tamaño del círculo */
     width: 18px;
     height: 18px;
     /* -------- */
     background-color: var(--animation-job-color);
     border-radius: 50%;
-    z-index: 2; /* Nos aseguramos de que esté por encima de la onda */
+    /* El punto está por encima de la onda */
+    z-index: 2; 
 }
 
-/* 3. La onda expansiva por detrás */
+/* La onda expansiva por detrás */
 .other-info h3::after {
     content: "";
     position: absolute;
@@ -2456,7 +2426,7 @@ input, textarea {
     z-index: 1;
 }
 
-/* 4. Animación punto contacto */
+/* Animación punto contacto */
 @keyframes pulse-concentric {
     0% {
         /* Mantiene el eje vertical y empieza con el tamaño origen */
@@ -2489,7 +2459,7 @@ input, textarea {
     margin: auto;
 }
 
-/* --- 7. Footer --- */
+/* --- Footer --- */
 footer {
     background-color: var(--nav-bg);
     backdrop-filter: blur(12px);
@@ -2788,7 +2758,7 @@ footer {
         display: inline-block;
     }
     
-    /* Reducir el tamaño de los selectores o botones individuales */
+    /* Reduce el tamaño de los selectores o botones individuales */
     .custom-select-trigger, 
     #theme-toggle-btn, 
     #palette-select-btn,
@@ -2925,7 +2895,7 @@ footer {
         font-size: 0.88rem;
     }    
 
-    /* Cuadro "Buscando Empleo */
+    /* Cuadro "Buscando Empleo" */
     .hiring-status-card {
         flex-direction: column;
         align-items: center;
@@ -2940,7 +2910,7 @@ footer {
         transform: translateY(-2px);
     }
 
-    /* ── SECCIÓN CV NUEVA EN MÓVIL ── */
+    /* ── SECCIÓN CV EN MÓVIL ── */
     #cv h2 {
         text-align: center;
     }

@@ -345,7 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Si por alguna razón no se ha cargado (ej. fetch falló), recurrimos al diccionario local
+        // Si por alguna razón no se ha cargado, recurrimos al diccionario local
         if (!translations) {
             translations = localTranslations[lang] || localTranslations["es"];
         }
@@ -388,7 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
             window.updateCalComTranslation();
         }
 
-        // LÍNEAS NUEVAS: Traducir en caliente el texto seleccionado del selector de paletas
+        // Traducir en caliente el texto seleccionado del selector de paletas
         const paletteContainer = document.getElementById("palette-select-container");
         if (paletteContainer) {
             const textSpan = paletteContainer.querySelector(".trigger-text");
@@ -420,7 +420,6 @@ document.addEventListener("DOMContentLoaded", () => {
     changeLanguage(savedLang);
 });
 
-
 // Administra la edad actual que tengo
 document.addEventListener("DOMContentLoaded", () => {
     const birthDate = new Date(2001, 3, 27); // 27 de abril de 2001
@@ -446,14 +445,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeToggle = document.getElementById("theme-toggle");
     if (!themeToggle) return;
 
-    // 1. Comprobar si el usuario ya tenía una preferencia guardada, por defecto "light"
+    // Comprobar si el usuario ya tenía una preferencia guardada, por defecto "light"
     const savedTheme = localStorage.getItem("theme") || "light";
     document.documentElement.setAttribute("data-theme", savedTheme);
 
-    // 2. Sincronización del estado del switch
+    // Sincronización del estado del switch
     themeToggle.checked = (savedTheme === "dark");
 
-    // 3. Escuchar el cambio en el botón de claro/oscuro
+    // Escuchar el cambio en el botón de claro/oscuro
     themeToggle.addEventListener("change", (e) => {
         const isSelected = e.target.checked;
         const newTheme = isSelected ? "dark" : "light";
@@ -481,14 +480,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const options = container.querySelectorAll(".custom-option");
         const textSpan = trigger.querySelector(".trigger-text");
 
-        // 1. Inicializar la opción activa según guardada
+        // Inicializar la opción activa según guardada
         if (container.id === "palette-select-container") {
             const activeOption = container.querySelector(`.custom-option[data-value="${savedPalette}"]`);
             if (activeOption) {
                 options.forEach(opt => opt.classList.remove("selected"));
                 activeOption.classList.add("selected");
                 textSpan.innerHTML = activeOption.innerHTML;
-                // LÍNEA NUEVA: Guardamos el valor inicial de la paleta en el contenedor de texto
+                // Guardamos el valor inicial de la paleta en el contenedor de texto
                 textSpan.setAttribute("data-current-palette", savedPalette.replace("-theme", ""));
             }
         } else if (container.id === "lang-select-container") {
@@ -500,7 +499,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // 2. Abrir/Cerrar menú al hacer clic en el trigger
+        // Abrir/Cerrar menú al hacer clic en el trigger
         trigger.addEventListener("click", (e) => {
             e.stopPropagation();
             const isOpen = container.classList.contains("open");
@@ -519,7 +518,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // 3. Manejar selección de opciones
+        // Manejar selección de opciones
         options.forEach(option => {
             option.addEventListener("click", (e) => {
                 e.stopPropagation();
@@ -540,7 +539,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (container.id === "palette-select-container") {
                     document.documentElement.setAttribute("data-palette", value);
                     localStorage.setItem("palette", value);
-                    // Guardamos el valor limpio (sin "-theme") para que la traducción siempre funcione
+                    // Se guarda el valor limpio (sin "-theme") para que la traducción siempre funcione
                     const cleanValue = value.replace("-theme", "");
                     textSpan.setAttribute("data-current-palette", cleanValue);
                     // Forzar la traducción inmediata al idioma activo
@@ -595,8 +594,7 @@ function initScrollAnimations() {
         observer.observe(section);
     });
 }
-
-// Asegúrate de llamar a la función dentro de tu inicializador nativo
+// Asegura de llamar a la función dentro de tu inicializador nativo
 document.addEventListener('DOMContentLoaded', () => {
     // … tus otras funciones (getAge, temas, idiomas, etc.) …
 
@@ -708,7 +706,7 @@ document.addEventListener("DOMContentLoaded", () => {
         js: "#f7df1e",
         vscode: "#007acc",
         git: "#f05032",
-        github: "#9e4716", // adapts to accent but default here
+        github: "#9e4716", 
         gitlab: "#fc6d26",
         sourcetree: "#0052cc",
         trello: "#0079bf",
@@ -752,7 +750,7 @@ document.addEventListener("DOMContentLoaded", () => {
             content.style.display = "flex";
             // Forzar reflow para relanzar animación si es necesario
             content.style.animation = "none";
-            content.offsetHeight; /* trigger reflow */
+            content.offsetHeight;
             content.style.animation = null;
         }
 
@@ -818,7 +816,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Des-fijar al hacer clic en cualquier parte fuera de los botones
+    // Desfijar al hacer clic en cualquier parte fuera de los botones
     document.addEventListener("click", () => {
         if (pinnedSkill) {
             pinnedSkill = null;
@@ -874,7 +872,7 @@ function initProjectsConsole() {
 
             if (!targetPanel) return;
 
-            // 1. Actualizar estado del botón de navegación
+            // Actualizar estado del botón de navegación
             navButtons.forEach(b => {
                 b.classList.remove("active");
                 b.setAttribute("aria-selected", "false");
@@ -882,14 +880,15 @@ function initProjectsConsole() {
             btn.classList.add("active");
             btn.setAttribute("aria-selected", "true");
 
-            // 2. Alternar paneles de detalles
+            // Alternar paneles de detalles
             detailPanels.forEach(panel => {
                 panel.classList.remove("active");
                 panel.style.display = "none";
             });
 
             targetPanel.classList.add("active");
-            targetPanel.style.display = ""; // Deja que el CSS determine el display (grid)
+            // Deja que el CSS determine el display (grid)
+            targetPanel.style.display = ""; 
             // Forzar reflow
             targetPanel.offsetHeight;
         });
