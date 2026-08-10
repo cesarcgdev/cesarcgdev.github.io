@@ -385,7 +385,14 @@
             <div class="projects-console-layout">
                 <!-- Menú de navegación de proyectos -->
                 <div class="projects-nav-menu" role="tablist" aria-label="Seleccionar proyecto">
-                    <button type="button" class="project-nav-btn active" data-project-target="project-panel-1" role="tab" aria-selected="true" aria-controls="project-panel-1">
+                    <button type="button" class="project-nav-btn active" data-project-target="project-panel-4" role="tab" aria-selected="true" aria-controls="project-panel-4">
+                        <img src="images/projects/zombie-gore-icon.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
+                        <div class="nav-btn-info">
+                            <span class="nav-btn-title">Zombie Gore</span>
+                            <span class="nav-btn-subtitle" data-i18n="p4-badge">Diseñador y Desarrollador</span>
+                        </div>
+                    </button>
+                    <button type="button" class="project-nav-btn" data-project-target="project-panel-1" role="tab" aria-selected="false" aria-controls="project-panel-1">
                         <img src="images/projects/project1-image.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
                         <div class="nav-btn-info">
                             <span class="nav-btn-title">Mega Time</span>
@@ -408,10 +415,36 @@
                     </button>
                 </div>
 
-                <!-- Mega Time -->
                 <div class="projects-details-container">
-                    
-                    <article class="project-detail-panel active" id="project-panel-1" role="tabpanel" aria-labelledby="project-panel-1">
+
+                    <!-- Zombie Gore -->
+                    <article class="project-detail-panel active" id="project-panel-4" role="tabpanel" aria-labelledby="project-panel-4">
+                        <div class="project-visuals-col">
+                            <div class="project-image-wrapper">
+                                <img src="images/projects/zombie-gore.png" alt="Captura de pantalla de Zombie Gore" width="960" height="540">
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://play.google.com/store/apps/details?id=com.vivastudios.zombie.gore.shooting&pcampaignid=web_share" target="_blank" class="btn">
+                                    <i class="fa-brands fa-google-play fa-fw"></i>
+                                    <span data-i18n="play-store">Google Play</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info-col">
+                            <h3>Zombie Gore</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">Unity</span>
+                                <span class="project-tag" data-i18n="p4-tag2">Diseño de Interfaces</span>
+                                <span class="project-tag" data-i18n="p4-tag3">Live Ops</span>
+                            </div>
+                            <p class="project-description">
+                                <span data-i18n="p4-desc-intro">Juego de acción y supervivencia zombi para móviles publicado en Google Play por <i><a href="https://play.google.com/store/apps/dev?id=5889854114365514439" class="extra-link" target="_blank">Viva Games Studios</a>.</i></span> <span data-i18n="p4-desc-extra">El título supera las 50k descargas y sostiene una valoración de 4,6★ con más de 2.500 reseñas, respaldado por un ciclo de actualizaciones constante que mantiene la retención y la monetización de su base de jugadores.<br>Mi rol combina diseño y desarrollo: mejoro las mecánicas existentes y el apartado visual, diseño e implemento las interfaces actualizadas del juego y creo e integro nuevos enemigos y dinámicas que amplían la experiencia. El proyecto recibe actualizaciones periódicas, por lo que itero y pulo el producto de forma continua.</span>
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Mega Time -->
+                    <article class="project-detail-panel" id="project-panel-1" role="tabpanel" aria-labelledby="project-panel-1" style="display: none;">
                         <div class="project-visuals-col">
                             <div class="project-image-wrapper">
                                 <img src="images/projects/project1-image.png" alt="Captura de pantalla de Mega Time" width="960" height="540">
@@ -491,7 +524,7 @@
                     </article>
                 </div>
             </div>
-        </section> 
+        </section>
         
         <!-- CONTACTO -->
         <section id="contacto" class="fade-in-section">
