@@ -155,7 +155,7 @@
                         </div>
                         <a href="#contacto" class="btn-hiring-schedule">
                             <i class="fa-regular fa-calendar-check"></i>
-                            <span data-i18n="hiring-btn-text">Contacta conmigo</span>
+                            <span data-i18n="hiring-btn-text">Agendar reunión</span>
                         </a>
                     </div>
                 </div>
@@ -262,6 +262,9 @@
                         </button>
                         <button type="button" class="skill-icon-btn vscode" data-skill="vscode" aria-label="Ver habilidad VS Code">
                             <img src="images/skills/visual-studio-code-1.svg" class="skills-icon" alt="Logo Visual Studio" width="50" height="50" aria-hidden="true">
+                        </button>
+                        <button type="button" class="skill-icon-btn antigravity" data-skill="antigravity" aria-label="Ver habilidad Antigravity">
+                            <img src="images/skills/antigravity.svg" class="skills-icon" alt="Logo Antigravity" width="50" height="50" aria-hidden="true">
                         </button>
                         <button type="button" class="skill-icon-btn git" data-skill="git" aria-label="Ver habilidad Git">
                             <img src="images/skills/git-icon.svg" class="skills-icon" alt="Logo Git" width="50" height="50" aria-hidden="true">
@@ -529,24 +532,181 @@
         <!-- CONTACTO -->
         <section id="contacto" class="fade-in-section">
             <h2 class="contact-title" data-i18n="contact-title">CONTACTO</h2>
-            <div class="contact-div">
-                <div class="contact-div-info">
-                    <ul>
-                        <li><b data-i18n="mail-text"><i class="fa-regular fa-envelope fa-fw"></i> Correo: </b><a href="mailto:cesarcaste2001@gmail.com" target="_blank">cesarcaste2001@gmail.com</a></li>
-                        <li><b data-i18n="phone-text"><i class="fa-solid fa-phone"></i> Teléfono: </b>+34 717 14 26 23</li>
-                        <li><b data-i18n="location-text"><i class="fa-solid fa-map-location"></i> Ubicación: </b>Las Palmas de Gran Canaria</li>
-                    </ul>
+            <div class="contact-layout">
+                <!-- Columna izquierda: información de contacto -->
+                <div class="contact-sidebar">
+                    <div class="contact-sidebar-card">
+                        <div class="contact-card-header">
+                            <h3 data-i18n="contact-card-title">Información</h3>
+                            <span class="contact-status-badge">
+                                <span class="contact-status-dot"></span>
+                                <span data-i18n="status-hiring">Buscando empleo</span>
+                            </span>
+                        </div>
+
+                        <!-- Datos de contacto -->
+                        <div class="contact-fields-grid">
+                            <div class="contact-field-item">
+                                <div class="contact-field-icon"><i class="fa-regular fa-envelope fa-fw"></i></div>
+                                <div class="contact-field-info">
+                                    <span class="contact-field-label" data-i18n="label-email">Correo</span>
+                                    <a href="mailto:cesarcaste2001@gmail.com" class="contact-field-value">cesarcaste2001@gmail.com</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-field-item">
+                                <div class="contact-field-icon"><i class="fa-solid fa-phone fa-fw"></i></div>
+                                <div class="contact-field-info">
+                                    <span class="contact-field-label" data-i18n="label-phone">Teléfono</span>
+                                    <span class="contact-field-value">+34 717 14 26 23</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-field-item">
+                                <div class="contact-field-icon"><i class="fa-solid fa-map-location fa-fw"></i></div>
+                                <div class="contact-field-info">
+                                    <span class="contact-field-label" data-i18n="label-location">Ubicación</span>
+                                    <span class="contact-field-value">Las Palmas de Gran Canaria</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="contact-divider">
+
+                        <!-- Disponibilidad -->
+                        <div class="contact-availability-list">
+                            <div class="contact-availability-item">
+                                <i class="fa-solid fa-briefcase fa-fw"></i>
+                                <span data-i18n="status-hours">Jornada <b>completa / parcial.</b></span>
+                            </div>
+                            <div class="contact-availability-item">
+                                <i class="fa-solid fa-house-laptop fa-fw"></i>
+                                <span data-i18n="status-location"><b>Remoto / Presencial</b> (Las Palmas de Gran Canaria).</span>
+                            </div>
+                            <div class="contact-availability-item">
+                                <i class="fa-solid fa-plane fa-fw"></i>
+                                <span data-i18n="status-travel">Disponibilidad para <b>desplazamientos puntuales.</b></span>
+                            </div>
+                        </div>
+
+                        <hr class="contact-divider">
+
+                        <!-- Redes -->
+                        <div class="contact-socials-section">
+                            <span class="contact-socials-label" data-i18n="socials-label">Mis redes profesionales:</span>
+                            <div class="socials-icons-contact-div">
+                                <a href="https://www.linkedin.com/in/césar-castellano-65665a2a8/" target="_blank"
+                                    rel="noopener noreferrer" aria-label="LinkedIn">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/cesarcgdev" target="_blank" rel="noopener noreferrer"
+                                    aria-label="GitHub">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                                <a href="https://youngmute.itch.io/" target="_blank" rel="noopener noreferrer"
+                                    aria-label="Itch.io">
+                                    <i class="fa-brands fa-itch-io"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <hr class="contact-divider">
+
+                        <!-- Descarga de CVs -->
+                        <div class="btn-contact-div">
+                            <a href="files/César-FullStacks-CV.pdf" download="CV_FullStack_CesarCaste"
+                                class="btn-cv-download" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-regular fa-file-pdf"></i> CV - FullStack
+                            </a>
+                            <a href="files/César-GameDev-CV.pdf" download="CV_GameDev_CesarCaste"
+                                class="btn-cv-download" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-regular fa-file-pdf"></i> CV - GameDev
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="other-info">
-                    <h3 data-i18n="status-hiring">Buscando empleo</h3>
-                    <ul>
-                        <li data-i18n="status-hours">Jornada <b>completa / parcial</b></li>
-                        <li data-i18n="status-location">Remoto / Presencial (Las Palmas de Gran Canaria)</li>
-                        <li data-i18n="status-travel">Disponibilidad para desplazamientos puntuales</li>
-                    </ul>
-                    <div class="btn-contact-div">
-                        <a href="files/César-FullStacks-CV.pdf" download="CV_FullStack_CesarCaste" target="_blank" rel="noopener noreferrer"><button class="btn-cv">CV - FullStack</button></a>
-                        <a href="files/César-GameDev-CV.pdf" download="CV_GameDev_CesarCaste" target="_blank" rel="noopener noreferrer"><button class="btn-cv">CV - GameDev</button></a>
+
+                <!-- Columna derecha: widget propio alimentado por la API pública de Cal.com -->
+                <div class="cal-widget-container">
+                    <div class="cal-widget" id="cal-widget">
+                        <!-- Detalles del evento -->
+                        <div class="cal-widget-details">
+                            <div class="cal-host-header">
+                                <img src="images/intro/foto-normal.jpg" alt="César Castellano García"
+                                    class="cal-host-avatar" width="46" height="46">
+                                <div class="cal-host-info">
+                                    <span class="cal-host-name">César Castellano García</span>
+                                    <h3 class="cal-event-title" data-i18n="cal-title">Reunión / Entrevista Técnica</h3>
+                                </div>
+                            </div>
+
+                            <p class="cal-event-description" data-i18n="cal-description">
+                                ¿Quieres agendar una reunión o entrevista técnica conmigo? Elige una fecha y la hora
+                                que mejor te convenga para charlar de tus proyectos o vacantes.
+                            </p>
+
+                            <div class="cal-details-row">
+                                <i class="fa-regular fa-clock fa-fw"></i>
+                                <div class="cal-durations" role="radiogroup" aria-label="Duración de la reunión">
+                                    <button type="button" class="cal-duration-btn" data-duration="15">15m</button>
+                                    <button type="button" class="cal-duration-btn active"
+                                        data-duration="30">30m</button>
+                                    <button type="button" class="cal-duration-btn" data-duration="45">45m</button>
+                                    <button type="button" class="cal-duration-btn" data-duration="60">1h</button>
+                                </div>
+                            </div>
+
+                            <div class="cal-details-row">
+                                <i class="fa-solid fa-video fa-fw"></i>
+                                <span data-i18n="cal-location-type">Google Meet / Discord / Teams</span>
+                            </div>
+
+                            <div class="cal-details-row">
+                                <i class="fa-solid fa-globe fa-fw"></i>
+                                <!-- initCalBooking() le añade el desfase horario vigente -->
+                                <span id="cal-timezone-label" data-i18n="cal-timezone">Europa/Madrid</span>
+                            </div>
+                        </div>
+
+                        <!-- Calendario -->
+                        <div class="cal-widget-calendar">
+                            <div class="cal-calendar-header">
+                                <span class="cal-month-year" id="cal-month-year">Agosto 2026</span>
+                                <div class="cal-calendar-nav">
+                                    <button type="button" class="cal-nav-btn" id="cal-prev-month"
+                                        aria-label="Mes anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button type="button" class="cal-nav-btn" id="cal-next-month"
+                                        aria-label="Mes siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="cal-weekdays-grid">
+                                <span data-i18n="day-sun">DOM</span>
+                                <span data-i18n="day-mon">LUN</span>
+                                <span data-i18n="day-tue">MAR</span>
+                                <span data-i18n="day-wed">MIE</span>
+                                <span data-i18n="day-thu">JUE</span>
+                                <span data-i18n="day-fri">VIE</span>
+                                <span data-i18n="day-sat">SAB</span>
+                            </div>
+
+                            <div class="cal-days-grid" id="cal-days-grid">
+                                <!-- Días inyectados por initCalBooking() -->
+                            </div>
+
+                            <p class="cal-status" id="cal-status" role="status"></p>
+                        </div>
+
+                        <!-- Horas del día elegido -->
+                        <div class="cal-widget-timeslots" id="cal-widget-timeslots">
+                            <div class="cal-timeslots-header">
+                                <span class="cal-selected-day" id="cal-selected-day"
+                                    data-i18n="cal-select-day">Selecciona un día</span>
+                            </div>
+                            <div class="cal-timeslots-list" id="cal-timeslots-list">
+                                <!-- Horas inyectadas por initCalBooking() -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -575,6 +735,5 @@
             <p class="footer-copyright" data-i18n="footer-text">&copy; 2026 César Castellano García | Las Palmas</p>
         </div>
     </footer>
-    <script src="script.js"></script>
 </body>
 </html>

@@ -1144,38 +1144,6 @@ a{
     color: inherit;
 }
 
-.btn-cv {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    background: linear-gradient(135deg, var(--accent-color), var(--cv-hover-color));
-    color: #ffffff;
-    padding: 1rem 2rem;
-    border-radius: 14px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 6px 20px color-mix(in srgb, var(--accent-color) 25%, transparent);
-}
-
-.btn-cv:hover {
-    background: linear-gradient(135deg, var(--cv-hover-color), var(--cv-active-color));
-    transform: translateY(-3px);
-    box-shadow: 0 12px 28px color-mix(in srgb, var(--accent-color) 40%, transparent);
-    color: #ffffff;
-}
-
-.btn-cv:active {
-    background: var(--cv-active-color);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 15px color-mix(in srgb, var(--accent-color) 20%, transparent);
-}
-
 .projects-grid {
     display: flex;
     justify-content: space-around;
@@ -1548,6 +1516,7 @@ a{
 .skill-icon-btn.css:hover, .skill-icon-btn.css.pinned { filter: drop-shadow(0 0 12px rgba(38, 77, 228, 0.75)); }
 .skill-icon-btn.js:hover, .skill-icon-btn.js.pinned { filter: drop-shadow(0 0 12px rgba(247, 223, 30, 0.85)); }
 .skill-icon-btn.vscode:hover, .skill-icon-btn.vscode.pinned { filter: drop-shadow(0 0 12px rgba(0, 122, 204, 0.75)); }
+.skill-icon-btn.antigravity:hover, .skill-icon-btn.antigravity.pinned { filter: drop-shadow(0 0 12px rgba(49, 134, 255, 0.75)); }
 .skill-icon-btn.git:hover, .skill-icon-btn.git.pinned { filter: drop-shadow(0 0 12px rgba(240, 80, 50, 0.75)); }
 .skill-icon-btn.github:hover, .skill-icon-btn.github.pinned { filter: drop-shadow(0 0 12px var(--accent-color)); }
 .skill-icon-btn.gitlab:hover, .skill-icon-btn.gitlab.pinned { filter: drop-shadow(0 0 12px rgba(252, 109, 38, 0.75)); }
@@ -2286,171 +2255,612 @@ input, textarea {
 }
 
 /* --- Contacto --- */
-.contact-div {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-
 #contacto h2 {
     margin-bottom: 2.5%;
 }
 
-.contact-div-info {
-    width: 48%;
-    padding: 0 2rem;
-    border-radius: 1.5rem;
-}
-
-.contact-div-info ul {
-    list-style-type: none;
-    margin-top: 1.2rem;
-}
-
-.contact-div-info li {
-    list-style-type: none;
-    margin-top: 3rem;
-    font-size: 1.3rem;
-}
-
-.contact-div-info a:not(:has(img)) {
-    text-decoration: none;
-    color: var(--accent-color);
-    font-weight: 700;
-    transition: color var(--transition);
-}
-
-.contact-div-info a:not(:has(img)):hover {
-    color: var(--cv-hover-color);        
-}
-
-.contact-div-info p {
-    font-size: 1.3rem;
-    margin-top: 1.2rem;
-}
-
-.btn-contact-div {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 30%;
-}
-
-/* --- Limpieza y comportamiento original para los iconos de redes sociales --- */
-.socials-icons-contact-div {
-    display: flex;                 
-    justify-content: flex-start;  
-    align-items: center;
-    gap: 14px;              
-    margin-top: 15px;        
+/* Sidebar propio a la izquierda, widget de reservas de Cal.com a la derecha */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 2.5rem;
     width: 100%;
+    align-items: start;
 }
 
-.socials-icons-contact-div a {
-    background-image: none !important;
-    display: inline-block;
-    width: auto;  
+.contact-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.socials-icons-contact-div img {
-    width: 60px;       
-    height: auto;
-    object-fit: cover;
-    transition: transform 0.2s ease-in-out;
-}
-
-.socials-icons-contact-div img:hover {
-    transform: scale(1.05);      
-}
-
-.other-info {
+.contact-sidebar-card {
     background: color-mix(in srgb, var(--card-bg) 60%, transparent);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
     border-radius: 24px;
-    padding: 1.2rem 1rem 2.5rem 2.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    outline: 2px solid #98989800;
-    transition: all 0.2s ease-in-out, all 0.2s ease;
+    padding: 1.8rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
-.other-info:hover{
-    outline: 2px solid var(--accent-color);
-    transition: all 0.2s ease, all 0.2s ease-in-out;
+.contact-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Con el sidebar estrecho el distintivo no cabe al lado del título:
+       que baje a su propia línea en vez de desbordar el borde de la tarjeta */
+    flex-wrap: wrap;
+    gap: 0.6rem 0.8rem;
+    margin-bottom: 1.4rem;
 }
 
-/* Contenedor del título dejando espacio a la izquierda */
-.other-info h3 {
+.contact-card-header h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-color);
+}
+
+/* Distintivo "Buscando empleo" con el punto latiendo */
+.contact-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: color-mix(in srgb, var(--accent-color) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent-color) 20%, transparent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.contact-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--animation-job-color);
     position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.contact-status-dot::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: status-pulse 1.8s ease-in-out infinite;
+}
+
+/* Campos de contacto */
+.contact-fields-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    margin-bottom: 0.4rem;
+}
+
+.contact-field-item {
     display: flex;
     align-items: center;
-    padding-left: 8%;
-    margin-top: 2%;
-    font-size: 1.8rem;
+    gap: 0.8rem;
 }
 
-/* El punto estático */
-.other-info h3::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    /* Centrado vertical */
-    transform: translateY(-50%); 
-    /* Tamaño del círculo */
-    width: 18px;
-    height: 18px;
-    /* -------- */
-    background-color: var(--animation-job-color);
-    border-radius: 50%;
-    /* El punto está por encima de la onda */
-    z-index: 2; 
-}
-
-/* La onda expansiva por detrás */
-.other-info h3::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%) scale(1);
-    /* Tamaño del círculo */
-    width: 18px;
-    height: 18px;
-    /* -------- */
-    background-color: var(--animation-job-color);
-    border-radius: 50%;
-    /* Ejecuta la animación */
-    animation: pulse-concentric 1.5s ease-out infinite;
-    z-index: 1;
-}
-
-/* Animación punto contacto */
-@keyframes pulse-concentric {
-    0% {
-        /* Mantiene el eje vertical y empieza con el tamaño origen */
-        transform: translateY(-50%) scale(1);
-        opacity: 1;
-    }
-    100% {
-        /* Se expande de manera uniforme desde el centro */
-        transform: translateY(-50%) scale(2);
-        opacity: 0;
-    }
-}
-
-.other-info h3 {
+.contact-field-icon {
     display: flex;
     align-items: center;
-    gap: 0.7rem;
-    margin-top: 2%;
-    font-size: 1.8rem;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--accent-color) 8%, transparent);
+    color: var(--accent-color);
+    font-size: 0.95rem;
+    flex-shrink: 0;
+    border: 1px solid color-mix(in srgb, var(--accent-color) 12%, transparent);
 }
 
-.other-info li {
-    font-size: 1.2rem;
-    margin: 2.5%;
+.contact-field-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+}
+
+.contact-field-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: color-mix(in srgb, var(--text-color) 45%, transparent);
+}
+
+.contact-field-value {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+    word-break: break-word;
+}
+
+a.contact-field-value {
+    color: var(--accent-color);
+    transition: color var(--transition);
+}
+
+a.contact-field-value:hover {
+    color: var(--cv-hover-color);
+    text-decoration: underline;
+}
+
+.contact-divider {
+    border: 0;
+    height: 1px;
+    background: var(--border-color);
+    margin: 1.2rem 0;
+}
+
+/* Disponibilidad */
+.contact-availability-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.contact-availability-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+.contact-availability-item i {
+    color: var(--accent-color);
+    margin-top: 3px;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+/* Redes */
+.contact-socials-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.contact-socials-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: color-mix(in srgb, var(--text-color) 60%, transparent);
+}
+
+.socials-icons-contact-div {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.socials-icons-contact-div a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    text-decoration: none;
+    background: transparent;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.socials-icons-contact-div a:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px color-mix(in srgb, var(--accent-color) 25%, transparent);
+}
+
+.btn-contact-div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+}
+
+/* --- Widget de reservas ---
+   El calendario es nuestro (HTML + CSS propios, hereda las paletas).
+   Los huecos salen de la API pública de Cal.com. Ver initCalBooking(). */
+.cal-widget-container {
+    width: 100%;
+    min-width: 0;
+    position: relative;
+}
+
+/* Dos columnas de partida; al elegir día se despliega a tres */
+.cal-widget {
+    display: grid;
+    /* La columna de detalles va algo más ancha que en la referencia para que
+       el título y los cuatro botones de duración no se partan en varias líneas */
+    grid-template-columns: 1.4fr 1.25fr;
+    background: color-mix(in srgb, var(--card-bg) 95%, var(--bg-color));
+    border: 1px solid var(--border-color);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+    min-height: 480px;
+    position: relative;
+    transition: grid-template-columns 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cal-widget.has-timeslots {
+    grid-template-columns: 1.3fr 1.15fr 1fr;
+}
+
+.cal-widget-details {
+    padding: 1.8rem;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.cal-widget-calendar {
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.cal-widget-timeslots {
+    padding: 1.8rem 1.4rem;
+    border-left: 1px solid var(--border-color);
+    display: none;
+    flex-direction: column;
+    animation: fadeInCal 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInCal {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Cabecera con avatar */
+.cal-host-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.cal-host-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--accent-color);
+}
+
+.cal-host-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.cal-host-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--text-color) 60%, transparent);
+}
+
+.cal-event-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-color);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-top: 0.15rem;
+}
+
+.cal-event-description {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: color-mix(in srgb, var(--text-color) 75%, transparent);
+    margin-bottom: 1.8rem;
+    font-weight: 300;
+}
+
+.cal-details-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    font-size: 0.88rem;
+    color: color-mix(in srgb, var(--text-color) 80%, transparent);
+}
+
+.cal-details-row i {
+    color: color-mix(in srgb, var(--text-color) 45%, transparent);
+    font-size: 1rem;
+}
+
+/* Selector de duración */
+.cal-durations {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.cal-duration-btn {
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--text-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 30px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.cal-duration-btn:hover:not(.active) {
+    background: color-mix(in srgb, var(--text-color) 6%, transparent);
+    border-color: color-mix(in srgb, var(--text-color) 30%, transparent);
+}
+
+.cal-duration-btn.active {
+    background: var(--text-color);
+    color: var(--bg-color);
+    border-color: var(--text-color);
+}
+
+/* Calendario */
+.cal-calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.cal-month-year {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.cal-calendar-nav {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.cal-nav-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.25s ease;
+}
+
+.cal-nav-btn:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--text-color) 6%, transparent);
+    border-color: color-mix(in srgb, var(--text-color) 30%, transparent);
+}
+
+.cal-nav-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.cal-weekdays-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-bottom: 0.8rem;
+}
+
+.cal-weekdays-grid span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: color-mix(in srgb, var(--text-color) 45%, transparent);
+}
+
+.cal-days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.4rem;
+}
+
+.cal-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    font-size: 0.88rem;
+    border-radius: 10px;
+    user-select: none;
+    transition: all 0.25s ease;
+}
+
+.cal-day-empty {
+    visibility: hidden;
+}
+
+/* Día sin huecos libres: fuera de horario, pasado, o ya ocupado en Google Calendar */
+.cal-day-inactive {
+    color: color-mix(in srgb, var(--text-color) 30%, transparent);
+    cursor: not-allowed;
+}
+
+.cal-day-available {
+    color: var(--accent-color);
+    background: color-mix(in srgb, var(--accent-color) 8%, transparent);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.cal-day-available:hover {
+    background: color-mix(in srgb, var(--accent-color) 18%, transparent);
+    transform: scale(1.04);
+}
+
+.cal-day-selected {
+    background: var(--accent-color) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent-color) 25%, transparent);
+}
+
+/* Mensajes de carga y error bajo el calendario */
+.cal-status {
+    margin: 1rem 0 0;
+    min-height: 1.2em;
+    font-size: 0.82rem;
+    text-align: center;
+    color: color-mix(in srgb, var(--text-color) 55%, transparent);
+}
+
+.cal-status.is-error {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Columna de horas */
+.cal-timeslots-header {
+    margin-bottom: 1.2rem;
+}
+
+.cal-selected-day {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1.2rem;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.cal-timeslots-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 0.4rem;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--text-color) 12%, transparent) transparent;
+}
+
+.cal-timeslots-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.cal-timeslots-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.cal-timeslots-list::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--text-color) 12%, transparent);
+    border-radius: 10px;
+}
+
+/* Cada hora se parte en [hora | Confirmar] al seleccionarla */
+.cal-slot-container {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    height: 46px;
+    flex-shrink: 0;
+}
+
+.cal-slot-time-btn,
+.cal-slot-confirm-btn {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    outline: none;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+}
+
+.cal-slot-time-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+    border: 1.5px solid var(--border-color);
+    background: color-mix(in srgb, var(--card-bg) 60%, #ffffff);
+    color: var(--accent-color);
+    border-radius: 24px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cal-slot-time-btn:hover {
+    border-color: var(--accent-color);
+    background: color-mix(in srgb, var(--accent-color) 8%, #ffffff);
+}
+
+.cal-slot-confirm-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    white-space: nowrap;
+    background: var(--accent-color);
+    color: #ffffff;
+    border-radius: 24px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    height: 100%;
+}
+
+.cal-slot-container.active .cal-slot-time-btn {
+    background: color-mix(in srgb, var(--text-color) 85%, #000000);
+    border-color: color-mix(in srgb, var(--text-color) 85%, #000000);
+    color: var(--bg-color);
+    width: calc(50% - 3px);
+    flex-grow: 0;
+}
+
+.cal-slot-container.active .cal-slot-confirm-btn {
+    width: calc(50% - 3px);
+    opacity: 1;
+    visibility: visible;
+}
+
+.cal-slot-confirm-btn:hover {
+    background: var(--cv-hover-color);
+    box-shadow: 0 4px 10px color-mix(in srgb, var(--accent-color) 20%, transparent);
 }
 
 .logo-form {
@@ -2660,7 +3070,7 @@ footer {
         flex: 1 1 200px;
     }
 
-    /* Cal.com Simulator Widget en tablets */
+    /* Widget de reservas: las tres columnas se apilan */
     .cal-widget {
         grid-template-columns: 1fr;
         min-height: auto;
@@ -3084,46 +3494,72 @@ footer {
     }
 
     /* CONTACTO */
-    .contact-div {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
+    .contact-sidebar-card {
+        padding: 1.2rem;
+        border-radius: 18px;
     }
 
-    .contact-div-info,
-    .other-info {
-        width: 100%;
-        padding: 0.8rem 1.2rem 1.8rem 1.2rem;
-        max-width: 100%;
+    .contact-card-header {
+        flex-wrap: wrap;
+        gap: 0.6rem;
     }
 
-    .contact-div-info li,
-    .contact-div-info p {
-        font-size: 1.05rem;
-    }
-
-    .other-info h3 {
-        font-size: 1.4rem;
-    }
-
-    .other-info li {
+    .contact-card-header h3 {
         font-size: 1rem;
-        margin: 8%;
+    }
+
+    .contact-field-value {
+        font-size: 0.86rem;
     }
 
     .btn-contact-div {
+        flex-direction: column;
         gap: 0.8rem;
-        height: auto;
         margin-top: 1rem;
     }
 
-    .btn-contact-div .btn-cv {
-        width: 100%;
-        text-align: center;
+    .socials-icons-contact-div a {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
     }
 
-    .socials-icons-contact-div img {
-        width: 44px;
+    /* Widget de reservas en móvil */
+    .cal-widget {
+        border-radius: 20px;
+    }
+
+    .cal-widget-details,
+    .cal-widget-calendar,
+    .cal-widget-timeslots {
+        padding: 1.2rem;
+    }
+
+    .cal-event-description {
+        margin-bottom: 1.2rem;
+    }
+
+    .cal-durations {
+        flex-wrap: wrap;
+        gap: 0.3rem;
+    }
+
+    .cal-day {
+        font-size: 0.8rem;
+        border-radius: 6px;
+    }
+
+    .cal-days-grid {
+        gap: 0.3rem;
+    }
+
+    .cal-weekdays-grid span {
+        font-size: 0.7rem;
+    }
+
+    /* Sin altura tope: en vertical la lista ya no compite con el calendario */
+    .cal-timeslots-list {
+        max-height: none;
     }
 
     /* FOOTER */
