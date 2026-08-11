@@ -103,11 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "label-phone": "Teléfono",
             "label-location": "Ubicación",
             "socials-label": "Mis redes profesionales:",
-            "mail-text": "<i class=\"fa-regular fa-envelope fa-fw\"></i> Correo: ",
-            "phone-text": "<i class=\"fa-regular fa-comment-dots fa-fw\"></i> Teléfono: ",
-            "location-text": "<i class=\"fa-regular fa-compass fa-fw\"></i> Ubicación: ",
-            "socials-text": "<i class=\"fa-regular fa-share-from-square fa-fw\"></i> Mis redes profesionales: ",
-            "status-hiring": " Buscando empleo",
+            "status-hiring": "Buscando empleo",
             "hiring-status-text": "Actualmente buscando empleo",
             "hiring-btn-text": "Agendar reunión",
             "status-hours": "Jornada <b>completa / parcial.</b>",
@@ -130,6 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "skill-desc-js": "Programación interactiva frontend, gestión del DOM y consumo de servicios web.",
             "skill-name-vscode": "Visual Studio Code",
             "skill-desc-vscode": "Entorno principal de desarrollo altamente optimizado mediante atajos y extensiones.",
+            "skill-name-antigravity": "Antigravity",
+            "skill-desc-antigravity": "Herramienta clave en mi día a día: desarrollo asistido por IA con agentes para acelerar prototipos y refactorizaciones.",
             "skill-name-git": "Git",
             "skill-desc-git": "Control de versiones distribuido, control de ramas y fusión de código eficiente.",
             "skill-name-github": "GitHub",
@@ -148,23 +146,39 @@ document.addEventListener("DOMContentLoaded", () => {
             "level-very-high": "MUY ALTO",
             "level-high": "ALTO",
             "cal-title": "Reunión / Entrevista Técnica",
+
             "cal-description": "¿Quieres agendar una reunión o entrevista técnica conmigo? Elige una fecha y la hora que mejor te convenga para charlar de tus proyectos o vacantes.",
-            "cal-location-type": "Google Meet / Discord / Teams",
-            "cal-timezone": "Europa/Madrid (UTC+1)",
-            "cal-success-title": "¡Reunión Pre-agendada!",
-            "cal-success-body": "Se ha abierto tu cliente de correo para enviar la confirmación. ¡Hablamos pronto!",
-            "cal-confirm": "Confirmar",
-            "cal-close": "Cerrar",
+
+
             "cal-select-day": "Selecciona un día",
+
             "cal-selected-prefix": "Horas para el",
-            "footer-text": "&copy; 2026 César Castellano García | Las Palmas",
+
+            "cal-confirm": "Confirmar",
+
+            "cal-loading": "Cargando disponibilidad…",
+
+            "cal-no-slots": "No hay huecos libres este mes.",
+
+            "cal-error": "No se ha podido cargar la disponibilidad. Escríbeme por correo.",
+
             "day-sun": "DOM",
+
             "day-mon": "LUN",
+
             "day-tue": "MAR",
+
             "day-wed": "MIE",
+
             "day-thu": "JUE",
+
             "day-fri": "VIE",
-            "day-sat": "SAB"
+
+            "day-sat": "SAB",
+
+            "cal-location-type": "Google Meet / Discord / Teams",
+            "cal-timezone": "Europa/Madrid",
+            "footer-text": "&copy; 2026 César Castellano García | Las Palmas"
         },
         en: {
             "nav-home": "Home",
@@ -262,11 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "label-phone": "Phone",
             "label-location": "Location",
             "socials-label": "My professional networks:",
-            "mail-text": "<i class=\"fa-regular fa-envelope fa-fw\"></i> Mail: ",
-            "phone-text": "<i class=\"fa-regular fa-comment-dots fa-fw\"></i> Phone number: ",
-            "location-text": "<i class=\"fa-regular fa-compass fa-fw\"></i> Location: ",
-            "socials-text": "<i class=\"fa-regular fa-share-from-square fa-fw\"></i> My professional networks: ",
-            "status-hiring": " Open to work",
+            "status-hiring": "Open to work",
             "hiring-status-text": "Currently open to work",
             "hiring-btn-text": "Book a meeting",
             "status-hours": "<b>Full-time / Part-time.</b>",
@@ -289,6 +299,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "skill-desc-js": "Frontend interactive programming, DOM manipulation, and web service integration.",
             "skill-name-vscode": "Visual Studio Code",
             "skill-desc-vscode": "Primary development environment highly optimized through shortcuts and extensions.",
+            "skill-name-antigravity": "Antigravity",
+            "skill-desc-antigravity": "A key tool in my daily workflow: agent-driven AI development to speed up prototyping and refactoring.",
             "skill-name-git": "Git",
             "skill-desc-git": "Distributed version control, branching workflows, and efficient code merging.",
             "skill-name-github": "GitHub",
@@ -307,23 +319,39 @@ document.addEventListener("DOMContentLoaded", () => {
             "level-very-high": "VERY HIGH",
             "level-high": "HIGH",
             "cal-title": "Technical Booking / Interview",
+
             "cal-description": "Would you like to schedule a meeting or technical interview with me? Select a date and time that fits your schedule to discuss your projects or job vacancies.",
-            "cal-location-type": "Google Meet / Discord / Teams",
-            "cal-timezone": "Europe/Madrid (UTC+1)",
-            "cal-success-title": "Meeting Pre-scheduled!",
-            "cal-success-body": "Your email client has been opened to send the confirmation. Talk to you soon!",
-            "cal-confirm": "Confirm",
-            "cal-close": "Close",
+
+
             "cal-select-day": "Select a day",
+
             "cal-selected-prefix": "Slots for",
-            "footer-text": "&copy; 2026 César Castellano García | Las Palmas, Spain",
+
+            "cal-confirm": "Confirm",
+
+            "cal-loading": "Loading availability…",
+
+            "cal-no-slots": "No free slots this month.",
+
+            "cal-error": "Availability could not be loaded. Please email me instead.",
+
             "day-sun": "SUN",
+
             "day-mon": "MON",
+
             "day-tue": "TUE",
+
             "day-wed": "WED",
+
             "day-thu": "THU",
+
             "day-fri": "FRI",
-            "day-sat": "SAT"
+
+            "day-sat": "SAT",
+
+            "cal-location-type": "Google Meet / Discord / Teams",
+            "cal-timezone": "Europe/Madrid",
+            "footer-text": "&copy; 2026 César Castellano García | Las Palmas, Spain"
         }
     };
 
@@ -686,6 +714,7 @@ document.addEventListener("DOMContentLoaded", () => {
         css: "very-high",
         js: "high",
         vscode: "very-high",
+        antigravity: "high",
         git: "very-high",
         github: "very-high",
         gitlab: "high",
@@ -705,6 +734,7 @@ document.addEventListener("DOMContentLoaded", () => {
         css: "#264de4",
         js: "#f7df1e",
         vscode: "#007acc",
+        antigravity: "#3186ff",
         git: "#f05032",
         github: "#9e4716", 
         gitlab: "#fc6d26",
@@ -900,3 +930,351 @@ document.addEventListener("DOMContentLoaded", () => {
     initTimelineAnimation();
     initProjectsConsole();
 });
+
+/* ==========================================================================
+   Widget de reservas
+   --------------------------------------------------------------------------
+   El calendario es nuestro (HTML + CSS propios, hereda las paletas). Los huecos
+   libres salen de la API pública de Cal.com, que ya descuenta lo que tengas
+   ocupado en Google Calendar. No hace falta clave ni backend: el endpoint de
+   huecos es público y responde con Access-Control-Allow-Origin: *.
+
+   Al confirmar se abre la página de Cal.com con el hueco ya elegido, para que
+   el visitante solo tenga que escribir su nombre y su correo.
+
+   Si renombras el usuario o el slug del evento en Cal.com, cambia estas dos
+   constantes y nada más.
+   ========================================================================== */
+const CAL_USERNAME = "cesar-castellano-garcia-ldllbb";
+const CAL_EVENT_SLUG = "30min";
+const CAL_TIMEZONE = "Europe/Madrid";
+
+// Controlador del widget de reservas
+function initCalBooking() {
+    const widget = document.getElementById("cal-widget");
+    const daysGrid = document.getElementById("cal-days-grid");
+    const monthYearLabel = document.getElementById("cal-month-year");
+    const prevMonthBtn = document.getElementById("cal-prev-month");
+    const nextMonthBtn = document.getElementById("cal-next-month");
+    const timeslotsPanel = document.getElementById("cal-widget-timeslots");
+    const timeslotsList = document.getElementById("cal-timeslots-list");
+    const selectedDayLabel = document.getElementById("cal-selected-day");
+    const statusLabel = document.getElementById("cal-status");
+    const timezoneLabel = document.getElementById("cal-timezone-label");
+    const durationButtons = document.querySelectorAll(".cal-duration-btn");
+
+    if (!widget || !daysGrid) return;
+
+    const SLOTS_ENDPOINT = "https://api.cal.com/v2/slots";
+    const API_VERSION = "2024-09-04";
+    // Hasta cuántos meses adelante se puede navegar
+    const MAX_MONTHS_AHEAD = 3;
+
+    const monthsES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    const monthsEN = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+
+    // Huecos ya descargados. La clave lleva la duración porque cambiarla
+    // cambia los huecos: 15 min caben el doble de veces que 30 en el mismo hueco.
+    const slotsCache = new Map();
+
+    let viewDate = new Date();
+    viewDate.setDate(1);
+    let selectedDayKey = null;
+    let selectedDuration = 30;
+
+    function getLanguage() {
+        return localStorage.getItem("language") || "es";
+    }
+
+    function t(key, fallback) {
+        const dict = window.currentTranslations;
+        return (dict && dict[key]) ? dict[key] : fallback;
+    }
+
+    // "YYYY-MM-DD" desde las partes locales, para no cambiar de día al pasar por UTC
+    function toDateKey(date) {
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${date.getFullYear()}-${month}-${day}`;
+    }
+
+    function toMonthKey(date) {
+        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+    }
+
+    function toCacheKey(date) {
+        return `${toMonthKey(date)}|${selectedDuration}`;
+    }
+
+    function setStatus(message, isError) {
+        statusLabel.textContent = message || "";
+        statusLabel.classList.toggle("is-error", Boolean(isError));
+    }
+
+    // Añade el desfase vigente al nombre de la zona: "Europa/Madrid (UTC+2)".
+    // Se calcula en vivo porque España cambia de hora: UTC+1 en invierno, UTC+2 en verano.
+    function renderTimezoneLabel() {
+        if (!timezoneLabel) return;
+
+        const zoneName = new Intl.DateTimeFormat("en-US", {
+            timeZone: CAL_TIMEZONE,
+            timeZoneName: "shortOffset"
+        }).formatToParts(new Date()).find(part => part.type === "timeZoneName");
+
+        const offset = (zoneName ? zoneName.value : "GMT").replace("GMT", "UTC");
+        timezoneLabel.textContent = `${t("cal-timezone", "Europa/Madrid")} (${offset})`;
+    }
+
+    // Descarga los huecos del mes indicado: { "YYYY-MM-DD": [{ start }, ...] }
+    async function fetchMonthSlots(date) {
+        const cacheKey = toCacheKey(date);
+        if (slotsCache.has(cacheKey)) return slotsCache.get(cacheKey);
+
+        // No pedimos días ya pasados
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const firstOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+        const lastOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        const start = firstOfMonth < today ? today : firstOfMonth;
+
+        const params = new URLSearchParams({
+            eventTypeSlug: CAL_EVENT_SLUG,
+            username: CAL_USERNAME,
+            start: toDateKey(start),
+            end: toDateKey(lastOfMonth),
+            timeZone: CAL_TIMEZONE,
+            duration: String(selectedDuration)
+        });
+
+        const response = await fetch(`${SLOTS_ENDPOINT}?${params}`, {
+            headers: { "cal-api-version": API_VERSION }
+        });
+
+        if (!response.ok) throw new Error(`Cal.com respondió ${response.status}`);
+
+        const payload = await response.json();
+        const slots = payload.data || {};
+        slotsCache.set(cacheKey, slots);
+        return slots;
+    }
+
+    function formatSlotTime(isoString) {
+        return new Intl.DateTimeFormat(getLanguage() === "es" ? "es-ES" : "en-GB", {
+            hour: "2-digit",
+            minute: "2-digit",
+            timeZone: CAL_TIMEZONE
+        }).format(new Date(isoString));
+    }
+
+    // Abre Cal.com con el día y la hora ya seleccionados
+    function confirmBooking(isoString) {
+        const params = new URLSearchParams({
+            month: selectedDayKey.slice(0, 7),
+            date: selectedDayKey,
+            slot: new Date(isoString).toISOString(),
+            duration: String(selectedDuration)
+        });
+        window.open(
+            `https://cal.com/${CAL_USERNAME}/${CAL_EVENT_SLUG}?${params}`,
+            "_blank",
+            "noopener"
+        );
+    }
+
+    function renderTimeslots(daySlots) {
+        timeslotsList.innerHTML = "";
+        const confirmText = t("cal-confirm", "Confirmar");
+
+        daySlots.forEach(slot => {
+            const slotContainer = document.createElement("div");
+            slotContainer.className = "cal-slot-container";
+
+            const timeBtn = document.createElement("button");
+            timeBtn.type = "button";
+            timeBtn.className = "cal-slot-time-btn";
+            timeBtn.textContent = formatSlotTime(slot.start);
+
+            const confirmBtn = document.createElement("button");
+            confirmBtn.type = "button";
+            confirmBtn.className = "cal-slot-confirm-btn";
+            confirmBtn.textContent = confirmText;
+
+            // Primer clic despliega el botón de confirmar; el segundo abre Cal.com
+            timeBtn.addEventListener("click", () => {
+                timeslotsList.querySelectorAll(".cal-slot-container")
+                    .forEach(c => c.classList.remove("active"));
+                slotContainer.classList.add("active");
+            });
+
+            confirmBtn.addEventListener("click", () => confirmBooking(slot.start));
+
+            slotContainer.appendChild(timeBtn);
+            slotContainer.appendChild(confirmBtn);
+            timeslotsList.appendChild(slotContainer);
+        });
+    }
+
+    function openTimeslots(dayKey, daySlots) {
+        selectedDayKey = dayKey;
+        widget.classList.add("has-timeslots");
+        timeslotsPanel.style.display = "flex";
+
+        const lang = getLanguage();
+        const [year, month, day] = dayKey.split("-").map(Number);
+        const formatted = new Date(year, month - 1, day).toLocaleDateString(
+            lang === "es" ? "es-ES" : "en-GB",
+            { weekday: "long", month: "long", day: "numeric" }
+        );
+
+        const prefix = t("cal-selected-prefix", lang === "es" ? "Horas para el" : "Slots for");
+        selectedDayLabel.textContent =
+            `${prefix} ${formatted.charAt(0).toUpperCase()}${formatted.slice(1)}`;
+
+        renderTimeslots(daySlots);
+    }
+
+    function closeTimeslots() {
+        selectedDayKey = null;
+        widget.classList.remove("has-timeslots");
+        timeslotsPanel.style.display = "none";
+        timeslotsList.innerHTML = "";
+        selectedDayLabel.textContent = t("cal-select-day", "Selecciona un día");
+    }
+
+    function renderCalendar(slots) {
+        daysGrid.innerHTML = "";
+
+        const lang = getLanguage();
+        const year = viewDate.getFullYear();
+        const month = viewDate.getMonth();
+        monthYearLabel.textContent = `${(lang === "es" ? monthsES : monthsEN)[month]} ${year}`;
+
+        // Celdas vacías hasta el primer día del mes (la rejilla empieza en domingo)
+        const startDayIndex = new Date(year, month, 1).getDay();
+        for (let i = 0; i < startDayIndex; i++) {
+            const emptyCell = document.createElement("div");
+            emptyCell.className = "cal-day cal-day-empty";
+            daysGrid.appendChild(emptyCell);
+        }
+
+        const totalDays = new Date(year, month + 1, 0).getDate();
+        let availableDays = 0;
+
+        for (let day = 1; day <= totalDays; day++) {
+            const dayKey = toDateKey(new Date(year, month, day));
+            const daySlots = slots[dayKey] || [];
+            const dayCell = document.createElement("div");
+            dayCell.textContent = day;
+
+            // Un día solo es reservable si Cal.com devuelve huecos para él. Eso ya
+            // descarta el pasado, el fin de semana, el fuera de horario, la antelación
+            // mínima y lo que tengas ocupado en Google Calendar.
+            if (daySlots.length === 0) {
+                dayCell.className = "cal-day cal-day-inactive";
+            } else {
+                availableDays++;
+                const isSelected = dayKey === selectedDayKey;
+                dayCell.className = `cal-day cal-day-available${isSelected ? " cal-day-selected" : ""}`;
+                dayCell.setAttribute("role", "button");
+                dayCell.setAttribute("tabindex", "0");
+
+                const selectDay = () => {
+                    daysGrid.querySelectorAll(".cal-day-available")
+                        .forEach(c => c.classList.remove("cal-day-selected"));
+                    dayCell.classList.add("cal-day-selected");
+                    openTimeslots(dayKey, daySlots);
+                };
+
+                dayCell.addEventListener("click", selectDay);
+                dayCell.addEventListener("keydown", e => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        selectDay();
+                    }
+                });
+            }
+
+            daysGrid.appendChild(dayCell);
+        }
+
+        setStatus(availableDays === 0 ? t("cal-no-slots", "No hay huecos libres este mes.") : "");
+    }
+
+    // Impide navegar al pasado y más allá del horizonte de reserva
+    function updateNavState() {
+        const now = new Date();
+        const atCurrentMonth = viewDate.getFullYear() === now.getFullYear() &&
+            viewDate.getMonth() === now.getMonth();
+        const horizon = new Date(now.getFullYear(), now.getMonth() + MAX_MONTHS_AHEAD, 1);
+
+        prevMonthBtn.disabled = atCurrentMonth;
+        nextMonthBtn.disabled = viewDate >= horizon;
+    }
+
+    async function loadMonth() {
+        updateNavState();
+        setStatus(t("cal-loading", "Cargando disponibilidad…"));
+
+        try {
+            const slots = await fetchMonthSlots(viewDate);
+            renderCalendar(slots);
+        } catch (error) {
+            console.warn("No se han podido cargar los huecos de Cal.com:", error);
+            daysGrid.innerHTML = "";
+            setStatus(t("cal-error", "No se ha podido cargar la disponibilidad. Escríbeme por correo."), true);
+        }
+    }
+
+    function changeMonth(offset) {
+        viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() + offset, 1);
+        closeTimeslots();
+        loadMonth();
+    }
+
+    prevMonthBtn.addEventListener("click", () => changeMonth(-1));
+    nextMonthBtn.addEventListener("click", () => changeMonth(1));
+
+    // Cambiar de duración recalcula los huecos: hay que volver a pedirlos y
+    // cerrar el día abierto, porque sus horas ya no son válidas
+    durationButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const duration = Number(btn.dataset.duration);
+            if (duration === selectedDuration) return;
+
+            selectedDuration = duration;
+            durationButtons.forEach(b => b.classList.toggle("active", b === btn));
+            closeTimeslots();
+            loadMonth();
+        });
+    });
+
+    // changeLanguage() invoca este hook: hay que repintar mes, fechas y botones.
+    // Corre después de que se reescriban los [data-i18n], así que aquí volvemos
+    // a colgar el desfase horario del nombre de la zona recién traducido.
+    window.updateCalComTranslation = () => {
+        renderTimezoneLabel();
+
+        const slots = slotsCache.get(toCacheKey(viewDate));
+        if (!slots) return;
+
+        const previousDay = selectedDayKey;
+        renderCalendar(slots);
+
+        if (previousDay && slots[previousDay]) {
+            openTimeslots(previousDay, slots[previousDay]);
+        } else {
+            closeTimeslots();
+        }
+    };
+
+    renderTimezoneLabel();
+    closeTimeslots();
+    loadMonth();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    initCalBooking();
+});
+
