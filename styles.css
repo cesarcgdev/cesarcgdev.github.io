@@ -1682,8 +1682,11 @@ a{
 
 /* Línea de Tiempo de Formación */
 .education-timeline {
+    --timeline-offset: 1.8rem;
+    --timeline-line-width: 2px;
+    --timeline-dot-size: 10px;
     position: relative;
-    padding-left: 1.8rem;
+    padding-left: var(--timeline-offset);
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
@@ -1695,7 +1698,7 @@ a{
     left: 0;
     top: 0;
     bottom: 0;
-    width: 2px;
+    width: var(--timeline-line-width);
     background: color-mix(in srgb, var(--text-color) 10%, transparent);
     transform: scaleY(0);
     transform-origin: top;
@@ -1713,10 +1716,16 @@ a{
 
 .timeline-dot {
     position: absolute;
-    left: calc(-1.8rem - 7px);
+    /* Centra el punto sobre el eje de la línea: retrocede el padding del
+       contenedor, avanza hasta el centro de la línea y resta medio punto. */
+    left: calc(
+        var(--timeline-offset) * -1
+        + var(--timeline-line-width) / 2
+        - var(--timeline-dot-size) / 2
+    );
     top: 5px;
-    width: 10px;
-    height: 10px;
+    width: var(--timeline-dot-size);
+    height: var(--timeline-dot-size);
     border-radius: 50%;
     background: var(--bg-color);
     border: 2px solid var(--accent-color);
@@ -3366,13 +3375,8 @@ footer {
     }
 
     .education-timeline {
-        padding-left: 1.2rem;
-    }
-
-    .timeline-dot {
-        left: calc(-1.2rem - 5px);
-        width: 8px;
-        height: 8px;
+        --timeline-offset: 1.2rem;
+        --timeline-dot-size: 8px;
     }
 
     .education-title {
