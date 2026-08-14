@@ -1516,6 +1516,7 @@ a{
 .skill-icon-btn.css:hover, .skill-icon-btn.css.pinned { filter: drop-shadow(0 0 12px rgba(38, 77, 228, 0.75)); }
 .skill-icon-btn.js:hover, .skill-icon-btn.js.pinned { filter: drop-shadow(0 0 12px rgba(247, 223, 30, 0.85)); }
 .skill-icon-btn.vscode:hover, .skill-icon-btn.vscode.pinned { filter: drop-shadow(0 0 12px rgba(0, 122, 204, 0.75)); }
+.skill-icon-btn.claudecode:hover, .skill-icon-btn.claudecode.pinned { filter: drop-shadow(0 0 12px rgba(217, 119, 87, 0.8)); }
 .skill-icon-btn.antigravity:hover, .skill-icon-btn.antigravity.pinned { filter: drop-shadow(0 0 12px rgba(49, 134, 255, 0.75)); }
 .skill-icon-btn.git:hover, .skill-icon-btn.git.pinned { filter: drop-shadow(0 0 12px rgba(240, 80, 50, 0.75)); }
 .skill-icon-btn.github:hover, .skill-icon-btn.github.pinned { filter: drop-shadow(0 0 12px var(--accent-color)); }

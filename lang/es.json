@@ -123,6 +123,8 @@
     "skill-desc-js": "Programación interactiva frontend, gestión del DOM y consumo de servicios web.",
     "skill-name-vscode": "Visual Studio Code",
     "skill-desc-vscode": "Entorno principal de desarrollo altamente optimizado mediante atajos y extensiones.",
+    "skill-name-claudecode": "Claude Code",
+    "skill-desc-claudecode": "Desarrollo ágil dirigido por agentes: planificación previa, iteración en unidades pequeñas y revisión de código antes de cada commit.",
     "skill-name-antigravity": "Antigravity",
     "skill-desc-antigravity": "Herramienta clave en mi día a día: desarrollo asistido por IA con agentes para acelerar prototipos y refactorizaciones.",
     "skill-name-git": "Git",
