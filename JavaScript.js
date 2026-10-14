@@ -107,6 +107,17 @@ document.addEventListener("DOMContentLoaded", () => {
             "p3-badge": "Desarrollo Individual",
             "p3-tag2": "Persistencia de Datos",
             "p3-tag3": "Arquitectura de Sistemas",
+            "p5-badge": "Diseño y desarrollo web",
+            "p5-tag2": "Multidioma ES · EN · DE",
+            "p5-tag3": "Migración SEO",
+            "p5-desc-intro": "Web de <i><a href='https://www.istorecanarias.com' class='extra-link' target='_blank'>iStore Canarias</a></i>, servicio técnico Apple en San Fernando de Maspalomas (Gran Canaria), diseñada y desarrollada de principio a fin como freelance.",
+            "p5-desc-extra": " Sustituí su antiguo WordPress por una web estática en HTML, CSS y JavaScript sin dependencias, más rápida y sencilla de mantener, que atiende en español, inglés y alemán y recuerda el modo claro u oscuro de cada visitante.<br><br>La pieza central es una ficha de diagnóstico que acompaña al cliente desde la recepción hasta la entrega, junto a contacto directo por WhatsApp, reseñas de Google y el mapa del taller. La migración conservó el posicionamiento con redirecciones 301, HTTPS en el dominio canónico y páginas legales en los tres idiomas.",
+            "projects-games": "Videojuegos",
+            "projects-web": "Web",
+            "visit-site": "Visitar web",
+            "layout-label": "Vista",
+            "layout-launcher": "Lanzador",
+            "layout-console": "Consola",
             "more": "Leer más…",
             "less": "Leer menos",
             "trailer-text": "Tráiler",
@@ -296,6 +307,17 @@ document.addEventListener("DOMContentLoaded", () => {
             "p3-badge": "Solo Development",
             "p3-tag2": "Data Persistence",
             "p3-tag3": "Systems Architecture",
+            "p5-badge": "Web design & development",
+            "p5-tag2": "Multilingual ES · EN · DE",
+            "p5-tag3": "SEO migration",
+            "p5-desc-intro": "Website for <i><a href='https://www.istorecanarias.com' class='extra-link' target='_blank'>iStore Canarias</a></i>, an Apple repair service in San Fernando de Maspalomas (Gran Canaria), designed and built end to end as a freelancer.",
+            "p5-desc-extra": " I replaced their old WordPress install with a dependency-free static site in HTML, CSS and JavaScript, faster and easier to maintain, that serves visitors in Spanish, English and German and remembers each visitor's light or dark mode.<br><br>The centerpiece is a diagnostic ticket that follows the customer from drop-off to pickup, alongside direct WhatsApp contact, Google reviews and a map to the workshop. The migration kept the site's search ranking with 301 redirects, HTTPS on the canonical domain, and legal pages in all three languages.",
+            "projects-games": "Games",
+            "projects-web": "Web",
+            "visit-site": "Visit site",
+            "layout-label": "View",
+            "layout-launcher": "Launcher",
+            "layout-console": "Console",
             "more": "Read more…",
             "less": "Read less",
             "trailer-text": "Trailer",
@@ -922,39 +944,76 @@ function initTimelineAnimation() {
     observer.observe(timeline);
 }
 
-// Controlador de la Consola de Proyectos Interactiva
+// Activa un botón de una lista de pestañas y muestra solo su panel
+function selectTab(buttons, panels, activeButton) {
+    buttons.forEach(btn => {
+        const isActive = btn === activeButton;
+        btn.classList.toggle("active", isActive);
+        btn.setAttribute("aria-selected", String(isActive));
+    });
+
+    const targetId = activeButton.getAttribute("aria-controls");
+    panels.forEach(panel => {
+        const isActive = panel.id === targetId;
+        panel.classList.toggle("active", isActive);
+        panel.hidden = !isActive;
+    });
+}
+
+// Controlador de la Consola de Proyectos: cada grupo (videojuegos, web) lleva
+// su propia selección, así que al volver a un grupo sigue en el proyecto que tenía
 function initProjectsConsole() {
-    const navButtons = document.querySelectorAll(".project-nav-btn");
-    const detailPanels = document.querySelectorAll(".project-detail-panel");
+    document.querySelectorAll(".projects-group").forEach(group => {
+        const navButtons = group.querySelectorAll(".project-nav-btn");
+        const detailPanels = group.querySelectorAll(".project-detail-panel");
 
-    if (navButtons.length === 0) return;
+        navButtons.forEach(btn => {
+            btn.addEventListener("click", () => selectTab(navButtons, detailPanels, btn));
+        });
+    });
+}
 
-    navButtons.forEach(btn => {
+// Selector de tipo de proyecto (Videojuegos / Web)
+function initProjectsDisciplines() {
+    const disciplineButtons = document.querySelectorAll(".discipline-btn");
+    const groups = document.querySelectorAll(".projects-group");
+
+    disciplineButtons.forEach(btn => {
+        btn.addEventListener("click", () => selectTab(disciplineButtons, groups, btn));
+    });
+}
+
+// Conmutador temporal entre los dos prototipos de la sección de proyectos.
+// Se borra junto con el prototipo descartado cuando se elija uno.
+function initProjectsLayoutToggle() {
+    const showcase = document.querySelector(".projects-showcase");
+    const optionButtons = document.querySelectorAll(".layout-toggle-btn");
+    if (!showcase || optionButtons.length === 0) return;
+
+    function applyLayout(layout) {
+        showcase.setAttribute("data-layout", layout);
+        optionButtons.forEach(btn => {
+            btn.setAttribute("aria-pressed", String(btn.dataset.layoutOption === layout));
+        });
+    }
+
+    let savedLayout = null;
+    try {
+        savedLayout = localStorage.getItem("projects-layout");
+    } catch (storageError) {
+        // Sin acceso al almacenamiento se queda la vista por defecto
+    }
+    if (savedLayout === "launcher" || savedLayout === "console") applyLayout(savedLayout);
+
+    optionButtons.forEach(btn => {
         btn.addEventListener("click", () => {
-            const targetId = btn.getAttribute("data-project-target");
-            const targetPanel = document.getElementById(targetId);
-
-            if (!targetPanel) return;
-
-            // Actualizar estado del botón de navegación
-            navButtons.forEach(b => {
-                b.classList.remove("active");
-                b.setAttribute("aria-selected", "false");
-            });
-            btn.classList.add("active");
-            btn.setAttribute("aria-selected", "true");
-
-            // Alternar paneles de detalles
-            detailPanels.forEach(panel => {
-                panel.classList.remove("active");
-                panel.style.display = "none";
-            });
-
-            targetPanel.classList.add("active");
-            // Deja que el CSS determine el display (grid)
-            targetPanel.style.display = ""; 
-            // Forzar reflow
-            targetPanel.offsetHeight;
+            const layout = btn.dataset.layoutOption;
+            applyLayout(layout);
+            try {
+                localStorage.setItem("projects-layout", layout);
+            } catch (storageError) {
+                // La elección dura solo esta visita
+            }
         });
     });
 }
@@ -963,6 +1022,8 @@ function initProjectsConsole() {
 document.addEventListener("DOMContentLoaded", () => {
     initTimelineAnimation();
     initProjectsConsole();
+    initProjectsDisciplines();
+    initProjectsLayoutToggle();
 });
 
 /* ==========================================================================

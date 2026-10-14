@@ -150,6 +150,10 @@
     box-sizing: border-box;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 1%;
@@ -1832,188 +1836,117 @@ a{
     background-size: 100% 2px;
 }
 
-/* PROYECTOS */
-.projects-console-layout {
+/* PROYECTOS
+   Un único marcado con dos maquetaciones que se alternan con data-layout en
+   .projects-showcase: "console" (lista + ficha) y "launcher" (lanzador de juegos
+   y ventana de navegador). Al elegir una, se borra el bloque de la otra, su
+   conmutador y el prefijo [data-layout]. Las reglas responsive de cada
+   maquetación viven dentro de su propio bloque para poder borrarlas juntas. */
+
+/* --- Común a las dos maquetaciones --- */
+
+/* Barra superior: tipo de proyecto + conmutador de vistas */
+.projects-toolbar {
     display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 2.5rem;
-    width: 100%;
-    align-items: start;
-}
-
-/* Columna de Navegación */
-.projects-nav-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-/* Botones de Navegación */
-.project-nav-btn {
-    display: flex;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: 1.2rem;
-    background: linear-gradient(135deg, color-mix(in srgb, var(--card-bg) 70%, transparent), color-mix(in srgb, var(--card-bg) 30%, transparent));
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid color-mix(in srgb, var(--border-color) 40%, transparent);
-    padding: 1.1rem 1.4rem;
-    border-radius: 20px;
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    overflow: hidden;
-    outline: none;
-    color: var(--text-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+    gap: 1rem;
+    margin: 1.6rem 0 2.4rem;
 }
 
-.project-nav-btn::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%) scaleY(0);
-    width: 4px;
-    height: 45%;
-    background: var(--accent-color);
-    border-radius: 0 4px 4px 0;
-    box-shadow: 0 0 8px var(--accent-color);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.project-nav-btn:hover {
-    background: color-mix(in srgb, var(--card-bg) 80%, transparent);
-    border-color: color-mix(in srgb, var(--accent-color) 30%, transparent);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
-}
-
-.project-nav-btn:focus-visible {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
-}
-
-.project-nav-btn.active {
-    background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color) 10%, var(--card-bg)), color-mix(in srgb, var(--accent-color) 4%, var(--card-bg)));
-    border-color: color-mix(in srgb, var(--accent-color) 60%, transparent);
-    box-shadow: 0 8px 24px color-mix(in srgb, var(--accent-color) 12%, transparent);
-}
-
-.project-nav-btn.active::before {
-    transform: translateY(-50%) scaleY(1);
-}
-
-/* Miniaturas en los Botones */
-.nav-btn-thumb {
-    width: 55px;
-    height: 55px;
-    border-radius: 12px;
-    object-fit: cover;
+.discipline-switch {
+    grid-column: 2;
+    display: inline-flex;
+    gap: 4px;
+    padding: 5px;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--text-color) 6%, transparent);
     border: 1px solid var(--border-color);
-    transition: transform 0.35s ease;
 }
 
-.project-nav-btn.active .nav-btn-thumb,
-.project-nav-btn:hover .nav-btn-thumb {
-    transform: scale(1.04);
+.discipline-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.3rem;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.nav-btn-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+.discipline-btn:hover {
+    background: color-mix(in srgb, var(--accent-color) 10%, transparent);
 }
 
-.nav-btn-title {
-    font-size: 1.1rem;
+/* El fondo de la página sobre el acento contrasta en claro y en oscuro:
+   los acentos claros son oscuros y los oscuros son vivos */
+.discipline-btn.active {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--accent-color) 30%, transparent);
+}
+
+.discipline-btn:focus-visible,
+.layout-toggle-btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+.discipline-count {
+    min-width: 1.7em;
+    padding: 0.05rem 0.45rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
     font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    background: color-mix(in srgb, currentColor 14%, transparent);
 }
 
-.nav-btn-subtitle {
+/* Conmutador temporal: borde discontinuo para que se lea como herramienta de prueba */
+.layout-toggle {
+    grid-column: 3;
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px 3px 3px 0.9rem;
+    border: 1px dashed color-mix(in srgb, var(--text-color) 35%, transparent);
+    border-radius: 999px;
     font-size: 0.8rem;
-    color: color-mix(in srgb, var(--text-color) 60%, transparent);
-    font-weight: 500;
 }
 
-/* Contenedor de Detalles del Proyecto */
-.projects-details-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
+.layout-toggle-label {
+    margin-right: 0.4rem;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--text-color) 70%, transparent);
 }
 
-/* Panel de Detalles del Proyecto (Ficha Individual) */
-.project-detail-panel {
-    display: none; 
-    background: linear-gradient(135deg, color-mix(in srgb, var(--card-bg) 70%, transparent), color-mix(in srgb, var(--card-bg) 40%, transparent));
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid color-mix(in srgb, var(--border-color) 80%, transparent);
-    border-radius: 28px; 
-    padding: 2.5rem;
-    align-items: start;
-    min-height: 100%;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+.layout-toggle-btn {
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    font: inherit;
+    font-weight: 600;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color var(--transition), color var(--transition);
 }
 
-.project-detail-panel.active {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 2.5rem;
-    animation: fadeInUpScaleShowcase 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.layout-toggle-btn:hover {
+    color: var(--accent-color);
 }
 
-@keyframes fadeInUpScaleShowcase {
-    from {
-        opacity: 0;
-        transform: translateY(12px) scale(0.985);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* Columnas de la Consola */
-.project-visuals-col {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.project-info-col {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 100%;
-}
-
-/* Imagen con Zoom Hover */
-.project-image-wrapper {
-    position: relative;
-    overflow: hidden;
-    border-radius: 18px;
-    margin-bottom: 1.5rem;
-    border: 1px solid color-mix(in srgb, var(--border-color) 60%, transparent);
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-}
-
-.project-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform;
-}
-
-.project-detail-panel:hover .project-image-wrapper img {
-    transform: scale(1.04);
+.layout-toggle-btn[aria-pressed="true"] {
+    background: color-mix(in srgb, var(--accent-color) 16%, transparent);
+    color: var(--accent-color);
 }
 
 /* Tags de Tecnologías */
@@ -2031,8 +1964,8 @@ a{
     background: color-mix(in srgb, var(--text-color) 6%, transparent);
     border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
     padding: 0.3rem 0.85rem;
-    border-radius: 50px; 
-    text-transform: none; 
+    border-radius: 50px;
+    text-transform: none;
     letter-spacing: 0.02em;
     white-space: nowrap;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2055,11 +1988,11 @@ a{
 }
 
 .intro-proyect-text a {
-    position: relative;         
+    position: relative;
     text-decoration: none;
     color: var(--accent-color);
     font-weight: bold;
-    display: inline-block; 
+    display: inline-block;
 }
 
 .project-description {
@@ -2116,6 +2049,908 @@ a{
     background: var(--cv-active-color);
     transform: translateY(-1px);
     box-shadow: 0 6px 15px color-mix(in srgb, var(--accent-color) 20%, transparent);
+}
+
+.project-detail-panel .btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+    .projects-toolbar {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 0.9rem;
+    }
+
+    .discipline-switch,
+    .layout-toggle {
+        grid-column: 1;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .discipline-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.92rem;
+    }
+}
+
+/* --- Prototipo 2: Consola (lista + ficha) --- */
+[data-layout="console"] .projects-group {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 2.5rem;
+    width: 100%;
+    align-items: start;
+}
+
+/* En la consola el rol ya sale en la lista y la ficha web no lleva navegador */
+[data-layout="console"] .project-role,
+[data-layout="console"] .project-browser-bar,
+[data-layout="console"] .nav-btn-close {
+    display: none;
+}
+
+/* Columna de Navegación */
+[data-layout="console"] .projects-nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+/* Botones de Navegación */
+[data-layout="console"] .project-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--card-bg) 70%, transparent), color-mix(in srgb, var(--card-bg) 30%, transparent));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid color-mix(in srgb, var(--border-color) 40%, transparent);
+    padding: 1.1rem 1.4rem;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    color: var(--text-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+}
+
+[data-layout="console"] .project-nav-btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 4px;
+    height: 45%;
+    background: var(--accent-color);
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 0 8px var(--accent-color);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-layout="console"] .project-nav-btn:hover {
+    background: color-mix(in srgb, var(--card-bg) 80%, transparent);
+    border-color: color-mix(in srgb, var(--accent-color) 30%, transparent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+}
+
+[data-layout="console"] .project-nav-btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+[data-layout="console"] .project-nav-btn.active {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color) 10%, var(--card-bg)), color-mix(in srgb, var(--accent-color) 4%, var(--card-bg)));
+    border-color: color-mix(in srgb, var(--accent-color) 60%, transparent);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--accent-color) 12%, transparent);
+}
+
+[data-layout="console"] .project-nav-btn.active::before {
+    transform: translateY(-50%) scaleY(1);
+}
+
+/* Miniaturas en los Botones */
+[data-layout="console"] .nav-btn-thumb {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+    transition: transform 0.35s ease;
+}
+
+[data-layout="console"] .project-nav-btn.active .nav-btn-thumb,
+[data-layout="console"] .project-nav-btn:hover .nav-btn-thumb {
+    transform: scale(1.04);
+}
+
+[data-layout="console"] .nav-btn-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+[data-layout="console"] .nav-btn-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+[data-layout="console"] .nav-btn-subtitle {
+    font-size: 0.8rem;
+    color: color-mix(in srgb, var(--text-color) 60%, transparent);
+    font-weight: 500;
+}
+
+/* Contenedor de Detalles del Proyecto */
+[data-layout="console"] .projects-details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+/* Panel de Detalles del Proyecto (Ficha Individual) */
+[data-layout="console"] .project-detail-panel {
+    display: none;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--card-bg) 70%, transparent), color-mix(in srgb, var(--card-bg) 40%, transparent));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid color-mix(in srgb, var(--border-color) 80%, transparent);
+    border-radius: 28px;
+    padding: 2.5rem;
+    align-items: start;
+    min-height: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+[data-layout="console"] .project-detail-panel.active {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 2.5rem;
+    animation: fadeInUpScaleShowcase 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUpScaleShowcase {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.985);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Columnas de la Consola */
+[data-layout="console"] .project-visuals-col {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+[data-layout="console"] .project-info-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+/* Imagen con Zoom Hover */
+[data-layout="console"] .project-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    margin-bottom: 1.5rem;
+    border: 1px solid color-mix(in srgb, var(--border-color) 60%, transparent);
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+[data-layout="console"] .project-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+/* La captura de una web es muy alta: se enseña su primera pantalla */
+[data-layout="console"] .project-page-viewport img {
+    object-position: top;
+}
+
+[data-layout="console"] .project-page-viewport:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+[data-layout="console"] .project-detail-panel:hover .project-image-wrapper img {
+    transform: scale(1.04);
+}
+
+@media (max-width: 1024px) {
+    [data-layout="console"] .projects-group {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+    }
+
+    [data-layout="console"] .projects-nav-menu {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+        scrollbar-width: none;
+    }
+
+    [data-layout="console"] .projects-nav-menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    [data-layout="console"] .project-nav-btn {
+        flex: 1 0 auto;
+        justify-content: center;
+        padding: 0.8rem 1.2rem;
+    }
+
+    [data-layout="console"] .project-nav-btn::before {
+        left: 50%;
+        top: auto;
+        bottom: 0;
+        transform: translateX(-50%) scaleX(0);
+        width: 45%;
+        height: 3px;
+        border-radius: 3px 3px 0 0;
+    }
+
+    [data-layout="console"] .project-nav-btn.active::before {
+        transform: translateX(-50%) scaleX(1);
+    }
+
+    [data-layout="console"] .project-detail-panel {
+        max-width: 100%;
+        padding: 1.8rem;
+    }
+
+    [data-layout="console"] .project-detail-panel.active {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    [data-layout="console"] .projects-group {
+        gap: 1.5rem;
+    }
+
+    [data-layout="console"] .projects-nav-menu {
+        gap: 0.5rem;
+    }
+
+    [data-layout="console"] .project-nav-btn {
+        padding: 0.6rem 1rem;
+    }
+
+    [data-layout="console"] .nav-btn-thumb {
+        width: 35px;
+        height: 35px;
+        border-radius: 8px;
+    }
+
+    [data-layout="console"] .nav-btn-title {
+        font-size: 0.95rem;
+    }
+
+    [data-layout="console"] .nav-btn-subtitle {
+        display: none;
+    }
+
+    [data-layout="console"] .project-detail-panel {
+        width: 100%;
+        max-width: 100%;
+        margin: 6px 0;
+        padding: 1.5rem;
+    }
+
+    [data-layout="console"] .project-info-col h3 {
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+    }
+}
+
+/* --- Prototipo 1: Lanzador (videojuegos) + Navegador (web) --- */
+[data-layout="launcher"] .project-visuals-col,
+[data-layout="launcher"] .project-info-col {
+    /* Sus hijos se colocan directamente en la rejilla de la ficha */
+    display: contents;
+}
+
+[data-layout="launcher"] .project-detail-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+}
+
+[data-layout="launcher"] .project-detail-panel .btn {
+    margin-top: 0;
+}
+
+[data-layout="launcher"] .project-role {
+    font-weight: 600;
+}
+
+/* Lanzador: fila de baldosas como en la pantalla de inicio de una consola */
+[data-layout="launcher"] [data-discipline="games"] .projects-nav-menu {
+    display: flex;
+    gap: 1.1rem;
+    align-items: flex-start;
+    overflow-x: auto;
+    /* Hueco para que el anillo y la elevación de la baldosa activa no se recorten */
+    padding: 8px 6px 4px;
+    margin-bottom: 1.1rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+[data-layout="launcher"] [data-discipline="games"] .projects-nav-menu::-webkit-scrollbar {
+    display: none;
+}
+
+[data-layout="launcher"] [data-discipline="games"] .project-nav-btn {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    width: 96px;
+    padding: 0;
+    border: none;
+    border-radius: 22px;
+    background: none;
+    color: var(--text-color);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    scroll-snap-align: start;
+}
+
+[data-layout="launcher"] [data-discipline="games"] .project-nav-btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 5px;
+}
+
+[data-layout="launcher"] [data-discipline="games"] .nav-btn-thumb {
+    width: 96px;
+    height: 96px;
+    border-radius: 22px;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+    opacity: 0.6;
+    filter: saturate(0.7);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-layout="launcher"] [data-discipline="games"] .project-nav-btn:hover .nav-btn-thumb {
+    opacity: 0.9;
+    filter: saturate(1);
+    transform: translateY(-3px);
+}
+
+/* Baldosa activa: anillo de acento separado por el fondo de la página */
+[data-layout="launcher"] [data-discipline="games"] .project-nav-btn.active .nav-btn-thumb {
+    opacity: 1;
+    filter: none;
+    transform: translateY(-4px);
+    box-shadow: 0 0 0 3px var(--bg-color), 0 0 0 5px var(--accent-color), 0 14px 24px -8px color-mix(in srgb, var(--accent-color) 45%, transparent);
+}
+
+[data-layout="launcher"] [data-discipline="games"] .nav-btn-info {
+    display: block;
+    max-width: 100%;
+}
+
+[data-layout="launcher"] [data-discipline="games"] .nav-btn-title {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--text-color) 60%, transparent);
+    transition: color var(--transition);
+}
+
+[data-layout="launcher"] [data-discipline="games"] .project-nav-btn.active .nav-btn-title {
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+[data-layout="launcher"] [data-discipline="games"] .nav-btn-subtitle {
+    display: none;
+}
+
+/* Escenario: el arte del juego a todo el ancho con su ficha encima */
+[data-layout="launcher"] [data-discipline="games"] .project-detail-panel {
+    grid-template-rows: minmax(0, 1fr) auto auto auto auto;
+    column-gap: 2rem;
+}
+
+[data-layout="launcher"] [data-discipline="games"] .project-image-wrapper {
+    grid-column: 1 / -1;
+    grid-row: 1 / 5;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 21 / 9;
+    border-radius: 28px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 28px 50px -28px rgba(0, 0, 0, 0.5);
+}
+
+[data-layout="launcher"] [data-discipline="games"] .project-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    animation: launcherArtIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Velo para que el texto blanco se lea sobre cualquier arte */
+[data-layout="launcher"] [data-discipline="games"] .project-image-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to top, rgba(10, 8, 7, 0.9) 0%, rgba(10, 8, 7, 0.55) 34%, rgba(10, 8, 7, 0) 62%),
+        linear-gradient(to right, rgba(10, 8, 7, 0.55) 0%, rgba(10, 8, 7, 0) 55%);
+}
+
+[data-layout="launcher"] [data-discipline="games"] .project-info-col h3,
+[data-layout="launcher"] [data-discipline="games"] .project-role,
+[data-layout="launcher"] [data-discipline="games"] .project-tags,
+[data-layout="launcher"] [data-discipline="games"] .project-actions {
+    position: relative;
+    z-index: 1;
+    animation: launcherCopyIn 0.6s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+[data-layout="launcher"] [data-discipline="games"] .project-info-col h3 {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 0 0 0.3rem 2.5rem;
+    color: #ffffff;
+    font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    text-wrap: balance;
+}
+
+[data-layout="launcher"] [data-discipline="games"] .project-role {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 0 0 1rem 2.5rem;
+    font-size: 1.02rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+[data-layout="launcher"] [data-discipline="games"] .project-tags {
+    grid-column: 1;
+    grid-row: 4;
+    margin: 0 0 2.2rem 2.5rem;
+}
+
+[data-layout="launcher"] [data-discipline="games"] .project-tag {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.24);
+}
+
+[data-layout="launcher"] [data-discipline="games"] .project-actions {
+    grid-column: 2;
+    grid-row: 2 / 5;
+    align-self: end;
+    width: auto;
+    margin: 0 2.5rem 2.2rem 0;
+}
+
+[data-layout="launcher"] [data-discipline="games"] .project-description {
+    grid-column: 1 / -1;
+    grid-row: 5;
+    max-width: 70ch;
+    margin-top: 1.8rem;
+    font-size: 1.02rem;
+}
+
+@keyframes launcherArtIn {
+    from {
+        opacity: 0;
+        transform: scale(1.04);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes launcherCopyIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navegador: el grupo web es la ventana y cada proyecto, una pestaña */
+[data-layout="launcher"] [data-discipline="web"] {
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--bg-color);
+    box-shadow: 0 30px 60px -32px rgba(0, 0, 0, 0.45);
+}
+
+[data-layout="launcher"] [data-discipline="web"] .projects-nav-menu {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    padding: 0.65rem 0.9rem 0;
+    background: color-mix(in srgb, var(--text-color) 8%, var(--bg-color));
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+[data-layout="launcher"] [data-discipline="web"] .projects-nav-menu::-webkit-scrollbar {
+    display: none;
+}
+
+/* Los tres botones de la ventana */
+[data-layout="launcher"] [data-discipline="web"] .projects-nav-menu::before {
+    content: "";
+    flex: 0 0 52px;
+    height: 12px;
+    align-self: center;
+    margin: 0 0.8rem 0.55rem 0.2rem;
+    background: radial-gradient(circle at 6px 6px, color-mix(in srgb, var(--text-color) 28%, transparent) 5px, transparent 5.5px) 0 0 / 20px 12px repeat-x;
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+    max-width: 260px;
+    padding: 0.6rem 0.9rem 0.65rem;
+    border: none;
+    border-radius: 12px 12px 0 0;
+    background: transparent;
+    color: color-mix(in srgb, var(--text-color) 70%, transparent);
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-nav-btn:hover {
+    background: color-mix(in srgb, var(--text-color) 5%, transparent);
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-nav-btn.active {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-nav-btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: -2px;
+}
+
+[data-layout="launcher"] [data-discipline="web"] .nav-btn-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+[data-layout="launcher"] [data-discipline="web"] .nav-btn-info {
+    min-width: 0;
+}
+
+[data-layout="launcher"] [data-discipline="web"] .nav-btn-title {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+[data-layout="launcher"] [data-discipline="web"] .nav-btn-subtitle {
+    display: none;
+}
+
+[data-layout="launcher"] [data-discipline="web"] .nav-btn-close {
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
+    opacity: 0.5;
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-detail-panel {
+    grid-template-areas:
+        "bar bar"
+        "view view"
+        "title action"
+        "role action"
+        "tags tags"
+        "desc desc";
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-browser-bar {
+    grid-area: bar;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+[data-layout="launcher"] [data-discipline="web"] .browser-controls {
+    display: inline-flex;
+    gap: 0.95rem;
+    font-size: 0.85rem;
+    color: color-mix(in srgb, var(--text-color) 40%, transparent);
+}
+
+/* La barra de direcciones es un enlace real a la web */
+[data-layout="launcher"] [data-discipline="web"] .project-urlbar {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.45rem 0.95rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--text-color) 6%, transparent);
+    color: var(--text-color);
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-urlbar i {
+    font-size: 0.75rem;
+    color: color-mix(in srgb, var(--text-color) 55%, transparent);
+    transition: color var(--transition);
+}
+
+[data-layout="launcher"] [data-discipline="web"] .urlbar-host {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-urlbar:hover {
+    background: color-mix(in srgb, var(--accent-color) 12%, transparent);
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-urlbar:hover i {
+    color: var(--accent-color);
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-urlbar:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Visor: la captura completa se recorre de arriba abajo al pasar el ratón */
+[data-layout="launcher"] [data-discipline="web"] .project-page-viewport {
+    grid-area: view;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    border-bottom: 1px solid var(--border-color);
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-page-viewport img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 0%;
+    transition: object-position 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-page-viewport:hover img,
+[data-layout="launcher"] [data-discipline="web"] .project-page-viewport:focus-visible img {
+    object-position: 50% 100%;
+    transition: object-position 7s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-page-viewport:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: -3px;
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-info-col h3 {
+    grid-area: title;
+    margin: 1.7rem 0 0.2rem 2rem;
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-role {
+    grid-area: role;
+    margin: 0 0 1rem 2rem;
+    color: color-mix(in srgb, var(--text-color) 65%, transparent);
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-actions {
+    grid-area: action;
+    align-self: center;
+    width: auto;
+    margin: 1.7rem 2rem 0 0;
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-tags {
+    grid-area: tags;
+    margin: 0 2rem 1.1rem;
+}
+
+[data-layout="launcher"] [data-discipline="web"] .project-description {
+    grid-area: desc;
+    max-width: 70ch;
+    margin: 0 2rem 2.2rem;
+    font-size: 1.02rem;
+}
+
+/* Con animaciones reducidas, la captura se recorre con la rueda en vez de animarse */
+@media (hover: hover) and (prefers-reduced-motion: reduce) {
+    [data-layout="launcher"] [data-discipline="web"] .project-page-viewport {
+        overflow-y: auto;
+    }
+
+    [data-layout="launcher"] [data-discipline="web"] .project-page-viewport img,
+    [data-layout="launcher"] [data-discipline="web"] .project-page-viewport:hover img,
+    [data-layout="launcher"] [data-discipline="web"] .project-page-viewport:focus-visible img {
+        height: auto;
+        object-fit: fill;
+        transition: none;
+    }
+}
+
+/* En pantallas táctiles se queda en la primera pantalla: un visor con scroll
+   propio atraparía el desplazamiento de la página */
+@media (hover: none) {
+    [data-layout="launcher"] [data-discipline="web"] .project-page-viewport:hover img,
+    [data-layout="launcher"] [data-discipline="web"] .project-page-viewport:focus-visible img {
+        object-position: 50% 0%;
+        transition: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-layout="launcher"] [data-discipline="games"] .project-image-wrapper img,
+    [data-layout="launcher"] [data-discipline="games"] .project-info-col h3,
+    [data-layout="launcher"] [data-discipline="games"] .project-role,
+    [data-layout="launcher"] [data-discipline="games"] .project-tags,
+    [data-layout="launcher"] [data-discipline="games"] .project-actions {
+        animation: none;
+    }
+}
+
+/* En pantallas estrechas el texto sale de debajo del arte y la ficha web se apila */
+@media (max-width: 760px) {
+    [data-layout="launcher"] [data-discipline="games"] .project-nav-btn {
+        width: 72px;
+    }
+
+    [data-layout="launcher"] [data-discipline="games"] .nav-btn-thumb {
+        width: 72px;
+        height: 72px;
+        border-radius: 18px;
+    }
+
+    [data-layout="launcher"] [data-discipline="games"] .project-detail-panel {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+    }
+
+    [data-layout="launcher"] [data-discipline="games"] .project-image-wrapper {
+        grid-row: 1;
+        aspect-ratio: 16 / 9;
+        border-radius: 20px;
+    }
+
+    [data-layout="launcher"] [data-discipline="games"] .project-image-wrapper::after {
+        display: none;
+    }
+
+    [data-layout="launcher"] [data-discipline="games"] .project-info-col h3 {
+        grid-row: 2;
+        margin: 1.3rem 0 0.2rem;
+        color: var(--text-color);
+        font-size: 2rem;
+    }
+
+    [data-layout="launcher"] [data-discipline="games"] .project-role {
+        grid-row: 3;
+        margin: 0 0 0.9rem;
+        color: color-mix(in srgb, var(--text-color) 65%, transparent);
+    }
+
+    [data-layout="launcher"] [data-discipline="games"] .project-tags {
+        grid-row: 4;
+        margin: 0 0 1.1rem;
+    }
+
+    [data-layout="launcher"] [data-discipline="games"] .project-tag {
+        color: var(--text-color);
+        background: color-mix(in srgb, var(--text-color) 6%, transparent);
+        border-color: color-mix(in srgb, var(--text-color) 10%, transparent);
+    }
+
+    [data-layout="launcher"] [data-discipline="games"] .project-actions {
+        grid-column: 1;
+        grid-row: 5;
+        justify-content: flex-start;
+        margin: 0;
+    }
+
+    [data-layout="launcher"] [data-discipline="games"] .project-description {
+        grid-row: 6;
+        margin-top: 1.3rem;
+        font-size: 0.95rem;
+    }
+
+    [data-layout="launcher"] [data-discipline="web"] .browser-controls {
+        display: none;
+    }
+
+    [data-layout="launcher"] [data-discipline="web"] .project-detail-panel {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "bar"
+            "view"
+            "title"
+            "role"
+            "tags"
+            "action"
+            "desc";
+    }
+
+    [data-layout="launcher"] [data-discipline="web"] .project-info-col h3 {
+        margin: 1.3rem 1.2rem 0.2rem;
+    }
+
+    [data-layout="launcher"] [data-discipline="web"] .project-role {
+        margin: 0 1.2rem 0.9rem;
+    }
+
+    [data-layout="launcher"] [data-discipline="web"] .project-tags {
+        margin: 0 1.2rem 1.1rem;
+    }
+
+    [data-layout="launcher"] [data-discipline="web"] .project-actions {
+        justify-content: flex-start;
+        margin: 0 1.2rem;
+    }
+
+    [data-layout="launcher"] [data-discipline="web"] .project-description {
+        margin: 1.3rem 1.2rem 1.6rem;
+        font-size: 0.95rem;
+    }
 }
 
 /* --- Formulario de Contacto --- */
@@ -3009,57 +3844,6 @@ footer {
         padding-left: 0;
     }
 
-    /* Proyectos: Consola Adaptativa */
-    .projects-console-layout {
-        grid-template-columns: 1fr;
-        gap: 1.8rem;
-    }
-
-    .projects-nav-menu {
-        flex-direction: row;
-        overflow-x: auto;
-        padding-bottom: 0.5rem;
-        scrollbar-width: none;
-    }
-    
-    .projects-nav-menu::-webkit-scrollbar {
-        display: none;
-    }
-
-    .project-nav-btn {
-        flex: 1 0 auto;
-        justify-content: center;
-        padding: 0.8rem 1.2rem;
-    }
-
-    .project-nav-btn::before {
-        left: 50%;
-        top: auto;
-        bottom: 0;
-        transform: translateX(-50%) scaleX(0);
-        width: 45%;
-        height: 3px;
-        border-radius: 3px 3px 0 0;
-    }
-    
-    .project-nav-btn.active::before {
-        transform: translateX(-50%) scaleX(1);
-    }
-    
-    .project-nav-btn:hover {
-        transform: translateY(-2px);
-    }
-
-    .project-detail-panel {
-        max-width: 100%;
-        padding: 1.8rem;
-    }
-
-    .project-detail-panel.active {
-        grid-template-columns: 1fr;
-        gap: 1.8rem;
-    }
-
     /* Contacto: maquetación responsiva */
     .contact-layout {
         grid-template-columns: 1fr;
@@ -3455,47 +4239,6 @@ footer {
     /* PROYECTOS */
     #proyectos h2 {
         font-size: 1.6rem;
-    }
-
-    .projects-console-layout {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .projects-nav-menu {
-        flex-direction: row;
-        overflow-x: auto;
-        gap: 0.5rem;
-    }
-
-    .project-nav-btn {
-        padding: 0.6rem 1rem;
-    }
-    
-    .nav-btn-thumb {
-        width: 35px;
-        height: 35px;
-        border-radius: 8px;
-    }
-    
-    .nav-btn-title {
-        font-size: 0.95rem;
-    }
-    
-    .nav-btn-subtitle {
-        display: none;
-    }
-
-    .project-detail-panel {
-        width: 100%;
-        max-width: 100%;
-        margin: 6px 0;
-        padding: 1.5rem;
-    }
-
-    .project-info-col h3 {
-        font-size: 1.5rem;
-        margin-top: 0.5rem;
     }
 
     /* CONTACTO */
