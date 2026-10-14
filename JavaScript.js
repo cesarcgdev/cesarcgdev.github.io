@@ -115,9 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "projects-games": "Videojuegos",
             "projects-web": "Web",
             "visit-site": "Visitar web",
-            "layout-label": "Vista",
-            "layout-launcher": "Lanzador",
-            "layout-console": "Consola",
             "more": "Leer más…",
             "less": "Leer menos",
             "trailer-text": "Tráiler",
@@ -315,9 +312,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "projects-games": "Games",
             "projects-web": "Web",
             "visit-site": "Visit site",
-            "layout-label": "View",
-            "layout-launcher": "Launcher",
-            "layout-console": "Console",
             "more": "Read more…",
             "less": "Read less",
             "trailer-text": "Trailer",
@@ -960,60 +954,44 @@ function selectTab(buttons, panels, activeButton) {
     });
 }
 
-// Controlador de la Consola de Proyectos: cada grupo (videojuegos, web) lleva
-// su propia selección, así que al volver a un grupo sigue en el proyecto que tenía
-function initProjectsConsole() {
-    document.querySelectorAll(".projects-group").forEach(group => {
-        const navButtons = group.querySelectorAll(".project-nav-btn");
-        const detailPanels = group.querySelectorAll(".project-detail-panel");
+// Conecta una lista de pestañas: clic para elegir y flechas para moverse entre ellas
+function initTablist(buttons, panels) {
+    const tabs = Array.from(buttons);
 
-        navButtons.forEach(btn => {
-            btn.addEventListener("click", () => selectTab(navButtons, detailPanels, btn));
+    tabs.forEach((btn, index) => {
+        btn.addEventListener("click", () => selectTab(tabs, panels, btn));
+
+        btn.addEventListener("keydown", (e) => {
+            let next = null;
+            if (e.key === "ArrowRight") next = tabs[(index + 1) % tabs.length];
+            else if (e.key === "ArrowLeft") next = tabs[(index - 1 + tabs.length) % tabs.length];
+            else if (e.key === "Home") next = tabs[0];
+            else if (e.key === "End") next = tabs[tabs.length - 1];
+            if (!next) return;
+
+            e.preventDefault();
+            next.focus();
+            selectTab(tabs, panels, next);
         });
     });
 }
 
-// Selector de tipo de proyecto (Videojuegos / Web)
-function initProjectsDisciplines() {
-    const disciplineButtons = document.querySelectorAll(".discipline-btn");
+// Lanzador de proyectos: cada grupo (videojuegos, web) lleva su propia selección,
+// así que al volver a un grupo sigue en el proyecto que tenía
+function initProjectsLauncher() {
     const groups = document.querySelectorAll(".projects-group");
+    initTablist(document.querySelectorAll(".discipline-btn"), groups);
 
-    disciplineButtons.forEach(btn => {
-        btn.addEventListener("click", () => selectTab(disciplineButtons, groups, btn));
+    groups.forEach(group => {
+        initTablist(group.querySelectorAll(".project-nav-btn"), group.querySelectorAll(".project-detail-panel"));
     });
-}
 
-// Conmutador temporal entre los dos prototipos de la sección de proyectos.
-// Se borra junto con el prototipo descartado cuando se elija uno.
-function initProjectsLayoutToggle() {
-    const showcase = document.querySelector(".projects-showcase");
-    const optionButtons = document.querySelectorAll(".layout-toggle-btn");
-    if (!showcase || optionButtons.length === 0) return;
-
-    function applyLayout(layout) {
-        showcase.setAttribute("data-layout", layout);
-        optionButtons.forEach(btn => {
-            btn.setAttribute("aria-pressed", String(btn.dataset.layoutOption === layout));
-        });
-    }
-
-    let savedLayout = null;
-    try {
-        savedLayout = localStorage.getItem("projects-layout");
-    } catch (storageError) {
-        // Sin acceso al almacenamiento se queda la vista por defecto
-    }
-    if (savedLayout === "launcher" || savedLayout === "console") applyLayout(savedLayout);
-
-    optionButtons.forEach(btn => {
+    // "Leer más" solo se ve en tablet y móvil, donde la descripción empieza recogida
+    document.querySelectorAll(".project-read-more").forEach(btn => {
         btn.addEventListener("click", () => {
-            const layout = btn.dataset.layoutOption;
-            applyLayout(layout);
-            try {
-                localStorage.setItem("projects-layout", layout);
-            } catch (storageError) {
-                // La elección dura solo esta visita
-            }
+            const isExpanded = btn.getAttribute("aria-expanded") === "true";
+            btn.setAttribute("aria-expanded", String(!isExpanded));
+            btn.closest(".project-info-col").classList.toggle("is-expanded", !isExpanded);
         });
     });
 }
@@ -1021,9 +999,7 @@ function initProjectsLayoutToggle() {
 // Inicializar animaciones al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
     initTimelineAnimation();
-    initProjectsConsole();
-    initProjectsDisciplines();
-    initProjectsLayoutToggle();
+    initProjectsLauncher();
 });
 
 /* ==========================================================================
