@@ -85,6 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
             "exp5-bullet3": "Rediseño e implemento las <b>interfaces de usuario (UI/UX)</b>, mejorando la legibilidad, la navegación y la <b>coherencia visual</b> de todas las pantallas del juego.",
             "exp5-bullet4": "Optimizo el <b>flujo de juego y el rendimiento</b>, ajustando la curva de dificultad y la respuesta de los controles para elevar la <b>experiencia de jugador</b> y la retención.",
             "exp5-bullet5": "Formo parte de un <b>equipo multidisciplinar</b> de 4 personas (2 desarrolladores y 2 artistas 3D), coordinando la integración de código y assets mediante <b>control de versiones con <i>Git</i></b> y ramas por funcionalidad.",
+            "exp6-title": "Desarrollador web freelance | <i><a href='https://www.istorecanarias.com' class='extra-link' target='_blank'>iStore Canarias</a></i>",
+            "exp6-date": "Septiembre 2026 - Presente",
+            "exp6-bullet1": "Rediseño y desarrollo desde cero la web de un <b>servicio técnico Apple</b> en Gran Canaria, sustituyendo el <i>WordPress</i> antiguo por una <b>web estática más rápida</b> y fácil de mantener con <i>HTML5</i>, <i>CSS3</i> y <i>JavaScript</i>.",
+            "exp6-bullet2": "Implemento un <b>sistema de traducción en tres idiomas</b> (español, inglés y alemán) pensado para residentes y turistas, junto a un <b>modo claro/oscuro</b> que recuerda la preferencia del visitante.",
+            "exp6-bullet3": "Migro el dominio <b>sin perder posicionamiento</b>: redirecciones 301 de las URLs antiguas, <b>HTTPS con dominio canónico</b> mediante <i>.htaccess</i> y bloqueo de las rutas de WordPress que atacan los bots.",
+            "exp6-bullet4": "Maqueto las <b>páginas legales</b> (aviso legal, privacidad y cookies) en los tres idiomas y autoalojo las fuentes para ganar <b>rendimiento y privacidad</b>.",
+            "exp6-bullet5": "Diseño un recorrido orientado a la <b>conversión</b>: contacto directo por <i>WhatsApp</i>, carrusel de fichas de diagnóstico, reseñas de <i>Google</i> y mapa del taller.",
             "projects-title": "MIS PROYECTOS",
             "p1-desc-intro": "Shooter de plataformas 2.5D desarrollado en Unity donde ejercí como líder técnico en mi equipo <i><a href='https://linktr.ee/DrilleStudio' class='extra-link' target='_blank'>Drille Studio</a></i>.",
             "p1-desc-extra": " Diseñé la metodología de trabajo orientada a objetivos e integré los flujos de los distintos departamentos, asegurando una entrega exitosa y optimizando la productividad general.<br><br>Asimismo, diseñé y desarrollé la arquitectura técnica global, incluyendo sistemas dinámicos de apuntado, mecánicas de obstáculos e inteligencia artificial avanzada para enemigos y jefes finales. El proyecto concluyó con una fase intensiva de depuración que elevó drásticamente el rendimiento del producto.",
@@ -100,6 +107,14 @@ document.addEventListener("DOMContentLoaded", () => {
             "p3-badge": "Desarrollo Individual",
             "p3-tag2": "Persistencia de Datos",
             "p3-tag3": "Arquitectura de Sistemas",
+            "p5-badge": "Diseño y desarrollo web",
+            "p5-tag2": "Multidioma ES · EN · DE",
+            "p5-tag3": "Migración SEO",
+            "p5-desc-intro": "Web de <i><a href='https://www.istorecanarias.com' class='extra-link' target='_blank'>iStore Canarias</a></i>, servicio técnico Apple en San Fernando de Maspalomas (Gran Canaria), diseñada y desarrollada de principio a fin como freelance.",
+            "p5-desc-extra": " Sustituí su antiguo WordPress por una web estática en HTML, CSS y JavaScript sin dependencias, más rápida y sencilla de mantener, que atiende en español, inglés y alemán y recuerda el modo claro u oscuro de cada visitante.<br><br>La pieza central es una ficha de diagnóstico que acompaña al cliente desde la recepción hasta la entrega, junto a contacto directo por WhatsApp, reseñas de Google y el mapa del taller. La migración conservó el posicionamiento con redirecciones 301, HTTPS en el dominio canónico y páginas legales en los tres idiomas.",
+            "projects-games": "Videojuegos",
+            "projects-web": "Web",
+            "visit-site": "Visitar web",
             "more": "Leer más…",
             "less": "Leer menos",
             "trailer-text": "Tráiler",
@@ -267,6 +282,13 @@ document.addEventListener("DOMContentLoaded", () => {
             "exp5-bullet3": "Redesign and implement the <b>user interfaces (UI/UX)</b>, improving readability, navigation, and <b>visual consistency</b> across every screen of the game.",
             "exp5-bullet4": "Optimize the <b>game flow and performance</b>, tuning the difficulty curve and control responsiveness to raise <b>player experience</b> and retention.",
             "exp5-bullet5": "Work within a <b>multidisciplinary team</b> of 4 people (2 developers and 2 3D artists), coordinating code and asset integration through <b>version control with <i>Git</i></b> and feature branches.",
+            "exp6-title": "Freelance Web Developer | <i><a href='https://www.istorecanarias.com' class='extra-link' target='_blank'>iStore Canarias</a></i>",
+            "exp6-date": "September 2026 - Present",
+            "exp6-bullet1": "Redesign and build from scratch the website of an <b>Apple repair service</b> in Gran Canaria, replacing the old <i>WordPress</i> install with a <b>faster static site</b> that is easy to maintain, built with <i>HTML5</i>, <i>CSS3</i> and <i>JavaScript</i>.",
+            "exp6-bullet2": "Implement a <b>three-language translation system</b> (Spanish, English and German) for residents and tourists, along with a <b>light/dark mode</b> that remembers each visitor's preference.",
+            "exp6-bullet3": "Migrate the domain <b>without losing search ranking</b>: 301 redirects for the old URLs, <b>HTTPS with a canonical domain</b> through <i>.htaccess</i>, and blocking of the WordPress paths that bots attack.",
+            "exp6-bullet4": "Build the <b>legal pages</b> (legal notice, privacy and cookies) in all three languages and self-host the fonts for better <b>performance and privacy</b>.",
+            "exp6-bullet5": "Design a <b>conversion</b>-focused journey: direct contact through <i>WhatsApp</i>, a diagnostic-ticket carousel, <i>Google</i> reviews and a map to the workshop.",
             "projects-title": "MY PROJECTS",
             "p1-desc-intro": "2.5D platformer shooter developed in Unity where I acted as technical leader in my team <a href='https://linktr.ee/DrilleStudio' class='extra-link' target='_blank'><i>Drille Studio</i></a>.",
             "p1-desc-extra": " I designed the goal-oriented work methodology and integrated the workflows of the different departments, ensuring a successful delivery and optimizing overall productivity.<br>Likewise, I designed and developed the global technical architecture, including dynamic aiming systems, obstacle mechanics, and advanced artificial intelligence for enemies and final bosses. The project concluded with an intensive debugging phase that drastically boosted product performance.",
@@ -282,6 +304,14 @@ document.addEventListener("DOMContentLoaded", () => {
             "p3-badge": "Solo Development",
             "p3-tag2": "Data Persistence",
             "p3-tag3": "Systems Architecture",
+            "p5-badge": "Web design & development",
+            "p5-tag2": "Multilingual ES · EN · DE",
+            "p5-tag3": "SEO migration",
+            "p5-desc-intro": "Website for <i><a href='https://www.istorecanarias.com' class='extra-link' target='_blank'>iStore Canarias</a></i>, an Apple repair service in San Fernando de Maspalomas (Gran Canaria), designed and built end to end as a freelancer.",
+            "p5-desc-extra": " I replaced their old WordPress install with a dependency-free static site in HTML, CSS and JavaScript, faster and easier to maintain, that serves visitors in Spanish, English and German and remembers each visitor's light or dark mode.<br><br>The centerpiece is a diagnostic ticket that follows the customer from drop-off to pickup, alongside direct WhatsApp contact, Google reviews and a map to the workshop. The migration kept the site's search ranking with 301 redirects, HTTPS on the canonical domain, and legal pages in all three languages.",
+            "projects-games": "Games",
+            "projects-web": "Web",
+            "visit-site": "Visit site",
             "more": "Read more…",
             "less": "Read less",
             "trailer-text": "Trailer",
@@ -908,39 +938,60 @@ function initTimelineAnimation() {
     observer.observe(timeline);
 }
 
-// Controlador de la Consola de Proyectos Interactiva
-function initProjectsConsole() {
-    const navButtons = document.querySelectorAll(".project-nav-btn");
-    const detailPanels = document.querySelectorAll(".project-detail-panel");
+// Activa un botón de una lista de pestañas y muestra solo su panel
+function selectTab(buttons, panels, activeButton) {
+    buttons.forEach(btn => {
+        const isActive = btn === activeButton;
+        btn.classList.toggle("active", isActive);
+        btn.setAttribute("aria-selected", String(isActive));
+    });
 
-    if (navButtons.length === 0) return;
+    const targetId = activeButton.getAttribute("aria-controls");
+    panels.forEach(panel => {
+        const isActive = panel.id === targetId;
+        panel.classList.toggle("active", isActive);
+        panel.hidden = !isActive;
+    });
+}
 
-    navButtons.forEach(btn => {
+// Conecta una lista de pestañas: clic para elegir y flechas para moverse entre ellas
+function initTablist(buttons, panels) {
+    const tabs = Array.from(buttons);
+
+    tabs.forEach((btn, index) => {
+        btn.addEventListener("click", () => selectTab(tabs, panels, btn));
+
+        btn.addEventListener("keydown", (e) => {
+            let next = null;
+            if (e.key === "ArrowRight") next = tabs[(index + 1) % tabs.length];
+            else if (e.key === "ArrowLeft") next = tabs[(index - 1 + tabs.length) % tabs.length];
+            else if (e.key === "Home") next = tabs[0];
+            else if (e.key === "End") next = tabs[tabs.length - 1];
+            if (!next) return;
+
+            e.preventDefault();
+            next.focus();
+            selectTab(tabs, panels, next);
+        });
+    });
+}
+
+// Lanzador de proyectos: cada grupo (videojuegos, web) lleva su propia selección,
+// así que al volver a un grupo sigue en el proyecto que tenía
+function initProjectsLauncher() {
+    const groups = document.querySelectorAll(".projects-group");
+    initTablist(document.querySelectorAll(".discipline-btn"), groups);
+
+    groups.forEach(group => {
+        initTablist(group.querySelectorAll(".project-nav-btn"), group.querySelectorAll(".project-detail-panel"));
+    });
+
+    // "Leer más" solo se ve en tablet y móvil, donde la descripción empieza recogida
+    document.querySelectorAll(".project-read-more").forEach(btn => {
         btn.addEventListener("click", () => {
-            const targetId = btn.getAttribute("data-project-target");
-            const targetPanel = document.getElementById(targetId);
-
-            if (!targetPanel) return;
-
-            // Actualizar estado del botón de navegación
-            navButtons.forEach(b => {
-                b.classList.remove("active");
-                b.setAttribute("aria-selected", "false");
-            });
-            btn.classList.add("active");
-            btn.setAttribute("aria-selected", "true");
-
-            // Alternar paneles de detalles
-            detailPanels.forEach(panel => {
-                panel.classList.remove("active");
-                panel.style.display = "none";
-            });
-
-            targetPanel.classList.add("active");
-            // Deja que el CSS determine el display (grid)
-            targetPanel.style.display = ""; 
-            // Forzar reflow
-            targetPanel.offsetHeight;
+            const isExpanded = btn.getAttribute("aria-expanded") === "true";
+            btn.setAttribute("aria-expanded", String(!isExpanded));
+            btn.closest(".project-info-col").classList.toggle("is-expanded", !isExpanded);
         });
     });
 }
@@ -948,7 +999,7 @@ function initProjectsConsole() {
 // Inicializar animaciones al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
     initTimelineAnimation();
-    initProjectsConsole();
+    initProjectsLauncher();
 });
 
 /* ==========================================================================

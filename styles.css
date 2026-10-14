@@ -150,6 +150,10 @@
     box-sizing: border-box;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 1%;
@@ -1832,196 +1836,88 @@ a{
     background-size: 100% 2px;
 }
 
-/* PROYECTOS */
-.projects-console-layout {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 2.5rem;
-    width: 100%;
-    align-items: start;
+/* PROYECTOS
+   Lanzador: los videojuegos se eligen en una fila de baldosas sobre su arte y
+   las webs en una ventana de navegador con una pestaña por proyecto. En
+   escritorio la sección cabe en una pantalla: lo visual a la izquierda, el
+   texto a la derecha y la misma altura en las dos disciplinas, para que cambiar
+   entre ellas no mueva la página. */
+#proyectos {
+    padding: 40px 0;
+    /* Lo que queda de pantalla tras la cabecera fija, el título y el selector */
+    --projects-h: clamp(380px, calc(100svh - 290px), 560px);
 }
 
-/* Columna de Navegación */
-.projects-nav-menu {
+/* --- Selector de tipo de proyecto --- */
+.projects-toolbar {
     display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+    justify-content: center;
+    margin: 1rem 0 1.5rem;
 }
 
-/* Botones de Navegación */
-.project-nav-btn {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    background: linear-gradient(135deg, color-mix(in srgb, var(--card-bg) 70%, transparent), color-mix(in srgb, var(--card-bg) 30%, transparent));
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid color-mix(in srgb, var(--border-color) 40%, transparent);
-    padding: 1.1rem 1.4rem;
-    border-radius: 20px;
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    overflow: hidden;
-    outline: none;
-    color: var(--text-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
-}
-
-.project-nav-btn::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%) scaleY(0);
-    width: 4px;
-    height: 45%;
-    background: var(--accent-color);
-    border-radius: 0 4px 4px 0;
-    box-shadow: 0 0 8px var(--accent-color);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.project-nav-btn:hover {
-    background: color-mix(in srgb, var(--card-bg) 80%, transparent);
-    border-color: color-mix(in srgb, var(--accent-color) 30%, transparent);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
-}
-
-.project-nav-btn:focus-visible {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
-}
-
-.project-nav-btn.active {
-    background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color) 10%, var(--card-bg)), color-mix(in srgb, var(--accent-color) 4%, var(--card-bg)));
-    border-color: color-mix(in srgb, var(--accent-color) 60%, transparent);
-    box-shadow: 0 8px 24px color-mix(in srgb, var(--accent-color) 12%, transparent);
-}
-
-.project-nav-btn.active::before {
-    transform: translateY(-50%) scaleY(1);
-}
-
-/* Miniaturas en los Botones */
-.nav-btn-thumb {
-    width: 55px;
-    height: 55px;
-    border-radius: 12px;
-    object-fit: cover;
+.discipline-switch {
+    display: inline-flex;
+    gap: 4px;
+    padding: 5px;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--text-color) 6%, transparent);
     border: 1px solid var(--border-color);
-    transition: transform 0.35s ease;
 }
 
-.project-nav-btn.active .nav-btn-thumb,
-.project-nav-btn:hover .nav-btn-thumb {
-    transform: scale(1.04);
+.discipline-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.25rem;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 0.98rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.nav-btn-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+.discipline-btn:hover {
+    background: color-mix(in srgb, var(--accent-color) 10%, transparent);
 }
 
-.nav-btn-title {
-    font-size: 1.1rem;
+/* El fondo de la página sobre el acento contrasta en claro y en oscuro:
+   los acentos claros son oscuros y los oscuros son vivos */
+.discipline-btn.active {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--accent-color) 30%, transparent);
+}
+
+.discipline-btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+.discipline-count {
+    min-width: 1.7em;
+    padding: 0.05rem 0.45rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
     font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    background: color-mix(in srgb, currentColor 14%, transparent);
 }
 
-.nav-btn-subtitle {
-    font-size: 0.8rem;
-    color: color-mix(in srgb, var(--text-color) 60%, transparent);
-    font-weight: 500;
+/* --- Piezas comunes de las fichas --- */
+.project-role {
+    margin: 0;
+    font-weight: 600;
 }
 
-/* Contenedor de Detalles del Proyecto */
-.projects-details-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-}
-
-/* Panel de Detalles del Proyecto (Ficha Individual) */
-.project-detail-panel {
-    display: none; 
-    background: linear-gradient(135deg, color-mix(in srgb, var(--card-bg) 70%, transparent), color-mix(in srgb, var(--card-bg) 40%, transparent));
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid color-mix(in srgb, var(--border-color) 80%, transparent);
-    border-radius: 28px; 
-    padding: 2.5rem;
-    align-items: start;
-    min-height: 100%;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.project-detail-panel.active {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 2.5rem;
-    animation: fadeInUpScaleShowcase 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes fadeInUpScaleShowcase {
-    from {
-        opacity: 0;
-        transform: translateY(12px) scale(0.985);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* Columnas de la Consola */
-.project-visuals-col {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.project-info-col {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 100%;
-}
-
-/* Imagen con Zoom Hover */
-.project-image-wrapper {
-    position: relative;
-    overflow: hidden;
-    border-radius: 18px;
-    margin-bottom: 1.5rem;
-    border: 1px solid color-mix(in srgb, var(--border-color) 60%, transparent);
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-}
-
-.project-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform;
-}
-
-.project-detail-panel:hover .project-image-wrapper img {
-    transform: scale(1.04);
-}
-
-/* Tags de Tecnologías */
 .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.2rem;
+    gap: 0.45rem;
 }
 
 .project-tag {
@@ -2031,57 +1927,67 @@ a{
     background: color-mix(in srgb, var(--text-color) 6%, transparent);
     border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
     padding: 0.3rem 0.85rem;
-    border-radius: 50px; 
-    text-transform: none; 
+    border-radius: 50px;
     letter-spacing: 0.02em;
     white-space: nowrap;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.project-tag:hover {
-    background: color-mix(in srgb, var(--accent-color) 8%, transparent);
-    border-color: color-mix(in srgb, var(--accent-color) 25%, transparent);
-    color: var(--accent-color);
-}
-
-/* Tipografía de Proyectos */
-.project-info-col h3 {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 0.6rem;
-    color: var(--text-color);
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-}
-
-.intro-proyect-text a {
-    position: relative;         
-    text-decoration: none;
-    color: var(--accent-color);
-    font-weight: bold;
-    display: inline-block; 
 }
 
 .project-description {
-    font-size: 0.95rem;
-    line-height: 1.75;
-    color: var(--text-color);
-    opacity: 0.85;
     margin: 0;
+    font-size: 0.96rem;
+    line-height: 1.72;
+    color: color-mix(in srgb, var(--text-color) 85%, transparent);
+}
+
+/* La primera frase hace de entradilla: es lo único visible en móvil hasta "Leer más" */
+.project-description .desc-intro {
+    display: block;
+    margin-bottom: 0.7rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-weight: 600;
+    color: var(--text-color);
 }
 
 .project-description a {
-    position: relative;
     text-decoration: none;
     color: var(--accent-color);
-    font-weight: bold;
+    font-weight: 700;
 }
 
-/* Botón de Acciones */
+.project-description a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.project-read-more {
+    display: none;
+    margin-top: 0.5rem;
+    padding: 0.3rem 0;
+    border: none;
+    background: none;
+    color: var(--accent-color);
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+.project-read-more:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.project-read-more[aria-expanded="false"] .read-less-label,
+.project-read-more[aria-expanded="true"] .read-more-label {
+    display: none;
+}
+
 .project-actions {
     display: flex;
-    justify-content: center;
-    width: 100%;
 }
 
 .project-detail-panel .btn {
@@ -2089,17 +1995,18 @@ a{
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
+    margin-top: 0;
     background: linear-gradient(135deg, var(--accent-color), var(--cv-hover-color));
     color: #ffffff;
-    padding: 0.8rem 2rem;
+    padding: 0.75rem 1.7rem;
     border-radius: 16px;
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     width: auto;
-    min-width: 220px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+    white-space: nowrap;
     box-shadow: 0 6px 20px color-mix(in srgb, var(--accent-color) 20%, transparent);
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     border: none;
@@ -2116,6 +2023,639 @@ a{
     background: var(--cv-active-color);
     transform: translateY(-1px);
     box-shadow: 0 6px 15px color-mix(in srgb, var(--accent-color) 20%, transparent);
+}
+
+.project-detail-panel .btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+/* --- Videojuegos: fila de baldosas como en la pantalla de inicio de una consola --- */
+[data-discipline="games"] .projects-nav-menu {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    overflow-x: auto;
+    /* Hueco para que el anillo y la elevación de la baldosa activa no se recorten */
+    padding: 6px 6px 4px;
+    margin-bottom: 0.9rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+[data-discipline="games"] .projects-nav-menu::-webkit-scrollbar {
+    display: none;
+}
+
+[data-discipline="games"] .project-nav-btn {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 88px;
+    padding: 0;
+    border: none;
+    border-radius: 20px;
+    background: none;
+    color: var(--text-color);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    scroll-snap-align: start;
+}
+
+[data-discipline="games"] .project-nav-btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 5px;
+}
+
+[data-discipline="games"] .nav-btn-thumb {
+    width: 76px;
+    height: 76px;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+    opacity: 0.6;
+    filter: saturate(0.7);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-discipline="games"] .project-nav-btn:hover .nav-btn-thumb {
+    opacity: 0.9;
+    filter: saturate(1);
+    transform: translateY(-3px);
+}
+
+/* Baldosa activa: anillo de acento separado por el fondo de la página */
+[data-discipline="games"] .project-nav-btn.active .nav-btn-thumb {
+    opacity: 1;
+    filter: none;
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 3px var(--bg-color), 0 0 0 5px var(--accent-color), 0 12px 22px -8px color-mix(in srgb, var(--accent-color) 45%, transparent);
+}
+
+[data-discipline="games"] .nav-btn-title {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--text-color) 60%, transparent);
+    transition: color var(--transition);
+}
+
+[data-discipline="games"] .project-nav-btn.active .nav-btn-title {
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+/* Escenario: el arte del juego con su ficha encima. El pie va en el flujo,
+   así que si no cabe el escenario crece en vez de cortar el texto */
+[data-discipline="games"] .project-visuals-col {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    background: #0a0807;
+    box-shadow: 0 28px 50px -28px rgba(0, 0, 0, 0.5);
+}
+
+[data-discipline="games"] .project-image-wrapper {
+    position: absolute;
+    inset: 0;
+}
+
+[data-discipline="games"] .project-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    animation: launcherArtIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Velo para que el texto blanco se lea sobre cualquier arte */
+[data-discipline="games"] .project-image-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to top, rgba(10, 8, 7, 0.92) 0%, rgba(10, 8, 7, 0.6) 32%, rgba(10, 8, 7, 0) 62%),
+        linear-gradient(to right, rgba(10, 8, 7, 0.5) 0%, rgba(10, 8, 7, 0) 55%);
+}
+
+.project-caption {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    column-gap: 1.5rem;
+    padding: 4rem 2rem 1.8rem;
+    animation: launcherCopyIn 0.6s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.project-caption h3 {
+    grid-column: 1;
+    margin: 0 0 0.25rem;
+    color: #ffffff;
+    font-size: clamp(2rem, 3.4vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    text-wrap: balance;
+}
+
+.project-caption .project-role {
+    grid-column: 1;
+    margin-bottom: 0.85rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.project-caption .project-tags {
+    grid-column: 1;
+}
+
+.project-caption .project-tag {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.24);
+}
+
+.project-caption .project-actions {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    align-self: end;
+}
+
+/* Sobre el arte oscuro la sombra del botón es neutra: una de color se leería como halo */
+.project-caption .btn,
+.project-caption .btn:hover,
+.project-caption .btn:active {
+    box-shadow: 0 10px 22px -8px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes launcherArtIn {
+    from {
+        opacity: 0;
+        transform: scale(1.04);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes launcherCopyIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Web: el grupo es una ventana de navegador y cada proyecto, una pestaña --- */
+[data-discipline="web"] .projects-nav-menu {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    padding: 0.6rem 0.85rem 0;
+    background: color-mix(in srgb, var(--text-color) 8%, var(--bg-color));
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+[data-discipline="web"] .projects-nav-menu::-webkit-scrollbar {
+    display: none;
+}
+
+/* Los tres botones de la ventana */
+[data-discipline="web"] .projects-nav-menu::before {
+    content: "";
+    flex: 0 0 52px;
+    height: 12px;
+    align-self: center;
+    margin: 0 0.8rem 0.55rem 0.2rem;
+    background: radial-gradient(circle at 6px 6px, color-mix(in srgb, var(--text-color) 28%, transparent) 5px, transparent 5.5px) 0 0 / 20px 12px repeat-x;
+}
+
+[data-discipline="web"] .project-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+    max-width: 260px;
+    padding: 0.55rem 0.9rem 0.6rem;
+    border: none;
+    border-radius: 12px 12px 0 0;
+    background: transparent;
+    color: color-mix(in srgb, var(--text-color) 70%, transparent);
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+[data-discipline="web"] .project-nav-btn:hover {
+    background: color-mix(in srgb, var(--text-color) 5%, transparent);
+}
+
+[data-discipline="web"] .project-nav-btn.active {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+[data-discipline="web"] .project-nav-btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: -2px;
+}
+
+[data-discipline="web"] .nav-btn-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+[data-discipline="web"] .nav-btn-title {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+[data-discipline="web"] .nav-btn-close {
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
+    opacity: 0.5;
+}
+
+[data-discipline="web"] .project-visuals-col {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-color);
+}
+
+[data-discipline="web"] .project-browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+[data-discipline="web"] .browser-controls {
+    display: inline-flex;
+    gap: 0.95rem;
+    font-size: 0.85rem;
+    color: color-mix(in srgb, var(--text-color) 40%, transparent);
+}
+
+/* La barra de direcciones es un enlace real a la web */
+[data-discipline="web"] .project-urlbar {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.42rem 0.95rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--text-color) 6%, transparent);
+    color: var(--text-color);
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+[data-discipline="web"] .project-urlbar i {
+    font-size: 0.75rem;
+    color: color-mix(in srgb, var(--text-color) 55%, transparent);
+    transition: color var(--transition);
+}
+
+[data-discipline="web"] .urlbar-host {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+[data-discipline="web"] .project-urlbar:hover {
+    background: color-mix(in srgb, var(--accent-color) 12%, transparent);
+}
+
+[data-discipline="web"] .project-urlbar:hover i {
+    color: var(--accent-color);
+}
+
+[data-discipline="web"] .project-urlbar:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Visor: la captura completa se recorre de arriba abajo al pasar el ratón */
+.project-page-viewport {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-page-viewport img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 0%;
+    transition: object-position 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-page-viewport:hover img,
+.project-page-viewport:focus-visible img {
+    object-position: 50% 100%;
+    transition: object-position 7s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+.project-page-viewport:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: -3px;
+}
+
+[data-discipline="web"] .project-info-col h3 {
+    margin: 0 0 0.2rem;
+    color: var(--text-color);
+    font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+}
+
+[data-discipline="web"] .project-info-col .project-role {
+    margin-bottom: 0.9rem;
+    color: color-mix(in srgb, var(--text-color) 65%, transparent);
+}
+
+[data-discipline="web"] .project-info-col .project-tags {
+    margin-bottom: 1.1rem;
+}
+
+[data-discipline="web"] .project-info-col .project-actions {
+    margin-bottom: 1.3rem;
+}
+
+/* Con animaciones reducidas, la captura se recorre con la rueda en vez de animarse */
+@media (hover: hover) and (prefers-reduced-motion: reduce) {
+    .project-page-viewport {
+        overflow-y: auto;
+    }
+
+    .project-page-viewport img,
+    .project-page-viewport:hover img,
+    .project-page-viewport:focus-visible img {
+        height: auto;
+        object-fit: fill;
+        transition: none;
+    }
+}
+
+/* En pantallas táctiles se queda en la primera pantalla: un visor con scroll
+   propio atraparía el desplazamiento de la página */
+@media (hover: none) {
+    .project-page-viewport:hover img,
+    .project-page-viewport:focus-visible img {
+        object-position: 50% 0%;
+        transition: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-discipline="games"] .project-image-wrapper img,
+    .project-caption {
+        animation: none;
+    }
+}
+
+/* --- Escritorio: todo en una pantalla, visual a la izquierda y texto a la derecha --- */
+@media (min-width: 900px) {
+    .projects-group {
+        display: grid;
+        grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
+        grid-template-rows: auto minmax(0, 1fr);
+        column-gap: 2.4rem;
+        height: var(--projects-h);
+    }
+
+    /* El contenedor y la ficha activa ceden sus hijos a la rejilla del grupo;
+       las fichas inactivas siguen ocultas por su atributo hidden */
+    .projects-details-container,
+    .project-detail-panel {
+        display: contents;
+    }
+
+    .projects-nav-menu {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .project-visuals-col {
+        grid-column: 1;
+        grid-row: 2;
+        min-height: 0;
+    }
+
+    .project-info-col {
+        grid-column: 2;
+        grid-row: 1 / -1;
+        min-height: 0;
+        overflow-y: auto;
+        padding: 6px 0.6rem 2.5rem 0;
+        mask-image: linear-gradient(to bottom, #000 calc(100% - 2.5rem), transparent);
+        scrollbar-width: thin;
+        scrollbar-color: color-mix(in srgb, var(--accent-color) 45%, transparent) transparent;
+    }
+
+    /* El marco de la ventana rodea solo la columna visual */
+    [data-discipline="web"]::before {
+        content: "";
+        grid-column: 1;
+        grid-row: 1 / -1;
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        background: var(--bg-color);
+        box-shadow: 0 30px 60px -32px rgba(0, 0, 0, 0.45);
+    }
+
+    [data-discipline="web"] .projects-nav-menu {
+        margin: 1px 1px 0;
+        border-radius: 19px 19px 0 0;
+    }
+
+    [data-discipline="web"] .project-visuals-col {
+        margin: 0 1px 1px;
+        border-radius: 0 0 19px 19px;
+        overflow: hidden;
+    }
+
+    [data-discipline="web"] .project-page-viewport {
+        flex: 1;
+        min-height: 0;
+    }
+}
+
+/* --- Tablet y móvil: una columna acotada; la descripción se abre con "Leer más" --- */
+@media (max-width: 899px) {
+    .projects-showcase {
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    [data-discipline="games"] .project-visuals-col {
+        aspect-ratio: 16 / 10;
+        max-height: 56svh;
+        border-radius: 20px;
+    }
+
+    .project-info-col {
+        margin-top: 1rem;
+    }
+
+    .project-read-more {
+        display: inline-flex;
+    }
+
+    .project-description .desc-extra {
+        display: none;
+    }
+
+    .project-info-col.is-expanded .desc-extra {
+        display: inline;
+    }
+
+    .project-info-col:not(.is-expanded) .desc-intro {
+        margin-bottom: 0;
+    }
+
+    /* La ventana entera es el grupo, con la ficha dentro */
+    [data-discipline="web"] {
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        overflow: hidden;
+        background: var(--bg-color);
+        box-shadow: 0 24px 50px -30px rgba(0, 0, 0, 0.45);
+    }
+
+    [data-discipline="web"] .project-page-viewport {
+        aspect-ratio: 16 / 10;
+        max-height: 34svh;
+    }
+
+    [data-discipline="web"] .project-info-col {
+        margin-top: 0;
+        padding: 1.3rem 1.4rem 1.4rem;
+        border-top: 1px solid var(--border-color);
+    }
+}
+
+@media (max-width: 600px) {
+    .projects-toolbar {
+        margin: 0.8rem 0 1.1rem;
+    }
+
+    .discipline-btn {
+        padding: 0.55rem 0.95rem;
+        font-size: 0.92rem;
+    }
+
+    [data-discipline="games"] .projects-nav-menu {
+        gap: 0.8rem;
+    }
+
+    [data-discipline="games"] .project-nav-btn {
+        width: 72px;
+    }
+
+    [data-discipline="games"] .nav-btn-thumb {
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+    }
+
+    [data-discipline="games"] .nav-btn-title {
+        font-size: 0.7rem;
+    }
+
+    [data-discipline="web"] .project-info-col .project-tag {
+        font-size: 0.7rem;
+        padding: 0.22rem 0.65rem;
+    }
+
+    [data-discipline="games"] .project-visuals-col {
+        aspect-ratio: 4 / 3;
+    }
+
+    .project-caption {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 3rem 1.1rem 1.1rem;
+    }
+
+    .project-caption h3 {
+        font-size: 1.65rem;
+    }
+
+    .project-caption .project-role {
+        margin-bottom: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .project-caption .project-tag {
+        font-size: 0.7rem;
+        padding: 0.22rem 0.65rem;
+    }
+
+    .project-caption .project-actions {
+        grid-column: 1;
+        grid-row: auto;
+        margin-top: 0.8rem;
+    }
+
+    .project-detail-panel .btn {
+        padding: 0.6rem 1.15rem;
+        font-size: 0.8rem;
+        border-radius: 12px;
+    }
+
+    .project-description {
+        font-size: 0.93rem;
+    }
+
+    .project-description .desc-intro {
+        font-size: 0.98rem;
+    }
+
+    [data-discipline="web"] .browser-controls {
+        display: none;
+    }
+
+    [data-discipline="web"] .project-page-viewport {
+        aspect-ratio: 16 / 9;
+    }
+
+    [data-discipline="web"] .project-info-col {
+        padding: 1.1rem 1.1rem 1.2rem;
+    }
+
+    [data-discipline="web"] .project-info-col h3 {
+        font-size: 1.6rem;
+    }
 }
 
 /* --- Formulario de Contacto --- */
@@ -3009,57 +3549,6 @@ footer {
         padding-left: 0;
     }
 
-    /* Proyectos: Consola Adaptativa */
-    .projects-console-layout {
-        grid-template-columns: 1fr;
-        gap: 1.8rem;
-    }
-
-    .projects-nav-menu {
-        flex-direction: row;
-        overflow-x: auto;
-        padding-bottom: 0.5rem;
-        scrollbar-width: none;
-    }
-    
-    .projects-nav-menu::-webkit-scrollbar {
-        display: none;
-    }
-
-    .project-nav-btn {
-        flex: 1 0 auto;
-        justify-content: center;
-        padding: 0.8rem 1.2rem;
-    }
-
-    .project-nav-btn::before {
-        left: 50%;
-        top: auto;
-        bottom: 0;
-        transform: translateX(-50%) scaleX(0);
-        width: 45%;
-        height: 3px;
-        border-radius: 3px 3px 0 0;
-    }
-    
-    .project-nav-btn.active::before {
-        transform: translateX(-50%) scaleX(1);
-    }
-    
-    .project-nav-btn:hover {
-        transform: translateY(-2px);
-    }
-
-    .project-detail-panel {
-        max-width: 100%;
-        padding: 1.8rem;
-    }
-
-    .project-detail-panel.active {
-        grid-template-columns: 1fr;
-        gap: 1.8rem;
-    }
-
     /* Contacto: maquetación responsiva */
     .contact-layout {
         grid-template-columns: 1fr;
@@ -3455,47 +3944,6 @@ footer {
     /* PROYECTOS */
     #proyectos h2 {
         font-size: 1.6rem;
-    }
-
-    .projects-console-layout {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .projects-nav-menu {
-        flex-direction: row;
-        overflow-x: auto;
-        gap: 0.5rem;
-    }
-
-    .project-nav-btn {
-        padding: 0.6rem 1rem;
-    }
-    
-    .nav-btn-thumb {
-        width: 35px;
-        height: 35px;
-        border-radius: 8px;
-    }
-    
-    .nav-btn-title {
-        font-size: 0.95rem;
-    }
-    
-    .nav-btn-subtitle {
-        display: none;
-    }
-
-    .project-detail-panel {
-        width: 100%;
-        max-width: 100%;
-        margin: 6px 0;
-        padding: 1.5rem;
-    }
-
-    .project-info-col h3 {
-        font-size: 1.5rem;
-        margin-top: 0.5rem;
     }
 
     /* CONTACTO */

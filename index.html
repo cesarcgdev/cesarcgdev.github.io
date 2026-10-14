@@ -169,7 +169,10 @@
             <!-- Bloque de Experiencia en Pestañas (Pestaña Interactiva) -->
             <div class="experience-tabs-container">
                 <div class="tabs-list" role="tablist" aria-label="Experiencia profesional">
-                    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="exp-panel-5" id="tab-5">
+                    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="exp-panel-6" id="tab-6">
+                        <span>iStore Canarias</span>
+                    </button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="exp-panel-5" id="tab-5">
                         <span>El Escondite</span>
                     </button>
                     <button class="tab-btn" role="tab" aria-selected="false" aria-controls="exp-panel-1" id="tab-1">
@@ -188,7 +191,19 @@
                 </div>
 
                 <div class="tabs-panels">
-                    <article class="tab-panel active" id="exp-panel-5" role="tabpanel" aria-labelledby="tab-5">
+                    <article class="tab-panel active" id="exp-panel-6" role="tabpanel" aria-labelledby="tab-6">
+                        <h4 data-i18n="exp6-title">Desarrollador web freelance | <i><a href="https://www.istorecanarias.com" class="extra-link" target="_blank">iStore Canarias</a></i></h4>
+                        <span class="job-date" data-i18n="exp6-date">Septiembre 2026 - Presente</span>
+                        <ul class="job-bullets">
+                            <li data-i18n="exp6-bullet1">Rediseño y desarrollo desde cero la web de un <b>servicio técnico Apple</b> en Gran Canaria, sustituyendo el <i>WordPress</i> antiguo por una <b>web estática más rápida</b> y fácil de mantener con <i>HTML5</i>, <i>CSS3</i> y <i>JavaScript</i>.</li>
+                            <li data-i18n="exp6-bullet2">Implemento un <b>sistema de traducción en tres idiomas</b> (español, inglés y alemán) pensado para residentes y turistas, junto a un <b>modo claro/oscuro</b> que recuerda la preferencia del visitante.</li>
+                            <li data-i18n="exp6-bullet3">Migro el dominio <b>sin perder posicionamiento</b>: redirecciones 301 de las URLs antiguas, <b>HTTPS con dominio canónico</b> mediante <i>.htaccess</i> y bloqueo de las rutas de WordPress que atacan los bots.</li>
+                            <li data-i18n="exp6-bullet4">Maqueto las <b>páginas legales</b> (aviso legal, privacidad y cookies) en los tres idiomas y autoalojo las fuentes para ganar <b>rendimiento y privacidad</b>.</li>
+                            <li data-i18n="exp6-bullet5">Diseño un recorrido orientado a la <b>conversión</b>: contacto directo por <i>WhatsApp</i>, carrusel de fichas de diagnóstico, reseñas de <i>Google</i> y mapa del taller.</li>
+                        </ul>
+                    </article>
+
+                    <article class="tab-panel" id="exp-panel-5" role="tabpanel" aria-labelledby="tab-5" hidden>
                         <h4 data-i18n="exp5-title">Desarrollador y diseñador de videojuegos | <i>El Escondite</i></h4>
                         <span class="job-date" data-i18n="exp5-date">Julio 2026 - Presente</span>
                         <ul class="job-bullets">
@@ -400,149 +415,240 @@
             </div>
         </section>
                     
-        <!-- PROYECTOS -->         
+        <!-- PROYECTOS -->
         <section id="proyectos" class="fade-in-section">
             <h2 data-i18n="projects-title">MIS PROYECTOS</h2>
-            <div class="projects-console-layout">
-                <!-- Menú de navegación de proyectos -->
-                <div class="projects-nav-menu" role="tablist" aria-label="Seleccionar proyecto">
-                    <button type="button" class="project-nav-btn active" data-project-target="project-panel-4" role="tab" aria-selected="true" aria-controls="project-panel-4">
-                        <img src="images/projects/zombie-gore-icon.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
-                        <div class="nav-btn-info">
-                            <span class="nav-btn-title">Zombie Gore</span>
-                            <span class="nav-btn-subtitle" data-i18n="p4-badge">Diseñador y Desarrollador</span>
-                        </div>
-                    </button>
-                    <button type="button" class="project-nav-btn" data-project-target="project-panel-1" role="tab" aria-selected="false" aria-controls="project-panel-1">
-                        <img src="images/projects/project1-image.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
-                        <div class="nav-btn-info">
-                            <span class="nav-btn-title">Mega Time</span>
-                            <span class="nav-btn-subtitle" data-i18n="p1-badge">Líder Técnico</span>
-                        </div>
-                    </button>
-                    <button type="button" class="project-nav-btn" data-project-target="project-panel-2" role="tab" aria-selected="false" aria-controls="project-panel-2">
-                        <img src="images/projects/art-rescue.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
-                        <div class="nav-btn-info">
-                            <span class="nav-btn-title">Art Rescue</span>
-                            <span class="nav-btn-subtitle" data-i18n="p2-badge">Top 8 Finalista</span>
-                        </div>
-                    </button>
-                    <button type="button" class="project-nav-btn" data-project-target="project-panel-3" role="tab" aria-selected="false" aria-controls="project-panel-3">
-                        <img src="images/projects/Ghostly-Star.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
-                        <div class="nav-btn-info">
-                            <span class="nav-btn-title">Ghostly-Star</span>
-                            <span class="nav-btn-subtitle" data-i18n="p3-badge">Desarrollo Individual</span>
-                        </div>
-                    </button>
+            <div class="projects-showcase">
+                <div class="projects-toolbar">
+                    <div class="discipline-switch" role="tablist" aria-label="Tipo de proyecto">
+                        <button type="button" class="discipline-btn active" id="discipline-tab-games" role="tab" aria-selected="true" aria-controls="projects-games">
+                            <i class="fa-solid fa-gamepad fa-fw" aria-hidden="true"></i>
+                            <span data-i18n="projects-games">Videojuegos</span>
+                            <span class="discipline-count">4</span>
+                        </button>
+                        <button type="button" class="discipline-btn" id="discipline-tab-web" role="tab" aria-selected="false" aria-controls="projects-web">
+                            <i class="fa-solid fa-globe fa-fw" aria-hidden="true"></i>
+                            <span data-i18n="projects-web">Web</span>
+                            <span class="discipline-count">1</span>
+                        </button>
+                    </div>
                 </div>
 
-                <div class="projects-details-container">
+                <!-- VIDEOJUEGOS: lanzador con baldosas y el arte del juego activo -->
+                <div class="projects-group" id="projects-games" data-discipline="games" role="tabpanel" aria-labelledby="discipline-tab-games">
+                    <div class="projects-nav-menu" role="tablist" aria-label="Seleccionar videojuego">
+                        <button type="button" class="project-nav-btn active" id="project-tab-4" role="tab" aria-selected="true" aria-controls="project-panel-4">
+                            <img src="images/projects/zombie-gore-icon.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
+                            <span class="nav-btn-title">Zombie Gore</span>
+                        </button>
+                        <button type="button" class="project-nav-btn" id="project-tab-1" role="tab" aria-selected="false" aria-controls="project-panel-1">
+                            <img src="images/projects/project1-image.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
+                            <span class="nav-btn-title">Mega Time</span>
+                        </button>
+                        <button type="button" class="project-nav-btn" id="project-tab-2" role="tab" aria-selected="false" aria-controls="project-panel-2">
+                            <img src="images/projects/art-rescue.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
+                            <span class="nav-btn-title">Art Rescue</span>
+                        </button>
+                        <button type="button" class="project-nav-btn" id="project-tab-3" role="tab" aria-selected="false" aria-controls="project-panel-3">
+                            <img src="images/projects/Ghostly-Star.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
+                            <span class="nav-btn-title">Ghostly-Star</span>
+                        </button>
+                    </div>
 
-                    <!-- Zombie Gore -->
-                    <article class="project-detail-panel active" id="project-panel-4" role="tabpanel" aria-labelledby="project-panel-4">
-                        <div class="project-visuals-col">
-                            <div class="project-image-wrapper">
-                                <img src="images/projects/zombie-gore.png" alt="Captura de pantalla de Zombie Gore" width="960" height="540">
-                            </div>
-                            <div class="project-actions">
-                                <a href="https://play.google.com/store/apps/details?id=com.vivastudios.zombie.gore.shooting&pcampaignid=web_share" target="_blank" class="btn">
-                                    <i class="fa-brands fa-google-play fa-fw"></i>
-                                    <span data-i18n="play-store">Google Play</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-info-col">
-                            <h3>Zombie Gore</h3>
-                            <div class="project-tags">
-                                <span class="project-tag">Unity</span>
-                                <span class="project-tag" data-i18n="p4-tag2">Diseño de Interfaces</span>
-                                <span class="project-tag" data-i18n="p4-tag3">Live Ops</span>
-                            </div>
-                            <p class="project-description">
-                                <span data-i18n="p4-desc-intro">Juego de acción y supervivencia zombi para móviles publicado en Google Play por <i><a href="https://play.google.com/store/apps/dev?id=5889854114365514439" class="extra-link" target="_blank">Viva Games Studios</a>.</i></span> <span data-i18n="p4-desc-extra">El título supera las 50k descargas y sostiene una valoración de 4,6★ con más de 2.500 reseñas, respaldado por un ciclo de actualizaciones constante que mantiene la retención y la monetización de su base de jugadores.<br>Mi rol combina diseño y desarrollo: mejoro las mecánicas existentes y el apartado visual, diseño e implemento las interfaces actualizadas del juego y creo e integro nuevos enemigos y dinámicas que amplían la experiencia. El proyecto recibe actualizaciones periódicas, por lo que itero y pulo el producto de forma continua.</span>
-                            </p>
-                        </div>
-                    </article>
+                    <div class="projects-details-container">
 
-                    <!-- Mega Time -->
-                    <article class="project-detail-panel" id="project-panel-1" role="tabpanel" aria-labelledby="project-panel-1" style="display: none;">
-                        <div class="project-visuals-col">
-                            <div class="project-image-wrapper">
-                                <img src="images/projects/project1-image.png" alt="Captura de pantalla de Mega Time" width="960" height="540">
+                        <!-- Zombie Gore -->
+                        <article class="project-detail-panel active" id="project-panel-4" role="tabpanel" aria-labelledby="project-tab-4">
+                            <div class="project-visuals-col">
+                                <div class="project-image-wrapper">
+                                    <img src="images/projects/zombie-gore.png" alt="Captura de pantalla de Zombie Gore" width="960" height="540">
+                                </div>
+                                <div class="project-caption">
+                                    <h3>Zombie Gore</h3>
+                                    <p class="project-role" data-i18n="p4-badge">Diseñador y Desarrollador</p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">Unity</span>
+                                        <span class="project-tag" data-i18n="p4-tag2">Diseño de Interfaces</span>
+                                        <span class="project-tag" data-i18n="p4-tag3">Live Ops</span>
+                                    </div>
+                                    <div class="project-actions">
+                                        <a href="https://play.google.com/store/apps/details?id=com.vivastudios.zombie.gore.shooting&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" class="btn">
+                                            <i class="fa-brands fa-google-play fa-fw"></i>
+                                            <span data-i18n="play-store">Google Play</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="project-actions">
-                                <a href="https://www.youtube.com/watch?v=GvyTGQh33sA" target="_blank" class="btn">
-                                    <i class="fa-brands fa-youtube fa-fw"></i>
-                                    <span data-i18n="trailer-text">Tráiler</span>
-                                </a>
+                            <div class="project-info-col">
+                                <p class="project-description" id="project-desc-4">
+                                    <span class="desc-intro" data-i18n="p4-desc-intro">Juego de acción y supervivencia zombi para móviles publicado en Google Play por <i><a href="https://play.google.com/store/apps/dev?id=5889854114365514439" class="extra-link" target="_blank">Viva Games Studios</a>.</i></span> <span class="desc-extra" data-i18n="p4-desc-extra">El título supera las 50k descargas y sostiene una valoración de 4,6★ con más de 2.500 reseñas, respaldado por un ciclo de actualizaciones constante que mantiene la retención y la monetización de su base de jugadores.<br><br>Mi rol combina diseño y desarrollo: mejoro las mecánicas existentes y el apartado visual, diseño e implemento las interfaces actualizadas del juego y creo e integro nuevos enemigos y dinámicas que amplían la experiencia. El proyecto recibe actualizaciones periódicas, por lo que itero y pulo el producto de forma continua.</span>
+                                </p>
+                                <button type="button" class="project-read-more" aria-expanded="false" aria-controls="project-desc-4">
+                                    <span class="read-more-label" data-i18n="more">Leer más…</span>
+                                    <span class="read-less-label" data-i18n="less">Leer menos</span>
+                                </button>
                             </div>
-                        </div>
-                        <div class="project-info-col">
-                            <h3>Mega Time</h3>
-                            <div class="project-tags">
-                                <span class="project-tag">Unity</span>
-                                <span class="project-tag">C#</span>
-                                <span class="project-tag" data-i18n="p1-tag3">Metodología Ágil</span>
-                            </div>
-                            <p class="project-description">
-                                <span data-i18n="p1-desc-intro">Shooter de plataformas 2.5D desarrollado en Unity donde ejercí como líder técnico en mi equipo <i><a href="https://linktr.ee/DrilleStudio" class="extra-link" target="_blank">Drille Studio</a>.</i></span> <span data-i18n="p1-desc-extra">Diseñé la metodología de trabajo orientada a objetivos e integré los flujos de los distintos departamentos, asegurando una entrega exitosa y optimizando la productividad general.<br>Asimismo, diseñé y desarrollé la arquitectura técnica global, incluyendo sistemas dinámicos de apuntado, mecánicas de obstáculos e inteligencia artificial avanzada para enemigos y jefes finales. El proyecto concluyó con una fase intensiva de depuración que elevó drásticamente el rendimiento del producto.</span>
-                            </p>
-                        </div>
-                    </article>
+                        </article>
 
-                    <!-- Art-Rescue -->
-                    <article class="project-detail-panel" id="project-panel-2" role="tabpanel" aria-labelledby="project-panel-2" style="display: none;">
-                        <div class="project-visuals-col">
-                            <div class="project-image-wrapper">
-                                <img src="images/projects/art-rescue.png" alt="Captura de pantalla de Art Rescue" width="1920" height="1080">
+                        <!-- Mega Time -->
+                        <article class="project-detail-panel" id="project-panel-1" role="tabpanel" aria-labelledby="project-tab-1" hidden>
+                            <div class="project-visuals-col">
+                                <div class="project-image-wrapper">
+                                    <img src="images/projects/project1-image.png" alt="Captura de pantalla de Mega Time" width="960" height="540">
+                                </div>
+                                <div class="project-caption">
+                                    <h3>Mega Time</h3>
+                                    <p class="project-role" data-i18n="p1-badge">Líder Técnico</p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">Unity</span>
+                                        <span class="project-tag">C#</span>
+                                        <span class="project-tag" data-i18n="p1-tag3">Metodología Ágil</span>
+                                    </div>
+                                    <div class="project-actions">
+                                        <a href="https://www.youtube.com/watch?v=GvyTGQh33sA" target="_blank" rel="noopener noreferrer" class="btn">
+                                            <i class="fa-brands fa-youtube fa-fw"></i>
+                                            <span data-i18n="trailer-text">Tráiler</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="project-actions">
-                                <a href="https://quinowl.itch.io/art-rescue" target="_blank" class="btn">
-                                    <i class="fa-brands fa-itch-io fa-fw"></i>
-                                    <span data-i18n="official-page">Página oficial</span>
-                                </a>
+                            <div class="project-info-col">
+                                <p class="project-description" id="project-desc-1">
+                                    <span class="desc-intro" data-i18n="p1-desc-intro">Shooter de plataformas 2.5D desarrollado en Unity donde ejercí como líder técnico en mi equipo <i><a href="https://linktr.ee/DrilleStudio" class="extra-link" target="_blank">Drille Studio</a>.</i></span> <span class="desc-extra" data-i18n="p1-desc-extra">Diseñé la metodología de trabajo orientada a objetivos e integré los flujos de los distintos departamentos, asegurando una entrega exitosa y optimizando la productividad general.<br><br>Asimismo, diseñé y desarrollé la arquitectura técnica global, incluyendo sistemas dinámicos de apuntado, mecánicas de obstáculos e inteligencia artificial avanzada para enemigos y jefes finales. El proyecto concluyó con una fase intensiva de depuración que elevó drásticamente el rendimiento del producto.</span>
+                                </p>
+                                <button type="button" class="project-read-more" aria-expanded="false" aria-controls="project-desc-1">
+                                    <span class="read-more-label" data-i18n="more">Leer más…</span>
+                                    <span class="read-less-label" data-i18n="less">Leer menos</span>
+                                </button>
                             </div>
-                        </div>
-                        <div class="project-info-col">
-                            <h3>Art Rescue</h3>
-                            <div class="project-tags">
-                                <span class="project-tag">Unity</span>
-                                <span class="project-tag">C#</span>
-                                <span class="project-tag" data-i18n="p2-tag2">Físicas 3D</span>
-                                <span class="project-tag" data-i18n="p2-tag3">Optimización</span>
-                            </div>
-                            <p class="project-description">
-                                <span data-i18n="p2-desc-intro">Videojuego de puzzles 3D programado en C# y desarrollado por un equipo multidisciplinar de 8 profesionales</span> <span data-i18n="p2-desc-extra">. El proyecto demostró un alto nivel competitivo, logrando posicionarse con éxito entre los 8 videojuegos más destacados de la <a href="https://itch.io/jam/cultura-abierta-6-edicin" class="extra-link" target="_blank">VI Game Jam Cultura Abierta.</a><br>Mi rol se centró en la ingeniería de software, desarrollando el sistema de físicas del personaje, la interacción lógica con el entorno y una sala de exposición dinámica con recompensas desbloqueables. Todo el código base fue refactorizado para garantizar una experiencia fluida y optimizada.</span>
-                            </p>
-                        </div>
-                    </article>
+                        </article>
 
-                    <!-- Ghostly-Star -->
-                    <article class="project-detail-panel" id="project-panel-3" role="tabpanel" aria-labelledby="project-panel-3" style="display: none;">
-                        <div class="project-visuals-col">
-                            <div class="project-image-wrapper">
-                                <img src="images/projects/Ghostly-Star.png" alt="Captura de pantalla de Ghostly-Star" width="960" height="540">
+                        <!-- Art-Rescue -->
+                        <article class="project-detail-panel" id="project-panel-2" role="tabpanel" aria-labelledby="project-tab-2" hidden>
+                            <div class="project-visuals-col">
+                                <div class="project-image-wrapper">
+                                    <img src="images/projects/art-rescue.png" alt="Captura de pantalla de Art Rescue" width="1920" height="1080">
+                                </div>
+                                <div class="project-caption">
+                                    <h3>Art Rescue</h3>
+                                    <p class="project-role" data-i18n="p2-badge">Top 8 Finalista</p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">Unity</span>
+                                        <span class="project-tag">C#</span>
+                                        <span class="project-tag" data-i18n="p2-tag2">Físicas 3D</span>
+                                        <span class="project-tag" data-i18n="p2-tag3">Optimización</span>
+                                    </div>
+                                    <div class="project-actions">
+                                        <a href="https://quinowl.itch.io/art-rescue" target="_blank" rel="noopener noreferrer" class="btn">
+                                            <i class="fa-brands fa-itch-io fa-fw"></i>
+                                            <span data-i18n="official-page">Página oficial</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="project-actions">
-                                <a href="https://youngmute.itch.io/ghostly-star" target="_blank" class="btn">
-                                    <i class="fa-brands fa-itch-io fa-fw"></i>
-                                    <span data-i18n="official-page">Página oficial</span>
-                                </a>
+                            <div class="project-info-col">
+                                <p class="project-description" id="project-desc-2">
+                                    <span class="desc-intro" data-i18n="p2-desc-intro">Videojuego de puzzles 3D programado en C# y desarrollado por un equipo multidisciplinar de 8 profesionales.</span> <span class="desc-extra" data-i18n="p2-desc-extra">El proyecto demostró un alto nivel competitivo, logrando posicionarse con éxito entre los 8 videojuegos más destacados de la <a href="https://itch.io/jam/cultura-abierta-6-edicin" class="extra-link" target="_blank">VI Game Jam Cultura Abierta.</a><br><br>Mi rol se centró en la ingeniería de software, desarrollando el sistema de físicas del personaje, la interacción lógica con el entorno y una sala de exposición dinámica con recompensas desbloqueables. Todo el código base fue refactorizado para garantizar una experiencia fluida y optimizada.</span>
+                                </p>
+                                <button type="button" class="project-read-more" aria-expanded="false" aria-controls="project-desc-2">
+                                    <span class="read-more-label" data-i18n="more">Leer más…</span>
+                                    <span class="read-less-label" data-i18n="less">Leer menos</span>
+                                </button>
                             </div>
-                        </div>
-                        <div class="project-info-col">
-                            <h3>Ghostly-Star</h3>
-                            <div class="project-tags">
-                                <span class="project-tag">Unity</span>
-                                <span class="project-tag">C#</span>
-                                <span class="project-tag" data-i18n="p3-tag2">Persistencia</span>
-                                <span class="project-tag" data-i18n="p3-tag3">Arquitectura</span>
+                        </article>
+
+                        <!-- Ghostly-Star -->
+                        <article class="project-detail-panel" id="project-panel-3" role="tabpanel" aria-labelledby="project-tab-3" hidden>
+                            <div class="project-visuals-col">
+                                <div class="project-image-wrapper">
+                                    <img src="images/projects/Ghostly-Star.png" alt="Captura de pantalla de Ghostly-Star" width="960" height="540">
+                                </div>
+                                <div class="project-caption">
+                                    <h3>Ghostly-Star</h3>
+                                    <p class="project-role" data-i18n="p3-badge">Desarrollo Individual</p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">Unity</span>
+                                        <span class="project-tag">C#</span>
+                                        <span class="project-tag" data-i18n="p3-tag2">Persistencia</span>
+                                        <span class="project-tag" data-i18n="p3-tag3">Arquitectura</span>
+                                    </div>
+                                    <div class="project-actions">
+                                        <a href="https://youngmute.itch.io/ghostly-star" target="_blank" rel="noopener noreferrer" class="btn">
+                                            <i class="fa-brands fa-itch-io fa-fw"></i>
+                                            <span data-i18n="official-page">Página oficial</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="project-description">
-                                <span data-i18n="p3-desc-intro">Twin Stick Shooter 3D de supervivencia por oleadas desarrollado íntegramente de forma autodidacta.</span> <span data-i18n="p3-desc-extra">Este proyecto técnico individual me permitió gestionar de manera autónoma todo el ciclo de vida del software, desde la conceptualización de las mecánicas core hasta la dirección de arte y el despliegue del juego.<br>Durante el desarrollo, implementé sistemas avanzados de persistencia de datos orientados a logros y un árbol de habilidades con tienda integrada. El resultado es una experiencia audiovisual interactiva con mecánicas pulidas que consolidó mis competencias en la arquitectura de sistemas en Unity.</span>
-                            </p>
-                        </div>
-                    </article>
+                            <div class="project-info-col">
+                                <p class="project-description" id="project-desc-3">
+                                    <span class="desc-intro" data-i18n="p3-desc-intro">Twin Stick Shooter 3D de supervivencia por oleadas desarrollado íntegramente de forma autodidacta.</span> <span class="desc-extra" data-i18n="p3-desc-extra">Este proyecto técnico individual me permitió gestionar de manera autónoma todo el ciclo de vida del software, desde la conceptualización de las mecánicas core hasta la dirección de arte y el despliegue del juego.<br><br>Durante el desarrollo, implementé sistemas avanzados de persistencia de datos orientados a logros y un árbol de habilidades con tienda integrada. El resultado es una experiencia audiovisual interactiva con mecánicas pulidas que consolidó mis competencias en la arquitectura de sistemas en Unity.</span>
+                                </p>
+                                <button type="button" class="project-read-more" aria-expanded="false" aria-controls="project-desc-3">
+                                    <span class="read-more-label" data-i18n="more">Leer más…</span>
+                                    <span class="read-less-label" data-i18n="less">Leer menos</span>
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- WEB: ventana de navegador con una pestaña por proyecto -->
+                <div class="projects-group" id="projects-web" data-discipline="web" role="tabpanel" aria-labelledby="discipline-tab-web" hidden>
+                    <div class="projects-nav-menu" role="tablist" aria-label="Seleccionar web">
+                        <button type="button" class="project-nav-btn active" id="project-tab-5" role="tab" aria-selected="true" aria-controls="project-panel-5">
+                            <img src="images/projects/istore-canarias-icon.png" alt="" class="nav-btn-thumb" width="50" height="50" aria-hidden="true">
+                            <span class="nav-btn-title">iStore Canarias</span>
+                            <i class="fa-solid fa-xmark nav-btn-close" aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                    <div class="projects-details-container">
+
+                        <!-- iStore Canarias -->
+                        <article class="project-detail-panel active" id="project-panel-5" role="tabpanel" aria-labelledby="project-tab-5">
+                            <div class="project-visuals-col">
+                                <div class="project-browser-bar">
+                                    <span class="browser-controls" aria-hidden="true">
+                                        <i class="fa-solid fa-arrow-left"></i>
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                        <i class="fa-solid fa-rotate-right"></i>
+                                    </span>
+                                    <a href="https://www.istorecanarias.com" target="_blank" rel="noopener noreferrer" class="project-urlbar">
+                                        <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                                        <span class="urlbar-host">www.istorecanarias.com</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div class="project-page-viewport" tabindex="0" aria-label="Página de inicio de iStore Canarias completa">
+                                    <img src="images/projects/istore-canarias.webp" alt="Captura completa de la página de inicio de iStore Canarias" width="1200" height="3417" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="project-info-col">
+                                <h3>iStore Canarias</h3>
+                                <p class="project-role" data-i18n="p5-badge">Diseño y desarrollo web</p>
+                                <div class="project-tags">
+                                    <span class="project-tag">HTML5 · CSS3</span>
+                                    <span class="project-tag">JavaScript</span>
+                                    <span class="project-tag" data-i18n="p5-tag2">Multidioma ES · EN · DE</span>
+                                    <span class="project-tag" data-i18n="p5-tag3">Migración SEO</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="https://www.istorecanarias.com" target="_blank" rel="noopener noreferrer" class="btn">
+                                        <i class="fa-solid fa-arrow-up-right-from-square fa-fw"></i>
+                                        <span data-i18n="visit-site">Visitar web</span>
+                                    </a>
+                                </div>
+                                <p class="project-description" id="project-desc-5">
+                                    <span class="desc-intro" data-i18n="p5-desc-intro">Web de <i><a href="https://www.istorecanarias.com" class="extra-link" target="_blank">iStore Canarias</a></i>, servicio técnico Apple en San Fernando de Maspalomas (Gran Canaria), diseñada y desarrollada de principio a fin como freelance.</span> <span class="desc-extra" data-i18n="p5-desc-extra">Sustituí su antiguo WordPress por una web estática en HTML, CSS y JavaScript sin dependencias, más rápida y sencilla de mantener, que atiende en español, inglés y alemán y recuerda el modo claro u oscuro de cada visitante.<br><br>La pieza central es una ficha de diagnóstico que acompaña al cliente desde la recepción hasta la entrega, junto a contacto directo por WhatsApp, reseñas de Google y el mapa del taller. La migración conservó el posicionamiento con redirecciones 301, HTTPS en el dominio canónico y páginas legales en los tres idiomas.</span>
+                                </p>
+                                <button type="button" class="project-read-more" aria-expanded="false" aria-controls="project-desc-5">
+                                    <span class="read-more-label" data-i18n="more">Leer más…</span>
+                                    <span class="read-less-label" data-i18n="less">Leer menos</span>
+                                </button>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
