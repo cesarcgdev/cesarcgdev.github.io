@@ -3804,7 +3804,7 @@ footer {
         font-size: 0.88rem;
     }    
 
-    /* Cuadro "Buscando Empleo" */
+    /* Cuadro de estado y disponibilidad */
     .hiring-status-card {
         flex-direction: column;
         align-items: center;
